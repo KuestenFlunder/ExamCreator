@@ -3,7 +3,7 @@ package com.team_kuestenflunder.exam_desktop;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class HelloController {
+public class EditQuestionController {
     @FXML
     private Label welcomeText;
 

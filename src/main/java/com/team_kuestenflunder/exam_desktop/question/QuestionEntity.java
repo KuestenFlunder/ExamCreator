@@ -1,4 +1,4 @@
-package com.team_kuestenflunder.exam_desktop.entitys;
+package com.team_kuestenflunder.exam_desktop.question;
 
 import java.time.LocalDate;
 import java.util.UUID;

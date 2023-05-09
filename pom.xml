@@ -92,7 +92,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                com.team_kuestenflunder.exam_desktop/com.team_kuestenflunder.exam_desktop.HelloApplication
+                                com.team_kuestenflunder.exam_desktop/com.team_kuestenflunder.exam_desktop.ApplicationMain
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
