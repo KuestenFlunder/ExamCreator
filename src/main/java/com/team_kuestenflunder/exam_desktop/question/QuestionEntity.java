@@ -14,7 +14,9 @@ public class QuestionEntity {
     private Topics topic;
     //! Maybe use Markdown for textfileds
 
+
     public QuestionEntity() {
+
         this.creationDate = LocalDate.now();
         this.id = UUID.randomUUID().toString();
     }
