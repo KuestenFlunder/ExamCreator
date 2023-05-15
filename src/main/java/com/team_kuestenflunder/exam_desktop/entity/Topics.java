@@ -1,4 +1,4 @@
-package com.team_kuestenflunder.exam_desktop.question;
+package com.team_kuestenflunder.exam_desktop.entity;
 //Not complete and might be dependent on the question pool
 public enum Topics {
     Java_Basics,

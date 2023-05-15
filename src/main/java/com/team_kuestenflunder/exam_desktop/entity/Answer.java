@@ -1,4 +1,4 @@
-package com.team_kuestenflunder.exam_desktop.question;
+package com.team_kuestenflunder.exam_desktop.entity;
 
 public class Answer {
     String answerText;
