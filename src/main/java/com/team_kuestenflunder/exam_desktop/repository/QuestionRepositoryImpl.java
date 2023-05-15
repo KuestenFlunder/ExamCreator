@@ -30,4 +30,17 @@ public class QuestionRepositoryImpl implements QuestionRepository{
     public List<Question> getQuestions() {
         return questions;
     }
+
+
+    //TODO Remove when saving data is ready
+    //!Only for testing and first trys
+    public void initList(){
+        addQuestion(new Question());
+        addQuestion(new Question());
+        addQuestion(new Question());
+        addQuestion(new Question());
+        addQuestion(new Question());
+        addQuestion(new Question());
+        addQuestion(new Question());
+    }
 }
