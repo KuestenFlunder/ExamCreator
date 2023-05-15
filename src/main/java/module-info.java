@@ -9,4 +9,9 @@ module com.team_kuestenflunder.exam_desktop {
 
     opens com.team_kuestenflunder.exam_desktop to javafx.fxml;
     exports com.team_kuestenflunder.exam_desktop;
+    exports com.team_kuestenflunder.exam_desktop.entity;
+    exports com.team_kuestenflunder.exam_desktop.repository;
+    exports com.team_kuestenflunder.exam_desktop.controller;
+    exports com.team_kuestenflunder.exam_desktop.services;
+    opens com.team_kuestenflunder.exam_desktop.controller to javafx.fxml;
 }
