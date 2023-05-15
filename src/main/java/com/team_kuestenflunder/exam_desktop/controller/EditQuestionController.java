@@ -1,4 +1,4 @@
-package com.team_kuestenflunder.exam_desktop;
+package com.team_kuestenflunder.exam_desktop.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

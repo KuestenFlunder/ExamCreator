@@ -1,5 +1,6 @@
 package com.team_kuestenflunder.exam_desktop;
 
+import com.team_kuestenflunder.exam_desktop.repository.QuestionRepositoryImpl;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -8,6 +9,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class ApplicationMain extends Application {
+    QuestionRepositoryImpl questionRepository = new QuestionRepositoryImpl();
+
     @Override
     public void start(Stage stage) throws IOException {
 
