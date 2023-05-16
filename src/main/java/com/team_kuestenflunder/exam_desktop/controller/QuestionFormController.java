@@ -1,6 +1,7 @@
 package com.team_kuestenflunder.exam_desktop.controller;
 
 
+import com.google.inject.Inject;
 import com.team_kuestenflunder.exam_desktop.repository.QuestionRepositoryImpl;
 import com.team_kuestenflunder.exam_desktop.services.QuestionFormServiceImpl;
 import javafx.fxml.FXML;
@@ -12,11 +13,12 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class QuestionFormController implements Initializable {
-    @FXML
-    private final QuestionRepositoryImpl questionRepository = new QuestionRepositoryImpl();
-    @FXML
-    private final QuestionFormServiceImpl questionFormService = new QuestionFormServiceImpl(questionRepository);
+    private final QuestionFormServiceImpl questionFormService;
 
+    @Inject
+    public QuestionFormController(QuestionFormServiceImpl questionFormService) {
+        this.questionFormService = questionFormService;
+    }
 
     @FXML
     Label label;
@@ -33,6 +35,6 @@ public class QuestionFormController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        questionRepository.initList();
+        questionFormService.initList();
     }
 }

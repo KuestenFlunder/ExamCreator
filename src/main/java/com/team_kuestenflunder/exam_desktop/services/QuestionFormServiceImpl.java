@@ -1,5 +1,6 @@
 package com.team_kuestenflunder.exam_desktop.services;
 
+import com.google.inject.Inject;
 import com.team_kuestenflunder.exam_desktop.Constants;
 import com.team_kuestenflunder.exam_desktop.entity.Question;
 import com.team_kuestenflunder.exam_desktop.repository.QuestionRepositoryImpl;
@@ -8,8 +9,9 @@ import java.util.List;
 
 
 public class QuestionFormServiceImpl implements Service {
-    QuestionRepositoryImpl questionRepository;
+    private final QuestionRepositoryImpl questionRepository;
 
+    @Inject
     public QuestionFormServiceImpl(QuestionRepositoryImpl questionRepository) {
         this.questionRepository = questionRepository;
     }
@@ -42,6 +44,10 @@ public class QuestionFormServiceImpl implements Service {
             }
         }
         return Constants.NOT_FOUND;
+    }
+
+    public void initList(){
+        questionRepository.initList();
     }
 }
 
