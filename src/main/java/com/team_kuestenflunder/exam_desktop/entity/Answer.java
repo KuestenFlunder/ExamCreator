@@ -37,4 +37,13 @@ public class Answer {
     public void setAnswerDescription(String answerDescription) {
         this.answerDescription = answerDescription;
     }
+
+    @Override
+    public String toString() {
+        return "Answer{" +
+                "answerText='" + answerText + '\'' +
+                ", correctAnswer=" + correctAnswer +
+                ", answerDescription='" + answerDescription + '\'' +
+                '}';
+    }
 }
