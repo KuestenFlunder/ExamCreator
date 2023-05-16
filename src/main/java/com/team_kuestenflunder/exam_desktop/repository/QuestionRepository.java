@@ -11,4 +11,6 @@ public interface QuestionRepository {
     Question getQuestion(int index);
     List<Question> getQuestions();
 
+    void deleteQuestion(int index);
+
 }

@@ -4,7 +4,7 @@ import com.team_kuestenflunder.exam_desktop.entity.Question;
 
 import java.util.ArrayList;
 import java.util.List;
-//TODO add delete question also in Interface
+
 public class QuestionRepositoryImpl implements QuestionRepository{
 
     //* List to store Questions for the first attempts
@@ -29,6 +29,11 @@ public class QuestionRepositoryImpl implements QuestionRepository{
     @Override
     public List<Question> getQuestions() {
         return questions;
+    }
+
+    @Override
+    public void deleteQuestion(int index) {
+        questions.remove(index);
     }
 
 
