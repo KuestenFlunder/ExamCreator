@@ -6,17 +6,15 @@ import java.util.UUID;
 public class Question {
     private final String id;
     private final LocalDate creationDate;
-    private AnswerList answerList;
-    private ChangeLog changeLog;
-    private String Code;
-    private String questionText;
+
     private String questionTitle; //? Might be useful if we find meaningful titles
     private Topics topic;
+    private String questionText;
+    private String Code;
+    private AnswerList answerList;
     //! Maybe use Markdown for textfileds
 
-
     public Question() {
-
         this.creationDate = LocalDate.now();
         this.id = UUID.randomUUID().toString();
     }
@@ -35,14 +33,6 @@ public class Question {
 
     public void setAnswerList(AnswerList answerList) {
         this.answerList = answerList;
-    }
-
-    public ChangeLog getChangeLog() {
-        return changeLog;
-    }
-
-    public void setChangeLog(ChangeLog changeLog) {
-        this.changeLog = changeLog;
     }
 
     public String getCode() {
@@ -77,13 +67,13 @@ public class Question {
         this.topic = topic;
     }
 
+
     @Override
     public String toString() {
         return "Question{" +
                 "id='" + id + '\'' +
                 ", creationDate=" + creationDate +
                 ", answerList=" + answerList +
-                ", changeLog=" + changeLog +
                 ", Code='" + Code + '\'' +
                 ", questionText='" + questionText + '\'' +
                 ", questionTitle='" + questionTitle + '\'' +
