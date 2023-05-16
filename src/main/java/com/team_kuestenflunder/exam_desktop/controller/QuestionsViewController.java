@@ -15,7 +15,7 @@ public class QuestionsViewController {
     Button newQuestion_btn;
 
     @Inject
-    public QuestionsViewController(QuestionsViewServiceImpl questionsViewService, ApplicationMain applicationMain) {
+    public QuestionsViewController(QuestionsViewServiceImpl questionsViewService) {
         this.questionsViewService = questionsViewService;
 
     }

@@ -10,7 +10,6 @@ public interface QuestionRepository {
     void updateQuestion(int index,Question question);
     Question getQuestion(int index);
     List<Question> getQuestions();
-
     void deleteQuestion(int index);
 
 }

@@ -17,7 +17,7 @@ public class QuestionFormController implements Initializable {
     private final QuestionFormServiceImpl questionFormService;
 
     @Inject
-    public QuestionFormController(QuestionFormServiceImpl questionFormService, ApplicationMain applicationMain) {
+    public QuestionFormController(QuestionFormServiceImpl questionFormService) {
         this.questionFormService = questionFormService;
     }
 
