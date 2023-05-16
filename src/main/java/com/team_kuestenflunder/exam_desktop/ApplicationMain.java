@@ -11,6 +11,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class ApplicationMain extends Application {
+    QuestionRepositoryImpl questionRepository;
+    QuestionFormServiceImpl questionFormService;
 
     public static void main(String[] args) {
         launch();
@@ -19,12 +21,6 @@ public class ApplicationMain extends Application {
     @Override
     public void start(Stage stage) throws IOException {
 
-        //Initialise Repos/Services and Controllers
-        QuestionRepositoryImpl questionRepository = new QuestionRepositoryImpl();
-        QuestionFormServiceImpl questionFormService = new QuestionFormServiceImpl(questionRepository);
-        QuestionFormController questionFormController =new QuestionFormController();
-        questionRepository.initList();
-
         FXMLLoader fxmlLoader = new FXMLLoader(
                 ApplicationMain.class.getResource("questionForm.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 940, 650);
@@ -32,4 +28,6 @@ public class ApplicationMain extends Application {
         stage.setScene(scene);
         stage.show();
     }
+
+
 }
