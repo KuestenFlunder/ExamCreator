@@ -1,8 +1,8 @@
 package com.team_kuestenflunder.exam_desktop;
 
-import com.team_kuestenflunder.exam_desktop.controller.QuestionFormController;
-import com.team_kuestenflunder.exam_desktop.repository.QuestionRepositoryImpl;
-import com.team_kuestenflunder.exam_desktop.services.QuestionFormServiceImpl;
+import com.google.inject.Guice;
+import com.google.inject.Injector;
+import com.team_kuestenflunder.exam_desktop.moduls.QuestionFormModule;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class ApplicationMain extends Application {
+    Injector injector;
 
     public static void main(String[] args) {
         launch();
@@ -18,18 +19,16 @@ public class ApplicationMain extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-
-        //Initialise Repos/Services and Controllers
-        QuestionRepositoryImpl questionRepository = new QuestionRepositoryImpl();
-        QuestionFormServiceImpl questionFormService = new QuestionFormServiceImpl(questionRepository);
-        QuestionFormController questionFormController =new QuestionFormController();
-        questionRepository.initList();
-
+        injector = Guice.createInjector(new QuestionFormModule());
         FXMLLoader fxmlLoader = new FXMLLoader(
-                ApplicationMain.class.getResource("QuestionsView.fxml"));
+                ApplicationMain.class.getResource("questionForm.fxml"));
+        fxmlLoader.setControllerFactory(injector::getInstance);
         Scene scene = new Scene(fxmlLoader.load(), 940, 650);
-        stage.setTitle("Question List");
+        stage.setTitle("Question Form");
         stage.setScene(scene);
         stage.show();
     }
+
+    //Defines the Dependency Injection for the Form Path
+
 }

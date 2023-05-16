@@ -4,7 +4,7 @@ import com.team_kuestenflunder.exam_desktop.entity.Question;
 
 import java.util.ArrayList;
 import java.util.List;
-
+//TODO add delete question also in Interface
 public class QuestionRepositoryImpl implements QuestionRepository{
 
     //* List to store Questions for the first attempts
@@ -34,13 +34,12 @@ public class QuestionRepositoryImpl implements QuestionRepository{
 
     //TODO Remove when saving data is ready
     //!Only for testing and first trys
-    public void initList(){
-        addQuestion(new Question());
-        addQuestion(new Question());
-        addQuestion(new Question());
-        addQuestion(new Question());
-        addQuestion(new Question());
-        addQuestion(new Question());
-        addQuestion(new Question());
+    public  void initList(){
+        questions.add(new Question());
+        questions.add(new Question());
+        questions.add(new Question());
+        questions.add(new Question());
+        questions.add(new Question());
+        questions.add(new Question());
     }
 }
