@@ -7,7 +7,7 @@ public class AnswerList {
 
     static int correctAnswers; // TODO statische Methode für Erfassung der korrekten Antwortanzahl
 
-    private List<Answer> answers = new ArrayList<Answer>();
+    private List<Answer> answers = new ArrayList<>();
 
 
 

@@ -13,8 +13,6 @@ public class Question {
     private String Code;
     private AnswerList answerList;
 
-    //! Maybe use Markdown for textfileds
-
     public Question() {
         this.creationDate = LocalDate.now();
         this.id = UUID.randomUUID().toString();
