@@ -12,7 +12,7 @@ public class Question {
     private String questionText;
     private String Code;
     private AnswerList answerList;
-    int c;
+
     //! Maybe use Markdown for textfileds
 
     public Question() {
