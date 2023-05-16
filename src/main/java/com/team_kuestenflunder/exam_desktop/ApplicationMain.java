@@ -26,7 +26,7 @@ public class ApplicationMain extends Application {
         questionRepository.initList();
 
         FXMLLoader fxmlLoader = new FXMLLoader(
-                ApplicationMain.class.getResource("QuestionsView.fxml"));
+                ApplicationMain.class.getResource("questionForm.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 940, 650);
         stage.setTitle("Question List");
         stage.setScene(scene);
