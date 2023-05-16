@@ -22,7 +22,7 @@
                <children>
                   <VBox alignment="TOP_CENTER" prefHeight="468.0" prefWidth="136.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="20.0">
                      <children>
-                        <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Neue Frage">
+                        <Button fx:id="newQuestion_btn" mnemonicParsing="false" onAction="#onNewQuestionClick" prefHeight="30.0" prefWidth="150.0" text="Neue Frage">
                            <font>
                               <Font size="14.0" />
                            </font>

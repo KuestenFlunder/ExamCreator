@@ -2,6 +2,7 @@ package com.team_kuestenflunder.exam_desktop.controller;
 
 
 import com.google.inject.Inject;
+import com.team_kuestenflunder.exam_desktop.ApplicationMain;
 import com.team_kuestenflunder.exam_desktop.repository.QuestionRepositoryImpl;
 import com.team_kuestenflunder.exam_desktop.services.QuestionFormServiceImpl;
 import javafx.fxml.FXML;
@@ -16,7 +17,7 @@ public class QuestionFormController implements Initializable {
     private final QuestionFormServiceImpl questionFormService;
 
     @Inject
-    public QuestionFormController(QuestionFormServiceImpl questionFormService) {
+    public QuestionFormController(QuestionFormServiceImpl questionFormService, ApplicationMain applicationMain) {
         this.questionFormService = questionFormService;
     }
 
