@@ -26,7 +26,6 @@ public class QuestionFormController implements Initializable {
     @FXML
     Button button;
 
-
     @FXML
     void onChangeValueClick(){
         label.setText(questionFormService.getQuestions().get(1).getId());
