@@ -1,6 +1,7 @@
 package com.team_kuestenflunder.exam_desktop.moduls;
 
 import com.google.inject.AbstractModule;
+import com.team_kuestenflunder.exam_desktop.ApplicationMain;
 import com.team_kuestenflunder.exam_desktop.controller.QuestionFormController;
 import com.team_kuestenflunder.exam_desktop.controller.QuestionsViewController;
 import com.team_kuestenflunder.exam_desktop.repository.QuestionRepositoryImpl;
@@ -13,6 +14,7 @@ public class DIConfigModule extends AbstractModule {
         protected void configure() {
             // bind Repository
             bind(QuestionRepositoryImpl.class);
+
 
             // bind form dependency's
             bind(QuestionFormController.class);
