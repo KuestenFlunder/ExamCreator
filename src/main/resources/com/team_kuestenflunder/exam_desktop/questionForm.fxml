@@ -146,7 +146,7 @@
                   <TextArea prefHeight="100.0" prefWidth="1204.0" promptText="Erklärung" />
                </children>
             </HBox>
-            <Button fx:id="bt_submit" mnemonicParsing="false" prefHeight="25.0" prefWidth="1293.0" text="Speichern" textFill="#440ae4">
+            <Button fx:id="bt_submit" mnemonicParsing="false" onAction="#onFormSaveClick" prefHeight="25.0" prefWidth="1293.0" text="Speichern" textFill="#440ae4">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
