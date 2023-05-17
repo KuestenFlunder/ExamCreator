@@ -32,7 +32,7 @@ public class QuestionFormController implements Initializable {
 
     }
 
-    private void populateChoiceBox(ChoiceBox<Topics> choiceBox) {
+    private void fillChoiceBox(ChoiceBox<Topics> choiceBox) {
         for (Topics topic : Topics.values()) {
             choiceBox.getItems().add(topic);
         }
@@ -41,7 +41,7 @@ public class QuestionFormController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        populateChoiceBox(cb_topic);
+        fillChoiceBox(cb_topic);
         cb_topic.setValue(Topics.No_Topic);
         cb_topic.setConverter(new StringConverter<Topics>() {
             @Override
@@ -103,7 +103,6 @@ public class QuestionFormController implements Initializable {
             }
         });
 
-        //TODO ? Add checkbox.addConverter() to differ the shown Value and the field Text.
 
             //!Remove if JSON Repo is implemented
         questionFormService.initList();
