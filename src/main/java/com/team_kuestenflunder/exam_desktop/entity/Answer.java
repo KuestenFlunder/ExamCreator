@@ -1,19 +1,22 @@
 package com.team_kuestenflunder.exam_desktop.entity;
 
 public class Answer {
+//eigenschaften
     private String answerText;
-    private boolean correctAnswer;
-    private String answerDescription;
+    private boolean isRight;
+    private String commentText;
 
-    public Answer() {
+// konstruktor
+    public Answer (){
     }
 
-    public Answer(String answerText, boolean correctAnswer, String answerDescription) {
+    public Answer (String answerText, boolean isRight, String commentText){
         this.answerText = answerText;
-        this.correctAnswer = correctAnswer;
-        this.answerDescription = answerDescription;
+        this.isRight = isRight;
+        this.commentText = commentText;
     }
 
+//methoden
     public String getAnswerText() {
         return answerText;
     }
@@ -22,28 +25,22 @@ public class Answer {
         this.answerText = answerText;
     }
 
-    public boolean isCorrectAnswer() {
-        return correctAnswer;
+    public boolean getRight() {
+        return isRight;
     }
 
-    public void setCorrectAnswer(boolean correctAnswer) {
-        this.correctAnswer = correctAnswer;
+    public void setRight(boolean right) {
+        isRight = right;
     }
 
-    public String getAnswerDescription() {
-        return answerDescription;
+    public String getCommentText() {
+        return commentText;
     }
 
-    public void setAnswerDescription(String answerDescription) {
-        this.answerDescription = answerDescription;
+    public void setCommentText(String commentText) {
+        this.commentText = commentText;
     }
 
-    @Override
-    public String toString() {
-        return "Answer{" +
-                "answerText='" + answerText + '\'' +
-                ", correctAnswer=" + correctAnswer +
-                ", answerDescription='" + answerDescription + '\'' +
-                '}';
-    }
+
+
 }

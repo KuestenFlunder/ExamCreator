@@ -5,6 +5,7 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -36,16 +37,53 @@
             <TextArea fx:id="ta_questionCode" prefHeight="398.0" prefWidth="1292.0" promptText="Code" />
             <HBox prefHeight="81.0" prefWidth="1292.0">
                <children>
-                  <CheckBox alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="99.0">
-                     <padding>
-                        <Insets left="25.0" right="25.0" />
-                     </padding>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </CheckBox>
-                  <TextArea prefHeight="100.0" prefWidth="1872.0" promptText="Antwort" />
-                  <TextArea prefHeight="100.0" prefWidth="1204.0" promptText="Erklärung" />
+                  <VBox prefHeight="55.0" prefWidth="1306.0">
+                     <children>
+                        <HBox prefHeight="17.0" prefWidth="710.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="TOP" prefWidth="57.0" text="ON/OFF" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="TOP_CENTER" prefWidth="883.0" text="Antwort">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="TOP_CENTER" prefWidth="68.0" text="Richtig">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="TOP_CENTER" prefWidth="275.0" text="Commmentar">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <RadioButton fx:id="rdb_AnswerActivate" mnemonicParsing="false" onAction="#radioButtunClick" prefHeight="100.0" prefWidth="100.0">
+                                 <padding>
+                                    <Insets left="20.0" right="20.0" />
+                                 </padding>
+                              </RadioButton>
+                              <TextArea fx:id="ta_answerText" prefHeight="100.0" prefWidth="1800.0" promptText="Antwort" />
+                              <CheckBox fx:id="chb_isRight" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0">
+                                 <padding>
+                                    <Insets left="25.0" right="25.0" />
+                                 </padding>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                              </CheckBox>
+                              <TextArea fx:id="ta_commentText" prefHeight="100.0" prefWidth="1200.0" promptText="Erklärung" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
                </children>
             </HBox>
             <HBox prefHeight="81.0" prefWidth="1292.0">
@@ -132,21 +170,7 @@
                   <TextArea prefHeight="100.0" prefWidth="1204.0" promptText="Erklärung" />
                </children>
             </HBox>
-            <HBox prefHeight="81.0" prefWidth="1292.0">
-               <children>
-                  <CheckBox alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="99.0">
-                     <padding>
-                        <Insets left="25.0" right="25.0" />
-                     </padding>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </CheckBox>
-                  <TextArea prefHeight="100.0" prefWidth="1872.0" promptText="Antwort" />
-                  <TextArea prefHeight="100.0" prefWidth="1204.0" promptText="Erklärung" />
-               </children>
-            </HBox>
-            <Button fx:id="bt_submit" mnemonicParsing="false" prefHeight="25.0" prefWidth="1293.0" text="Speichern" textFill="#440ae4">
+            <Button fx:id="bt_submit" mnemonicParsing="false" onAction="#speichernButtonTapped" prefHeight="25.0" prefWidth="1293.0" text="Speichern" textFill="#440ae4">
                <VBox.margin>
                   <Insets />
                </VBox.margin>

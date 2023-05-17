@@ -2,14 +2,19 @@ package com.team_kuestenflunder.exam_desktop.controller;
 
 
 import com.google.inject.Inject;
+import com.team_kuestenflunder.exam_desktop.entity.Answer;
 import com.team_kuestenflunder.exam_desktop.entity.Topics;
 import com.team_kuestenflunder.exam_desktop.services.QuestionFormServiceImpl;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.util.StringConverter;
 
 import java.net.URL;
+import java.nio.channels.Pipe;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class QuestionFormController implements Initializable {
@@ -24,6 +29,15 @@ public class QuestionFormController implements Initializable {
     Button bt_submit;
     @FXML
     ChoiceBox<Topics> cb_topic;
+
+    @FXML
+    private RadioButton rdb_AnswerActivate;
+    @FXML
+    TextArea ta_answerText;
+    @FXML
+    CheckBox chb_isRight;
+    @FXML
+    TextArea ta_commentText;
 
 
     @Inject
@@ -80,10 +94,23 @@ public class QuestionFormController implements Initializable {
                 };
             }
         });
-
-
-            //!Remove if JSON Repo is implemented
+        //!Remove if JSON Repo is implemented
         questionFormService.initList();
-
-        }
     }
+
+
+    @FXML
+    public void radioButtunClick(ActionEvent event) {
+        List<Answer> answerList = new ArrayList<>();
+        Answer answer = new Answer();
+        answer.setAnswerText(ta_answerText.getText());
+        answer.setRight(chb_isRight.isSelected());
+        answer.setCommentText(ta_commentText.getText());
+        answerList.add(answer);
+
+        System.out.println(answer.getAnswerText().toString());
+        System.out.println(String.valueOf(answer.getRight()));
+        System.out.println(answer.getCommentText().toString());
+    }
+
+}
