@@ -49,7 +49,7 @@ public class QuestionFormController implements Initializable {
                 // Map the displayed value to a different string for the user to see
                 switch (topic) {
                     case No_Topic:
-                        return "Kein Thema";
+                        return "Thema wählen";
                     case Java_Basics:
                         return "Java Basics";
                     case Java_Data_Types:
@@ -77,7 +77,7 @@ public class QuestionFormController implements Initializable {
             public Topics fromString(String string) {
                 // Map the user's selected value back to the original value
                 switch (string) {
-                    case "Kein Thema":
+                    case "Thema wählen":
                         return Topics.No_Topic;
                     case "Java Basics":
                         return Topics.Java_Basics;

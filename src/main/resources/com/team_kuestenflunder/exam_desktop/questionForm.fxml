@@ -20,8 +20,8 @@
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <TextField fx:id="tf_questionTitle" prefHeight="100.0" prefWidth="700.0" text="Fragen Titel" />
-                        <Label fx:id="l_uuid" prefHeight="100.0" prefWidth="350.0"  text="UUID:" />
+                        <TextField fx:id="tf_questionTitle" prefHeight="100.0" prefWidth="700.0" promptText="Fragen Titel" />
+                        <Label fx:id="l_uuid" prefHeight="100.0" prefWidth="400.0" text="UUID:" />
                         <Label fx:id="l_creationDate" prefHeight="100.0" prefWidth="180.0" text="erstellt am" />
                      </children>
                   </HBox>
@@ -29,11 +29,11 @@
             </VBox>
             <HBox prefHeight="52.0" prefWidth="1292.0">
                <children>
-                  <TextArea fx:id="ta_questionText" prefHeight="52.0" prefWidth="967.0" text="Fragenstellung&#10;" />
+                  <TextArea fx:id="ta_questionText" prefHeight="116.0" prefWidth="926.0" promptText="Fragenstellung" />
                   <ChoiceBox fx:id="cb_topic" prefHeight="42.0" prefWidth="408.0" />
                </children>
             </HBox>
-            <TextArea fx:id="ta_questionCode" prefHeight="398.0" prefWidth="1292.0"  text="Code&#10;" />
+            <TextArea fx:id="ta_questionCode" prefHeight="398.0" prefWidth="1292.0" promptText="Code" />
             <HBox prefHeight="81.0" prefWidth="1292.0">
                <children>
                   <CheckBox alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="99.0">
@@ -44,8 +44,8 @@
                         <Insets />
                      </opaqueInsets>
                   </CheckBox>
-                  <TextArea prefHeight="100.0" prefWidth="1872.0" text="Antwort&#10;" />
-                  <TextArea prefHeight="100.0" prefWidth="1204.0" text="Erklärung&#10;" />
+                  <TextArea prefHeight="100.0" prefWidth="1872.0" promptText="Antwort" />
+                  <TextArea prefHeight="100.0" prefWidth="1204.0" promptText="Erklärung" />
                </children>
             </HBox>
             <HBox prefHeight="81.0" prefWidth="1292.0">
@@ -58,8 +58,8 @@
                         <Insets />
                      </opaqueInsets>
                   </CheckBox>
-                  <TextArea prefHeight="100.0" prefWidth="1872.0" text="Antwort&#10;" />
-                  <TextArea prefHeight="100.0" prefWidth="1204.0" text="Erklärung&#10;" />
+                  <TextArea prefHeight="100.0" prefWidth="1872.0" promptText="Antwort" />
+                  <TextArea prefHeight="100.0" prefWidth="1204.0" promptText="Erklärung" />
                </children>
             </HBox>
             <HBox prefHeight="81.0" prefWidth="1292.0">
@@ -72,8 +72,8 @@
                         <Insets />
                      </opaqueInsets>
                   </CheckBox>
-                  <TextArea prefHeight="100.0" prefWidth="1872.0" text="Antwort&#10;" />
-                  <TextArea prefHeight="100.0" prefWidth="1204.0" text="Erklärung&#10;" />
+                  <TextArea prefHeight="100.0" prefWidth="1872.0" promptText="Antwort" />
+                  <TextArea prefHeight="100.0" prefWidth="1204.0" promptText="Erklärung" />
                </children>
             </HBox>
             <HBox prefHeight="81.0" prefWidth="1292.0">
@@ -86,8 +86,8 @@
                         <Insets />
                      </opaqueInsets>
                   </CheckBox>
-                  <TextArea prefHeight="100.0" prefWidth="1872.0" text="Antwort&#10;" />
-                  <TextArea prefHeight="100.0" prefWidth="1204.0" text="Erklärung&#10;" />
+                  <TextArea prefHeight="100.0" prefWidth="1872.0" promptText="Antwort" />
+                  <TextArea prefHeight="100.0" prefWidth="1204.0" promptText="Erklärung" />
                </children>
             </HBox>
             <HBox prefHeight="81.0" prefWidth="1292.0">
@@ -100,8 +100,8 @@
                         <Insets />
                      </opaqueInsets>
                   </CheckBox>
-                  <TextArea prefHeight="100.0" prefWidth="1872.0" text="Antwort&#10;" />
-                  <TextArea prefHeight="100.0" prefWidth="1204.0" text="Erklärung&#10;" />
+                  <TextArea prefHeight="100.0" prefWidth="1872.0" promptText="Antwort" />
+                  <TextArea prefHeight="100.0" prefWidth="1204.0" promptText="Erklärung" />
                </children>
             </HBox>
             <HBox prefHeight="81.0" prefWidth="1292.0">
@@ -114,8 +114,8 @@
                         <Insets />
                      </opaqueInsets>
                   </CheckBox>
-                  <TextArea prefHeight="100.0" prefWidth="1872.0" text="Antwort&#10;" />
-                  <TextArea prefHeight="100.0" prefWidth="1204.0" text="Erklärung&#10;" />
+                  <TextArea prefHeight="100.0" prefWidth="1872.0" promptText="Antwort" />
+                  <TextArea prefHeight="100.0" prefWidth="1204.0" promptText="Erklärung" />
                </children>
             </HBox>
             <HBox prefHeight="81.0" prefWidth="1292.0">
@@ -128,8 +128,8 @@
                         <Insets />
                      </opaqueInsets>
                   </CheckBox>
-                  <TextArea prefHeight="100.0" prefWidth="1872.0" text="Antwort&#10;" />
-                  <TextArea prefHeight="100.0" prefWidth="1204.0" text="Erklärung&#10;" />
+                  <TextArea prefHeight="100.0" prefWidth="1872.0" promptText="Antwort" />
+                  <TextArea prefHeight="100.0" prefWidth="1204.0" promptText="Erklärung" />
                </children>
             </HBox>
             <HBox prefHeight="81.0" prefWidth="1292.0">
@@ -142,8 +142,8 @@
                         <Insets />
                      </opaqueInsets>
                   </CheckBox>
-                  <TextArea prefHeight="100.0" prefWidth="1872.0" text="Antwort&#10;" />
-                  <TextArea prefHeight="100.0" prefWidth="1204.0" text="Erklärung&#10;" />
+                  <TextArea prefHeight="100.0" prefWidth="1872.0" promptText="Antwort" />
+                  <TextArea prefHeight="100.0" prefWidth="1204.0" promptText="Erklärung" />
                </children>
             </HBox>
             <Button fx:id="bt_submit" mnemonicParsing="false" prefHeight="25.0" prefWidth="1293.0" text="Speichern" textFill="#440ae4">

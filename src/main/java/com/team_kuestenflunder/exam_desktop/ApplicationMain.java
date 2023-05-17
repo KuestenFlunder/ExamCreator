@@ -25,8 +25,6 @@ public class ApplicationMain extends Application {
         injector = Guice.createInjector(new DIConfigModule());
         switchToQuestionForm();
         primaryStage.show();
-
-
     }
 
     private void switchToQuestionForm() throws IOException{
