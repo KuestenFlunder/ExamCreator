@@ -28,7 +28,14 @@ public class SceneManager {
         stage.show();
     }
 
-    public void switchSceneToQuestionView(ActionEvent event) {
+    public void switchSceneToQuestionView(ActionEvent event) throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("questionsView.fxml"));
+        fxmlLoader.setControllerFactory(injector::getInstance);
+        root = fxmlLoader.load();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
 
