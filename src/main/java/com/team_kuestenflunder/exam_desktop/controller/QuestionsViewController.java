@@ -24,6 +24,7 @@ public class QuestionsViewController {
     }
 
 
+
     public void onNewQuestionClick(ActionEvent event) {
         try {
         sceneManager.switchSceneToQuestionForm(event);}

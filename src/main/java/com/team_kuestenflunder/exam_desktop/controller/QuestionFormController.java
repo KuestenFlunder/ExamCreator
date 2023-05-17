@@ -2,18 +2,22 @@ package com.team_kuestenflunder.exam_desktop.controller;
 
 
 import com.google.inject.Inject;
+import com.team_kuestenflunder.exam_desktop.SceneManager;
 import com.team_kuestenflunder.exam_desktop.entity.Topics;
 import com.team_kuestenflunder.exam_desktop.services.QuestionFormServiceImpl;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.util.StringConverter;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class QuestionFormController implements Initializable {
     private final QuestionFormServiceImpl questionFormService;
+    private final SceneManager sceneManager = new SceneManager();
     @FXML
     Label l_uuid, l_creationDate;
     @FXML
@@ -39,6 +43,14 @@ public class QuestionFormController implements Initializable {
     }
 
 
+    public void onFormSaveClick(ActionEvent event){
+        try {
+
+        sceneManager.switchSceneToQuestionView(event);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
 
 
     @Override
