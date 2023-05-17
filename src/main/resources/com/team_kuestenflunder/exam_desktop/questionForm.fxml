@@ -20,20 +20,20 @@
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <TextField prefHeight="100.0" prefWidth="700.0" text="Fragen Titel" />
-                        <Label prefHeight="100.0" prefWidth="350.0" style="-fx-background-color: ligthgrey;" text="UUID:" />
-                        <Label prefHeight="100.0" prefWidth="180.0" text="erstellt am" />
+                        <TextField fx:id="tf_questionTitle" prefHeight="100.0" prefWidth="700.0" text="Fragen Titel" />
+                        <Label fx:id="l_uuid" prefHeight="100.0" prefWidth="350.0"  text="UUID:" />
+                        <Label fx:id="l_creationDate" prefHeight="100.0" prefWidth="180.0" text="erstellt am" />
                      </children>
                   </HBox>
                </children>
             </VBox>
             <HBox prefHeight="52.0" prefWidth="1292.0">
                <children>
-                  <TextArea prefHeight="52.0" prefWidth="967.0" text="Fragenstellung&#10;" />
-                  <ChoiceBox prefHeight="26.0" prefWidth="491.0" />
+                  <TextArea fx:id="ta_questionText" prefHeight="52.0" prefWidth="967.0" text="Fragenstellung&#10;" />
+                  <ChoiceBox fx:id="cb_topic" prefHeight="42.0" prefWidth="408.0" />
                </children>
             </HBox>
-            <TextArea prefHeight="398.0" prefWidth="1292.0" style="-fx-background-color: ligthgrey;" text="Code&#10;" />
+            <TextArea fx:id="ta_questionCode" prefHeight="398.0" prefWidth="1292.0"  text="Code&#10;" />
             <HBox prefHeight="81.0" prefWidth="1292.0">
                <children>
                   <CheckBox alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="99.0">
@@ -146,7 +146,7 @@
                   <TextArea prefHeight="100.0" prefWidth="1204.0" text="Erklärung&#10;" />
                </children>
             </HBox>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="1293.0" text="Speichern" textFill="#440ae4">
+            <Button fx:id="bt_submit" mnemonicParsing="false" prefHeight="25.0" prefWidth="1293.0" text="Speichern" textFill="#440ae4">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
@@ -161,4 +161,3 @@
       </VBox>
    </children>
 </AnchorPane>
-

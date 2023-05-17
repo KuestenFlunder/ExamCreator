@@ -4,6 +4,7 @@ import com.google.inject.AbstractModule;
 import com.team_kuestenflunder.exam_desktop.ApplicationMain;
 import com.team_kuestenflunder.exam_desktop.controller.QuestionFormController;
 import com.team_kuestenflunder.exam_desktop.controller.QuestionsViewController;
+import com.team_kuestenflunder.exam_desktop.entity.Topics;
 import com.team_kuestenflunder.exam_desktop.repository.QuestionRepositoryImpl;
 import com.team_kuestenflunder.exam_desktop.services.QuestionFormServiceImpl;
 import com.team_kuestenflunder.exam_desktop.services.QuestionsViewServiceImpl;
