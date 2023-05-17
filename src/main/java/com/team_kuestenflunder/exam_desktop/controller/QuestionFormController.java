@@ -39,6 +39,8 @@ public class QuestionFormController implements Initializable {
     }
 
 
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         fillChoiceBox(cb_topic);
