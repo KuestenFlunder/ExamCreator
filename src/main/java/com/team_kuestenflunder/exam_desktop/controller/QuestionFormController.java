@@ -3,6 +3,7 @@ package com.team_kuestenflunder.exam_desktop.controller;
 
 import com.google.inject.Inject;
 import com.team_kuestenflunder.exam_desktop.SceneManager;
+import com.team_kuestenflunder.exam_desktop.entity.Question;
 import com.team_kuestenflunder.exam_desktop.entity.Topics;
 import com.team_kuestenflunder.exam_desktop.services.QuestionFormServiceImpl;
 import javafx.event.ActionEvent;
@@ -18,6 +19,9 @@ import java.util.ResourceBundle;
 public class QuestionFormController implements Initializable {
     private final QuestionFormServiceImpl questionFormService;
     private final SceneManager sceneManager = new SceneManager();
+
+    Question question;
+
     @FXML
     Label l_uuid, l_creationDate;
     @FXML
@@ -45,7 +49,6 @@ public class QuestionFormController implements Initializable {
 
     public void onFormSaveClick(ActionEvent event){
         try {
-
         sceneManager.switchSceneToQuestionView(event);
         }catch (IOException e){
             e.printStackTrace();

@@ -2,6 +2,7 @@ package com.team_kuestenflunder.exam_desktop;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import com.team_kuestenflunder.exam_desktop.entity.Question;
 import com.team_kuestenflunder.exam_desktop.moduls.DIConfigModule;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -18,11 +19,12 @@ public class SceneManager {
     private Stage stage;
     private Parent root;
 
-    public void switchSceneToQuestionForm(ActionEvent event) throws IOException {
+    public void switchSceneToQuestionForm(ActionEvent event, Question question) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("questionForm.fxml"));
         fxmlLoader.setControllerFactory(injector::getInstance);
         root = fxmlLoader.load();
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setUserData(question);
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
