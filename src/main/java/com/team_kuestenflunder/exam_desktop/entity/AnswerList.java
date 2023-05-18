@@ -6,8 +6,15 @@ import java.util.List;
 public class AnswerList {
 
     static int correctAnswers; // TODO statische Methode für Erfassung der korrekten Antwortanzahl
+    private List<Answer> answers;
 
-    private List<Answer> answers = new ArrayList<>();
+
+    public AnswerList(){
+
+    }
+    public AnswerList(List<Answer> answers) {
+        this.answers = answers;
+    }
 
 
 
