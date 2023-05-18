@@ -3,7 +3,9 @@ package com.team_kuestenflunder.exam_desktop.controller;
 
 import com.google.inject.Inject;
 import com.team_kuestenflunder.exam_desktop.SceneManager;
+
 import com.team_kuestenflunder.exam_desktop.entity.AnswerList;
+
 import com.team_kuestenflunder.exam_desktop.entity.Question;
 import com.team_kuestenflunder.exam_desktop.entity.Topics;
 import com.team_kuestenflunder.exam_desktop.services.QuestionFormServiceImpl;
@@ -11,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
 import java.io.IOException;
@@ -21,6 +24,9 @@ import java.util.ResourceBundle;
 public class QuestionFormController implements Initializable {
     private final QuestionFormServiceImpl questionFormService;
     private final SceneManager sceneManager = new SceneManager();
+    Stage stage;
+    Question question;
+
     @FXML
     Label l_uuid, l_creationDate;
     @FXML
@@ -40,6 +46,7 @@ public class QuestionFormController implements Initializable {
     }
 
     private void fillChoiceBox(ChoiceBox<Topics> choiceBox) {
+        System.out.println("stage = " + stage);
         for (Topics topic : Topics.values()) {
             choiceBox.getItems().add(topic);
         }
@@ -48,6 +55,7 @@ public class QuestionFormController implements Initializable {
 
     public void onFormSaveClick(ActionEvent event){
         try {
+
             Question question = new Question();
             question.setQuestionTitle(tf_questionTitle.getText());
             question.setQuestionText(ta_questionText.getText());
@@ -58,14 +66,27 @@ public class QuestionFormController implements Initializable {
             question.setAnswerList(new AnswerList());
 
             sceneManager.switchSceneToQuestionView(event);
+
+        sceneManager.switchSceneToQuestionView(event);
+
         }catch (IOException e){
             e.printStackTrace();
         }
     }
 
+    public void setStage(Stage stage){
+        this.stage = stage;
+    }
 
+    //Called by the Scene Manager to Pass Data to the Model
+    public void setNewQuestionData(Question question) {
+        l_uuid.setText(question.getId());
+        l_creationDate.setText(question.getCreationDate().toString());
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        //Choicebox
         fillChoiceBox(cb_topic);
         cb_topic.setValue(Topics.No_Topic);
         cb_topic.setConverter(new StringConverter<Topics>() {
@@ -113,4 +134,7 @@ public class QuestionFormController implements Initializable {
         }
 
 
+
     }
+}
+

@@ -10,7 +10,6 @@ import javafx.stage.Stage;
 public class ApplicationMain extends Application {
     Injector injector = Guice.createInjector(new DIConfigModule());
     private final SceneManager sceneManager = new SceneManager();
-    private Scene scene;
 
     public static void main(String[] args) {
         launch();
@@ -19,9 +18,9 @@ public class ApplicationMain extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        scene = sceneManager.getQuestionView();
+        Scene scene = sceneManager.getQuestionView();
         //set a Stage Title
-        stage.setTitle("Testballon ");
+        stage.setTitle("Fragen Liste");
         stage.setScene(scene);
         stage.show();
     }
