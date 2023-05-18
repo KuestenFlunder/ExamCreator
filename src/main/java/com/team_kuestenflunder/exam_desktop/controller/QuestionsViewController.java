@@ -7,11 +7,14 @@ import com.team_kuestenflunder.exam_desktop.entity.Question;
 import com.team_kuestenflunder.exam_desktop.services.QuestionsViewServiceImpl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class QuestionsViewController {
+public class QuestionsViewController implements Initializable {
     private final QuestionsViewServiceImpl questionsViewService;
     private final SceneManager sceneManager = new SceneManager();
 
@@ -29,8 +32,12 @@ public class QuestionsViewController {
 
     public void onNewQuestionClick(ActionEvent event) {
         try {
-        sceneManager.switchSceneToQuestionForm(event,new Question());}
+            sceneManager.switchSceneToQuestionForm(event,new Question());}
         catch (Exception e) {e.printStackTrace();}
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+      //questionsViewService.initList();
+    }
 }

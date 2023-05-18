@@ -26,6 +26,10 @@ public class QuestionsViewServiceImpl implements Service{
 
     @Override
     public List<Question> getQuestions() {
-        return null;
+        return questionRepository.getQuestions();
+    }
+
+    public void initList() {
+        questionRepository.initList();
     }
 }

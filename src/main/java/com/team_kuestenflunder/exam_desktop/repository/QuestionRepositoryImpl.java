@@ -1,50 +1,49 @@
 package com.team_kuestenflunder.exam_desktop.repository;
 
 import com.team_kuestenflunder.exam_desktop.entity.Question;
+import javafx.scene.chart.PieChart;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class QuestionRepositoryImpl implements QuestionRepository{
 
+    DataService dataService = DataService.getInstance();
+
     //* List to store Questions for the first attempts
-    private List<Question> questions = new ArrayList<>();
+
 
     @Override
     public void addQuestion(Question question) {
-        questions.add(question);
+        dataService.questions.add(question);
     }
 
     @Override
     public void updateQuestion(int index, Question question) {
-        questions.set(index, question);
+        dataService.questions.set(index, question);
     }
 
     @Override
     public Question getQuestion(int index) {
 
-        return questions.get(index);
+        return dataService.questions.get(index);
     }
 
     @Override
     public List<Question> getQuestions() {
-        return questions;
+        return dataService.questions;
     }
 
     @Override
     public void deleteQuestion(int index) {
-        questions.remove(index);
+        dataService.questions.remove(index);
     }
 
 
     //TODO Remove when saving data is ready
     //!Only for testing and first trys
     public  void initList(){
-        questions.add(new Question());
-        questions.add(new Question());
-        questions.add(new Question());
-        questions.add(new Question());
-        questions.add(new Question());
-        questions.add(new Question());
+        dataService.questions.add(new Question());
+
     }
 }

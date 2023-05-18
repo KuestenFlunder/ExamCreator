@@ -55,16 +55,16 @@ public class QuestionFormController implements Initializable {
 
     public void onFormSaveClick(ActionEvent event){
         try {
-
             Question question = new Question();
             question.setQuestionTitle(tf_questionTitle.getText());
             question.setQuestionText(ta_questionText.getText());
             question.setTopic(cb_topic.getValue());
             question.setQuestionText(ta_questionText.getText());
             question.setCode(ta_questionCode.getText());
-
             question.setAnswerList(new AnswerList());
 
+            questionFormService.addQuestion(question);
+            System.out.println("questionFormService.getQuestions() = " + questionFormService.getQuestions());
             sceneManager.switchSceneToQuestionView(event);
 
 
@@ -124,9 +124,6 @@ public class QuestionFormController implements Initializable {
             }
         });
 
-
-            //!Remove if JSON Repo is implemented
-        questionFormService.initList();
 
         }
 
