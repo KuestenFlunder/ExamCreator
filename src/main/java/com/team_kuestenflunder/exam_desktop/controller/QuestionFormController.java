@@ -46,7 +46,7 @@ public class QuestionFormController implements Initializable {
     }
 
     private void fillChoiceBox(ChoiceBox<Topics> choiceBox) {
-        System.out.println("stage = " + stage);
+
         for (Topics topic : Topics.values()) {
             choiceBox.getItems().add(topic);
         }
@@ -59,7 +59,7 @@ public class QuestionFormController implements Initializable {
             Question question = new Question();
             question.setQuestionTitle(tf_questionTitle.getText());
             question.setQuestionText(ta_questionText.getText());
-            question.setTopic((String) cb_topic.getValue());
+            question.setTopic(cb_topic.getValue());
             question.setQuestionText(ta_questionText.getText());
             question.setCode(ta_questionCode.getText());
 
@@ -67,16 +67,13 @@ public class QuestionFormController implements Initializable {
 
             sceneManager.switchSceneToQuestionView(event);
 
-        sceneManager.switchSceneToQuestionView(event);
 
         }catch (IOException e){
             e.printStackTrace();
         }
     }
 
-    public void setStage(Stage stage){
-        this.stage = stage;
-    }
+
 
     //Called by the Scene Manager to Pass Data to the Model
     public void setNewQuestionData(Question question) {
@@ -136,5 +133,5 @@ public class QuestionFormController implements Initializable {
 
 
     }
-}
+
 
