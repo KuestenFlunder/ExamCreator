@@ -5,17 +5,24 @@ import java.util.List;
 
 public class AnswerList {
 
-    static int correctAnswers; // TODO statische Methode für Erfassung der korrekten Antwortanzahl
-    private List<Answer> answers;
+    private static int correctAnswers; // TODO statische Methode für Erfassung der korrekten Antwortanzahl
+    public List<Answer> answers;
 
 
     public AnswerList(){
-
     }
+
     public AnswerList(List<Answer> answers) {
         this.answers = answers;
     }
 
+    public void setCorrectAnswers() {
+        AnswerList.correctAnswers++;
+    }
+
+    public void addToList(Answer answer){
+        this.answers.add(answer);
+    }
 
 
 }

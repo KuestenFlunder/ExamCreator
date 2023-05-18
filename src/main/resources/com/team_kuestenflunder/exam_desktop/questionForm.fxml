@@ -36,7 +36,7 @@
             <TextArea fx:id="ta_questionCode" prefHeight="398.0" prefWidth="1292.0" promptText="Code" />
             <HBox prefHeight="81.0" prefWidth="1292.0">
                <children>
-                  <CheckBox alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="99.0">
+                  <CheckBox fx:id="chb_correctAnswer_0" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="99.0">
                      <padding>
                         <Insets left="25.0" right="25.0" />
                      </padding>
@@ -44,13 +44,27 @@
                         <Insets />
                      </opaqueInsets>
                   </CheckBox>
-                  <TextArea prefHeight="100.0" prefWidth="1872.0" promptText="Antwort" />
+                  <TextArea fx:id="ta_answerText_0" prefHeight="100.0" prefWidth="1872.0" promptText="Antwort" />
+                  <TextArea fx:id="ta_answerDescription_0" prefHeight="100.0" prefWidth="1204.0" promptText="Erklärung" />
+               </children>
+            </HBox>
+            <HBox prefHeight="81.0" prefWidth="1292.0">
+               <children>
+                  <CheckBox fx:id="chb_correctAnswer_1" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="99.0">
+                     <padding>
+                        <Insets left="25.0" right="25.0" />
+                     </padding>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </CheckBox>
+                  <TextArea fx:id="ta_answerText_1" prefHeight="100.0" prefWidth="1872.0" promptText="Antwort" />
                   <TextArea prefHeight="100.0" prefWidth="1204.0" promptText="Erklärung" />
                </children>
             </HBox>
             <HBox prefHeight="81.0" prefWidth="1292.0">
                <children>
-                  <CheckBox alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="99.0">
+                  <CheckBox fx:id="chb_correctAnswer_2" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="99.0">
                      <padding>
                         <Insets left="25.0" right="25.0" />
                      </padding>
@@ -58,13 +72,13 @@
                         <Insets />
                      </opaqueInsets>
                   </CheckBox>
-                  <TextArea prefHeight="100.0" prefWidth="1872.0" promptText="Antwort" />
+                  <TextArea fx:id="ta_answerText_2" prefHeight="100.0" prefWidth="1872.0" promptText="Antwort" />
                   <TextArea prefHeight="100.0" prefWidth="1204.0" promptText="Erklärung" />
                </children>
             </HBox>
             <HBox prefHeight="81.0" prefWidth="1292.0">
                <children>
-                  <CheckBox alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="99.0">
+                  <CheckBox fx:id="chb_correctAnswer_3" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="99.0">
                      <padding>
                         <Insets left="25.0" right="25.0" />
                      </padding>
@@ -72,13 +86,13 @@
                         <Insets />
                      </opaqueInsets>
                   </CheckBox>
-                  <TextArea prefHeight="100.0" prefWidth="1872.0" promptText="Antwort" />
+                  <TextArea fx:id="ta_answerText_3" prefHeight="100.0" prefWidth="1872.0" promptText="Antwort" />
                   <TextArea prefHeight="100.0" prefWidth="1204.0" promptText="Erklärung" />
                </children>
             </HBox>
             <HBox prefHeight="81.0" prefWidth="1292.0">
                <children>
-                  <CheckBox alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="99.0">
+                  <CheckBox fx:id="chb_correctAnswer_4" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="99.0">
                      <padding>
                         <Insets left="25.0" right="25.0" />
                      </padding>
@@ -86,13 +100,13 @@
                         <Insets />
                      </opaqueInsets>
                   </CheckBox>
-                  <TextArea prefHeight="100.0" prefWidth="1872.0" promptText="Antwort" />
+                  <TextArea fx:id="ta_answerText_4" prefHeight="100.0" prefWidth="1872.0" promptText="Antwort" />
                   <TextArea prefHeight="100.0" prefWidth="1204.0" promptText="Erklärung" />
                </children>
             </HBox>
             <HBox prefHeight="81.0" prefWidth="1292.0">
                <children>
-                  <CheckBox alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="99.0">
+                  <CheckBox fx:id="chb_correctAnswer_5" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="99.0">
                      <padding>
                         <Insets left="25.0" right="25.0" />
                      </padding>
@@ -100,13 +114,13 @@
                         <Insets />
                      </opaqueInsets>
                   </CheckBox>
-                  <TextArea prefHeight="100.0" prefWidth="1872.0" promptText="Antwort" />
+                  <TextArea fx:id="ta_answerText_5" prefHeight="100.0" prefWidth="1872.0" promptText="Antwort" />
                   <TextArea prefHeight="100.0" prefWidth="1204.0" promptText="Erklärung" />
                </children>
             </HBox>
             <HBox prefHeight="81.0" prefWidth="1292.0">
                <children>
-                  <CheckBox alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="99.0">
+                  <CheckBox fx:id="chb_correctAnswer_6" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="99.0">
                      <padding>
                         <Insets left="25.0" right="25.0" />
                      </padding>
@@ -114,13 +128,13 @@
                         <Insets />
                      </opaqueInsets>
                   </CheckBox>
-                  <TextArea prefHeight="100.0" prefWidth="1872.0" promptText="Antwort" />
+                  <TextArea fx:id="ta_answerText_6" prefHeight="100.0" prefWidth="1872.0" promptText="Antwort" />
                   <TextArea prefHeight="100.0" prefWidth="1204.0" promptText="Erklärung" />
                </children>
             </HBox>
             <HBox prefHeight="81.0" prefWidth="1292.0">
                <children>
-                  <CheckBox alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="99.0">
+                  <CheckBox fx:id="chb_correctAnswer_7" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="99.0">
                      <padding>
                         <Insets left="25.0" right="25.0" />
                      </padding>
@@ -128,21 +142,7 @@
                         <Insets />
                      </opaqueInsets>
                   </CheckBox>
-                  <TextArea prefHeight="100.0" prefWidth="1872.0" promptText="Antwort" />
-                  <TextArea prefHeight="100.0" prefWidth="1204.0" promptText="Erklärung" />
-               </children>
-            </HBox>
-            <HBox prefHeight="81.0" prefWidth="1292.0">
-               <children>
-                  <CheckBox alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="99.0">
-                     <padding>
-                        <Insets left="25.0" right="25.0" />
-                     </padding>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </CheckBox>
-                  <TextArea prefHeight="100.0" prefWidth="1872.0" promptText="Antwort" />
+                  <TextArea fx:id="ta_answerText_7" prefHeight="100.0" prefWidth="1872.0" promptText="Antwort" />
                   <TextArea prefHeight="100.0" prefWidth="1204.0" promptText="Erklärung" />
                </children>
             </HBox>

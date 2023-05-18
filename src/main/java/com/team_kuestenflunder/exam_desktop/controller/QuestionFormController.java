@@ -4,6 +4,7 @@ package com.team_kuestenflunder.exam_desktop.controller;
 import com.google.inject.Inject;
 import com.team_kuestenflunder.exam_desktop.SceneManager;
 
+import com.team_kuestenflunder.exam_desktop.entity.Answer;
 import com.team_kuestenflunder.exam_desktop.entity.AnswerList;
 
 import com.team_kuestenflunder.exam_desktop.entity.Question;
@@ -38,6 +39,17 @@ public class QuestionFormController implements Initializable {
     @FXML
     ChoiceBox<Topics> cb_topic;
 
+    @FXML
+    CheckBox chb_correctAnswer_0, chb_correctAnswer_1, chb_correctAnswer_2, chb_correctAnswer_3,
+             chb_correctAnswer_4, chb_correctAnswer_5, chb_correctAnswer_6, chb_correctAnswer_7;
+    @FXML
+    TextArea ta_answerText_0, ta_answerText_1, ta_answerText_2, ta_answerText_3,
+             ta_answerText_4, ta_answerText_5, ta_answerText_6, ta_answerText_7;
+    @FXML
+    TextArea ta_answerDescription_0, ta_answerDescription_1, ta_answerDescription_2, ta_answerDescription_3,
+             ta_answerDescription_4, ta_answerDescription_5, ta_answerDescription_6, ta_answerDescription_7;
+
+
 
     @Inject
     public QuestionFormController(QuestionFormServiceImpl questionFormService) {
@@ -61,7 +73,27 @@ public class QuestionFormController implements Initializable {
             question.setTopic(cb_topic.getValue());
             question.setQuestionText(ta_questionText.getText());
             question.setCode(ta_questionCode.getText());
+
             question.setAnswerList(new AnswerList());
+                for (int i = 0; i < 8; i++){
+                    String answerTextParameter = "ta_answerText_" + i + ".getText()";
+                    String answerCorrectParameter = "chb_correctAnswer_" + i + ".getText()";
+                    String answerDescriptParameter = "ta_answerDescription_" + i + ".getText()";
+
+                    Answer answer = new Answer();
+                    answer.setAnswerText(answerTextParameter);
+                    answer.setCorrectAnswer(Boolean.valueOf(answerCorrectParameter));
+                    answer.setAnswerDescription(answerDescriptParameter);
+//                    question.addAnswerToList(answer);  TODO Methode ist noch zu nmachen
+
+                    if (Boolean.valueOf(answerCorrectParameter)){
+                        question.getAnswerList().setCorrectAnswers();
+                    }
+                    System.out.println(answer.getAnswerText().toString());
+                    System.out.println(String.valueOf(answer.isCorrectAnswer()));
+                    System.out.println(answer.getAnswerDescription().toString());
+            }
+
 
             questionFormService.addQuestion(question);
             System.out.println("questionFormService.getQuestions() = " + questionFormService.getQuestions());
