@@ -3,6 +3,9 @@ package com.team_kuestenflunder.exam_desktop.controller;
 
 import com.google.inject.Inject;
 import com.team_kuestenflunder.exam_desktop.SceneManager;
+
+import com.team_kuestenflunder.exam_desktop.entity.AnswerList;
+
 import com.team_kuestenflunder.exam_desktop.entity.Question;
 import com.team_kuestenflunder.exam_desktop.entity.Topics;
 import com.team_kuestenflunder.exam_desktop.services.QuestionFormServiceImpl;
@@ -15,6 +18,7 @@ import javafx.util.StringConverter;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class QuestionFormController implements Initializable {
@@ -51,7 +55,20 @@ public class QuestionFormController implements Initializable {
 
     public void onFormSaveClick(ActionEvent event){
         try {
+
+            Question question = new Question();
+            question.setQuestionTitle(tf_questionTitle.getText());
+            question.setQuestionText(ta_questionText.getText());
+            question.setTopic((String) cb_topic.getValue());
+            question.setQuestionText(ta_questionText.getText());
+            question.setCode(ta_questionCode.getText());
+
+            question.setAnswerList(new AnswerList());
+
+            sceneManager.switchSceneToQuestionView(event);
+
         sceneManager.switchSceneToQuestionView(event);
+
         }catch (IOException e){
             e.printStackTrace();
         }
@@ -116,4 +133,8 @@ public class QuestionFormController implements Initializable {
 
         }
 
+
+
+    }
 }
+

@@ -17,6 +17,7 @@ public class Question {
     public Question() {
         this.creationDate = LocalDateTime.now();
         this.id = UUID.randomUUID().toString();
+
     }
 
     public String getId() {
