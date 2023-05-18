@@ -1,11 +1,12 @@
 package com.team_kuestenflunder.exam_desktop.entity;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 public class Question {
     private final String id;
-    private final LocalDate creationDate;
+    private final LocalDateTime creationDate;
 
     private String questionTitle; //? Might be useful if we find meaningful titles
     private Topics topic;
@@ -14,7 +15,7 @@ public class Question {
     private AnswerList answerList;
 
     public Question() {
-        this.creationDate = LocalDate.now();
+        this.creationDate = LocalDateTime.now();
         this.id = UUID.randomUUID().toString();
     }
 
@@ -22,7 +23,7 @@ public class Question {
         return id;
     }
 
-    public LocalDate getCreationDate() {
+    public LocalDateTime getCreationDate() {
         return creationDate;
     }
 
