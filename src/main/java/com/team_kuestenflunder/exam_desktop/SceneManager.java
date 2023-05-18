@@ -26,8 +26,7 @@ public class SceneManager {
         fxmlLoader.setControllerFactory(injector::getInstance);
         root = fxmlLoader.load();
         QuestionFormController questionFormController = fxmlLoader.getController();
-        questionFormController.setQuestionData(question);
-        stage.setUserData(question);
+        questionFormController.setNewQuestionData(question);
         scene = new Scene(root);
         stage.setScene(scene);
         stage.setTitle("Fragen Editor");

@@ -62,7 +62,7 @@ public class QuestionFormController implements Initializable {
     }
 
     //Called by the Scene Manager to Pass Data to the Model
-    public void setQuestionData(Question question) {
+    public void setNewQuestionData(Question question) {
         l_uuid.setText(question.getId());
         l_creationDate.setText(question.getCreationDate().toString());
     }
