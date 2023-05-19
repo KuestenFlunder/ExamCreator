@@ -6,6 +6,7 @@ import com.team_kuestenflunder.exam_desktop.SceneManager;
 import com.team_kuestenflunder.exam_desktop.entity.Question;
 import com.team_kuestenflunder.exam_desktop.repository.DataService;
 import com.team_kuestenflunder.exam_desktop.services.QuestionsViewServiceImpl;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -44,7 +45,7 @@ public class QuestionsViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        lstw_QuestionList.setItems(DataService.getQuestions());
+        lstw_QuestionList.setItems((ObservableList<Question>) questionsViewService.getQuestions());
         lstw_QuestionList.setCellFactory(param -> new ListCell<Question>() {
                 @Override
                 protected void updateItem(Question question, boolean empty) {

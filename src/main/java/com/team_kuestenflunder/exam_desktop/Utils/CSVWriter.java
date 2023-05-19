@@ -37,7 +37,7 @@ public class CSVWriter {
                 writer.append(CSV_SEPARATOR);
                 writer.append("Code");
                 writer.append(CSV_SEPARATOR);
-                writer.append("Answers");
+                writer.append("Answers");//TODO ! Answerfelder aufschlüsseln
                 writer.append("\n");
             }
             // Write data
