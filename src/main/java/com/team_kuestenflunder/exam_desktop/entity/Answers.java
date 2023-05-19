@@ -33,7 +33,6 @@ public class Answers {
                 "correctAnswers: " +
                 correctAnswers +
                 "answers=" + answers +
-                '}'+
-                "\n";
+                '}';
     }
 }
