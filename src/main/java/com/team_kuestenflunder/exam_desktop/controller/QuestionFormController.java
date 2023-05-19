@@ -13,18 +13,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
 import java.io.IOException;
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class QuestionFormController implements Initializable {
     private final QuestionFormServiceImpl questionFormService;
     private final SceneManager sceneManager = new SceneManager();
-    Stage stage;
+
     Question question;
 
     @FXML
@@ -83,10 +81,10 @@ public class QuestionFormController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        //Choicebox
+        //Choice box
         fillChoiceBox(cb_topic);
         cb_topic.setValue(Topics.No_Topic);
-        cb_topic.setConverter(new StringConverter<Topics>() {
+        cb_topic.setConverter(new StringConverter<>() {
             @Override
             public String toString(Topics topic) {
                 // Map the displayed value to a different string for the user to see
@@ -101,7 +99,7 @@ public class QuestionFormController implements Initializable {
                     case Inheritance -> "Inheritance";
                     case Handling_Exceptions -> "Handling Exceptions";
                     case Java_API -> "Java API";
-                    default -> null;
+
                 };
             }
 
