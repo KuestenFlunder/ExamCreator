@@ -4,8 +4,7 @@ package com.team_kuestenflunder.exam_desktop.controller;
 import com.google.inject.Inject;
 import com.team_kuestenflunder.exam_desktop.SceneManager;
 
-import com.team_kuestenflunder.exam_desktop.entity.Answer;
-import com.team_kuestenflunder.exam_desktop.entity.AnswerList;
+import com.team_kuestenflunder.exam_desktop.entity.Answers;
 
 import com.team_kuestenflunder.exam_desktop.entity.Question;
 import com.team_kuestenflunder.exam_desktop.entity.Topics;
@@ -14,7 +13,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
 import java.io.IOException;
@@ -27,7 +25,7 @@ import java.util.ResourceBundle;
 public class QuestionFormController implements Initializable {
     private final QuestionFormServiceImpl questionFormService;
     private final SceneManager sceneManager = new SceneManager();
-    Stage stage;
+
     Question question;
 
     @FXML
@@ -69,7 +67,6 @@ public class QuestionFormController implements Initializable {
 
     public void onFormSaveClick(ActionEvent event){
         try {
-            Question question = new Question();
             question.setQuestionTitle(tf_questionTitle.getText());
             question.setQuestionText(ta_questionText.getText());
             question.setTopic(cb_topic.getValue());
@@ -109,16 +106,17 @@ public class QuestionFormController implements Initializable {
 
     //Called by the Scene Manager to Pass Data to the Model
     public void setNewQuestionData(Question question) {
+        this.question = question;
         l_uuid.setText(question.getId());
         l_creationDate.setText(question.getCreationDate().toString());
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        //Choicebox
+        //Choice box
         fillChoiceBox(cb_topic);
         cb_topic.setValue(Topics.No_Topic);
-        cb_topic.setConverter(new StringConverter<Topics>() {
+        cb_topic.setConverter(new StringConverter<>() {
             @Override
             public String toString(Topics topic) {
                 // Map the displayed value to a different string for the user to see
@@ -133,7 +131,7 @@ public class QuestionFormController implements Initializable {
                     case Inheritance -> "Inheritance";
                     case Handling_Exceptions -> "Handling Exceptions";
                     case Java_API -> "Java API";
-                    default -> null;
+
                 };
             }
 
