@@ -3,6 +3,8 @@ package com.team_kuestenflunder.exam_desktop.repository;
 import com.team_kuestenflunder.exam_desktop.entity.Question;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 
 public class DataService {
@@ -22,4 +24,9 @@ public class DataService {
                 }
         return instance;
     }
+
+   
+
+
+
 }
