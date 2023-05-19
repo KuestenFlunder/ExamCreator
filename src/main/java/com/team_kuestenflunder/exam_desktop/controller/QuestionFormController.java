@@ -20,6 +20,8 @@ import javafx.util.StringConverter;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class QuestionFormController implements Initializable {
@@ -84,7 +86,7 @@ public class QuestionFormController implements Initializable {
                     answer.setAnswerText(answerTextParameter);
                     answer.setCorrectAnswer(Boolean.valueOf(answerCorrectParameter));
                     answer.setAnswerDescription(answerDescriptParameter);
-//                    question.addAnswerToList(answer);  TODO Methode ist noch zu nmachen
+                    question.getAnswerList().addAnswer(answer);
 
                     if (Boolean.valueOf(answerCorrectParameter)){
                         question.getAnswerList().setCorrectAnswers();
@@ -94,11 +96,9 @@ public class QuestionFormController implements Initializable {
                     System.out.println(answer.getAnswerDescription().toString());
             }
 
-
             questionFormService.addQuestion(question);
             System.out.println("questionFormService.getQuestions() = " + questionFormService.getQuestions());
             sceneManager.switchSceneToQuestionView(event);
-
 
         }catch (IOException e){
             e.printStackTrace();
@@ -156,11 +156,7 @@ public class QuestionFormController implements Initializable {
             }
         });
 
-
-        }
-
-
-
     }
 
+}
 
