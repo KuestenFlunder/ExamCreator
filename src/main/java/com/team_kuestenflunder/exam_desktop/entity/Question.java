@@ -1,6 +1,5 @@
 package com.team_kuestenflunder.exam_desktop.entity;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -12,12 +11,12 @@ public class Question {
     private Topics topic;
     private String questionText;
     private String Code;
-    private AnswerList answerList;
+    private Answers answers;
 
     public Question() {
         this.creationDate = LocalDateTime.now();
         this.id = UUID.randomUUID().toString();
-        this.answerList = new AnswerList();
+        this.answers = new Answers();
     }
 
     public String getId() {
@@ -28,12 +27,12 @@ public class Question {
         return creationDate;
     }
 
-    public AnswerList getAnswerList() {
-        return answerList;
+    public Answers getAnswerList() {
+        return answers;
     }
 
-    public void setAnswerList(AnswerList answerList) {
-        this.answerList = answerList;
+    public void setAnswerList(Answers answers) {
+        this.answers = answers;
     }
 
     public String getCode() {
@@ -74,7 +73,7 @@ public class Question {
         return "Question{"+ "\n" +
                 "id='" + id + '\'' +
                 ", creationDate=" + creationDate +
-                ", answerList=" + answerList +
+                ", answers=" + answers +
                 ", Code='" + Code + '\'' +
                 ", questionText='" + questionText + '\'' +
                 ", questionTitle='" + questionTitle + '\'' +

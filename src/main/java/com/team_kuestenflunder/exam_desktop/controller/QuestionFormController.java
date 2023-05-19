@@ -4,7 +4,7 @@ package com.team_kuestenflunder.exam_desktop.controller;
 import com.google.inject.Inject;
 import com.team_kuestenflunder.exam_desktop.SceneManager;
 
-import com.team_kuestenflunder.exam_desktop.entity.AnswerList;
+import com.team_kuestenflunder.exam_desktop.entity.Answers;
 
 import com.team_kuestenflunder.exam_desktop.entity.Question;
 import com.team_kuestenflunder.exam_desktop.entity.Topics;
@@ -58,7 +58,7 @@ public class QuestionFormController implements Initializable {
             question.setTopic(cb_topic.getValue());
             question.setQuestionText(ta_questionText.getText());
             question.setCode(ta_questionCode.getText());
-            question.setAnswerList(new AnswerList());
+            question.setAnswerList(new Answers());
 
             questionFormService.addQuestion(question);
             System.out.println("questionFormService.getQuestions() = " + questionFormService.getQuestions());
