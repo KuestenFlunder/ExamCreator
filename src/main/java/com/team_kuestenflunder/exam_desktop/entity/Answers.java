@@ -5,12 +5,16 @@ import java.util.List;
 
 public class Answers {
 
-    private static int correctAnswers; // TODO statische Methode für Erfassung der korrekten Antwortanzahl
+    //! Darf nicht statisch sein, da sonst alle richtigen Antworten von allen Fragen gezählt werden.
+    private static int correctAnswers; // TODO nicht statisch machen.
     private List<Answer> answers;
 
 
     public Answers(){
         this.answers = new ArrayList<>();
+    }
+    public Answers(List<Answer> answers) {
+        this.answers = answers;
     }
     public void setCorrectAnswers() {
         correctAnswers++;
@@ -20,12 +24,10 @@ public class Answers {
     }
 
     public void addAnswer(Answer answer){
+        //TODO Add the correctAnswer++ here if Answer is correct
         this.answers.add(answer);
     }
 
-    public Answers(List<Answer> answers) {
-        this.answers = answers;
-    }
 
     @Override
     public String toString() {
