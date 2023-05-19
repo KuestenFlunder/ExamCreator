@@ -55,7 +55,6 @@ public class QuestionFormController implements Initializable {
 
     public void onFormSaveClick(ActionEvent event){
         try {
-            Question question = new Question();
             question.setQuestionTitle(tf_questionTitle.getText());
             question.setQuestionText(ta_questionText.getText());
             question.setTopic(cb_topic.getValue());
@@ -77,6 +76,7 @@ public class QuestionFormController implements Initializable {
 
     //Called by the Scene Manager to Pass Data to the Model
     public void setNewQuestionData(Question question) {
+        this.question = question;
         l_uuid.setText(question.getId());
         l_creationDate.setText(question.getCreationDate().toString());
     }
