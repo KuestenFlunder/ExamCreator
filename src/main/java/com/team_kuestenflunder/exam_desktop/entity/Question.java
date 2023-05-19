@@ -67,9 +67,8 @@ public class Question {
         this.topic = topic;
     }
 
-//    public void addAnswerToList(Answer answer){
-//        answerList.addToList(answer);
-//    }
+
+
 
 
     @Override

@@ -4,6 +4,7 @@ package com.team_kuestenflunder.exam_desktop.controller;
 import com.google.inject.Inject;
 import com.team_kuestenflunder.exam_desktop.SceneManager;
 
+import com.team_kuestenflunder.exam_desktop.entity.Answer;
 import com.team_kuestenflunder.exam_desktop.entity.Answers;
 
 import com.team_kuestenflunder.exam_desktop.entity.Question;
@@ -26,7 +27,7 @@ public class QuestionFormController implements Initializable {
     private final QuestionFormServiceImpl questionFormService;
     private final SceneManager sceneManager = new SceneManager();
 
-    Question question;
+    private Question question;
 
     @FXML
     Label l_uuid, l_creationDate;
@@ -73,24 +74,22 @@ public class QuestionFormController implements Initializable {
             question.setQuestionText(ta_questionText.getText());
             question.setCode(ta_questionCode.getText());
 
-            question.setAnswerList(new AnswerList());
+            question.setAnswerList(new Answers());
                 for (int i = 0; i < 8; i++){
-                    String answerTextParameter = "ta_answerText_" + i + ".getText()";
-                    String answerCorrectParameter = "chb_correctAnswer_" + i + ".getText()";
-                    String answerDescriptParameter = "ta_answerDescription_" + i + ".getText()";
+                    String answerTextValue = "ta_answerText_" + i + ".getText()";
+                    String answerCorrectValue = "chb_correctAnswer_" + i + ".getText()";
+                    String answerDescriptionValue = "ta_answerDescription_" + i + ".getText()";
 
                     Answer answer = new Answer();
-                    answer.setAnswerText(answerTextParameter);
-                    answer.setCorrectAnswer(Boolean.valueOf(answerCorrectParameter));
-                    answer.setAnswerDescription(answerDescriptParameter);
+                    answer.setAnswerText(answerTextValue);
+                    answer.setCorrectAnswer(Boolean.valueOf(answerCorrectValue));
+                    answer.setAnswerDescription(answerDescriptionValue);
                     question.getAnswerList().addAnswer(answer);
 
-                    if (Boolean.valueOf(answerCorrectParameter)){
+                    if (Boolean.valueOf(answerCorrectValue)){
                         question.getAnswerList().setCorrectAnswers();
                     }
-                    System.out.println(answer.getAnswerText().toString());
-                    System.out.println(String.valueOf(answer.isCorrectAnswer()));
-                    System.out.println(answer.getAnswerDescription().toString());
+
             }
 
             questionFormService.addQuestion(question);
