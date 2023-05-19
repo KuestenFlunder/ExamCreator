@@ -27,6 +27,13 @@ public class Answers {
         this.answers = answers;
     }
 
-
-
+    @Override
+    public String toString() {
+        return "Answers{" +
+                "correctAnswers: " +
+                correctAnswers +
+                "answers=" + answers +
+                '}'+
+                "\n";
+    }
 }

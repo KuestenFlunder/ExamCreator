@@ -73,7 +73,7 @@ public class Question {
 
     @Override
     public String toString() {
-        return "Question{"+ "\n" +
+        return "\n" +"Question{"+ "\n" +
                 "id='" + id + '\'' +
                 ", creationDate=" + creationDate +
                 ", answers=" + answers +
