@@ -3,6 +3,7 @@ package com.team_kuestenflunder.exam_desktop;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.team_kuestenflunder.exam_desktop.moduls.DIConfigModule;
+import com.team_kuestenflunder.exam_desktop.repository.QuestionRepositoryImpl;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -17,7 +18,7 @@ public class ApplicationMain extends Application {
     // Stage > Scene > Pane
     @Override
     public void start(Stage stage) throws Exception {
-
+        QuestionRepositoryImpl.initList();
         Scene scene = sceneManager.getQuestionView();
         //set a Stage Title
         stage.setTitle("Fragen Liste");

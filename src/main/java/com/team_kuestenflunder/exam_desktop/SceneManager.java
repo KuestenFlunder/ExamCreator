@@ -45,14 +45,8 @@ public class SceneManager {
     }
 
 
-    public Scene getQuestionForm() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("questionForm.fxml"));
-        fxmlLoader.setControllerFactory(injector::getInstance);
-        Parent formParent = fxmlLoader.load();
-        //Create a new sceen from the root node of the fxml
-        return new Scene(formParent);
-    }
 
+    // used to inizialise the first view
     public Scene getQuestionView() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("questionsView.fxml"));
         fxmlLoader.setControllerFactory(injector::getInstance);
@@ -61,7 +55,5 @@ public class SceneManager {
         return new Scene(formParent);
     }
 
-    public void SetScene(Scene scene, Stage stage) throws IOException {
-        stage.setScene(scene);
-    }
+
 }

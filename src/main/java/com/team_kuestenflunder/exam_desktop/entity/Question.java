@@ -17,7 +17,7 @@ public class Question {
     public Question() {
         this.creationDate = LocalDateTime.now();
         this.id = UUID.randomUUID().toString();
-
+        this.answerList = new AnswerList();
     }
 
     public String getId() {
@@ -71,7 +71,7 @@ public class Question {
 
     @Override
     public String toString() {
-        return "Question{" +
+        return "Question{"+ "\n" +
                 "id='" + id + '\'' +
                 ", creationDate=" + creationDate +
                 ", answerList=" + answerList +
@@ -79,6 +79,6 @@ public class Question {
                 ", questionText='" + questionText + '\'' +
                 ", questionTitle='" + questionTitle + '\'' +
                 ", topic=" + topic +
-                '}';
+                '}'+ "\n";
     }
 }
