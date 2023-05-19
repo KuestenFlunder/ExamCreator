@@ -98,7 +98,7 @@ public class QuestionFormController implements Initializable {
             }
 
             questionFormService.addQuestion(question);
-            System.out.println("questionFormService.getQuestions() = " + questionFormService.getQuestions());
+
             sceneManager.switchSceneToQuestionView(event);
 
         }catch (IOException e){

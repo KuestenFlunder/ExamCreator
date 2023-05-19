@@ -7,6 +7,9 @@ module com.team_kuestenflunder.exam_desktop {
     requires net.synedra.validatorfx;
     requires org.kordamp.bootstrapfx.core;
     requires com.google.guice;
+    requires com.fasterxml.jackson.databind;
+    requires com.fasterxml.jackson.datatype.jsr310;
+
 
     opens com.team_kuestenflunder.exam_desktop to javafx.fxml;
     exports com.team_kuestenflunder.exam_desktop;
