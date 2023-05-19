@@ -59,7 +59,7 @@
                      </opaqueInsets>
                   </CheckBox>
                   <TextArea fx:id="ta_answerText_1" prefHeight="100.0" prefWidth="1872.0" promptText="Antwort" />
-                  <TextArea prefHeight="100.0" prefWidth="1204.0" promptText="Erklärung" />
+                  <TextArea fx:id="ta_answerDescription_1" prefHeight="100.0" prefWidth="1204.0" promptText="Erklärung" />
                </children>
             </HBox>
             <HBox prefHeight="81.0" prefWidth="1292.0">
@@ -73,7 +73,7 @@
                      </opaqueInsets>
                   </CheckBox>
                   <TextArea fx:id="ta_answerText_2" prefHeight="100.0" prefWidth="1872.0" promptText="Antwort" />
-                  <TextArea prefHeight="100.0" prefWidth="1204.0" promptText="Erklärung" />
+                  <TextArea fx:id="ta_answerDescription_2" prefHeight="100.0" prefWidth="1204.0" promptText="Erklärung" />
                </children>
             </HBox>
             <HBox prefHeight="81.0" prefWidth="1292.0">
@@ -87,7 +87,7 @@
                      </opaqueInsets>
                   </CheckBox>
                   <TextArea fx:id="ta_answerText_3" prefHeight="100.0" prefWidth="1872.0" promptText="Antwort" />
-                  <TextArea prefHeight="100.0" prefWidth="1204.0" promptText="Erklärung" />
+                  <TextArea fx:id="ta_answerDescription_3" prefHeight="100.0" prefWidth="1204.0" promptText="Erklärung" />
                </children>
             </HBox>
             <HBox prefHeight="81.0" prefWidth="1292.0">
@@ -101,7 +101,7 @@
                      </opaqueInsets>
                   </CheckBox>
                   <TextArea fx:id="ta_answerText_4" prefHeight="100.0" prefWidth="1872.0" promptText="Antwort" />
-                  <TextArea prefHeight="100.0" prefWidth="1204.0" promptText="Erklärung" />
+                  <TextArea fx:id="ta_answerDescription_4" prefHeight="100.0" prefWidth="1204.0" promptText="Erklärung" />
                </children>
             </HBox>
             <HBox prefHeight="81.0" prefWidth="1292.0">
@@ -115,7 +115,7 @@
                      </opaqueInsets>
                   </CheckBox>
                   <TextArea fx:id="ta_answerText_5" prefHeight="100.0" prefWidth="1872.0" promptText="Antwort" />
-                  <TextArea prefHeight="100.0" prefWidth="1204.0" promptText="Erklärung" />
+                  <TextArea fx:id="ta_answerDescription_5" prefHeight="100.0" prefWidth="1204.0" promptText="Erklärung" />
                </children>
             </HBox>
             <HBox prefHeight="81.0" prefWidth="1292.0">
@@ -129,7 +129,7 @@
                      </opaqueInsets>
                   </CheckBox>
                   <TextArea fx:id="ta_answerText_6" prefHeight="100.0" prefWidth="1872.0" promptText="Antwort" />
-                  <TextArea prefHeight="100.0" prefWidth="1204.0" promptText="Erklärung" />
+                  <TextArea fx:id="ta_answerDescription_6" prefHeight="100.0" prefWidth="1204.0" promptText="Erklärung" />
                </children>
             </HBox>
             <HBox prefHeight="81.0" prefWidth="1292.0">
@@ -143,7 +143,7 @@
                      </opaqueInsets>
                   </CheckBox>
                   <TextArea fx:id="ta_answerText_7" prefHeight="100.0" prefWidth="1872.0" promptText="Antwort" />
-                  <TextArea prefHeight="100.0" prefWidth="1204.0" promptText="Erklärung" />
+                  <TextArea fx:id="ta_answerDescription_7" prefHeight="100.0" prefWidth="1204.0" promptText="Erklärung" />
                </children>
             </HBox>
             <Button fx:id="bt_submit" mnemonicParsing="false" onAction="#onFormSaveClick" prefHeight="25.0" prefWidth="1293.0" text="Speichern" textFill="#440ae4">
