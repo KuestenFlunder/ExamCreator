@@ -4,11 +4,14 @@ import com.google.inject.Inject;
 import com.team_kuestenflunder.exam_desktop.ApplicationMain;
 import com.team_kuestenflunder.exam_desktop.SceneManager;
 import com.team_kuestenflunder.exam_desktop.entity.Question;
+import com.team_kuestenflunder.exam_desktop.repository.DataService;
 import com.team_kuestenflunder.exam_desktop.services.QuestionsViewServiceImpl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
 
 import java.io.IOException;
 import java.net.URL;
@@ -22,6 +25,9 @@ public class QuestionsViewController implements Initializable {
 
     @FXML
     Button newQuestion_btn;
+
+    @FXML
+    ListView<Question> lstw_QuestionList;
 
     @Inject
     public QuestionsViewController(QuestionsViewServiceImpl questionsViewService) {
@@ -38,6 +44,26 @@ public class QuestionsViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-      //questionsViewService.initList();
+        lstw_QuestionList.setItems(DataService.getQuestions());
+        lstw_QuestionList.setCellFactory(param -> new ListCell<Question>() {
+                @Override
+                protected void updateItem(Question question, boolean empty) {
+                    super.updateItem(question, empty);
+                    if (empty || question == null) {
+                        setText(null);
+                    } else {
+                        setText(question.getId() + " - " + question.getTopic()  + " - " + question.getQuestionTitle() );
+                    }
+                }
+            });
+
+
+        //questionsViewService.initList();
+
     }
+
+
+
+
+
 }

@@ -95,7 +95,6 @@ public class QuestionFormController implements Initializable {
                     if (answerCorrectValue){
                         question.getAnswerList().setCorrectAnswers();
                     }
-
             }
 
             questionFormService.addQuestion(question);

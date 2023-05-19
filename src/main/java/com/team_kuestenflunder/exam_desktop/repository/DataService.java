@@ -1,13 +1,15 @@
 package com.team_kuestenflunder.exam_desktop.repository;
 
 import com.team_kuestenflunder.exam_desktop.entity.Question;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class DataService {
     private static DataService instance;
-    public final List<Question> questions = new ArrayList<>();
+    public  static final ObservableList<Question> questions = FXCollections.observableArrayList();
 
     private DataService() {
     }
@@ -22,4 +24,11 @@ public class DataService {
         }
         return instance;
     }
+
+    public static ObservableList<Question> getQuestions() {
+        return questions;
+    }
+
+
+
 }
