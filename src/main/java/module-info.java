@@ -8,6 +8,8 @@ module com.team_kuestenflunder.exam_desktop {
     requires org.kordamp.bootstrapfx.core;
     requires com.google.guice;
 
+
+
     opens com.team_kuestenflunder.exam_desktop to javafx.fxml;
     exports com.team_kuestenflunder.exam_desktop;
     exports com.team_kuestenflunder.exam_desktop.entity;

@@ -7,7 +7,11 @@ import javafx.collections.ObservableList;
 
 public class DataService {
     private static DataService instance;
-    public final ObservableList<Question> questions = FXCollections.observableArrayList();
+    private final ObservableList<Question> questions = FXCollections.observableArrayList();
+
+    public ObservableList<Question> getQuestions() {
+        return questions;
+    }
 
     private DataService() {
     }

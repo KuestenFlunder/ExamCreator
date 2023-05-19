@@ -18,7 +18,6 @@ public class ApplicationMain extends Application {
     // Stage > Scene > Pane
     @Override
     public void start(Stage stage) throws Exception {
-        QuestionRepositoryImpl.initList();
         Scene scene = sceneManager.getQuestionView();
         //set a Stage Title
         stage.setTitle("Fragen Liste");

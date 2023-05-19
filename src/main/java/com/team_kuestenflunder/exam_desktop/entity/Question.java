@@ -1,10 +1,14 @@
 package com.team_kuestenflunder.exam_desktop.entity;
 
+
 import java.time.LocalDateTime;
 import java.util.UUID;
 
 public class Question {
+
+
     private final String id;
+
     private final LocalDateTime creationDate;
 
     private String questionTitle; //? Might be useful if we find meaningful titles
@@ -18,6 +22,7 @@ public class Question {
         this.id = UUID.randomUUID().toString();
         this.answers = new Answers();
     }
+
 
     public String getId() {
         return id;
@@ -71,16 +76,17 @@ public class Question {
 
 
 
+
     @Override
     public String toString() {
-        return "\n" +"Question{"+ "\n" +
+        return "Question{" + "\n" +
                 "id='" + id + '\'' +
                 ", creationDate=" + creationDate +
-                ", answers=" + answers +
+                ", answers=" + answers.toString().replaceAll("\n", "") +
                 ", Code='" + Code + '\'' +
                 ", questionText='" + questionText + '\'' +
                 ", questionTitle='" + questionTitle + '\'' +
                 ", topic=" + topic +
-                '}'+ "\n";
+                '}' + "\n";
     }
 }
