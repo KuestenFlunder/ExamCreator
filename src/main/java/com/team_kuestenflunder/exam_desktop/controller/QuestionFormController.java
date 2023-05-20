@@ -80,7 +80,7 @@ public class QuestionFormController implements Initializable {
             question.setQuestionText(ta_questionText.getText());
             question.setCode(ta_questionCode.getText());
 
-            question.setAnswerList(new Answers());
+            //question.setAnswerList(new Answers());
                 for (int i = 0; i < 8; i++){
                     String answerTextValue = answerTexts.get(i).getText();
                     boolean answerCorrectValue = answerCheckboxes.get(i).isSelected();
@@ -90,12 +90,9 @@ public class QuestionFormController implements Initializable {
                     answer.setAnswerText(answerTextValue);
                     answer.setCorrectAnswer(answerCorrectValue);
                     answer.setAnswerDescription(answerDescriptionValue);
-                    question.getAnswerList().addAnswer(answer);
 
-                    if (answerCorrectValue){
-                        question.getAnswerList().setCorrectAnswers();
+                    question.getAnswerList().addAnswer(answer);
                     }
-            }
 
             questionFormService.addQuestion(question);
 
