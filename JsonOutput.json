@@ -1,1 +1,44 @@
-[{"id":"3675d3c8-f9e4-4178-afd5-f82ef63f9750","creationDate":[2023,5,19,20,55,37,851286000],"questionTitle":"Frage 1","topic":"Java_Data_Types","questionText":"TestFrage","answerList":{"correctAnswers":7},"code":"Code von Frage 1"},{"id":"2eef9eb8-1a18-4136-b61f-ace5bf40cb6a","creationDate":[2023,5,19,21,1,17,303709000],"questionTitle":"Test 2","topic":"Operators_and_Decision_Constructs","questionText":"asdf","answerList":{"correctAnswers":7},"code":"asdf"}]
+[ {
+  "id" : "2527a55d-ac79-4573-bcb5-0f17242a64c5",
+  "creationDate" : [ 2023, 5, 20, 19, 25, 35, 876495000 ],
+  "questionTitle" : "asd",
+  "topic" : "Operators_and_Decision_Constructs",
+  "questionText" : "sad",
+  "code" : "fsd",
+  "answerList" : {
+    "answers" : [ {
+      "answerText" : "asd",
+      "correctAnswer" : true,
+      "answerDescription" : "as"
+    }, {
+      "answerText" : "fasdf",
+      "correctAnswer" : true,
+      "answerDescription" : "df"
+    }, {
+      "answerText" : "df",
+      "correctAnswer" : false,
+      "answerDescription" : "asd"
+    }, {
+      "answerText" : "sdfs",
+      "correctAnswer" : true,
+      "answerDescription" : "fasdf"
+    }, {
+      "answerText" : "asdf",
+      "correctAnswer" : true,
+      "answerDescription" : "sdf"
+    }, {
+      "answerText" : "asd",
+      "correctAnswer" : false,
+      "answerDescription" : "asd"
+    }, {
+      "answerText" : "fasdf",
+      "correctAnswer" : false,
+      "answerDescription" : "fsd"
+    }, {
+      "answerText" : "asdf",
+      "correctAnswer" : false,
+      "answerDescription" : "asdf"
+    } ],
+    "correctAnswers" : 4
+  }
+} ]

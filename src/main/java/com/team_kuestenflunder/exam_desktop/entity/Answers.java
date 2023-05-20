@@ -1,30 +1,36 @@
 package com.team_kuestenflunder.exam_desktop.entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Answers {
+public class Answers implements Serializable {
 
-    //! Darf nicht statisch sein, da sonst alle richtigen Antworten von allen Fragen gezählt werden.
-    private static int correctAnswers; // TODO nicht statisch machen.
-    private List<Answer> answers;
+    private final List<Answer> answers;
+    private int correctAnswers;
 
-
-    public Answers(){
+    public Answers() {
         this.answers = new ArrayList<>();
     }
+
     public Answers(List<Answer> answers) {
         this.answers = answers;
     }
-    public void setCorrectAnswers() {
-        correctAnswers++;
-    }
+
+
     public int getCorrectAnswers() {
         return correctAnswers;
     }
 
-    public void addAnswer(Answer answer){
-        //TODO Add the correctAnswer++ here if Answer is correct
+    public List<Answer> getAnswers() {
+        return answers;
+    }
+
+    public void addAnswer(Answer answer) {
+        if (answer.isCorrectAnswer()) {
+            correctAnswers++;
+        }
+
         this.answers.add(answer);
     }
 
