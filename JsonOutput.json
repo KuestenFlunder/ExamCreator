@@ -1,59 +1,44 @@
-[
-  {
-    "id": "a3f655e4-572e-41e4-a015-f16350a0a977",
-    "creationDate": [
-      2023,
-      5,
-      20,
-      18,
-      42,
-      7,
-      4890000
-    ],
-    "questionTitle": "asdf",
-    "topic": "Java_Data_Types",
-    "questionText": "sadf",
-    "code": "asdfasd",
-    "answerList": {
-      "correctAnswers": 3
-    }
-  },
-  {
-    "id": "595d2052-5858-4dfb-ab3b-db1b213ef3e3",
-    "creationDate": [
-      2023,
-      5,
-      20,
-      18,
-      42,
-      15,
-      686969000
-    ],
-    "questionTitle": "asdfas",
-    "topic": "Methods_and_Encapsulation",
-    "questionText": "asdfas",
-    "code": "dfasdfasdf",
-    "answerList": {
-      "correctAnswers": 2
-    }
-  },
-  {
-    "id": "7bb9d28d-a0a5-401f-8831-75b8f4e7b16b",
-    "creationDate": [
-      2023,
-      5,
-      20,
-      18,
-      42,
-      24,
-      693248000
-    ],
-    "questionTitle": "werwrtyrt",
-    "topic": "Creating_and_Using_Arrays",
-    "questionText": "fghfe43r",
-    "code": "asgfdefte3rt",
-    "answerList": {
-      "correctAnswers": 1
-    }
+[ {
+  "id" : "2527a55d-ac79-4573-bcb5-0f17242a64c5",
+  "creationDate" : [ 2023, 5, 20, 19, 25, 35, 876495000 ],
+  "questionTitle" : "asd",
+  "topic" : "Operators_and_Decision_Constructs",
+  "questionText" : "sad",
+  "code" : "fsd",
+  "answerList" : {
+    "answers" : [ {
+      "answerText" : "asd",
+      "correctAnswer" : true,
+      "answerDescription" : "as"
+    }, {
+      "answerText" : "fasdf",
+      "correctAnswer" : true,
+      "answerDescription" : "df"
+    }, {
+      "answerText" : "df",
+      "correctAnswer" : false,
+      "answerDescription" : "asd"
+    }, {
+      "answerText" : "sdfs",
+      "correctAnswer" : true,
+      "answerDescription" : "fasdf"
+    }, {
+      "answerText" : "asdf",
+      "correctAnswer" : true,
+      "answerDescription" : "sdf"
+    }, {
+      "answerText" : "asd",
+      "correctAnswer" : false,
+      "answerDescription" : "asd"
+    }, {
+      "answerText" : "fasdf",
+      "correctAnswer" : false,
+      "answerDescription" : "fsd"
+    }, {
+      "answerText" : "asdf",
+      "correctAnswer" : false,
+      "answerDescription" : "asdf"
+    } ],
+    "correctAnswers" : 4
   }
-]
+} ]
