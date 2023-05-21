@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Answers implements Serializable {
 
-    private final List<Answer> answers;
+    private  List<Answer> answers;
     private int correctAnswers;
 
     public Answers() {
@@ -20,6 +20,14 @@ public class Answers implements Serializable {
 
     public int getCorrectAnswers() {
         return correctAnswers;
+    }
+
+    public void setAnswers(List<Answer> answers) {
+        this.answers = answers;
+    }
+
+    public void setCorrectAnswers(int correctAnswers) {
+        this.correctAnswers = correctAnswers;
     }
 
     public List<Answer> getAnswers() {
