@@ -30,7 +30,7 @@
                               <Insets top="20.0" />
                            </VBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Frage bearbeiten">
+                        <Button fx:id="bt_updateQuestion" mnemonicParsing="false" onAction="#onUpdateButtonClick" prefHeight="30.0" prefWidth="150.0" text="Frage bearbeiten">
                            <font>
                               <Font size="14.0" />
                            </font>
