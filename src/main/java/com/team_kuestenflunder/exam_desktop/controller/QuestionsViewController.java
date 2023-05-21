@@ -25,7 +25,7 @@ public class QuestionsViewController implements Initializable {
     Question question;
 
     @FXML
-    Button newQuestion_btn;
+    Button newQuestion_btn, bt_updateQuestion;
 
     @FXML
     ListView<Question> lstw_QuestionList;
@@ -41,6 +41,10 @@ public class QuestionsViewController implements Initializable {
         try {
             sceneManager.switchSceneToQuestionForm(event,new Question());}
         catch (Exception e) {e.printStackTrace();}
+    }
+    public void onUpdateButtonClick(ActionEvent event) {
+        System.out.println("\"on updateClick\" = " + "on updateClick");
+
     }
 
     @Override
