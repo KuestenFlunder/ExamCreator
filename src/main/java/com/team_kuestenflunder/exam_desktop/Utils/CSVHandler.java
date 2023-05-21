@@ -1,18 +1,15 @@
 package com.team_kuestenflunder.exam_desktop.Utils;
 
 import com.team_kuestenflunder.exam_desktop.entity.Question;
-import com.team_kuestenflunder.exam_desktop.repository.QuestionRepositoryImpl;
-import com.team_kuestenflunder.exam_desktop.services.QuestionFormServiceImpl;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
 import java.time.format.DateTimeFormatter;
-import java.util.List;
 
 
-public class CSVWriter {
+public class CSVHandler {
 
     private static final String CSV_SEPARATOR = ",";
 
