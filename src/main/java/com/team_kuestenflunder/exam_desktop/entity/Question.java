@@ -11,10 +11,10 @@ import java.util.UUID;
 public class Question {
 
 
-    private final String id;
+    private  String id;
 
     @JsonSerialize(using = LocalDateTimeSerializer.class)
-    private final LocalDateTime creationDate;
+    private  LocalDateTime creationDate;
 
     private String questionTitle = "Kein Titel verfuegbar"; //? Might be useful if we find meaningful titles
     private Topics topic = Topics.No_Topic;
@@ -49,6 +49,22 @@ public class Question {
 
     public Answers getAnswerList() {
         return answers;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setCreationDate(LocalDateTime creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public Answers getAnswers() {
+        return answers;
+    }
+
+    public void setAnswers(Answers answers) {
+        this.answers = answers;
     }
 
     public void setAnswerList(Answers answers) {

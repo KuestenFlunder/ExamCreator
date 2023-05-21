@@ -1,18 +1,16 @@
 package com.team_kuestenflunder.exam_desktop.repository;
 
-import com.team_kuestenflunder.exam_desktop.Utils.CSVWriter;
-import com.team_kuestenflunder.exam_desktop.Utils.JsonWriter;
+import com.team_kuestenflunder.exam_desktop.Utils.CSVHandler;
+import com.team_kuestenflunder.exam_desktop.Utils.JsonHandler;
 import com.team_kuestenflunder.exam_desktop.entity.Question;
-import javafx.scene.chart.PieChart;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class QuestionRepositoryImpl implements QuestionRepository{
 
     DataService dataService = DataService.getInstance();
-    CSVWriter csvWriter = new CSVWriter();
+    CSVHandler csvWriter = new CSVHandler();
 
 
     //* List to store Questions for the first attempts
@@ -22,7 +20,7 @@ public class QuestionRepositoryImpl implements QuestionRepository{
     public void addQuestion(Question question)  {
         dataService.getQuestions().add(question);
         try {
-        JsonWriter.writeJson(dataService.getQuestions());
+        JsonHandler.writeJson(dataService.getQuestions());
         }catch (IOException e) {e.printStackTrace();}
     }
 
