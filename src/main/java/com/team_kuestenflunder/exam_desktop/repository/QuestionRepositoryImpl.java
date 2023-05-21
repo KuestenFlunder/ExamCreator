@@ -47,12 +47,4 @@ public class QuestionRepositoryImpl implements QuestionRepository{
     }
 
 
-    //TODO Remove when saving data is ready
-    //!Only for testing and first trys
-    public static void initList(){
-        DataService.getInstance().getQuestions().add(new Question());
-        DataService.getInstance().getQuestions().add(new Question());
-        DataService.getInstance().getQuestions().add(new Question());
-
-    }
 }

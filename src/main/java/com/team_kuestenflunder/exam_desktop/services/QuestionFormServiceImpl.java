@@ -46,9 +46,6 @@ public class QuestionFormServiceImpl implements Service {
         return Constants.NOT_FOUND;
     }
 
-    //!Remove if JSON Repo is implemented
-    public void initList() {
-        questionRepository.initList();
-    }
+
 }
 

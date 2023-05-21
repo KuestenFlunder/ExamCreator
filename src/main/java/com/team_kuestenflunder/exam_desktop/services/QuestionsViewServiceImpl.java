@@ -29,7 +29,5 @@ public class QuestionsViewServiceImpl implements Service{
         return questionRepository.getQuestions();
     }
 
-    public void initList() {
-        questionRepository.initList();
-    }
+
 }

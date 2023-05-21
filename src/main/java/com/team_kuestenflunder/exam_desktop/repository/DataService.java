@@ -1,21 +1,32 @@
 package com.team_kuestenflunder.exam_desktop.repository;
 
+import com.team_kuestenflunder.exam_desktop.Utils.JsonHandler;
 import com.team_kuestenflunder.exam_desktop.entity.Question;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.io.IOException;
+
 
 public class DataService {
     private static DataService instance;
-    private final ObservableList<Question> questions = FXCollections.observableArrayList();
+    private  ObservableList<Question> questions = FXCollections.observableArrayList();
 
     public ObservableList<Question> getQuestions() {
         return questions;
     }
 
     private DataService() {
+    }
+
+    public  void initDataService() {
+        try {
+        questions = JsonHandler.readJson();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     public static DataService getInstance() {
