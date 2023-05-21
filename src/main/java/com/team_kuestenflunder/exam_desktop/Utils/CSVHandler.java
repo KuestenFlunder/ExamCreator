@@ -52,7 +52,7 @@ public class CSVHandler {
                 writer.append(CSV_SEPARATOR);
                 writer.append(question.getCode());
                 writer.append(CSV_SEPARATOR);
-                writer.append(question.getAnswerList().toString());
+                writer.append(question.getAnswers().toString());
                 writer.append("\n");
 
 
