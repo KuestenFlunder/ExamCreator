@@ -47,9 +47,6 @@ public class Question {
         return creationDate;
     }
 
-    public Answers getAnswerList() {
-        return answers;
-    }
 
     public void setId(String id) {
         this.id = id;
