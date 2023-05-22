@@ -35,8 +35,6 @@ public class QuestionsViewController implements Initializable {
         this.questionsViewService = questionsViewService;
     }
 
-
-
     public void onNewQuestionClick(ActionEvent event) {
         try {
             sceneManager.switchSceneToQuestionForm(event,new Question());}

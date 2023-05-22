@@ -89,9 +89,16 @@ public class QuestionFormController implements Initializable {
     }
 
 
+    public void setNewQuestionData(Question question) {
+        this.question = question;
+        l_uuid.setText(question.getId());
+        l_creationDate.setText(question.getCreationDate().toString());
+    }
+
     //Called by the Scene Manager to Pass Data to the Model
     public void setQuestionData(Question question) {
-            this.question = question;
+        this.question = question;
+        if (questionFormService.getQuestions().contains(question)) {
             l_uuid.setText(question.getId());
             l_creationDate.setText(question.getCreationDate().toString());
             cb_topic.setValue(question.getTopic());
@@ -99,68 +106,72 @@ public class QuestionFormController implements Initializable {
             ta_questionText.setText(question.getQuestionText());
             ta_questionCode.setText(question.getCode());
 
-//            for (int i = 0; i < 8; i++) {
-//                answerTexts.get(i).setText(question.getAnswers().getAnswerList().get(i).getAnswerText());
-//                answerCheckboxes.get(i).setSelected(question.getAnswers().getAnswerList().get(i).isCorrectAnswer());
-//                answerDescriptions.get(i).setText(question.getAnswers().getAnswerList().get(i).getAnswerDescription());
-//            }
-
-
+            for (int i = 0; i < 8; i++) {
+                answerTexts.get(i).setText(question.getAnswers().getAnswerList().get(i).getAnswerText());
+                answerCheckboxes.get(i).setSelected(question.getAnswers().getAnswerList().get(i).isCorrectAnswer());
+                answerDescriptions.get(i).setText(question.getAnswers().getAnswerList().get(i).getAnswerDescription());
+            }
+        } else {
+            l_uuid.setText(question.getId());
+            l_creationDate.setText(question.getCreationDate().toString());
         }
 
-        @Override
-        public void initialize (URL url, ResourceBundle resourceBundle){
-
-            answerTexts = Arrays.asList(ta_answerText_0, ta_answerText_1, ta_answerText_2, ta_answerText_3,
-                    ta_answerText_4, ta_answerText_5, ta_answerText_6, ta_answerText_7);
-
-            answerCheckboxes = Arrays.asList(chb_correctAnswer_0, chb_correctAnswer_1, chb_correctAnswer_2, chb_correctAnswer_3,
-                    chb_correctAnswer_4, chb_correctAnswer_5, chb_correctAnswer_6, chb_correctAnswer_7);
-
-            answerDescriptions = Arrays.asList(ta_answerDescription_0, ta_answerDescription_1, ta_answerDescription_2, ta_answerDescription_3,
-                    ta_answerDescription_4, ta_answerDescription_5, ta_answerDescription_6, ta_answerDescription_7);
-            //Choice box
-            fillChoiceBox(cb_topic);
-            cb_topic.setValue(Topics.No_Topic);
-            cb_topic.setConverter(new StringConverter<>() {
-                @Override
-                public String toString(Topics topic) {
-                    // Map the displayed value to a different string for the user to see
-                    return switch (topic) {
-                        case No_Topic -> "Thema wählen";
-                        case Java_Basics -> "Java Basics";
-                        case Java_Data_Types -> "Java Data Types";
-                        case Operators_and_Decision_Constructs -> "Operators and Decision Constructs";
-                        case Creating_and_Using_Arrays -> "Creating and Using Arrays";
-                        case Using_Loop_Constructs -> "Using Loop Constructs";
-                        case Methods_and_Encapsulation -> "Methods and Encapsulation";
-                        case Inheritance -> "Inheritance";
-                        case Handling_Exceptions -> "Handling Exceptions";
-                        case Java_API -> "Java API";
-
-                    };
-                }
-
-                @Override
-                public Topics fromString(String string) {
-                    // Map the user's selected value back to the original value
-                    return switch (string) {
-                        case "Thema wählen" -> Topics.No_Topic;
-                        case "Java Basics" -> Topics.Java_Basics;
-                        case "Java Data Types" -> Topics.Java_Data_Types;
-                        case "Operators and Decision Constructs" -> Topics.Operators_and_Decision_Constructs;
-                        case "Creating and Using Arrays" -> Topics.Creating_and_Using_Arrays;
-                        case "Using Loop Constructs" -> Topics.Using_Loop_Constructs;
-                        case "Methods and Encapsulation" -> Topics.Methods_and_Encapsulation;
-                        case "Inheritance" -> Topics.Inheritance;
-                        case "Handling Exceptions" -> Topics.Handling_Exceptions;
-                        case "Java API" -> Topics.Java_API;
-                        default -> null;
-                    };
-                }
-            });
-
-        }
 
     }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        answerTexts = Arrays.asList(ta_answerText_0, ta_answerText_1, ta_answerText_2, ta_answerText_3,
+                ta_answerText_4, ta_answerText_5, ta_answerText_6, ta_answerText_7);
+
+        answerCheckboxes = Arrays.asList(chb_correctAnswer_0, chb_correctAnswer_1, chb_correctAnswer_2, chb_correctAnswer_3,
+                chb_correctAnswer_4, chb_correctAnswer_5, chb_correctAnswer_6, chb_correctAnswer_7);
+
+        answerDescriptions = Arrays.asList(ta_answerDescription_0, ta_answerDescription_1, ta_answerDescription_2, ta_answerDescription_3,
+                ta_answerDescription_4, ta_answerDescription_5, ta_answerDescription_6, ta_answerDescription_7);
+        //Choice box
+        fillChoiceBox(cb_topic);
+        cb_topic.setValue(Topics.No_Topic);
+        cb_topic.setConverter(new StringConverter<>() {
+            @Override
+            public String toString(Topics topic) {
+                // Map the displayed value to a different string for the user to see
+                return switch (topic) {
+                    case No_Topic -> "Thema wählen";
+                    case Java_Basics -> "Java Basics";
+                    case Java_Data_Types -> "Java Data Types";
+                    case Operators_and_Decision_Constructs -> "Operators and Decision Constructs";
+                    case Creating_and_Using_Arrays -> "Creating and Using Arrays";
+                    case Using_Loop_Constructs -> "Using Loop Constructs";
+                    case Methods_and_Encapsulation -> "Methods and Encapsulation";
+                    case Inheritance -> "Inheritance";
+                    case Handling_Exceptions -> "Handling Exceptions";
+                    case Java_API -> "Java API";
+
+                };
+            }
+
+            @Override
+            public Topics fromString(String string) {
+                // Map the user's selected value back to the original value
+                return switch (string) {
+                    case "Thema wählen" -> Topics.No_Topic;
+                    case "Java Basics" -> Topics.Java_Basics;
+                    case "Java Data Types" -> Topics.Java_Data_Types;
+                    case "Operators and Decision Constructs" -> Topics.Operators_and_Decision_Constructs;
+                    case "Creating and Using Arrays" -> Topics.Creating_and_Using_Arrays;
+                    case "Using Loop Constructs" -> Topics.Using_Loop_Constructs;
+                    case "Methods and Encapsulation" -> Topics.Methods_and_Encapsulation;
+                    case "Inheritance" -> Topics.Inheritance;
+                    case "Handling Exceptions" -> Topics.Handling_Exceptions;
+                    case "Java API" -> Topics.Java_API;
+                    default -> null;
+                };
+            }
+        });
+
+    }
+
+}
 
