@@ -70,12 +70,14 @@ public class QuestionFormController implements Initializable {
                 String answerTextValue = answerTexts.get(i).getText();
                 boolean answerCorrectValue = answerCheckboxes.get(i).isSelected();
                 String answerDescriptionValue = answerDescriptions.get(i).getText();
-
                 Answer answer = new Answer();
                 answer.setAnswerText(answerTextValue);
                 answer.setCorrectAnswer(answerCorrectValue);
                 answer.setAnswerDescription(answerDescriptionValue);
 
+            //TODO has to be refactored to set new values to existiong questions
+                //* Add will try to add the updated question to the full list of 8 Answers
+                // so here also changes are nessesary
                 question.getAnswers().addAnswer(answer);
             }
 
