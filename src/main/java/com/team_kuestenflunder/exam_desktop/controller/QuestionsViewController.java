@@ -43,15 +43,14 @@ public class QuestionsViewController implements Initializable {
     }
 
 
-    public Question questionMarkUp(){
-        return lstw_QuestionList.getSelectionModel().getSelectedItem();
-    }
+
 
     public void onDeleteButtonClick(ActionEvent event) {
-        Alert alert;
+        Question selectedQuestion =  lstw_QuestionList.getSelectionModel().getSelectedItem();
         try{
-            if (questionMarkUp() != null) {
-                String questionID = questionMarkUp().getId();
+            Alert alert;
+            if (selectedQuestion != null) {
+                String questionID = selectedQuestion.getId();
                 int index = questionsViewService.getQuestionIndexByID(questionID);
 
                 alert = new Alert(Alert.AlertType.INFORMATION);
