@@ -37,6 +37,7 @@ public class QuestionFormServiceImpl implements Service {
         return questionRepository.getQuestions();
     }
 
+
     private int getQuestionIndexByID(String id) {
         for (int i = 0; i < questionRepository.getQuestions().size(); i++) {
             if (questionRepository.getQuestions().get(i).getId().equals(id)) {
@@ -46,6 +47,6 @@ public class QuestionFormServiceImpl implements Service {
         return Constants.NOT_FOUND;
     }
 
-
+//   QuestionRepositoryImpl.getQuestions();
 }
 

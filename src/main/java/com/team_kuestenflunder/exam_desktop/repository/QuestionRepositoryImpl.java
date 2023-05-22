@@ -27,12 +27,10 @@ public class QuestionRepositoryImpl implements QuestionRepository{
     @Override
     public void updateQuestion(int index, Question question) {
         dataService.getQuestions().set(index, question);
-
     }
 
     @Override
     public Question getQuestion(int index) {
-
         return dataService.getQuestions().get(index);
     }
 
