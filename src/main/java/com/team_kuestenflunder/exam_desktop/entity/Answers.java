@@ -6,15 +6,15 @@ import java.util.List;
 
 public class Answers implements Serializable {
 
-    private  List<Answer> answers;
+    private  List<Answer> answerList;
     private int correctAnswers;
 
     public Answers() {
-        this.answers = new ArrayList<>();
+        this.answerList = new ArrayList<>();
     }
 
     public Answers(List<Answer> answers) {
-        this.answers = answers;
+        this.answerList = answers;
     }
 
 
@@ -22,16 +22,16 @@ public class Answers implements Serializable {
         return correctAnswers;
     }
 
-    public void setAnswers(List<Answer> answers) {
-        this.answers = answers;
+    public void setAnswerList(List<Answer> answerList) {
+        this.answerList = answerList;
     }
 
     public void setCorrectAnswers(int correctAnswers) {
         this.correctAnswers = correctAnswers;
     }
 
-    public List<Answer> getAnswers() {
-        return answers;
+    public List<Answer> getAnswerList() {
+        return answerList;
     }
 
     public void addAnswer(Answer answer) {
@@ -39,7 +39,7 @@ public class Answers implements Serializable {
             correctAnswers++;
         }
 
-        this.answers.add(answer);
+        this.answerList.add(answer);
     }
 
 
@@ -48,7 +48,7 @@ public class Answers implements Serializable {
         return "Answers{" +
                 "correctAnswers: " +
                 correctAnswers +
-                "answers=" + answers +
+                "answers=" + answerList +
                 '}';
     }
 }

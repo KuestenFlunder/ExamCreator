@@ -35,15 +35,15 @@ public class QuestionsViewController implements Initializable {
         this.questionsViewService = questionsViewService;
     }
 
-
-
     public void onNewQuestionClick(ActionEvent event) {
         try {
             sceneManager.switchSceneToQuestionForm(event,new Question());}
         catch (Exception e) {e.printStackTrace();}
     }
     public void onUpdateButtonClick(ActionEvent event) {
-        System.out.println("\"on updateClick\" = " + "on updateClick");
+        try{
+            sceneManager.switchSceneToQuestionForm(event,lstw_QuestionList.getSelectionModel().getSelectedItem());
+        }catch (Exception e) {e.printStackTrace();}
 
     }
 
@@ -63,7 +63,7 @@ public class QuestionsViewController implements Initializable {
             });
 
 
-        //questionsViewService.initList();
+
 
     }
 

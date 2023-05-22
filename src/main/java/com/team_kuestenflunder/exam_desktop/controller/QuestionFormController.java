@@ -3,10 +3,7 @@ package com.team_kuestenflunder.exam_desktop.controller;
 
 import com.google.inject.Inject;
 import com.team_kuestenflunder.exam_desktop.SceneManager;
-
 import com.team_kuestenflunder.exam_desktop.entity.Answer;
-import com.team_kuestenflunder.exam_desktop.entity.Answers;
-
 import com.team_kuestenflunder.exam_desktop.entity.Question;
 import com.team_kuestenflunder.exam_desktop.entity.Topics;
 import com.team_kuestenflunder.exam_desktop.services.QuestionFormServiceImpl;
@@ -17,11 +14,7 @@ import javafx.scene.control.*;
 import javafx.util.StringConverter;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.net.URL;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -29,33 +22,25 @@ import java.util.ResourceBundle;
 public class QuestionFormController implements Initializable {
     private final QuestionFormServiceImpl questionFormService;
     private final SceneManager sceneManager = new SceneManager();
-
-    private List<TextArea> answerTexts;
-    private List<TextArea> answerDescriptions;
-    private List<CheckBox> answerCheckboxes;
-
-    private Question question;
-
     @FXML
     Label l_uuid, l_creationDate;
     @FXML
     TextField tf_questionTitle;
     @FXML
     TextArea ta_questionText, ta_questionCode, ta_answerText_0, ta_answerText_1, ta_answerText_2, ta_answerText_3,
-            ta_answerText_4, ta_answerText_5, ta_answerText_6, ta_answerText_7,ta_answerDescription_0, ta_answerDescription_1, ta_answerDescription_2, ta_answerDescription_3,
+            ta_answerText_4, ta_answerText_5, ta_answerText_6, ta_answerText_7, ta_answerDescription_0, ta_answerDescription_1, ta_answerDescription_2, ta_answerDescription_3,
             ta_answerDescription_4, ta_answerDescription_5, ta_answerDescription_6, ta_answerDescription_7;
     @FXML
     Button bt_submit;
-
     @FXML
     ChoiceBox<Topics> cb_topic;
-
     @FXML
     CheckBox chb_correctAnswer_0, chb_correctAnswer_1, chb_correctAnswer_2, chb_correctAnswer_3,
-             chb_correctAnswer_4, chb_correctAnswer_5, chb_correctAnswer_6, chb_correctAnswer_7;
-
-
-
+            chb_correctAnswer_4, chb_correctAnswer_5, chb_correctAnswer_6, chb_correctAnswer_7;
+    private List<TextArea> answerTexts;
+    private List<TextArea> answerDescriptions;
+    private List<CheckBox> answerCheckboxes;
+    private Question question;
 
 
     @Inject
@@ -72,7 +57,7 @@ public class QuestionFormController implements Initializable {
     }
 
 
-    public void onFormSaveClick(ActionEvent event){
+    public void onFormSaveClick(ActionEvent event) {
         try {
             question.setQuestionTitle(tf_questionTitle.getText());
             question.setQuestionText(ta_questionText.getText());
@@ -81,47 +66,70 @@ public class QuestionFormController implements Initializable {
             question.setCode(ta_questionCode.getText());
 
             //question.setAnswerList(new Answers());
-                for (int i = 0; i < 8; i++){
-                    String answerTextValue = answerTexts.get(i).getText();
-                    boolean answerCorrectValue = answerCheckboxes.get(i).isSelected();
-                    String answerDescriptionValue = answerDescriptions.get(i).getText();
+            for (int i = 0; i < 8; i++) {
+                String answerTextValue = answerTexts.get(i).getText();
+                boolean answerCorrectValue = answerCheckboxes.get(i).isSelected();
+                String answerDescriptionValue = answerDescriptions.get(i).getText();
 
-                    Answer answer = new Answer();
-                    answer.setAnswerText(answerTextValue);
-                    answer.setCorrectAnswer(answerCorrectValue);
-                    answer.setAnswerDescription(answerDescriptionValue);
+                Answer answer = new Answer();
+                answer.setAnswerText(answerTextValue);
+                answer.setCorrectAnswer(answerCorrectValue);
+                answer.setAnswerDescription(answerDescriptionValue);
 
-                    question.getAnswers().addAnswer(answer);
-                    }
+                question.getAnswers().addAnswer(answer);
+            }
 
             questionFormService.addQuestion(question);
 
             sceneManager.switchSceneToQuestionView(event);
 
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
 
-
-    //Called by the Scene Manager to Pass Data to the Model
     public void setNewQuestionData(Question question) {
         this.question = question;
         l_uuid.setText(question.getId());
         l_creationDate.setText(question.getCreationDate().toString());
     }
+
+    //Called by the Scene Manager to Pass Data to the Model
+    public void setQuestionData(Question question) {
+        this.question = question;
+        if (questionFormService.getQuestions().contains(question)) {
+            l_uuid.setText(question.getId());
+            l_creationDate.setText(question.getCreationDate().toString());
+            cb_topic.setValue(question.getTopic());
+            tf_questionTitle.setText(question.getQuestionTitle());
+            ta_questionText.setText(question.getQuestionText());
+            ta_questionCode.setText(question.getCode());
+
+            for (int i = 0; i < 8; i++) {
+                answerTexts.get(i).setText(question.getAnswers().getAnswerList().get(i).getAnswerText());
+                answerCheckboxes.get(i).setSelected(question.getAnswers().getAnswerList().get(i).isCorrectAnswer());
+                answerDescriptions.get(i).setText(question.getAnswers().getAnswerList().get(i).getAnswerDescription());
+            }
+        } else {
+            l_uuid.setText(question.getId());
+            l_creationDate.setText(question.getCreationDate().toString());
+        }
+
+
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-       answerTexts = Arrays.asList(ta_answerText_0, ta_answerText_1, ta_answerText_2, ta_answerText_3,
+        answerTexts = Arrays.asList(ta_answerText_0, ta_answerText_1, ta_answerText_2, ta_answerText_3,
                 ta_answerText_4, ta_answerText_5, ta_answerText_6, ta_answerText_7);
 
-       answerCheckboxes = Arrays.asList(chb_correctAnswer_0, chb_correctAnswer_1, chb_correctAnswer_2, chb_correctAnswer_3,
-               chb_correctAnswer_4, chb_correctAnswer_5, chb_correctAnswer_6, chb_correctAnswer_7);
+        answerCheckboxes = Arrays.asList(chb_correctAnswer_0, chb_correctAnswer_1, chb_correctAnswer_2, chb_correctAnswer_3,
+                chb_correctAnswer_4, chb_correctAnswer_5, chb_correctAnswer_6, chb_correctAnswer_7);
 
-       answerDescriptions = Arrays.asList(ta_answerDescription_0, ta_answerDescription_1, ta_answerDescription_2, ta_answerDescription_3,
-               ta_answerDescription_4, ta_answerDescription_5, ta_answerDescription_6, ta_answerDescription_7);
+        answerDescriptions = Arrays.asList(ta_answerDescription_0, ta_answerDescription_1, ta_answerDescription_2, ta_answerDescription_3,
+                ta_answerDescription_4, ta_answerDescription_5, ta_answerDescription_6, ta_answerDescription_7);
         //Choice box
         fillChoiceBox(cb_topic);
         cb_topic.setValue(Topics.No_Topic);
