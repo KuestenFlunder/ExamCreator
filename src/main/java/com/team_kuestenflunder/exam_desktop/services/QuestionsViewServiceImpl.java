@@ -30,7 +30,6 @@ public class QuestionsViewServiceImpl implements Service{
     }
 
 
-// zugefügt vom IMa
     public int getQuestionIndexByID(String id) {
         for (int i = 0; i < questionRepository.getQuestions().size(); i++) {
             if (questionRepository.getQuestions().get(i).getId().equals(id)) {
@@ -43,4 +42,8 @@ public class QuestionsViewServiceImpl implements Service{
     public void deleteQuestion(String id) {}
 
 
+    public void deleteQuestion(Question question) {
+        int index = getQuestionIndexByID(question.getId());
+        questionRepository.deleteQuestion(index);
+    }
 }

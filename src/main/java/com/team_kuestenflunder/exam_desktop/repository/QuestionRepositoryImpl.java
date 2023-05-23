@@ -19,14 +19,13 @@ public class QuestionRepositoryImpl implements QuestionRepository{
     @Override
     public void addQuestion(Question question)  {
         dataService.getQuestions().add(question);
-        try {
-        JsonHandler.writeJson(dataService.getQuestions());
-        }catch (IOException e) {e.printStackTrace();}
+        updateJson();
     }
 
     @Override
     public void updateQuestion(int index, Question question) {
         dataService.getQuestions().set(index, question);
+        updateJson();
     }
 
     @Override
@@ -42,7 +41,12 @@ public class QuestionRepositoryImpl implements QuestionRepository{
     @Override
     public void deleteQuestion(int index) {
         dataService.getQuestions().remove(index);
+        updateJson();
     }
 
-
+    private void updateJson(){
+        try {
+            JsonHandler.writeJson(dataService.getQuestions());
+        }catch (IOException e) {e.printStackTrace();}
+    }
 }
