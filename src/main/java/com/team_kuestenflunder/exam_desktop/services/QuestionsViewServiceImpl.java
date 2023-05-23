@@ -2,7 +2,6 @@ package com.team_kuestenflunder.exam_desktop.services;
 
 import com.google.inject.Inject;
 import com.team_kuestenflunder.exam_desktop.Constants;
-import com.team_kuestenflunder.exam_desktop.controller.QuestionsViewController;
 import com.team_kuestenflunder.exam_desktop.entity.Question;
 import com.team_kuestenflunder.exam_desktop.repository.QuestionRepositoryImpl;
 
@@ -18,7 +17,6 @@ public class QuestionsViewServiceImpl implements Service{
 
     @Override
     public void addQuestion(Question question) {
-
     }
 
     @Override
@@ -41,6 +39,8 @@ public class QuestionsViewServiceImpl implements Service{
         }
         return Constants.NOT_FOUND;
     }
+
+    public void deleteQuestion(String id) {}
 
 
 }

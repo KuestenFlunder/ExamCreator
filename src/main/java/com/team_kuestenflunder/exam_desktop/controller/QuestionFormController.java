@@ -46,7 +46,6 @@ public class QuestionFormController implements Initializable {
     @Inject
     public QuestionFormController(QuestionFormServiceImpl questionFormService) {
         this.questionFormService = questionFormService;
-
     }
 
     private void fillChoiceBox(ChoiceBox<Topics> choiceBox) {
@@ -55,7 +54,6 @@ public class QuestionFormController implements Initializable {
             choiceBox.getItems().add(topic);
         }
     }
-
 
     public void onFormSaveClick(ActionEvent event) {
         try {
@@ -89,7 +87,6 @@ public class QuestionFormController implements Initializable {
             }
 
             questionFormService.addQuestion(question);
-
             sceneManager.switchSceneToQuestionView(event);
 
         } catch (IOException e) {
@@ -97,12 +94,6 @@ public class QuestionFormController implements Initializable {
         }
     }
 
-
-    public void setNewQuestionData(Question question) {
-        this.question = question;
-        l_uuid.setText(question.getId());
-        l_creationDate.setText(question.getCreationDate().toString());
-    }
 
     //Called by the Scene Manager to Pass Data to the Model
     public void setQuestionData(Question question) {
