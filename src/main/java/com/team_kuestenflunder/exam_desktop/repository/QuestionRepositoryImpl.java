@@ -14,13 +14,11 @@ public class QuestionRepositoryImpl implements QuestionRepository{
     @Override
     public void addQuestion(Question question)  {
         dataService.getQuestions().add(question);
-
     }
 
     @Override
     public void updateQuestion(int index, Question question) {
         dataService.getQuestions().set(index, question);
-
     }
 
     @Override
