@@ -17,7 +17,6 @@ public class QuestionsViewServiceImpl implements Service{
 
     @Override
     public void addQuestion(Question question) {
-
     }
 
     @Override
@@ -39,6 +38,8 @@ public class QuestionsViewServiceImpl implements Service{
         }
         return Constants.NOT_FOUND;
     }
+
+    public void deleteQuestion(String id) {}
 
 
     public void deleteQuestion(Question question) {

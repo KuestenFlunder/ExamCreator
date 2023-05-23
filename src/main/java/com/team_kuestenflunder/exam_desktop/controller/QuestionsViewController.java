@@ -18,7 +18,6 @@ public class QuestionsViewController implements Initializable {
     private final QuestionsViewServiceImpl questionsViewService;
     private final SceneManager sceneManager = new SceneManager();
 
-    Question question;
 
     @FXML
     Button newQuestion_btn, bt_updateQuestion, bt_deleteQuestion;
@@ -33,17 +32,27 @@ public class QuestionsViewController implements Initializable {
 
     public void onNewQuestionClick(ActionEvent event) {
         try {
-            sceneManager.switchSceneToQuestionForm(event,new Question());}
-        catch (Exception e) {e.printStackTrace();}
+            sceneManager.switchSceneToQuestionForm(event, new Question());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void onUpdateButtonClick(ActionEvent event) {
-        System.out.println("\"on updateClick\" = " + "on updateClick");
+
+    
+        try {
+            sceneManager.switchSceneToQuestionForm(event, lstw_QuestionList.getSelectionModel().getSelectedItem());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
 
     }
 
 
     public void onDeleteButtonClick() {
+
         Question selectedQuestion =  lstw_QuestionList.getSelectionModel().getSelectedItem();
         try{
             if (selectedQuestion != null) {
@@ -68,24 +77,29 @@ public class QuestionsViewController implements Initializable {
     }
 
 
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         lstw_QuestionList.setItems((ObservableList<Question>) questionsViewService.getQuestions());
-        lstw_QuestionList.setCellFactory(param -> new ListCell<Question>() {
-                @Override
-                protected void updateItem(Question question, boolean empty) {
-                    super.updateItem(question, empty);
-                    if (empty || question == null) {
-                        setText(null);
-                    } else {
-                        setText(question.getId() + " - " + question.getTopic()  + " - " + question.getQuestionTitle() );
-                    }
+        lstw_QuestionList.setCellFactory(param -> new ListCell<>() {
+            @Override
+            protected void updateItem(Question question, boolean empty) {
+                super.updateItem(question, empty);
+                if (empty || question == null) {
+                    setText(null);
+                } else {
+                    setText(question.getId() + " - " + question.getTopic() + " - " + question.getQuestionTitle() + "- richtige Antworten: " + question.getAnswers().getCorrectAnswers());
                 }
+
             });
+
+            }
+        });
+
+
+
     }
-
-
-
 
 
 }
