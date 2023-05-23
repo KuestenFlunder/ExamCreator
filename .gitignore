@@ -1,5 +1,4 @@
-JsonOutput.json
-questions.csv
+
 
 target/
 !.mvn/wrapper/maven-wrapper.jar
@@ -39,3 +38,6 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+JsonOutput.json
+questions.csv
