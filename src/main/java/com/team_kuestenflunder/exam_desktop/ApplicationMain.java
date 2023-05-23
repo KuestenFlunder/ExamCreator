@@ -2,6 +2,7 @@ package com.team_kuestenflunder.exam_desktop;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import com.team_kuestenflunder.exam_desktop.Utils.CSVHandler;
 import com.team_kuestenflunder.exam_desktop.moduls.DIConfigModule;
 import com.team_kuestenflunder.exam_desktop.repository.DataService;
 import com.team_kuestenflunder.exam_desktop.repository.QuestionRepositoryImpl;
@@ -28,6 +29,11 @@ public class ApplicationMain extends Application {
         stage.show();
     }
 
+    public void stop() throws Exception {
+        CSVHandler csvHandler = new CSVHandler();
+
+        csvHandler.writeCSV(DataService.getInstance().getQuestions().get(2));
+    }
 
 
 
