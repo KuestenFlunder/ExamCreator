@@ -1,182 +1,32 @@
 [ {
-  "id" : "5527eb35-7178-4ad0-85d9-d74d209e7b7f",
-  "creationDate" : [ 2023, 5, 22, 21, 52, 13, 181257000 ],
-  "questionTitle" : "Frage 1",
-  "topic" : "Methods_and_Encapsulation",
-  "questionText" : "Text 1",
+  "id" : "c857b47b-80af-4346-83d1-81f5fa2511ab",
+  "creationDate" : [ 2023, 5, 23, 17, 51, 10, 431275000 ],
+  "questionTitle" : "aasd",
+  "topic" : "Operators_and_Decision_Constructs",
+  "questionText" : "fsadf",
   "answers" : {
     "answerList" : [ {
-      "answerText" : "a1",
+      "answerText" : "asadf",
       "correctAnswer" : true,
-      "answerDescription" : "asdf"
-    }, {
-      "answerText" : "a2\t\t",
-      "correctAnswer" : true,
-      "answerDescription" : "sdf"
-    }, {
-      "answerText" : "a3",
-      "correctAnswer" : true,
-      "answerDescription" : "g"
-    }, {
-      "answerText" : "a4",
-      "correctAnswer" : true,
-      "answerDescription" : "rrthrfgf"
-    }, {
-      "answerText" : "a5",
-      "correctAnswer" : false,
-      "answerDescription" : "yutyutr"
-    }, {
-      "answerText" : "a6",
-      "correctAnswer" : false,
-      "answerDescription" : "jtyut"
-    }, {
-      "answerText" : "a7",
-      "correctAnswer" : false,
-      "answerDescription" : "uy"
-    }, {
-      "answerText" : "a8",
-      "correctAnswer" : false,
-      "answerDescription" : "yutyurt"
-    }, {
-      "answerText" : "a1",
-      "correctAnswer" : true,
-      "answerDescription" : "asdf"
-    }, {
-      "answerText" : "a2\t\t",
-      "correctAnswer" : true,
-      "answerDescription" : "sdf"
-    }, {
-      "answerText" : "a3",
-      "correctAnswer" : true,
-      "answerDescription" : "g"
-    }, {
-      "answerText" : "a4",
-      "correctAnswer" : true,
-      "answerDescription" : "rrthrfgf"
-    }, {
-      "answerText" : "a5",
-      "correctAnswer" : false,
-      "answerDescription" : "yutyutr"
-    }, {
-      "answerText" : "a6",
-      "correctAnswer" : false,
-      "answerDescription" : "jtyut"
-    }, {
-      "answerText" : "a7",
-      "correctAnswer" : false,
-      "answerDescription" : "uy"
-    }, {
-      "answerText" : "a8",
-      "correctAnswer" : false,
-      "answerDescription" : "yutyurt"
-    }, {
-      "answerText" : "a1",
-      "correctAnswer" : true,
-      "answerDescription" : "asdf"
-    }, {
-      "answerText" : "a2\t\t",
-      "correctAnswer" : true,
-      "answerDescription" : "sdf"
-    }, {
-      "answerText" : "a3",
-      "correctAnswer" : true,
-      "answerDescription" : "g"
-    }, {
-      "answerText" : "a4",
-      "correctAnswer" : true,
-      "answerDescription" : "rrthrfgf"
-    }, {
-      "answerText" : "a5",
-      "correctAnswer" : false,
-      "answerDescription" : "yutyutr"
-    }, {
-      "answerText" : "a6",
-      "correctAnswer" : false,
-      "answerDescription" : "jtyut"
-    }, {
-      "answerText" : "a7",
-      "correctAnswer" : false,
-      "answerDescription" : "uy"
-    }, {
-      "answerText" : "a8",
-      "correctAnswer" : false,
-      "answerDescription" : "yutyurt"
-    } ],
-    "correctAnswers" : 12
-  },
-  "code" : "Code1"
-}, {
-  "id" : "c98fcc46-c1d2-4f7e-8122-5015373f252e",
-  "creationDate" : [ 2023, 5, 22, 21, 53, 20, 678556000 ],
-  "questionTitle" : "Frage 2",
-  "topic" : "No_Topic",
-  "questionText" : "Frage 2 Text\t",
-  "answers" : {
-    "answerList" : [ {
-      "answerText" : "safd",
-      "correctAnswer" : false,
-      "answerDescription" : "asdfasdf"
-    }, {
-      "answerText" : "fsadf",
-      "correctAnswer" : false,
-      "answerDescription" : "asdf"
-    }, {
-      "answerText" : "dfasd",
-      "correctAnswer" : true,
-      "answerDescription" : "asdfasd"
-    }, {
-      "answerText" : "asdfas",
-      "correctAnswer" : false,
-      "answerDescription" : "asdf"
+      "answerDescription" : ""
     }, {
       "answerText" : "",
-      "correctAnswer" : false,
-      "answerDescription" : "asdfas"
+      "correctAnswer" : true,
+      "answerDescription" : ""
     }, {
-      "answerText" : "",
-      "correctAnswer" : false,
-      "answerDescription" : "df"
-    }, {
-      "answerText" : "",
-      "correctAnswer" : false,
+      "answerText" : "asdf",
+      "correctAnswer" : true,
       "answerDescription" : ""
     }, {
       "answerText" : "",
       "correctAnswer" : false,
       "answerDescription" : ""
-    } ],
-    "correctAnswers" : 1
-  },
-  "code" : "Code 2"
-}, {
-  "id" : "97406734-71d4-440e-a6a6-47efaa05debc",
-  "creationDate" : [ 2023, 5, 23, 17, 18, 52, 57406000 ],
-  "questionTitle" : "asdf",
-  "topic" : "Java_Data_Types",
-  "questionText" : "asdf",
-  "answers" : {
-    "answerList" : [ {
+    }, {
       "answerText" : "asdf",
       "correctAnswer" : false,
       "answerDescription" : ""
     }, {
-      "answerText" : "sadf",
-      "correctAnswer" : false,
-      "answerDescription" : ""
-    }, {
-      "answerText" : "",
-      "correctAnswer" : false,
-      "answerDescription" : ""
-    }, {
-      "answerText" : "",
-      "correctAnswer" : false,
-      "answerDescription" : ""
-    }, {
-      "answerText" : "",
-      "correctAnswer" : false,
-      "answerDescription" : ""
-    }, {
-      "answerText" : "",
+      "answerText" : "as",
       "correctAnswer" : false,
       "answerDescription" : ""
     }, {
@@ -188,7 +38,7 @@
       "correctAnswer" : false,
       "answerDescription" : ""
     } ],
-    "correctAnswers" : 0
+    "correctAnswers" : 3
   },
-  "code" : "asdf"
+  "code" : "asd"
 } ]

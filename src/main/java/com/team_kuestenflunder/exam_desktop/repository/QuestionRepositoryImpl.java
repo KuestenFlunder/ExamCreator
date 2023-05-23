@@ -10,22 +10,17 @@ import java.util.List;
 public class QuestionRepositoryImpl implements QuestionRepository{
 
     DataService dataService = DataService.getInstance();
-    CSVHandler csvWriter = new CSVHandler();
-
-
-    //* List to store Questions for the first attempts
-
 
     @Override
     public void addQuestion(Question question)  {
         dataService.getQuestions().add(question);
-        updateJson();
+
     }
 
     @Override
     public void updateQuestion(int index, Question question) {
         dataService.getQuestions().set(index, question);
-        updateJson();
+
     }
 
     @Override
@@ -41,12 +36,8 @@ public class QuestionRepositoryImpl implements QuestionRepository{
     @Override
     public void deleteQuestion(int index) {
         dataService.getQuestions().remove(index);
-        updateJson();
+
     }
 
-    private void updateJson(){
-        try {
-            JsonHandler.writeJson(dataService.getQuestions());
-        }catch (IOException e) {e.printStackTrace();}
-    }
+
 }

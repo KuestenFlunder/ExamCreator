@@ -12,9 +12,11 @@ import java.io.IOException;
 
 public class DataService {
     private static DataService instance;
+    private JsonHandler jsonHandler;
     private  ObservableList<Question> questions = FXCollections.observableArrayList();
 
     private DataService() {
+        this.jsonHandler = new JsonHandler();
     }
 
     public ObservableList<Question> getQuestions() {
@@ -23,7 +25,7 @@ public class DataService {
 
     public  void initDataService() {
         try {
-        questions = JsonHandler.readJson();
+        questions = jsonHandler.readJson();
         }catch (IOException e){
             e.printStackTrace();
         }
