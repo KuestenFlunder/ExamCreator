@@ -16,7 +16,6 @@ import java.util.List;
 
 public class JsonHandler {
 
-
     public void writeJson(List<Question> questionList) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
         objectMapper.registerModule(new JavaTimeModule());
@@ -35,6 +34,5 @@ public class JsonHandler {
             System.out.println("Json nicht gefunden. Es wird ein entsprechender Pfad beim Beenden der Applikation erstellt");
             return FXCollections.observableArrayList();
         }
-
     }
 }
