@@ -40,7 +40,7 @@ public class QuestionsViewController implements Initializable {
 
     public void onUpdateButtonClick(ActionEvent event) {
 
-    
+
         try {
             sceneManager.switchSceneToQuestionForm(event, lstw_QuestionList.getSelectionModel().getSelectedItem());
         } catch (Exception e) {
@@ -92,14 +92,13 @@ public class QuestionsViewController implements Initializable {
                     setText(question.getId() + " - " + question.getTopic() + " - " + question.getQuestionTitle() + "- richtige Antworten: " + question.getAnswers().getCorrectAnswers());
                 }
 
-            });
+            }});
 
             }
-        });
+
 
 
 
     }
 
 
-}
