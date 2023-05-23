@@ -149,32 +149,32 @@
   },
   "code" : "Code 2"
 }, {
-  "id" : "182f6521-1084-48d8-9e7e-ccb1c3fe7b1b",
-  "creationDate" : [ 2023, 5, 22, 21, 54, 52, 961090000 ],
-  "questionTitle" : "a;skjdf",
-  "topic" : "No_Topic",
-  "questionText" : "asfd",
+  "id" : "71c4bd57-f339-45bb-9f03-2daba8d4b2bd",
+  "creationDate" : [ 2023, 5, 23, 16, 16, 45, 758971000 ],
+  "questionTitle" : "Frage 4",
+  "topic" : "Inheritance",
+  "questionText" : "was ?",
   "answers" : {
     "answerList" : [ {
       "answerText" : "asdf",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerDescription" : "dsaafsd"
     }, {
-      "answerText" : "sdf",
-      "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerText" : "asdf",
+      "correctAnswer" : true,
+      "answerDescription" : "asdf"
     }, {
-      "answerText" : "",
+      "answerText" : "asdf",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerDescription" : "asdfsdf"
     }, {
-      "answerText" : "",
+      "answerText" : "asdfasf",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerDescription" : "asdfsdaf"
     }, {
-      "answerText" : "",
+      "answerText" : "asdf",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerDescription" : "asdf"
     }, {
       "answerText" : "",
       "correctAnswer" : false,
@@ -188,7 +188,7 @@
       "correctAnswer" : false,
       "answerDescription" : ""
     } ],
-    "correctAnswers" : 0
+    "correctAnswers" : 1
   },
-  "code" : "sdf"
+  "code" : "CODE: sdfsafsdf"
 } ]
