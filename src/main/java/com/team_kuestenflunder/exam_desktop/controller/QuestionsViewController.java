@@ -38,46 +38,34 @@ public class QuestionsViewController implements Initializable {
     }
 
     public void onUpdateButtonClick(ActionEvent event) {
-        try{
-            sceneManager.switchSceneToQuestionForm(event,lstw_QuestionList.getSelectionModel().getSelectedItem());
-        }catch (Exception e) {e.printStackTrace();}
+        System.out.println("\"on updateClick\" = " + "on updateClick");
 
     }
 
 
-
-
-    public void onDeleteButtonClick(ActionEvent event) {
+    public void onDeleteButtonClick() {
         Question selectedQuestion =  lstw_QuestionList.getSelectionModel().getSelectedItem();
         try{
-            Alert alert;
             if (selectedQuestion != null) {
-                String questionID = selectedQuestion.getId();
-                int index = questionsViewService.getQuestionIndexByID(questionID);
-
-                alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("");
-                alert.setContentText("MÖCHTEN SIE DIESE FRAGE UNWIEDERRUFLICH LÖSCHEN ?");
-                alert.showAndWait();
+                Alert alert = alertMessage(Alert.AlertType.WARNING, "Frage löschen", "MÖCHTEN SIE DIESE FRAGE UNWIEDERRUFLICH LÖSCHEN ?");
                 if (alert.getResult() == ButtonType.OK){
-                    alert = new Alert(Alert.AlertType.WARNING);
-                    alert.setContentText("SIND SIE 100% SICHER ?");
-                    alert.showAndWait();
-                    if (alert.getResult() == ButtonType.OK){
-                        questionsViewService.getQuestions().remove(index);; // TODO
-                        System.out.println("Die Frage wurde gelöscht");
-                    }
+                    questionsViewService.deleteQuestion(selectedQuestion);
                 }
             }else {
-                alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setContentText("UM ZU LÖSCHEN WÄHLEN SIE ERSTMAL EINE FRAGE");
-                alert.showAndWait();
+                alertMessage(Alert.AlertType.INFORMATION, "Bitte Frage wählen", "UM ZU LÖSCHEN WÄHLEN SIE ERSTMAL EINE FRAGE");
             }
-
         }catch (Exception e) {
             e.printStackTrace();}
     }
 
+
+    private Alert alertMessage(Alert.AlertType alertType, String titelText, String messageText) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(titelText);
+        alert.setContentText(messageText);
+        alert.showAndWait();
+        return alert;
+    }
 
 
     @Override
@@ -94,10 +82,6 @@ public class QuestionsViewController implements Initializable {
                     }
                 }
             });
-
-
-
-
     }
 
 

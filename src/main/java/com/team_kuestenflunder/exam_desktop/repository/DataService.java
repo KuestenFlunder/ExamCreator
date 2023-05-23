@@ -14,11 +14,11 @@ public class DataService {
     private static DataService instance;
     private  ObservableList<Question> questions = FXCollections.observableArrayList();
 
-    public ObservableList<Question> getQuestions() {
-        return questions;
+    private DataService() {
     }
 
-    private DataService() {
+    public ObservableList<Question> getQuestions() {
+        return questions;
     }
 
     public  void initDataService() {

@@ -2,7 +2,6 @@ package com.team_kuestenflunder.exam_desktop.services;
 
 import com.google.inject.Inject;
 import com.team_kuestenflunder.exam_desktop.Constants;
-import com.team_kuestenflunder.exam_desktop.controller.QuestionsViewController;
 import com.team_kuestenflunder.exam_desktop.entity.Question;
 import com.team_kuestenflunder.exam_desktop.repository.QuestionRepositoryImpl;
 
@@ -32,7 +31,6 @@ public class QuestionsViewServiceImpl implements Service{
     }
 
 
-// zugefügt vom IMa
     public int getQuestionIndexByID(String id) {
         for (int i = 0; i < questionRepository.getQuestions().size(); i++) {
             if (questionRepository.getQuestions().get(i).getId().equals(id)) {
@@ -43,4 +41,8 @@ public class QuestionsViewServiceImpl implements Service{
     }
 
 
+    public void deleteQuestion(Question question) {
+        int index = getQuestionIndexByID(question.getId());
+        questionRepository.deleteQuestion(index);
+    }
 }
