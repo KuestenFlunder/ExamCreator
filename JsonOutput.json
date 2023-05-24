@@ -1,32 +1,32 @@
 [ {
-  "id" : "c857b47b-80af-4346-83d1-81f5fa2511ab",
-  "creationDate" : [ 2023, 5, 23, 17, 51, 10, 431275000 ],
-  "questionTitle" : "aasd",
-  "topic" : "Operators_and_Decision_Constructs",
-  "questionText" : "fsadf",
+  "id" : "c8cecc74-245d-40a0-8dc5-e6f43dcd6a2a",
+  "creationDate" : [ 2023, 5, 24, 21, 40, 41, 447099000 ],
+  "questionTitle" : "Frage 1",
+  "topic" : "Java_Basics",
+  "questionText" : "",
   "answers" : {
     "answerList" : [ {
-      "answerText" : "asadf",
-      "correctAnswer" : true,
-      "answerDescription" : ""
-    }, {
       "answerText" : "",
-      "correctAnswer" : true,
-      "answerDescription" : ""
-    }, {
-      "answerText" : "asdf",
-      "correctAnswer" : true,
+      "correctAnswer" : false,
       "answerDescription" : ""
     }, {
       "answerText" : "",
       "correctAnswer" : false,
       "answerDescription" : ""
     }, {
-      "answerText" : "asdf",
+      "answerText" : "",
       "correctAnswer" : false,
       "answerDescription" : ""
     }, {
-      "answerText" : "as",
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
       "correctAnswer" : false,
       "answerDescription" : ""
     }, {
@@ -38,34 +38,34 @@
       "correctAnswer" : false,
       "answerDescription" : ""
     } ],
-    "correctAnswers" : 3
+    "correctAnswers" : 0
   },
-  "code" : "asd"
+  "code" : ""
 }, {
-  "id" : "93da8222-9db3-4a1e-8faa-ca646415e54b",
-  "creationDate" : [ 2023, 5, 23, 17, 58, 46, 890816000 ],
-  "questionTitle" : "asdfsdf",
-  "topic" : "Java_Data_Types",
-  "questionText" : "sdasdf",
+  "id" : "04dda069-cb56-4991-9456-5a9e8f6efc5e",
+  "creationDate" : [ 2023, 5, 24, 21, 40, 51, 230348000 ],
+  "questionTitle" : "Frage 2",
+  "topic" : "No_Topic",
+  "questionText" : "",
   "answers" : {
     "answerList" : [ {
-      "answerText" : "asdf",
-      "correctAnswer" : true,
-      "answerDescription" : ""
-    }, {
       "answerText" : "",
-      "correctAnswer" : true,
-      "answerDescription" : ""
-    }, {
-      "answerText" : "as",
-      "correctAnswer" : true,
-      "answerDescription" : ""
-    }, {
-      "answerText" : "dfs",
       "correctAnswer" : false,
       "answerDescription" : ""
     }, {
-      "answerText" : "dfas",
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
       "correctAnswer" : false,
       "answerDescription" : ""
     }, {
@@ -81,7 +81,179 @@
       "correctAnswer" : false,
       "answerDescription" : ""
     } ],
-    "correctAnswers" : 3
+    "correctAnswers" : 0
   },
-  "code" : "asdasdf"
+  "code" : ""
+}, {
+  "id" : "1c508147-073c-4b63-8684-48a77b64fe78",
+  "creationDate" : [ 2023, 5, 24, 21, 40, 58, 630715000 ],
+  "questionTitle" : "Frage 3",
+  "topic" : "No_Topic",
+  "questionText" : "",
+  "answers" : {
+    "answerList" : [ {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    } ],
+    "correctAnswers" : 0
+  },
+  "code" : ""
+}, {
+  "id" : "72adc5f0-f9fd-45ff-ab90-2e420e9accfe",
+  "creationDate" : [ 2023, 5, 24, 21, 41, 5, 413150000 ],
+  "questionTitle" : "Frage 4",
+  "topic" : "No_Topic",
+  "questionText" : "",
+  "answers" : {
+    "answerList" : [ {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    } ],
+    "correctAnswers" : 0
+  },
+  "code" : ""
+}, {
+  "id" : "2fe5f636-0c91-4c3e-a756-69694905f09f",
+  "creationDate" : [ 2023, 5, 24, 21, 41, 11, 162882000 ],
+  "questionTitle" : "Frage 5",
+  "topic" : "No_Topic",
+  "questionText" : "",
+  "answers" : {
+    "answerList" : [ {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    } ],
+    "correctAnswers" : 0
+  },
+  "code" : ""
+}, {
+  "id" : "8d9e1246-0f62-4a72-8db8-303237b5d271",
+  "creationDate" : [ 2023, 5, 24, 21, 41, 17, 446886000 ],
+  "questionTitle" : "Frage 6",
+  "topic" : "No_Topic",
+  "questionText" : "",
+  "answers" : {
+    "answerList" : [ {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    } ],
+    "correctAnswers" : 0
+  },
+  "code" : ""
 } ]

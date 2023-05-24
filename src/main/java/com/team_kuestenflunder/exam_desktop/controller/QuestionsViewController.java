@@ -20,7 +20,7 @@ public class QuestionsViewController implements Initializable {
 
 
     @FXML
-    Button newQuestion_btn, bt_updateQuestion, bt_deleteQuestion;
+    Button newQuestion_btn, bt_updateQuestion, bt_deleteQuestion, bt_createExam;
 
     @FXML
     ListView<Question> lstw_QuestionList;
@@ -29,6 +29,7 @@ public class QuestionsViewController implements Initializable {
     public QuestionsViewController(QuestionsViewServiceImpl questionsViewService) {
         this.questionsViewService = questionsViewService;
     }
+    //TODO Add to dependency injection
 
     public void onNewQuestionClick(ActionEvent event) {
         try {
@@ -77,6 +78,9 @@ public class QuestionsViewController implements Initializable {
     }
 
 
+    public void onCreateExamPdfClick(){
+        System.out.println("questionPdfService.getRandomExamQuestions() = " + questionsViewService.getRandomExamQuestions());
+    }
 
 
     @Override
