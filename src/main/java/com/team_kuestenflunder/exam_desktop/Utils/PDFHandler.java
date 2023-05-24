@@ -27,7 +27,9 @@ public class PDFHandler {
         PDDocument document = new PDDocument();
 // ----- FONTS
         PDType0Font fontArial = PDType0Font.load(document, new File("fonts\\arial.ttf"));
+        PDType0Font fontCourialNew = PDType0Font.load(document, new File("fonts\\cour.ttf"));
         PDType0Font fontCourialNewBold = PDType0Font.load(document, new File("fonts\\courbd.ttf"));
+
 
 // ----- PAGE 1
         PDPage page1 = new PDPage(PDRectangle.A4);
@@ -58,7 +60,30 @@ public class PDFHandler {
         contentStream.showText("TEST");
         contentStream.endText();
 
-    // VORNAME field
+    // VORNAME field  TODO  TextField not make =============== ?????????????????
+        PDAcroForm acroForm1 = new PDAcroForm(document);
+        document.getDocumentCatalog().setAcroForm(acroForm1);
+
+        PDTextField nameField = new PDTextField(acroForm1);
+        acroForm1.getFields().add(nameField);
+
+        page1.getAnnotations().add(nameField.getWidget());
+
+        PDAnnotationWidget widget = nameField.getWidgets().get(0);
+        PDRectangle rect = new PDRectangle(250, 600, 200, 30);
+        widget.setRectangle(rect);
+        widget.setPage(page1);
+        widget.setPrinted(true);
+
+        page1.getAnnotations().add(widget);
+        nameField.setPartialName("Vorname");
+        nameField.setMaxLen(20);
+//        nameField.setValue("Sample Field");
+//        nameField.setDefaultAppearance("/Helv 40 Tf");
+//        nameField.setDefaultValue("DefaultValue");
+//        nameField.setFileSelect(true);
+
+
         contentStream.beginText();
         contentStream.setFont(fontArial, 9);
         contentStream.setNonStrokingColor(102,102,102);
@@ -74,31 +99,66 @@ public class PDFHandler {
         contentStream.showText("Nachname");
         contentStream.endText();
 
+    // Hinweis 1
+        contentStream.beginText();
+        contentStream.setFont(fontCourialNew, 15);
+        contentStream.setNonStrokingColor(0,0,0);
+        contentStream.newLineAtOffset(100, 320);
+        contentStream.showText("Anzahl der Prüfungsfragen");
+        contentStream.endText();
+
+    // Hinweis 2
+        contentStream.beginText();
+        contentStream.setFont(fontCourialNew, 15);
+        contentStream.setNonStrokingColor(0,0,0);
+        contentStream.newLineAtOffset(100, 270);
+        contentStream.showText("Prüfungsdauer in minuten");
+        contentStream.endText();
+
+
+
 
         contentStream.close();
+
+
+
+// ----- PAGE 2
+        PDPage page2 = new PDPage(PDRectangle.A4);
+        document.addPage(page2);
+        PDPageContentStream contentStream2 = new PDPageContentStream(document, page2);
+
+
+        contentStream2.close();
+
+
+
+// ----- END
         document.save("TestForm.pdf");
         document.close();
 
-        PDPage page2 = new PDPage(PDRectangle.A4);
-        document.addPage(page2);
-
-//        contentStream.moveTo(100, 600); contentStream.lineTo(300, 600); contentStream.stroke();
-//        contentStream.addRect(100, 500, 200, 100); contentStream.stroke();
-
-
-
     }
 
 
-    private void textSetzen(PDDocument doc, PDPage page) {
-        PDPageContentStream contentStream = new PDPageContentStream(doc, page);
-        contentStream.beginText();
-        contentStream.setFont(fontArial, 9);
-        contentStream.setNonStrokingColor(102, 102, 102);
-        contentStream.newLineAtOffset(265, 520);
-        contentStream.showText("Nachname");
-        contentStream.endText();
+
+
+
+//  TODO  refactor this method
+//        setText(document,page2, "ETWAS", fontArial, 20, 100, 15, 48, 250, 100);
+
+    private static PDPageContentStream setText ( PDDocument doc, PDPage page, String text,
+                           PDType0Font font, float fontSize, int r, int g, int b, float tx, float ty)
+            throws IOException {
+        PDPageContentStream contStream = new PDPageContentStream(doc, page);
+        contStream.beginText();
+        contStream.setFont(font, fontSize);
+        contStream.setNonStrokingColor(r, g, b);
+        contStream.newLineAtOffset(tx, ty);
+        contStream.showText(text);
+        contStream.endText();
+        return contStream;
     }
+
+
 
 
 }
