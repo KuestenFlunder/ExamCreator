@@ -5,7 +5,7 @@ import com.team_kuestenflunder.exam_desktop.Constants;
 import com.team_kuestenflunder.exam_desktop.entity.Question;
 import com.team_kuestenflunder.exam_desktop.repository.QuestionRepositoryImpl;
 
-import java.util.List;
+import java.util.*;
 
 public class QuestionsViewServiceImpl implements Service{
     QuestionRepositoryImpl questionRepository;
@@ -45,5 +45,18 @@ public class QuestionsViewServiceImpl implements Service{
     public void deleteQuestion(Question question) {
         int index = getQuestionIndexByID(question.getId());
         questionRepository.deleteQuestion(index);
+    }
+
+    public Set<Question> getRandomExamQuestions() {
+        int requestedNumberOfQuestions = 3;
+
+        Set<Question> examQuestions = new HashSet<Question>();
+        //? improve the random algorithm with probability percent of pick by topic
+        Random random = new Random();
+        for (int i = 0;  examQuestions.size()<requestedNumberOfQuestions; i++) {
+            int index = random.nextInt(questionRepository.getQuestions().size());
+            examQuestions.add(questionRepository.getQuestions().get(index));
+        }
+        return examQuestions;
     }
 }
