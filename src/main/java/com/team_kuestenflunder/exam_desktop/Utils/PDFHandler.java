@@ -36,36 +36,37 @@ public class PDFHandler {
         document.addPage(page1);
 
         PDPageContentStream contentStream = new PDPageContentStream(document, page1);
-    // Beschrieftung oben
-        contentStream.beginText();
+
+        contentStream.beginText();  // Beschrieftung oben
         contentStream.setFont(fontArial, 15);
         contentStream.setNonStrokingColor(102,102,102);
         contentStream.newLineAtOffset(130, 810);
         contentStream.showText("Java Entwickler Oracle Certified Professional SE");
         contentStream.endText();
 
-    // Beschrieftung unten
-        contentStream.beginText();
+        contentStream.beginText();  // Beschrieftung unten
         contentStream.setFont(fontArial, 15);
         contentStream.setNonStrokingColor(102,102,102);
         contentStream.newLineAtOffset(130, 20);
         contentStream.showText("Java Entwickler Oracle Certified Professional SE");
         contentStream.endText();
 
-    // Docu Benennung
-        contentStream.beginText();
+        contentStream.beginText();   // Docu Benennung
         contentStream.setFont(fontCourialNewBold, 38);
         contentStream.setNonStrokingColor(0,0,0);
         contentStream.newLineAtOffset(240, 680);
         contentStream.showText("TEST");
         contentStream.endText();
 
-    // VORNAME field  TODO  TextField not make =============== ?????????????????
+    // VORNAME field to fill  TODO  TextField not make
         PDAcroForm acroForm1 = new PDAcroForm(document);
         document.getDocumentCatalog().setAcroForm(acroForm1);
 
         PDTextField nameField = new PDTextField(acroForm1);
+        nameField.setPartialName("setPartialName");
         acroForm1.getFields().add(nameField);
+        nameField.setValue("setValue");
+        nameField.setMaxLen(20);
 
         page1.getAnnotations().add(nameField.getWidget());
 
@@ -74,10 +75,10 @@ public class PDFHandler {
         widget.setRectangle(rect);
         widget.setPage(page1);
         widget.setPrinted(true);
-
         page1.getAnnotations().add(widget);
-        nameField.setPartialName("Vorname");
-        nameField.setMaxLen(20);
+
+
+
 //        nameField.setValue("Sample Field");
 //        nameField.setDefaultAppearance("/Helv 40 Tf");
 //        nameField.setDefaultValue("DefaultValue");
@@ -114,7 +115,6 @@ public class PDFHandler {
         contentStream.newLineAtOffset(100, 270);
         contentStream.showText("Prüfungsdauer in minuten");
         contentStream.endText();
-
 
 
 
