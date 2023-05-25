@@ -61,7 +61,7 @@ public class QuestionFormController implements Initializable {
             question.setQuestionText(ta_questionText.getText());
             question.setTopic(cb_topic.getValue());
             question.setQuestionText(ta_questionText.getText());
-            question.setCode(ta_questionCode.getText());
+            question.setQuestionCode(ta_questionCode.getText());
 
             //question.setAnswerList(new Answers());
             for (int i = 0; i < 8; i++) {
@@ -69,6 +69,8 @@ public class QuestionFormController implements Initializable {
                 boolean answerCorrectValue = answerCheckboxes.get(i).isSelected();
                 String answerDescriptionValue = answerDescriptions.get(i).getText();
                 Answer answer;
+
+
 
                 if (i < question.getAnswers().getAnswerList().size()) {
                     // Update existing answer
@@ -104,7 +106,7 @@ public class QuestionFormController implements Initializable {
             cb_topic.setValue(question.getTopic());
             tf_questionTitle.setText(question.getQuestionTitle());
             ta_questionText.setText(question.getQuestionText());
-            ta_questionCode.setText(question.getCode());
+            ta_questionCode.setText(question.getQuestionCode());
 
             for (int i = 0; i < 8; i++) {
                 answerTexts.get(i).setText(question.getAnswers().getAnswerList().get(i).getAnswerText());
@@ -170,8 +172,6 @@ public class QuestionFormController implements Initializable {
                 };
             }
         });
-
     }
-
 }
 

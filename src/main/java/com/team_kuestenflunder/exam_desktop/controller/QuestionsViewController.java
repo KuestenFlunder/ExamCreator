@@ -40,33 +40,29 @@ public class QuestionsViewController implements Initializable {
     }
 
     public void onUpdateButtonClick(ActionEvent event) {
-
-
         try {
             sceneManager.switchSceneToQuestionForm(event, lstw_QuestionList.getSelectionModel().getSelectedItem());
         } catch (Exception e) {
-            alertMessage(Alert.AlertType.INFORMATION,"Keine Frage gewählt","Bitte wählen sie eine Frage die sie bearbeiten wollen.");
+            alertMessage(Alert.AlertType.INFORMATION, "Keine Frage gewählt", "Bitte wählen sie eine Frage die sie bearbeiten wollen.");
             e.printStackTrace();
         }
-
-
     }
-
 
     public void onDeleteButtonClick() {
 
-        Question selectedQuestion =  lstw_QuestionList.getSelectionModel().getSelectedItem();
-        try{
+        Question selectedQuestion = lstw_QuestionList.getSelectionModel().getSelectedItem();
+        try {
             if (selectedQuestion != null) {
                 Alert alert = alertMessage(Alert.AlertType.WARNING, "Frage löschen", "MÖCHTEN SIE DIESE FRAGE UNWIEDERRUFLICH LÖSCHEN ?");
-                if (alert.getResult() == ButtonType.OK){
+                if (alert.getResult() == ButtonType.OK) {
                     questionsViewService.deleteQuestion(selectedQuestion);
                 }
-            }else {
+            } else {
                 alertMessage(Alert.AlertType.INFORMATION, "Bitte Frage wählen", "UM ZU LÖSCHEN WÄHLEN SIE ERSTMAL EINE FRAGE");
             }
-        }catch (Exception e) {
-            e.printStackTrace();}
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -79,7 +75,7 @@ public class QuestionsViewController implements Initializable {
     }
 
 
-    public void onCreateExamPdfClick(){
+    public void onCreateExamPdfClick() {
         System.out.println("questionPdfService.getRandomExamQuestions() = "
                 + questionsViewService.getRandomExamQuestions(2));
     }
@@ -98,13 +94,12 @@ public class QuestionsViewController implements Initializable {
                     setText(question.getId() + " - " + question.getTopic() + " - " + question.getQuestionTitle() + "- richtige Antworten: " + question.getAnswers().getCorrectAnswers());
                 }
 
-            }});
-
             }
-
-
-
+        });
 
     }
+
+
+}
 
 
