@@ -40,7 +40,7 @@ public class PDFHandler {
                 field = acroForm.getField("testDutarionFild");
                 field.setValue(String.valueOf( testDuration));
 
-                PDDocument questionPage = PDDocument.load(new File("QuestionPage.pdf"));
+                PDDocument questionPage = PDDocument.load(new File("src/main/resources/com/team_kuestenflunder/exam_desktop/templates/QuestionPage.pdf"));
                 PDAcroForm acroQuestionPage = questionPage.getDocumentCatalog().getAcroForm();
 
              /*   // for list of questions
