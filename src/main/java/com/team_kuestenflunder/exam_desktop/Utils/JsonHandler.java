@@ -29,6 +29,7 @@ public class JsonHandler {
             File jsonFile = new File("JsonOutput.json");
             List<Question> questionList = objectMapper.readValue(jsonFile, new TypeReference<>() {
             });
+            System.out.println("Json created successfully");
             return FXCollections.observableArrayList(questionList);
         } catch (FileNotFoundException e) {
             System.out.println("Json nicht gefunden. Es wird ein entsprechender Pfad beim Beenden der Applikation erstellt");
