@@ -19,14 +19,14 @@ public class JsonHandler {
     public void writeJson(List<Question> questionList) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
         objectMapper.registerModule(new JavaTimeModule());
-        objectMapper.writeValue(new File("JsonOutput.json"), questionList);
+        objectMapper.writeValue(new File("src/main/Output/JsonOutput.json"), questionList);
     }
 
     public ObservableList<Question> readJson() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.registerModule(new JavaTimeModule());
         try {
-            File jsonFile = new File("JsonOutput.json");
+            File jsonFile = new File("src/main/Output/JsonOutput.json");
             List<Question> questionList = objectMapper.readValue(jsonFile, new TypeReference<>() {
             });
             System.out.println("Json created successfully");

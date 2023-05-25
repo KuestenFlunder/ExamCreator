@@ -20,7 +20,7 @@ public class CSVHandler {
 
     public void writeCSV(List<Question> questions) {
 
-        String csvFile = "questions.csv";
+        String csvFile = "src/main/Output/questions.csv";
         boolean isFileEmpty = isFileEmpty(csvFile);
 
         try (FileWriter writer = new FileWriter(csvFile)) {
