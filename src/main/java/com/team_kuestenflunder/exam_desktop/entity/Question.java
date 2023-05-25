@@ -1,6 +1,5 @@
 package com.team_kuestenflunder.exam_desktop.entity;
 
-
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
@@ -10,13 +9,9 @@ import java.util.Objects;
 import java.util.UUID;
 
 public class Question {
-
-
     private  String id;
-
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     private  LocalDateTime creationDate;
-
     private String questionTitle = "Kein Titel verfuegbar"; //? Might be useful if we find meaningful titles
     private Topics topic = Topics.No_Topic;
     private String questionText = "Kein Text verfuegbar";
@@ -29,13 +24,13 @@ public class Question {
         this.answers = new Answers();
     }
 
-    public Question(String questionTitle, Topics topic, String questionText, String code, Answers answers) {
+    public Question(String questionTitle, Topics topic, String questionText, String questionCode, Answers answers) {
         this.id = UUID.randomUUID().toString();
         this.creationDate = LocalDateTime.now();
         this.questionTitle = questionTitle;
         this.topic = topic;
         this.questionText = questionText;
-        questionCode = code;
+        this.questionCode = questionCode;
         this.answers = answers;
     }
 
