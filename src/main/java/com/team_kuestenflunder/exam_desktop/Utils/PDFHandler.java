@@ -20,7 +20,10 @@ public class PDFHandler {
         //Set<Question> examQuestions = questionViewService.getRandomQuestions(numberOfQuestions)
 
             try {
-                PDDocument document = PDDocument.load(new File("page_titelLayot.pdf"));
+                    //PDDocument document = PDDocument.load(new File("page_titelLayout.pdf"));
+
+
+                PDDocument document = PDDocument.load(new File("src/main/resources/com/team_kuestenflunder/exam_desktop/templates/page_titelLayout.pdf"));
 
 
                 PDAcroForm acroForm = document.getDocumentCatalog().getAcroForm();
@@ -50,7 +53,7 @@ public class PDFHandler {
                 //loop  ende
 */
                 // PDDocument last page add
-                document.save("TestForm.pdf");
+                document.save("src/main/Output/TestForm.pdf");
                 document.close();
             } catch (IOException e) {
                 e.printStackTrace();
