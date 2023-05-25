@@ -47,9 +47,9 @@ public class QuestionsViewServiceImpl implements Service{
         questionRepository.deleteQuestion(index);
     }
 
-    public Set<Question> getRandomExamQuestions() {
-        int requestedNumberOfQuestions = 3;
+    public Set<Question> getRandomExamQuestions(int requestedNumberOfQuestions) {
 
+//requested number must be lower than getQuestions.size
         Set<Question> examQuestions = new HashSet<Question>();
         //? improve the random algorithm with probability percent of pick by topic
         Random random = new Random();

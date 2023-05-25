@@ -79,7 +79,7 @@ public class QuestionsViewController implements Initializable {
 
 
     public void onCreateExamPdfClick(){
-        System.out.println("questionPdfService.getRandomExamQuestions() = " + questionsViewService.getRandomExamQuestions());
+        System.out.println("questionPdfService.getRandomExamQuestions() = " + questionsViewService.getRandomExamQuestions(2));
     }
 
 
