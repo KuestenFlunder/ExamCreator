@@ -62,8 +62,8 @@ public class QuestionFormController implements Initializable {
             question.setTopic(cb_topic.getValue());
             question.setQuestionText(ta_questionText.getText());
             question.setQuestionCode(ta_questionCode.getText());
-
-            //question.setAnswerList(new Answers());
+            //reset correct Answers do omit doubles
+            question.getAnswers().setCorrectAnswers(0);
             for (int i = 0; i < 8; i++) {
                 String answerTextValue = answerTexts.get(i).getText();
                 boolean answerCorrectValue = answerCheckboxes.get(i).isSelected();
@@ -87,7 +87,6 @@ public class QuestionFormController implements Initializable {
                 }
                 question.getAnswers().addAnswer(answer);
             }
-
             questionFormService.addQuestion(question);
             sceneManager.switchSceneToQuestionView(event);
 
