@@ -45,6 +45,7 @@ public class QuestionsViewController implements Initializable {
         try {
             sceneManager.switchSceneToQuestionForm(event, lstw_QuestionList.getSelectionModel().getSelectedItem());
         } catch (Exception e) {
+             Alert alert = alertMessage(Alert.AlertType.INFORMATION,"Keine Frage gewählt","Bitte wählen sie eine Frage die sie bearbeiten wollen.");
             e.printStackTrace();
         }
 
@@ -79,7 +80,8 @@ public class QuestionsViewController implements Initializable {
 
 
     public void onCreateExamPdfClick(){
-        System.out.println("questionPdfService.getRandomExamQuestions() = " + questionsViewService.getRandomExamQuestions(2));
+        System.out.println("questionPdfService.getRandomExamQuestions() = "
+                + questionsViewService.getRandomExamQuestions(2));
     }
 
 
