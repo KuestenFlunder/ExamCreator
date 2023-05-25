@@ -1,6 +1,5 @@
 package com.team_kuestenflunder.exam_desktop.entity;
 
-
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
@@ -10,18 +9,13 @@ import java.util.Objects;
 import java.util.UUID;
 
 public class Question {
-
-
     private  String id;
-
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     private  LocalDateTime creationDate;
-
     private String questionTitle = "Kein Titel verfuegbar"; //? Might be useful if we find meaningful titles
     private Topics topic = Topics.No_Topic;
     private String questionText = "Kein Text verfuegbar";
-
-    private String Code = "Kein Code verfuegbar ";
+    private String questionCode = "Kein Code verfuegbar ";
     private Answers answers;
 
     public Question() {
@@ -30,13 +24,13 @@ public class Question {
         this.answers = new Answers();
     }
 
-    public Question(String questionTitle, Topics topic, String questionText, String code, Answers answers) {
+    public Question(String questionTitle, Topics topic, String questionText, String questionCode, Answers answers) {
         this.id = UUID.randomUUID().toString();
         this.creationDate = LocalDateTime.now();
         this.questionTitle = questionTitle;
         this.topic = topic;
         this.questionText = questionText;
-        Code = code;
+        this.questionCode = questionCode;
         this.answers = answers;
     }
 
@@ -65,16 +59,12 @@ public class Question {
         this.answers = answers;
     }
 
-    public void setAnswerList(Answers answers) {
-        this.answers = answers;
+    public String getQuestionCode() {
+        return questionCode;
     }
 
-    public String getCode() {
-        return Code;
-    }
-
-    public void setCode(String code) {
-        Code = code;
+    public void setQuestionCode(String questionCode) {
+        this.questionCode = questionCode;
     }
 
     public String getQuestionText() {
@@ -121,7 +111,7 @@ public class Question {
                 "id='" + id + '\'' +
                 ", creationDate=" + creationDate +
                 ", answers=" + answers.toString().replaceAll("\n", "") +
-                ", Code='" + Code + '\'' +
+                ", Code='" + questionCode + '\'' +
                 ", questionText='" + questionText + '\'' +
                 ", questionTitle='" + questionTitle + '\'' +
                 ", topic=" + topic +
