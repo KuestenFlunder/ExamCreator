@@ -38,9 +38,9 @@
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Anzahl der Testfragen : " GridPane.rowIndex="2" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Testdauer in Minuten : " GridPane.rowIndex="1" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Test Titel : " />
-                  <TextField GridPane.columnIndex="1" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField fx:id="tf_testTitle" GridPane.columnIndex="1" />
+                  <TextField fx:id="tf_testDuration" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="tf_numberOfQuestions" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                </children>
                <VBox.margin>
                   <Insets bottom="20.0" left="20.0" right="20.0" />

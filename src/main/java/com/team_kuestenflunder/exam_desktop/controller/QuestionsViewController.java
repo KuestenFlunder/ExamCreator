@@ -70,8 +70,12 @@ public class QuestionsViewController implements Initializable {
 
 
 
-    public void onCreateExamPdfClick() {
+    public void onCreateExamPdfClick(ActionEvent event) {
+        //Open popup
+        sceneManager.addPdfCreationPopUp(event);
 
+
+        //TODO transfer Questioncall to PdfCreationPopUpService
         System.out.println("questionPdfService.getRandomExamQuestions() = "
                 + questionsViewService.getRandomExamQuestions(2));
     }

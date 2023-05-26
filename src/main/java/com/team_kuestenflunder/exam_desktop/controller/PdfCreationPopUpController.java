@@ -4,6 +4,7 @@ import com.google.inject.Inject;
 import com.team_kuestenflunder.exam_desktop.services.PdfCreationPopUpService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 
 public class PdfCreationPopUpController {
     PdfCreationPopUpService pdfCreationPopUpService;
@@ -15,4 +16,9 @@ public class PdfCreationPopUpController {
 
     @FXML
     Button bt_createExam,bt_cancel;
+    @FXML
+    TextField tf_testTitle,tf_numberOfQuestions,tf_testDuration;
+
+
+
 }
