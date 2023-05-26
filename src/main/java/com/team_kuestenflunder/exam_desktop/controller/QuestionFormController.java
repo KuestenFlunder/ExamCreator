@@ -22,7 +22,7 @@ import java.util.ResourceBundle;
 
 public class QuestionFormController implements Initializable {
     private final QuestionFormServiceImpl questionFormService;
-    private final SceneManager sceneManager = new SceneManager();
+    private final SceneManager sceneManager = SceneManager.getInstance();
     @FXML
     Label l_uuid, l_creationDate;
     @FXML

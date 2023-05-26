@@ -19,7 +19,7 @@ import static com.team_kuestenflunder.exam_desktop.Utils.AlertMessage.alertMessa
 public class QuestionsViewController implements Initializable {
 
     private final QuestionsViewServiceImpl questionsViewService;
-    private final SceneManager sceneManager = new SceneManager();
+    private final SceneManager sceneManager = SceneManager.getInstance();
 
 
     @FXML

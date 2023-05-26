@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 
 public class ApplicationMain extends Application {
     Injector injector = Guice.createInjector(new DIConfigModule());
-    private final SceneManager sceneManager = new SceneManager();
+    private final SceneManager sceneManager = SceneManager.getInstance();
     private final DataService dataService = DataService.getInstance();
     private final CSVHandler csvHandler = new CSVHandler();
     private JsonHandler jsonHandler = new JsonHandler();

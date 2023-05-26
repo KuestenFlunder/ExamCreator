@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 public class PdfCreationPopUpController {
     PdfCreationPopUpService pdfCreationPopUpService;
 
-    SceneManager sceneManager = new SceneManager();
+    SceneManager sceneManager = SceneManager.getInstance();
     @FXML
     Button bt_createExam, bt_cancel;
     @FXML
