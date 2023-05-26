@@ -46,6 +46,7 @@ public class SceneManager {
 
     public void addPdfCreationPopUp(ActionEvent event){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("pdfCreationPopUp.fxml"));
+
     }
 
 
