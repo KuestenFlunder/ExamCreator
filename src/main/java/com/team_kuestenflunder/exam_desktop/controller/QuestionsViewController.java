@@ -76,9 +76,6 @@ public class QuestionsViewController implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
-        System.out.println("questionPdfService.getRandomExamQuestions() = "
-                + questionsViewService.getRandomExamQuestions(2));
     }
 
 

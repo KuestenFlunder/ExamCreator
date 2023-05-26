@@ -27,14 +27,20 @@ public class PdfCreationPopUpController {
         this.pdfCreationPopUpService = pdfCreationPopUpService;
     }
 
-    public void onCreateTestClick() {
-        System.out.println(tf_testTitle + " " + tf_testDuration + " " + tf_numberOfQuestions);
+    private static void exitStage(ActionEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.close();
+    }
+
+    public void onCreateTestClick(ActionEvent event) {
+
+        pdfCreationPopUpService.getRandomExamQuestions(
+                Integer.valueOf(tf_numberOfQuestions.getText()));
+        exitStage(event);
     }
 
     public void onCancelClick(ActionEvent event) {
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.close();
-
+        exitStage(event);
     }
 
 
