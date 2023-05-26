@@ -13,6 +13,8 @@ import javafx.scene.control.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static com.team_kuestenflunder.exam_desktop.Utils.AlertMessage.alertMessage;
+
 public class QuestionsViewController implements Initializable {
 
     private final QuestionsViewServiceImpl questionsViewService;
@@ -44,7 +46,7 @@ public class QuestionsViewController implements Initializable {
             sceneManager.switchSceneToQuestionForm(event, lstw_QuestionList.getSelectionModel().getSelectedItem());
         } catch (Exception e) {
             alertMessage(Alert.AlertType.INFORMATION, "Keine Frage gewählt", "Bitte wählen sie eine Frage die sie bearbeiten wollen.");
-            e.printStackTrace();
+
         }
     }
 
@@ -66,16 +68,10 @@ public class QuestionsViewController implements Initializable {
     }
 
 
-    private Alert alertMessage(Alert.AlertType alertType, String titelText, String messageText) {
-        Alert alert = new Alert(alertType);
-        alert.setTitle(titelText);
-        alert.setContentText(messageText);
-        alert.showAndWait();
-        return alert;
-    }
 
 
     public void onCreateExamPdfClick() {
+
         System.out.println("questionPdfService.getRandomExamQuestions() = "
                 + questionsViewService.getRandomExamQuestions(2));
     }

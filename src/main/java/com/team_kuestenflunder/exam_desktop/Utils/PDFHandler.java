@@ -25,7 +25,6 @@ public class PDFHandler {
 
                 PDDocument document = PDDocument.load(new File("src/main/resources/com/team_kuestenflunder/exam_desktop/templates/page_titelLayout.pdf"));
 
-
                 PDAcroForm acroForm = document.getDocumentCatalog().getAcroForm();
 
                 PDField field = acroForm.getField("nameFild");
