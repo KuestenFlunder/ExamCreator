@@ -48,12 +48,12 @@
             </GridPane>
             <ButtonBar prefHeight="56.0" prefWidth="471.0">
               <buttons>
-                <Button fx:id="bt_createExam" mnemonicParsing="false" text="Prüfung erstellen">
+                <Button fx:id="bt_createExam" mnemonicParsing="false" onAction="#onCreateTestClick" text="Prüfung erstellen">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
                   </Button>
-                  <Button fx:id="bt_cancel" mnemonicParsing="false" text="Abbrechen">
+                  <Button fx:id="bt_cancel" mnemonicParsing="false" onAction="#onCancelClick" text="Abbrechen">
                      <opaqueInsets>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </opaqueInsets>

@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+//TODO Refactor as singleton Pattern
 public class SceneManager {
     Injector injector = Guice.createInjector(new DIConfigModule());
     private Scene scene;
