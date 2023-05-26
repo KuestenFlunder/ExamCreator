@@ -12,7 +12,6 @@ module com.team_kuestenflunder.exam_desktop {
     requires org.apache.pdfbox;
 
 
-
     opens com.team_kuestenflunder.exam_desktop to javafx.fxml;
     exports com.team_kuestenflunder.exam_desktop;
     exports com.team_kuestenflunder.exam_desktop.entity;
