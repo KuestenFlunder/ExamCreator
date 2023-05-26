@@ -32,7 +32,6 @@ public class QuestionsViewController implements Initializable {
     public QuestionsViewController(QuestionsViewServiceImpl questionsViewService) {
         this.questionsViewService = questionsViewService;
     }
-    //TODO Add to dependency injection
 
     public void onNewQuestionClick(ActionEvent event) {
         try {
@@ -78,7 +77,6 @@ public class QuestionsViewController implements Initializable {
             throw new RuntimeException(e);
         }
 
-        //TODO transfer Questioncall to PdfCreationPopUpService
         System.out.println("questionPdfService.getRandomExamQuestions() = "
                 + questionsViewService.getRandomExamQuestions(2));
     }

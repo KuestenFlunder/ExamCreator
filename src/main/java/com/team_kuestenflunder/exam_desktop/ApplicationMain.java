@@ -21,7 +21,6 @@ public class ApplicationMain extends Application {
     public static void main(String[] args) {
         launch();
     }
-    // Stage > Scene > Pane
     @Override
     public void start(Stage stage) throws Exception {
         dataService.initDataService();
