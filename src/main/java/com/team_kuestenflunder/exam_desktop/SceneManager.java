@@ -22,6 +22,16 @@ public class SceneManager {
     private Stage stage;
     private Parent root;
 
+    private static SceneManager instance;
+
+    private SceneManager() {
+    }
+
+    public static SceneManager getInstance(){
+        if (instance == null) return new SceneManager();
+        return instance;
+    }
+
     public void switchSceneToQuestionForm(ActionEvent event, Question question) throws IOException {
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("questionForm.fxml"));
