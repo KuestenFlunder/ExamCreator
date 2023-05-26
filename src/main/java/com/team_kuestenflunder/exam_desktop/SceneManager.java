@@ -10,10 +10,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
+//TODO Refactor as singleton Pattern
 public class SceneManager {
     Injector injector = Guice.createInjector(new DIConfigModule());
     private Scene scene;
@@ -44,8 +46,16 @@ public class SceneManager {
         stage.show();
     }
 
-    public void addPdfCreationPopUp(ActionEvent event){
+    public void addPdfCreationPopUp(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("pdfCreationPopUp.fxml"));
+        fxmlLoader.setControllerFactory(injector::getInstance);
+        root = fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initOwner( (Stage) ((Node) event.getSource()).getScene().getWindow());
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.showAndWait();
 
     }
 
