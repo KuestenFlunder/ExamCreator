@@ -65,9 +65,9 @@ public class QuestionFormController implements Initializable {
             question.setQuestionCode(ta_questionCode.getText());
             //reset correct Answers do omit doubles and clean of AnswerList
             question.getAnswers().setCorrectAnswers(0);
-            question.getAnswers().setAnswerList(new ArrayList());
+            question.getAnswers().setAnswerList(new ArrayList<>());
 
-            for (int i = 0; i < 8; i++) {
+            for (int i = 0; i < 6; i++) {
                 String answerTextValue = answerTexts.get(i).getText();
                 boolean answerCorrectValue = answerCheckboxes.get(i).isSelected();
                 String answerDescriptionValue = answerDescriptions.get(i).getText();
@@ -110,7 +110,7 @@ public class QuestionFormController implements Initializable {
             ta_questionText.setText(question.getQuestionText());
             ta_questionCode.setText(question.getQuestionCode());
 
-            for (int i = 0; i < 8; i++) {
+            for (int i = 0; i < 6; i++) {
                 answerTexts.get(i).setText(question.getAnswers().getAnswerList().get(i).getAnswerText());
                 answerCheckboxes.get(i).setSelected(question.getAnswers().getAnswerList().get(i).isCorrectAnswer());
                 answerDescriptions.get(i).setText(question.getAnswers().getAnswerList().get(i).getAnswerDescription());
