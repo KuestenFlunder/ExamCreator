@@ -15,6 +15,7 @@ import javafx.util.StringConverter;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -62,15 +63,15 @@ public class QuestionFormController implements Initializable {
             question.setTopic(cb_topic.getValue());
             question.setQuestionText(ta_questionText.getText());
             question.setQuestionCode(ta_questionCode.getText());
-            //reset correct Answers do omit doubles
+            //reset correct Answers do omit doubles and clean of AnswerList
             question.getAnswers().setCorrectAnswers(0);
+            question.getAnswers().setAnswerList(new ArrayList());
+
             for (int i = 0; i < 8; i++) {
                 String answerTextValue = answerTexts.get(i).getText();
                 boolean answerCorrectValue = answerCheckboxes.get(i).isSelected();
                 String answerDescriptionValue = answerDescriptions.get(i).getText();
                 Answer answer;
-
-
 
                 if (i < question.getAnswers().getAnswerList().size()) {
                     // Update existing answer
@@ -78,6 +79,7 @@ public class QuestionFormController implements Initializable {
                     answer.setAnswerText(answerTextValue);
                     answer.setCorrectAnswer(answerCorrectValue);
                     answer.setAnswerDescription(answerDescriptionValue);
+
                 } else {
                     // Create new answer
                     answer = new Answer();
@@ -85,7 +87,6 @@ public class QuestionFormController implements Initializable {
                     answer.setCorrectAnswer(answerCorrectValue);
                     answer.setAnswerDescription(answerDescriptionValue);
                 }
-                question.
                 question.getAnswers().addAnswer(answer);
             }
             questionFormService.addQuestion(question);
