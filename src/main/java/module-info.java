@@ -10,6 +10,8 @@ module com.team_kuestenflunder.exam_desktop {
     requires com.fasterxml.jackson.databind;
     requires com.fasterxml.jackson.datatype.jsr310;
     requires org.apache.pdfbox;
+    requires org.mockito;
+    requires org.assertj.core;
 
 
     opens com.team_kuestenflunder.exam_desktop to javafx.fxml;
