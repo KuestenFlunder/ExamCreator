@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -70,8 +71,14 @@ public class QuestionsViewController implements Initializable {
 
 
 
-    public void onCreateExamPdfClick() {
+    public void onCreateExamPdfClick(ActionEvent event) {
+        try {
+            sceneManager.addPdfCreationPopUp(event);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
+        //TODO transfer Questioncall to PdfCreationPopUpService
         System.out.println("questionPdfService.getRandomExamQuestions() = "
                 + questionsViewService.getRandomExamQuestions(2));
     }

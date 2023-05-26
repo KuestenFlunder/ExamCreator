@@ -87,6 +87,7 @@ public class QuestionFormController implements Initializable {
                     answer.setCorrectAnswer(answerCorrectValue);
                     answer.setAnswerDescription(answerDescriptionValue);
                 }
+
                 question.getAnswers().addAnswer(answer);
             }
             questionFormService.addQuestion(question);

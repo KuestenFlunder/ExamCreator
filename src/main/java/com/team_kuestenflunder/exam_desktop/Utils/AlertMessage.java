@@ -10,5 +10,4 @@ public class AlertMessage {
         alert.showAndWait();
         return alert;
     }
-
 }

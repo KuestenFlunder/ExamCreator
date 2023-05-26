@@ -40,7 +40,7 @@ public class PDFHandler {
 // ---- Test to PDF
             try {
                     //PDDocument document = PDDocument.load(new File("page_titelLayout.pdf"));
-  // -----
+
                 PDDocument document = PDDocument.load(new File("src/main/resources/com/team_kuestenflunder/exam_desktop/templates/page_titelLayout.pdf"));
 
                 PDAcroForm acroForm = document.getDocumentCatalog().getAcroForm();
@@ -63,7 +63,7 @@ public class PDFHandler {
                 field = acroForm.getField("timeOfTestStartField");
                 field.setValue(startTime);
 
-                PDDocument questionPage = PDDocument.load(new File("src/main/resources/com/team_kuestenflunder/exam_desktop/templates/QuestionPage.pdf"));
+                PDDocument questionPage = PDDocument.load(new File("src/main/resources/com/team_kuestenflunder/exam_desktop/templates/QuestionLayout.pdf"));
                 PDAcroForm acroQuestionPage = questionPage.getDocumentCatalog().getAcroForm();
 
 

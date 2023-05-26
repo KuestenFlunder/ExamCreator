@@ -2,16 +2,71 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane minHeight="250.0" minWidth="940.0" prefHeight="896.0" prefWidth="1292.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team_kuestenflunder.exam_desktop.controller.PdfCreationPopUpController">
-
+<AnchorPane minHeight="241.0" minWidth="471.0" prefHeight="241.0" prefWidth="471.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team_kuestenflunder.exam_desktop.controller.PdfCreationPopUpController">
+   <children>
+      <VBox prefHeight="241.0" prefWidth="471.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Prüfung konfigurieren" wrappingWidth="428.8359375">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </VBox.margin>
+            </Text>
+            <GridPane prefHeight="219.0" prefWidth="471.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="212.0" minWidth="10.0" prefWidth="164.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="296.0" minWidth="10.0" prefWidth="267.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Anzahl der Testfragen : " GridPane.rowIndex="2" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Testdauer in Minuten : " GridPane.rowIndex="1" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Test Titel : " />
+                  <TextField fx:id="tf_testTitle" GridPane.columnIndex="1" />
+                  <TextField fx:id="tf_testDuration" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="tf_numberOfQuestions" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="20.0" left="20.0" right="20.0" />
+               </VBox.margin>
+            </GridPane>
+            <ButtonBar prefHeight="56.0" prefWidth="471.0">
+              <buttons>
+                <Button fx:id="bt_createExam" mnemonicParsing="false" onAction="#onCreateTestClick" text="Prüfung erstellen">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </Button>
+                  <Button fx:id="bt_cancel" mnemonicParsing="false" onAction="#onCancelClick" text="Abbrechen">
+                     <opaqueInsets>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </opaqueInsets>
+                  </Button>
+              </buttons>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets bottom="4.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </ButtonBar>
+         </children>
+      </VBox>
+   </children>
 </AnchorPane>
