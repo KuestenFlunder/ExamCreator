@@ -44,6 +44,10 @@ public class SceneManager {
         stage.show();
     }
 
+    public void addPdfCreationPopUp(ActionEvent event){
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("pdfCreationPopUp.fxml"));
+
+    }
 
 
     // used to inizialise the first view
