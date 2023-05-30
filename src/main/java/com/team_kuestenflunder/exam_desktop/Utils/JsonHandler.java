@@ -10,6 +10,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.team_kuestenflunder.exam_desktop.entity.Question;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.stage.FileChooser;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -42,54 +43,20 @@ public class JsonHandler {
     }
 
 
-    public void jsonFileMerger_1 (String... filePaths ) {
-        String mergedJsonString = "";
+    //TODO Add filechoser in Frontend to select the json files
+    public void mergeJsonFiles (String... filePaths ) {
+        List<JsonNode> jsonMergResults = new ArrayList<>();
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
         try {
             for (String filePath : filePaths) {
-                JsonNode jsonNode = objectMapper.readTree(new File(filePath));
-                mergedJsonString += jsonNode.toPrettyString();
+                jsonMergResults = objectMapper.readValue(new File(filePath), new TypeReference<>() {});
             }
-            //TODO alles wird in eine Zeile verpackt. unschöne Ausgabe
-            objectMapper.writerWithDefaultPrettyPrinter().writeValue(new File("src/main/Output/mergedJson_1.json"), mergedJsonString);
+            objectMapper.writeValue(new File("src/main/Output/mergedJson_1.json"), jsonMergResults);
         }catch (IOException e){
             e.printStackTrace();
         }
     }
-
-
-    public void jsonFileMerger_2 (String... filePaths ) {
-        ObjectMapper objectMapper = new ObjectMapper();
-        List<JsonNode> jsonNodes = new ArrayList<>();
-        try {
-            for (String filePath : filePaths) {
-                JsonNode jsonNode = objectMapper.readTree(new File(filePath));
-                jsonNodes.add(jsonNode);
-            }
-            ObjectNode objectNode = objectMapper.createObjectNode();
-            for (JsonNode jNode : jsonNodes) {
-                if (jNode instanceof ObjectNode) {
-                    System.out.println(jNode.toPrettyString());
-                    objectNode.setAll((ObjectNode) jNode);       // TODO warum ClassCastException ?
-//                    objectMapper.readValue(jNode.toString(), ObjectNode.class);   // der alternativen Code geht auch nicht
-                }
-            }
-//            JsonNode mergedJson = objectNode;
-            objectMapper.writeValue(new File("src/main/Output/mergedJson_2.json"), objectNode);
-            System.out.println("eine zusammengesetzte JSON-Datei ist erzeugt");
-        }catch (IOException e){
-            e.printStackTrace();
-        }
-    }
-
-
-    public static void main(String[] args) {
-        JsonHandler handler = new JsonHandler();
-        handler.jsonFileMerger_2 ("src/main/Output/JsonOutput.json", "src/main/Output/20_Questions.json" );
-    }
-
-
 
 
 }
