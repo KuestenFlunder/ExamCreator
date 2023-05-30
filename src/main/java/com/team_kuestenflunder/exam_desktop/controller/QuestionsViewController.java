@@ -8,7 +8,10 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -23,7 +26,7 @@ public class QuestionsViewController implements Initializable {
 
 
     @FXML
-    Button newQuestion_btn, bt_updateQuestion, bt_deleteQuestion, bt_createExam;
+    Button newQuestion_btn, bt_updateQuestion, bt_deleteQuestion, bt_createExam, bt_mergeJson;
 
     @FXML
     ListView<Question> lstw_QuestionList;
@@ -32,6 +35,7 @@ public class QuestionsViewController implements Initializable {
     public QuestionsViewController(QuestionsViewServiceImpl questionsViewService) {
         this.questionsViewService = questionsViewService;
     }
+
 
     public void onNewQuestionClick(ActionEvent event) {
         try {
@@ -67,9 +71,6 @@ public class QuestionsViewController implements Initializable {
         }
     }
 
-
-
-
     public void onCreateExamPdfClick(ActionEvent event) {
         try {
             sceneManager.addPdfCreationPopUp(event);
@@ -78,6 +79,14 @@ public class QuestionsViewController implements Initializable {
         }
     }
 
+    public void onMergeJsonClick(ActionEvent event) {
+
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Json wählen");
+        Stage stage = new Stage();
+        stage.initOwner( (Stage) ((Node) event.getSource()).getScene().getWindow());
+        fileChooser.showOpenDialog(stage);
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
