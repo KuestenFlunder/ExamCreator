@@ -3,19 +3,16 @@ package com.team_kuestenflunder.exam_desktop.Utils;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.team_kuestenflunder.exam_desktop.entity.Question;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.stage.FileChooser;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -42,21 +39,23 @@ public class JsonHandler {
         }
     }
 
-
-    //TODO Add filechoser in Frontend to select the json files
-    public void mergeJsonFiles (String... filePaths ) {
-        List<JsonNode> jsonMergResults = new ArrayList<>();
+    public void mergeJsonFiles(List<java.io.File> selectedFiles) {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
+        ArrayNode mergedJsonNode = objectMapper.createArrayNode();
         try {
-            for (String filePath : filePaths) {
-                jsonMergResults = objectMapper.readValue(new File(filePath), new TypeReference<>() {});
+            for (File file : selectedFiles) {
+                JsonNode jsonNode = objectMapper.readValue(new File(String.valueOf(file)), JsonNode.class);
+                if (jsonNode.isArray()) {
+                    mergedJsonNode.addAll((ArrayNode) jsonNode);
+                } else {
+                    mergedJsonNode.add(jsonNode);
+                }
             }
-            objectMapper.writeValue(new File("src/main/Output/mergedJson_1.json"), jsonMergResults);
-        }catch (IOException e){
+            objectMapper.writeValue(new File("src/main/Output/JsonMerge.json"), mergedJsonNode);
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
 
 }

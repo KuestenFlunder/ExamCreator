@@ -2,6 +2,7 @@ package com.team_kuestenflunder.exam_desktop.controller;
 
 import com.google.inject.Inject;
 import com.team_kuestenflunder.exam_desktop.SceneManager;
+import com.team_kuestenflunder.exam_desktop.Utils.JsonHandler;
 import com.team_kuestenflunder.exam_desktop.entity.Question;
 import com.team_kuestenflunder.exam_desktop.services.QuestionsViewServiceImpl;
 import javafx.collections.ObservableList;
@@ -13,8 +14,11 @@ import javafx.scene.control.*;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Arrays;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import static com.team_kuestenflunder.exam_desktop.Utils.AlertMessage.alertMessage;
@@ -23,7 +27,7 @@ public class QuestionsViewController implements Initializable {
 
     private final QuestionsViewServiceImpl questionsViewService;
     private final SceneManager sceneManager = SceneManager.getInstance();
-
+    private final JsonHandler jsonHandler = new JsonHandler();
 
     @FXML
     Button newQuestion_btn, bt_updateQuestion, bt_deleteQuestion, bt_createExam, bt_mergeJson;
@@ -80,12 +84,7 @@ public class QuestionsViewController implements Initializable {
     }
 
     public void onMergeJsonClick(ActionEvent event) {
-
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Json wählen");
-        Stage stage = new Stage();
-        stage.initOwner( (Stage) ((Node) event.getSource()).getScene().getWindow());
-        fileChooser.showOpenDialog(stage);
+        jsonHandler.mergeJsonFiles(sceneManager.addFileChooserDialog(event));
     }
 
     @Override
@@ -100,7 +99,6 @@ public class QuestionsViewController implements Initializable {
                 } else {
                     setText(question.getId() + " - " + question.getTopic() + " - " + question.getQuestionTitle() + "- richtige Antworten: " + question.getAnswers().getCorrectAnswers());
                 }
-
             }
         });
 

@@ -10,10 +10,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import org.controlsfx.control.action.Action;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 //TODO Refactor as singleton Pattern
 public class SceneManager {
@@ -67,6 +71,15 @@ public class SceneManager {
         stage.setScene(scene);
         stage.showAndWait();
 
+    }
+
+    public List <java.io.File> addFileChooserDialog(ActionEvent event){
+        Stage stage = new Stage();
+        stage.initOwner( ((Node) event.getSource()).getScene().getWindow());
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Json wählen");
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("JSON", "*.json"));
+        return fileChooser.showOpenMultipleDialog(stage);
     }
 
 
