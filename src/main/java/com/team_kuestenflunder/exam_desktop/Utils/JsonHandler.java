@@ -3,14 +3,11 @@ package com.team_kuestenflunder.exam_desktop.Utils;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.team_kuestenflunder.exam_desktop.entity.Question;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.stage.FileChooser;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -44,6 +41,24 @@ public class JsonHandler {
 
 
     //TODO Add filechoser in Frontend to select the json files
+    public void mergeJsonFiles(List<java.io.File> selectedFiles) {
+
+        List<JsonNode> jsonMergResults = new ArrayList<>();
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
+        try {
+            for (File file : selectedFiles) {
+                String path = file.toString();
+                jsonMergResults = ( objectMapper.readValue(new File(path), new TypeReference<>() {
+                }));
+            }
+            objectMapper.writeValue(new File("src/main/Output/JsonMerge.json"), jsonMergResults);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    //TODO Add filechoser in Frontend to select the json files
     public void mergeJsonFiles (String... filePaths ) {
         List<JsonNode> jsonMergResults = new ArrayList<>();
         ObjectMapper objectMapper = new ObjectMapper();
@@ -58,5 +73,9 @@ public class JsonHandler {
         }
     }
 
+    public static void main(String[] args) {
+        JsonHandler jsonHandler = new JsonHandler();
+        jsonHandler.mergeJsonFiles("src/main/Output/20_Questions.json","src/main/Output/JsonOutput.json");
+    }
 
 }
