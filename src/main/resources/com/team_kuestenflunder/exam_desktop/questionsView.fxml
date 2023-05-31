@@ -64,7 +64,7 @@
                                     <Insets bottom="20.0" />
                                  </VBox.margin>
                               </Button>
-                              <Button fx:id="bt_saveQuestionsAsJson" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Fragenliste speichern">
+                              <Button fx:id="bt_saveQuestionsAsJson" mnemonicParsing="false" onAction="#onSaveQuestionAsJsonClick" prefHeight="30.0" prefWidth="150.0" text="Fragenliste speichern">
                                  <font>
                                     <Font size="14.0" />
                                  </font>

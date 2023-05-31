@@ -81,6 +81,10 @@ public class QuestionsViewController implements Initializable {
         jsonHandler.mergeJsonFiles(sceneManager.addFileChooserDialog(event));
     }
 
+    public void onSaveQuestionAsJsonClick(ActionEvent event){
+
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         lstw_QuestionList.setItems((ObservableList<Question>) questionsViewService.getQuestions());
