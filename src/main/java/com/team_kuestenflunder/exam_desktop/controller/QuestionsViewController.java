@@ -24,7 +24,7 @@ public class QuestionsViewController implements Initializable {
     private final JsonHandler jsonHandler = new JsonHandler();
 
     @FXML
-    Button newQuestion_btn, bt_updateQuestion, bt_deleteQuestion, bt_createExam, bt_mergeJson, bt_saveQuestionsAsJson, bt_loadQuestionsJson;
+    Button newQuestion_btn, bt_updateQuestion, bt_deleteQuestion, bt_createExam, bt_mergeJson, bt_saveQuestionsAsJson, bt_loadQuestionsFromJson;
 
     @FXML
     ListView<Question> lstw_QuestionList;
@@ -87,6 +87,10 @@ public class QuestionsViewController implements Initializable {
       }catch (IOException e){
           e.printStackTrace();
       }
+    }
+
+    public void onLoadQuestionFromJsonClick(ActionEvent event) {
+
     }
 
     @Override

@@ -72,7 +72,7 @@
                                     <Insets bottom="20.0" />
                                  </VBox.margin>
                               </Button>
-                              <Button fx:id="bt_loadQuestionsJson" mnemonicParsing="false" onAction="#onMergeJsonClick" prefHeight="30.0" prefWidth="150.0" text="Fragenliste laden">
+                              <Button fx:id="bt_loadQuestionsFromJson" mnemonicParsing="false" onAction="#onLoadQuestionFromJsonClick" prefHeight="30.0" prefWidth="150.0" text="Fragenliste laden">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
