@@ -32,6 +32,7 @@ public class DataService {
         this.questions = questions;
     }
 
+    // TODO Extract strict dependency in refactoring
     public void initDataService() {
         try {
             questions = jsonHandler.readJson();

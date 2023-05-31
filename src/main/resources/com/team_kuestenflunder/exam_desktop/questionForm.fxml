@@ -12,113 +12,111 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="250.0" minWidth="940.0" prefHeight="896.0" prefWidth="1292.0" xmlns="http://javafx.com/javafx/19"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.team_kuestenflunder.exam_desktop.controller.QuestionFormController">
-   <VBox layoutX="7.0" prefHeight="55.0" prefWidth="1072.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-         AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+<AnchorPane minHeight="250.0" minWidth="940.0" prefHeight="896.0" prefWidth="1292.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team_kuestenflunder.exam_desktop.controller.QuestionFormController">
+   <VBox layoutX="7.0" prefHeight="55.0" prefWidth="1072.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <VBox prefHeight="59.0" prefWidth="1292.0">
          <HBox prefHeight="100.0" prefWidth="200.0">
-            <TextField fx:id="tf_questionTitle" prefHeight="100.0" prefWidth="700.0"
-                       promptText="Fragen Titel"/>
-            <Label fx:id="l_uuid" prefHeight="100.0" prefWidth="400.0" text="UUID:"/>
-            <Label fx:id="l_creationDate" prefHeight="100.0" prefWidth="180.0" text="erstellt am"/>
+            <TextField fx:id="tf_questionTitle" prefHeight="100.0" prefWidth="700.0" promptText="Fragen Titel" />
+            <Label fx:id="l_uuid" prefHeight="100.0" prefWidth="400.0" text="UUID:" />
+            <Label fx:id="l_creationDate" prefHeight="100.0" prefWidth="180.0" text="erstellt am" />
          </HBox>
       </VBox>
       <HBox prefHeight="52.0" prefWidth="1292.0">
-         <TextArea fx:id="ta_questionText" prefHeight="116.0" prefWidth="926.0" promptText="Fragenstellung"/>
-         <ChoiceBox fx:id="cb_topic" prefHeight="42.0" prefWidth="408.0"/>
+         <TextArea fx:id="ta_questionText" prefHeight="116.0" prefWidth="926.0" promptText="Fragenstellung" />
+         <ChoiceBox fx:id="cb_topic" prefHeight="42.0" prefWidth="408.0" />
       </HBox>
-      <TextArea fx:id="ta_questionCode" prefHeight="398.0" prefWidth="1292.0" promptText="Code"/>
+      <TextArea fx:id="ta_questionCode" prefHeight="398.0" prefWidth="1292.0" promptText="Code" />
       <HBox prefHeight="81.0" prefWidth="1292.0">
-         <CheckBox fx:id="chb_correctAnswer_0" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false"
-                   prefHeight="100.0" prefWidth="99.0">
+         <CheckBox fx:id="chb_correctAnswer_0" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="99.0">
             <padding>
-               <Insets left="25.0" right="25.0"/>
+               <Insets left="25.0" right="25.0" />
             </padding>
             <opaqueInsets>
-               <Insets/>
+               <Insets />
             </opaqueInsets>
          </CheckBox>
-         <TextArea fx:id="ta_answerText_0" prefHeight="100.0" prefWidth="1872.0" promptText="Antwort"/>
-         <TextArea fx:id="ta_answerDescription_0" prefHeight="100.0" prefWidth="1204.0" promptText="Erklärung"/>
+         <TextArea fx:id="ta_answerText_0" prefHeight="100.0" prefWidth="1872.0" promptText="Antwort" />
+         <TextArea fx:id="ta_answerDescription_0" prefHeight="100.0" prefWidth="1204.0" promptText="Erklärung" />
       </HBox>
       <HBox prefHeight="81.0" prefWidth="1292.0">
-         <CheckBox fx:id="chb_correctAnswer_1" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false"
-                   prefHeight="100.0" prefWidth="99.0">
+         <CheckBox fx:id="chb_correctAnswer_1" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="99.0">
             <padding>
-               <Insets left="25.0" right="25.0"/>
+               <Insets left="25.0" right="25.0" />
             </padding>
             <opaqueInsets>
-               <Insets/>
+               <Insets />
             </opaqueInsets>
          </CheckBox>
-         <TextArea fx:id="ta_answerText_1" prefHeight="100.0" prefWidth="1872.0" promptText="Antwort"/>
-         <TextArea fx:id="ta_answerDescription_1" prefHeight="100.0" prefWidth="1204.0" promptText="Erklärung"/>
+         <TextArea fx:id="ta_answerText_1" prefHeight="100.0" prefWidth="1872.0" promptText="Antwort" />
+         <TextArea fx:id="ta_answerDescription_1" prefHeight="100.0" prefWidth="1204.0" promptText="Erklärung" />
       </HBox>
       <HBox prefHeight="81.0" prefWidth="1292.0">
-         <CheckBox fx:id="chb_correctAnswer_2" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false"
-                   prefHeight="100.0" prefWidth="99.0">
+         <CheckBox fx:id="chb_correctAnswer_2" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="99.0">
             <padding>
-               <Insets left="25.0" right="25.0"/>
+               <Insets left="25.0" right="25.0" />
             </padding>
             <opaqueInsets>
-               <Insets/>
+               <Insets />
             </opaqueInsets>
          </CheckBox>
-         <TextArea fx:id="ta_answerText_2" prefHeight="100.0" prefWidth="1872.0" promptText="Antwort"/>
-         <TextArea fx:id="ta_answerDescription_2" prefHeight="100.0" prefWidth="1204.0" promptText="Erklärung"/>
+         <TextArea fx:id="ta_answerText_2" prefHeight="100.0" prefWidth="1872.0" promptText="Antwort" />
+         <TextArea fx:id="ta_answerDescription_2" prefHeight="100.0" prefWidth="1204.0" promptText="Erklärung" />
       </HBox>
       <HBox prefHeight="81.0" prefWidth="1292.0">
-         <CheckBox fx:id="chb_correctAnswer_3" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false"
-                   prefHeight="100.0" prefWidth="99.0">
+         <CheckBox fx:id="chb_correctAnswer_3" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="99.0">
             <padding>
-               <Insets left="25.0" right="25.0"/>
+               <Insets left="25.0" right="25.0" />
             </padding>
             <opaqueInsets>
-               <Insets/>
+               <Insets />
             </opaqueInsets>
          </CheckBox>
-         <TextArea fx:id="ta_answerText_3" prefHeight="100.0" prefWidth="1872.0" promptText="Antwort"/>
-         <TextArea fx:id="ta_answerDescription_3" prefHeight="100.0" prefWidth="1204.0" promptText="Erklärung"/>
+         <TextArea fx:id="ta_answerText_3" prefHeight="100.0" prefWidth="1872.0" promptText="Antwort" />
+         <TextArea fx:id="ta_answerDescription_3" prefHeight="100.0" prefWidth="1204.0" promptText="Erklärung" />
       </HBox>
       <HBox prefHeight="81.0" prefWidth="1292.0">
-         <CheckBox fx:id="chb_correctAnswer_4" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false"
-                   prefHeight="100.0" prefWidth="99.0">
+         <CheckBox fx:id="chb_correctAnswer_4" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="99.0">
             <padding>
-               <Insets left="25.0" right="25.0"/>
+               <Insets left="25.0" right="25.0" />
             </padding>
             <opaqueInsets>
-               <Insets/>
+               <Insets />
             </opaqueInsets>
          </CheckBox>
-         <TextArea fx:id="ta_answerText_4" prefHeight="100.0" prefWidth="1872.0" promptText="Antwort"/>
-         <TextArea fx:id="ta_answerDescription_4" prefHeight="100.0" prefWidth="1204.0" promptText="Erklärung"/>
+         <TextArea fx:id="ta_answerText_4" prefHeight="100.0" prefWidth="1872.0" promptText="Antwort" />
+         <TextArea fx:id="ta_answerDescription_4" prefHeight="100.0" prefWidth="1204.0" promptText="Erklärung" />
       </HBox>
       <HBox prefHeight="81.0" prefWidth="1292.0">
-         <CheckBox fx:id="chb_correctAnswer_5" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false"
-                   prefHeight="100.0" prefWidth="99.0">
+         <CheckBox fx:id="chb_correctAnswer_5" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="99.0">
             <padding>
-               <Insets left="25.0" right="25.0"/>
+               <Insets left="25.0" right="25.0" />
             </padding>
             <opaqueInsets>
-               <Insets/>
+               <Insets />
             </opaqueInsets>
          </CheckBox>
-         <TextArea fx:id="ta_answerText_5" prefHeight="100.0" prefWidth="1872.0" promptText="Antwort"/>
-         <TextArea fx:id="ta_answerDescription_5" prefHeight="100.0" prefWidth="1204.0" promptText="Erklärung"/>
+         <TextArea fx:id="ta_answerText_5" prefHeight="100.0" prefWidth="1872.0" promptText="Antwort" />
+         <TextArea fx:id="ta_answerDescription_5" prefHeight="100.0" prefWidth="1204.0" promptText="Erklärung" />
       </HBox>
-      <Button fx:id="bt_submit" mnemonicParsing="false" onAction="#onFormSaveClick" prefHeight="25.0"
-              prefWidth="1293.0" text="Speichern" textFill="#440ae4">
-         <VBox.margin>
-            <Insets/>
-         </VBox.margin>
-         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
-         </padding>
-         <font>
-            <Font size="20.0"/>
-         </font>
-      </Button>
+      <HBox prefHeight="47.0" prefWidth="1292.0">
+         <children>
+            <Button fx:id="bt_submit" mnemonicParsing="false" onAction="#onFormSaveClick" prefHeight="25.0" prefWidth="1293.0" text="Speichern" textFill="#e30b81">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <font>
+                  <Font name="BigBlue TerminalPlus Nerd Font Complete" size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="bt_cancel" mnemonicParsing="false" onAction="#onCancelClick" prefHeight="46.0" prefWidth="559.0" text="Abbrechen" textFill="#e30b0b">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <font>
+                  <Font name="BigBlue TerminalPlus Nerd Font Complete" size="20.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
    </VBox>
 </AnchorPane>

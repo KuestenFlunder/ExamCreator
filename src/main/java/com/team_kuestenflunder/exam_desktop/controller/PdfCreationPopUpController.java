@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 public class PdfCreationPopUpController {
     PdfCreationPopUpService pdfCreationPopUpService;
 
-    SceneManager sceneManager = SceneManager.getInstance();
+
     @FXML
     Button bt_createExam, bt_cancel;
     @FXML
@@ -34,17 +34,14 @@ public class PdfCreationPopUpController {
     }
 
     public void onCreateTestClick(ActionEvent event) {
-        int requestedNumberOfQuestions = Integer.valueOf(tf_numberOfQuestions.getText());
-        int testDuration = Integer.valueOf(tf_testDuration.getText());
+        int requestedNumberOfQuestions = Integer.parseInt(tf_numberOfQuestions.getText());
+        int testDuration = Integer.parseInt(tf_testDuration.getText());
         PDFHandler pdfHandler = new PDFHandler(pdfCreationPopUpService);
         pdfHandler.createExamPDF(requestedNumberOfQuestions, testDuration);
-                exitStage(event);
+        exitStage(event);
     }
-
 
     public void onCancelClick(ActionEvent event) {
         exitStage(event);
     }
-
-
 }
