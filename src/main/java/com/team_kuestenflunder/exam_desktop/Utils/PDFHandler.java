@@ -72,25 +72,25 @@ public class PDFHandler {
                 PDDocument questionPage = PDDocument.load(new File("src/main/resources/com/team_kuestenflunder/exam_desktop/templates/QuestionLayout.pdf"));
                 PDAcroForm acroQuestionPage = questionPage.getDocumentCatalog().getAcroForm();
                 qsCounter++;
+                setValueToField(acroQuestionPage, "QuestionID_Field", question.getId());
                 setValueToField(acroQuestionPage, "questionNumberField", String.valueOf(qsCounter));
                 setValueToField(acroQuestionPage, "numberOfQuestionsField", String.valueOf(numberOfQuestions));
                 setValueToField(acroQuestionPage, "QuestionTextField", question.getQuestionText());
                 setValueToField(acroQuestionPage, "QuestionCodeField", question.getQuestionCode());
                 setValueToField(acroQuestionPage, "correctAnswersField", String.valueOf(question.getAnswers().getCorrectAnswers()));
                 // Answer-Fields füllen
-                for (int i = 1; i < question.getAnswers().getAnswerList().size(); i++) {
+                for (int i = 0; i < question.getAnswers().getAnswerList().size(); i++) {
                     String answerFieldName = "AnswerTextField_" + i;
                         setValueToField(acroQuestionPage, answerFieldName, String.valueOf(question.getAnswers().getAnswerList().get(i).getAnswerText()));
                     String answerCodeFieldName = "AnswerCodeField_" + i;
                         setValueToField(acroQuestionPage, answerCodeFieldName, String.valueOf(question.getAnswers().getAnswerList().get(i).getAnswerDescription())); //TODO 'Description' durch 'AnswerCode' ersetzen
-                    String checkboxFieldName = "checkboxFieldName_" + i;
+                    String checkboxFieldName = "CorrectAnswerBox_" + i;
                         PDCheckBox checkbox = (PDCheckBox) acroQuestionPage.getField(checkboxFieldName);
                             if (question.getAnswers().getAnswerList().get(i).isCorrectAnswer()) {
                                 checkbox.setValue(checkbox.getOnValue());
                             }
-//                        PDAnnotationWidget widget = checkbox.getWidgets().get(0);
-//                            widget.setHidden(true);
-//                            acroQuestionPage.refreshAppearances();
+                        PDAnnotationWidget widget = checkbox.getWidgets().get(0);
+                            widget.setHidden(true);
                 }
                 String pathName = "src/main/Output/qsPage" + qsCounter + ".pdf";
                 questionPage.save(pathName);
@@ -139,15 +139,6 @@ public class PDFHandler {
     private void setValueToField(PDAcroForm pdAcroForm,String fieldName, String value) throws IOException {
         PDField field = pdAcroForm.getField(fieldName);
         field.setValue(value);
-    }
-
-
-    public boolean evaluateTheTest (PDAcroForm acroform) {
-        boolean testResult = false;
-
-
-
-        return testResult;
     }
 
 
