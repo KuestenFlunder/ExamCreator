@@ -9,16 +9,10 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.Arrays;
-import java.util.List;
 import java.util.ResourceBundle;
 
 import static com.team_kuestenflunder.exam_desktop.Utils.AlertMessage.alertMessage;
@@ -30,7 +24,7 @@ public class QuestionsViewController implements Initializable {
     private final JsonHandler jsonHandler = new JsonHandler();
 
     @FXML
-    Button newQuestion_btn, bt_updateQuestion, bt_deleteQuestion, bt_createExam, bt_mergeJson,bt_saveQuestionsAsJson,bt_loadQuestionsJson;
+    Button newQuestion_btn, bt_updateQuestion, bt_deleteQuestion, bt_createExam, bt_mergeJson, bt_saveQuestionsAsJson, bt_loadQuestionsJson;
 
     @FXML
     ListView<Question> lstw_QuestionList;
