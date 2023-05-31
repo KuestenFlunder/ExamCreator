@@ -11,63 +11,83 @@
 
 <AnchorPane minHeight="250.0" minWidth="940.0" prefHeight="650.0" prefWidth="940.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team_kuestenflunder.exam_desktop.controller.QuestionsViewController">
    <children>
-      <SplitPane dividerPositions="0.7702265372168284" layoutX="4.0" layoutY="27.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="930.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="25.0">
-        <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="618.0" prefWidth="602.0">
-               <children>
-                  <ListView fx:id="lstw_QuestionList" prefHeight="497.0" prefWidth="402.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-               </children>
-            </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="616.0" prefWidth="435.0">
-               <children>
-                  <VBox alignment="TOP_CENTER" prefHeight="468.0" prefWidth="136.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="20.0">
+      <VBox prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <SplitPane dividerPositions="0.7702265372168284" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="930.0">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="618.0" prefWidth="602.0">
                      <children>
-                        <Button fx:id="newQuestion_btn" mnemonicParsing="false" onAction="#onNewQuestionClick" prefHeight="30.0" prefWidth="150.0" text="Neue Frage">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets top="20.0" />
-                           </VBox.margin>
-                        </Button>
-                        <Button fx:id="bt_updateQuestion" mnemonicParsing="false" onAction="#onUpdateButtonClick" prefHeight="30.0" prefWidth="150.0" text="Frage bearbeiten">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets bottom="20.0" top="20.0" />
-                           </VBox.margin>
-                        </Button>
-                        <Button fx:id="bt_deleteQuestion" mnemonicParsing="false" onAction="#onDeleteButtonClick" prefHeight="30.0" prefWidth="150.0" text="Frage löschen">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets bottom="20.0" />
-                           </VBox.margin>
-                        </Button>
-                        <Button fx:id="bt_createExam" mnemonicParsing="false" onAction="#onCreateExamPdfClick" prefHeight="30.0" prefWidth="150.0" text="Prüfunge als PDF erstellen">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets bottom="20.0" />
-                           </VBox.margin>
-                        </Button>
-                        <Button fx:id="bt_mergeJson" mnemonicParsing="false" onAction="#onMergeJsonClick" prefHeight="30.0" prefWidth="150.0" text="Json zusammenführen">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Button>
+                        <ListView fx:id="lstw_QuestionList" layoutX="14.0" prefHeight="497.0" prefWidth="402.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="-14.0" AnchorPane.topAnchor="0.0" />
                      </children>
-                     <opaqueInsets>
-                        <Insets bottom="20.0" top="20.0" />
-                     </opaqueInsets>
-                  </VBox>
-               </children>
-            </AnchorPane>
-        </items>
-      </SplitPane>
+                  </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="616.0" prefWidth="435.0">
+                     <children>
+                        <VBox alignment="TOP_CENTER" prefHeight="468.0" prefWidth="136.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="20.0">
+                           <children>
+                              <Button fx:id="newQuestion_btn" mnemonicParsing="false" onAction="#onNewQuestionClick" prefHeight="30.0" prefWidth="150.0" text="Neue Frage">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="bt_updateQuestion" mnemonicParsing="false" onAction="#onUpdateButtonClick" prefHeight="30.0" prefWidth="150.0" text="Frage bearbeiten">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" top="20.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="bt_deleteQuestion" mnemonicParsing="false" onAction="#onDeleteButtonClick" prefHeight="30.0" prefWidth="150.0" text="Frage löschen">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="bt_createExam" mnemonicParsing="false" onAction="#onCreateExamPdfClick" prefHeight="30.0" prefWidth="150.0" text="Prüfunge als PDF erstellen">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="60.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="bt_mergeJson" mnemonicParsing="false" onAction="#onMergeJsonClick" prefHeight="30.0" prefWidth="150.0" text="Json zusammenführen">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="bt_saveQuestionsAsJson" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Fragenliste speichern">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="bt_loadQuestionsJson" mnemonicParsing="false" onAction="#onMergeJsonClick" prefHeight="30.0" prefWidth="150.0" text="Fragenliste laden">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                           <opaqueInsets>
+                              <Insets bottom="20.0" top="20.0" />
+                           </opaqueInsets>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+              </items>
+            </SplitPane>
+         </children>
+      </VBox>
    </children>
    <effect>
       <Blend />
