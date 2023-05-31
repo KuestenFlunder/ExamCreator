@@ -58,7 +58,7 @@ public class JsonHandler {
             return FXCollections.observableArrayList();
         }
     }
-    public void mergeJsonFiles(List<java.io.File> selectedFiles) {
+    public void mergeJsonFiles(List<java.io.File> selectedFiles, File outputFile) {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
         ArrayNode mergedJsonNode = objectMapper.createArrayNode();
@@ -71,7 +71,8 @@ public class JsonHandler {
                     mergedJsonNode.add(jsonNode);
                 }
             }
-            objectMapper.writeValue(new File("src/main/Output/JsonMerge.json"), mergedJsonNode);
+
+            objectMapper.writeValue(new File(outputFile.toURI()), mergedJsonNode);
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -79,7 +79,9 @@ public class QuestionsViewController implements Initializable {
     }
 
     public void onMergeJsonClick(ActionEvent event) {
-        jsonHandler.mergeJsonFiles(sceneManager.addFileChooserDialogMultiple(event));
+        jsonHandler.mergeJsonFiles(
+                sceneManager.addFileChooserDialogMultiple(event),
+                sceneManager.addFileSaveDialog(event));
     }
 
     public void onSaveQuestionAsJsonClick(ActionEvent event)  {
