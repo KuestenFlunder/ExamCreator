@@ -8,8 +8,14 @@ import javafx.fxml.Initializable;
 import org.apache.pdfbox.multipdf.PDFMergerUtility;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.interactive.action.PDActionJavaScript;
+import org.apache.pdfbox.pdmodel.interactive.action.PDFormFieldAdditionalActions;
+import org.apache.pdfbox.pdmodel.interactive.annotation.PDAnnotation;
+import org.apache.pdfbox.pdmodel.interactive.annotation.PDAnnotationWidget;
 import org.apache.pdfbox.pdmodel.interactive.form.PDAcroForm;
+import org.apache.pdfbox.pdmodel.interactive.form.PDCheckBox;
 import org.apache.pdfbox.pdmodel.interactive.form.PDField;
+import org.apache.pdfbox.pdmodel.interactive.form.PDPushButton;
 
 import java.io.File;
 import java.io.IOException;
@@ -66,16 +72,25 @@ public class PDFHandler {
                 PDDocument questionPage = PDDocument.load(new File("src/main/resources/com/team_kuestenflunder/exam_desktop/templates/QuestionLayout.pdf"));
                 PDAcroForm acroQuestionPage = questionPage.getDocumentCatalog().getAcroForm();
                 qsCounter++;
+                setValueToField(acroQuestionPage, "QuestionID_Field", question.getId());
                 setValueToField(acroQuestionPage, "questionNumberField", String.valueOf(qsCounter));
                 setValueToField(acroQuestionPage, "numberOfQuestionsField", String.valueOf(numberOfQuestions));
                 setValueToField(acroQuestionPage, "QuestionTextField", question.getQuestionText());
                 setValueToField(acroQuestionPage, "QuestionCodeField", question.getQuestionCode());
                 setValueToField(acroQuestionPage, "correctAnswersField", String.valueOf(question.getAnswers().getCorrectAnswers()));
-                for (int i = 1; i < question.getAnswers().getAnswerList().size(); i++) {
+                // Answer-Fields füllen
+                for (int i = 0; i < question.getAnswers().getAnswerList().size(); i++) {
                     String answerFieldName = "AnswerTextField_" + i;
+                        setValueToField(acroQuestionPage, answerFieldName, String.valueOf(question.getAnswers().getAnswerList().get(i).getAnswerText()));
                     String answerCodeFieldName = "AnswerCodeField_" + i;
-                    setValueToField(acroQuestionPage, answerFieldName, String.valueOf(question.getAnswers().getAnswerList().get(i).getAnswerText()));
-                    setValueToField(acroQuestionPage, answerCodeFieldName, String.valueOf(question.getAnswers().getAnswerList().get(i).getAnswerDescription())); //TODO 'Description' durch 'AnswerCode' ersetzen
+                        setValueToField(acroQuestionPage, answerCodeFieldName, String.valueOf(question.getAnswers().getAnswerList().get(i).getAnswerDescription())); //TODO 'Description' durch 'AnswerCode' ersetzen
+                    String checkboxFieldName = "CorrectAnswerBox_" + i;
+                        PDCheckBox checkbox = (PDCheckBox) acroQuestionPage.getField(checkboxFieldName);
+                            if (question.getAnswers().getAnswerList().get(i).isCorrectAnswer()) {
+                                checkbox.setValue(checkbox.getOnValue());
+                            }
+                        PDAnnotationWidget widget = checkbox.getWidgets().get(0);
+                            widget.setHidden(true);
                 }
                 String pathName = "src/main/Output/qsPage" + qsCounter + ".pdf";
                 questionPage.save(pathName);
@@ -86,9 +101,15 @@ public class PDFHandler {
             // last page
             PDDocument lastPage = PDDocument.load(new File("src/main/resources/com/team_kuestenflunder/exam_desktop/templates/LastPageLayout.pdf"));
             PDAcroForm acroFormLastPage = lastPage.getDocumentCatalog().getAcroForm();
-            setValueToField(acroFormLastPage, "resultField", "BESTANDEN");
+            setValueToField(acroFormLastPage, "ResultTextField", "BESTANDEN");
             setValueToField(acroFormLastPage, "numberOfQuestionsField", String.valueOf(numberOfQuestions));
             setValueToField(acroFormLastPage, "correctAnswersAmountField", "?");
+
+//????????? TODO Funktion in JAvaScript
+            PDPushButton evaluateButton = (PDPushButton)acroFormLastPage.getField("evaluateTheTest_Button");
+            PDFormFieldAdditionalActions action = new PDFormFieldAdditionalActions();
+//            evaluateButton.setActions(action.setF());
+//?????????
             lastPage.save("src/main/Output/LastPage.pdf");
             lastPage.close();
             pdfTest.addSource("src/main/Output/LastPage.pdf");
@@ -111,6 +132,7 @@ public class PDFHandler {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        System.out.println("Dokument ist erstellt");
     }
 
 
@@ -118,7 +140,6 @@ public class PDFHandler {
         PDField field = pdAcroForm.getField(fieldName);
         field.setValue(value);
     }
-
 
 
 }
