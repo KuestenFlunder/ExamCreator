@@ -18,10 +18,17 @@ import java.util.List;
 
 public class JsonHandler {
 
-    public void writeJson(List<Question> questionList) throws IOException {
+    //TODO Refactor writeJson methods to one
+
+    public void writeJsonToFile(List<Question> questionList,File file) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
         objectMapper.registerModule(new JavaTimeModule());
-        objectMapper.writeValue(new File("src/main/Output/JsonOutput.json"), questionList);
+
+        if (file == null) {
+            file = new File("src/main/Output/JsonOutput.json");
+        }
+
+        objectMapper.writeValue(new File(file.toURI()), questionList);
     }
 
     public ObservableList<Question> readJson() throws IOException {
@@ -38,8 +45,20 @@ public class JsonHandler {
             return FXCollections.observableArrayList();
         }
     }
-
-    public void mergeJsonFiles(List<java.io.File> selectedFiles) {
+    public ObservableList<Question> readJsonFromFile(File file) throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.registerModule(new JavaTimeModule());
+        try {
+            File jsonFile = new File(file.toURI());
+            List<Question> questionList = objectMapper.readValue(jsonFile, new TypeReference<>() {
+            });
+            return FXCollections.observableArrayList(questionList);
+        } catch (FileNotFoundException e) {
+            System.out.println("Json nicht gefunden. Es wird ein entsprechender Pfad beim Beenden der Applikation erstellt");
+            return FXCollections.observableArrayList();
+        }
+    }
+    public void mergeJsonFiles(List<java.io.File> selectedFiles, File outputFile) {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
         ArrayNode mergedJsonNode = objectMapper.createArrayNode();
@@ -52,7 +71,8 @@ public class JsonHandler {
                     mergedJsonNode.add(jsonNode);
                 }
             }
-            objectMapper.writeValue(new File("src/main/Output/JsonMerge.json"), mergedJsonNode);
+
+            objectMapper.writeValue(new File(outputFile.toURI()), mergedJsonNode);
         } catch (IOException e) {
             e.printStackTrace();
         }

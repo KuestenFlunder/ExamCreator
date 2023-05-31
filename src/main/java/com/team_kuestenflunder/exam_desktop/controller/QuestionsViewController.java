@@ -9,16 +9,11 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.Arrays;
-import java.util.List;
 import java.util.ResourceBundle;
 
 import static com.team_kuestenflunder.exam_desktop.Utils.AlertMessage.alertMessage;
@@ -30,7 +25,7 @@ public class QuestionsViewController implements Initializable {
     private final JsonHandler jsonHandler = new JsonHandler();
 
     @FXML
-    Button newQuestion_btn, bt_updateQuestion, bt_deleteQuestion, bt_createExam, bt_mergeJson;
+    Button newQuestion_btn, bt_updateQuestion, bt_deleteQuestion, bt_createExam, bt_mergeJson, bt_saveQuestionsAsJson, bt_loadQuestionsFromJson;
 
     @FXML
     ListView<Question> lstw_QuestionList;
@@ -84,11 +79,41 @@ public class QuestionsViewController implements Initializable {
     }
 
     public void onMergeJsonClick(ActionEvent event) {
-        jsonHandler.mergeJsonFiles(sceneManager.addFileChooserDialog(event));
+        jsonHandler.mergeJsonFiles(
+                sceneManager.addFileChooserDialogMultiple(event),
+                sceneManager.addFileSaveDialog(event));
+    }
+
+    public void onSaveQuestionAsJsonClick(ActionEvent event)  {
+      try {
+        jsonHandler.writeJsonToFile( questionsViewService.getQuestions(),sceneManager.addFileSaveDialog(event));
+      }catch (IOException e){
+          e.printStackTrace();
+      }
+    }
+
+    public void onLoadQuestionFromJsonClick(ActionEvent event) {
+        // get the file that should be loaded
+        File file = sceneManager.addFileChooserDialogSingle(event);
+        // update the listview with the new list --> add questionViewService.addQustions
+
+        try {
+            ObservableList<Question> questions = jsonHandler.readJsonFromFile(file);
+            questionsViewService.addQuestions(questions);
+            createViewList();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        createViewList();
+
+    }
+
+    private void createViewList() {
         lstw_QuestionList.setItems((ObservableList<Question>) questionsViewService.getQuestions());
         lstw_QuestionList.setCellFactory(param -> new ListCell<>() {
             @Override
@@ -101,7 +126,6 @@ public class QuestionsViewController implements Initializable {
                 }
             }
         });
-
     }
 
 

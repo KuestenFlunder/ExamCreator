@@ -2,15 +2,11 @@ package com.team_kuestenflunder.exam_desktop.services;
 
 import com.google.inject.Inject;
 import com.team_kuestenflunder.exam_desktop.Constants;
-import com.team_kuestenflunder.exam_desktop.Utils.AlertMessage;
 import com.team_kuestenflunder.exam_desktop.entity.Question;
 import com.team_kuestenflunder.exam_desktop.repository.QuestionRepositoryImpl;
-import javafx.scene.control.Alert;
+import javafx.collections.ObservableList;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Random;
-import java.util.Set;
 
 public class QuestionsViewServiceImpl implements Service {
     QuestionRepositoryImpl questionRepository;
@@ -34,6 +30,9 @@ public class QuestionsViewServiceImpl implements Service {
         return questionRepository.getQuestions();
     }
 
+    public void addQuestions(ObservableList<Question> questions) {
+        questionRepository.addQuestions(questions);
+    }
 
     public int getQuestionIndexByID(String id) {
         for (int i = 0; i < questionRepository.getQuestions().size(); i++) {
@@ -43,7 +42,6 @@ public class QuestionsViewServiceImpl implements Service {
         }
         return Constants.NOT_FOUND;
     }
-
 
 
     public void deleteQuestion(Question question) {

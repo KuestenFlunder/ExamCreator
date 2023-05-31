@@ -13,7 +13,6 @@ import javafx.scene.Scene;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import org.controlsfx.control.action.Action;
 
 import java.io.File;
 import java.io.IOException;
@@ -66,20 +65,37 @@ public class SceneManager {
         root = fxmlLoader.load();
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
-        stage.initOwner( (Stage) ((Node) event.getSource()).getScene().getWindow());
+        stage.initOwner( ((Node) event.getSource()).getScene().getWindow());
         scene = new Scene(root);
         stage.setScene(scene);
         stage.showAndWait();
 
     }
 
-    public List <java.io.File> addFileChooserDialog(ActionEvent event){
+    public List <java.io.File> addFileChooserDialogMultiple(ActionEvent event){
         Stage stage = new Stage();
         stage.initOwner( ((Node) event.getSource()).getScene().getWindow());
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Json wählen");
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("JSON", "*.json"));
         return fileChooser.showOpenMultipleDialog(stage);
+    }
+
+    public File addFileChooserDialogSingle(ActionEvent event){
+        Stage stage = new Stage();
+        stage.initOwner( ((Node) event.getSource()).getScene().getWindow());
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Json wählen");
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("JSON", "*.json"));
+        return fileChooser.showOpenDialog(stage);
+    }
+    public File addFileSaveDialog(ActionEvent event){
+        Stage stage = new Stage();
+        stage.initOwner( ((Node) event.getSource()).getScene().getWindow());
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Json wählen");
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("JSON", "*.json"));
+        return fileChooser.showSaveDialog(stage);
     }
 
 
