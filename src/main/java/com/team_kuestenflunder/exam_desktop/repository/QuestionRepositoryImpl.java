@@ -9,7 +9,7 @@ import java.util.List;
 
 public class QuestionRepositoryImpl implements QuestionRepository{
 
-    //TODO Might be injected with Guice
+
     DataService dataService = DataService.getInstance();
 
     @Override

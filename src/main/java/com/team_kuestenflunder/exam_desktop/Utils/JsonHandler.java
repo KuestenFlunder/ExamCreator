@@ -18,14 +18,16 @@ import java.util.List;
 
 public class JsonHandler {
 
-    public void writeJson(List<Question> questionList) throws IOException {
-        ObjectMapper objectMapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
-        objectMapper.registerModule(new JavaTimeModule());
-        objectMapper.writeValue(new File("src/main/Output/JsonOutput.json"), questionList);
-    }
+    //TODO Refactor writeJson methods to one
+
     public void writeJsonToFile(List<Question> questionList,File file) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
         objectMapper.registerModule(new JavaTimeModule());
+
+        if (file == null) {
+            file = new File("src/main/Output/JsonOutput.json");
+        }
+
         objectMapper.writeValue(new File(file.toURI()), questionList);
     }
 

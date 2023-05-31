@@ -6,7 +6,6 @@ import com.team_kuestenflunder.exam_desktop.Utils.CSVHandler;
 import com.team_kuestenflunder.exam_desktop.Utils.JsonHandler;
 import com.team_kuestenflunder.exam_desktop.moduls.DIConfigModule;
 import com.team_kuestenflunder.exam_desktop.repository.DataService;
-import com.team_kuestenflunder.exam_desktop.repository.QuestionRepositoryImpl;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -16,7 +15,7 @@ public class ApplicationMain extends Application {
     private final SceneManager sceneManager = SceneManager.getInstance();
     private final DataService dataService = DataService.getInstance();
     private final CSVHandler csvHandler = new CSVHandler();
-    private JsonHandler jsonHandler = new JsonHandler();
+    private final JsonHandler jsonHandler = new JsonHandler();
 
     public static void main(String[] args) {
         launch();
@@ -33,7 +32,7 @@ public class ApplicationMain extends Application {
 
     public void stop() throws Exception {
         csvHandler.writeCSV(dataService.getQuestions());
-        jsonHandler.writeJson(dataService.getQuestions());
+        jsonHandler.writeJsonToFile(dataService.getQuestions(),null);
     }
 
 
