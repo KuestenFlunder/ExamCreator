@@ -23,6 +23,11 @@ public class JsonHandler {
         objectMapper.registerModule(new JavaTimeModule());
         objectMapper.writeValue(new File("src/main/Output/JsonOutput.json"), questionList);
     }
+    public void writeJsonToFile(List<Question> questionList,File file) throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
+        objectMapper.registerModule(new JavaTimeModule());
+        objectMapper.writeValue(new File(file.toURI()), questionList);
+    }
 
     public ObservableList<Question> readJson() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();

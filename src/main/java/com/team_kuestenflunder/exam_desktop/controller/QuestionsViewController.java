@@ -81,8 +81,12 @@ public class QuestionsViewController implements Initializable {
         jsonHandler.mergeJsonFiles(sceneManager.addFileChooserDialog(event));
     }
 
-    public void onSaveQuestionAsJsonClick(ActionEvent event){
-
+    public void onSaveQuestionAsJsonClick(ActionEvent event)  {
+      try {
+        jsonHandler.writeJsonToFile( questionsViewService.getQuestions(),sceneManager.addFileSaveDialog(event));
+      }catch (IOException e){
+          e.printStackTrace();
+      }
     }
 
     @Override
