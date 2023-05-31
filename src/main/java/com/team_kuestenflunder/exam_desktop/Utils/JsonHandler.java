@@ -25,7 +25,7 @@ public class JsonHandler {
         objectMapper.registerModule(new JavaTimeModule());
 
         if (file == null) {
-            file = new File("src/main/Output/JsonOutput.json");
+            file = new File("src/main/Output/innerJsonDatastore.json");
         }
 
         objectMapper.writeValue(new File(file.toURI()), questionList);
@@ -35,7 +35,7 @@ public class JsonHandler {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.registerModule(new JavaTimeModule());
         try {
-            File jsonFile = new File("src/main/Output/JsonOutput.json");
+            File jsonFile = new File("src/main/Output/innerJsonDatastore.json");
             List<Question> questionList = objectMapper.readValue(jsonFile, new TypeReference<>() {
             });
             System.out.println("Json created successfully");

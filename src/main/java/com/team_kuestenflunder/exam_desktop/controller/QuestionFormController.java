@@ -32,7 +32,7 @@ public class QuestionFormController implements Initializable {
             ta_answerText_4, ta_answerText_5, ta_answerText_6, ta_answerText_7, ta_answerDescription_0, ta_answerDescription_1, ta_answerDescription_2, ta_answerDescription_3,
             ta_answerDescription_4, ta_answerDescription_5, ta_answerDescription_6, ta_answerDescription_7;
     @FXML
-    Button bt_submit;
+    Button bt_submit, bt_cancel;
     @FXML
     ChoiceBox<Topics> cb_topic;
     @FXML
@@ -95,6 +95,15 @@ public class QuestionFormController implements Initializable {
 
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void onCancelClick(ActionEvent event){
+
+        try {
+            sceneManager.switchSceneToQuestionView(event);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
