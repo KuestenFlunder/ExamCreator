@@ -72,7 +72,7 @@ public class SceneManager {
 
     }
 
-    public List <java.io.File> addFileChooserDialog(ActionEvent event){
+    public List <java.io.File> addFileChooserDialogMultiple(ActionEvent event){
         Stage stage = new Stage();
         stage.initOwner( ((Node) event.getSource()).getScene().getWindow());
         FileChooser fileChooser = new FileChooser();
@@ -81,6 +81,14 @@ public class SceneManager {
         return fileChooser.showOpenMultipleDialog(stage);
     }
 
+    public File addFileChooserDialogSingle(ActionEvent event){
+        Stage stage = new Stage();
+        stage.initOwner( ((Node) event.getSource()).getScene().getWindow());
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Json wählen");
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("JSON", "*.json"));
+        return fileChooser.showOpenDialog(stage);
+    }
     public File addFileSaveDialog(ActionEvent event){
         Stage stage = new Stage();
         stage.initOwner( ((Node) event.getSource()).getScene().getWindow());

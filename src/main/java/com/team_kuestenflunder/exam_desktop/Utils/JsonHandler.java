@@ -45,7 +45,19 @@ public class JsonHandler {
             return FXCollections.observableArrayList();
         }
     }
-
+    public ObservableList<Question> readJsonFromFile(File file) throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.registerModule(new JavaTimeModule());
+        try {
+            File jsonFile = new File(file.toURI());
+            List<Question> questionList = objectMapper.readValue(jsonFile, new TypeReference<>() {
+            });
+            return FXCollections.observableArrayList(questionList);
+        } catch (FileNotFoundException e) {
+            System.out.println("Json nicht gefunden. Es wird ein entsprechender Pfad beim Beenden der Applikation erstellt");
+            return FXCollections.observableArrayList();
+        }
+    }
     public void mergeJsonFiles(List<java.io.File> selectedFiles) {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT);

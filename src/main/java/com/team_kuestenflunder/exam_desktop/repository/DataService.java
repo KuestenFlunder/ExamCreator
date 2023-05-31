@@ -28,6 +28,10 @@ public class DataService {
         return questions;
     }
 
+    public void setQuestions(ObservableList<Question> questions) {
+        this.questions = questions;
+    }
+
     public void initDataService() {
         try {
             questions = jsonHandler.readJson();
@@ -35,6 +39,4 @@ public class DataService {
             e.printStackTrace();
         }
     }
-
-
 }

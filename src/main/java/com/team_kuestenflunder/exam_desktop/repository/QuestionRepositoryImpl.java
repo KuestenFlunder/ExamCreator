@@ -1,19 +1,17 @@
 package com.team_kuestenflunder.exam_desktop.repository;
 
-import com.team_kuestenflunder.exam_desktop.Utils.CSVHandler;
-import com.team_kuestenflunder.exam_desktop.Utils.JsonHandler;
 import com.team_kuestenflunder.exam_desktop.entity.Question;
+import javafx.collections.ObservableList;
 
-import java.io.IOException;
 import java.util.List;
 
-public class QuestionRepositoryImpl implements QuestionRepository{
+public class QuestionRepositoryImpl implements QuestionRepository {
 
 
     DataService dataService = DataService.getInstance();
 
     @Override
-    public void addQuestion(Question question)  {
+    public void addQuestion(Question question) {
         dataService.getQuestions().add(question);
     }
 
@@ -39,4 +37,7 @@ public class QuestionRepositoryImpl implements QuestionRepository{
     }
 
 
+    public void addQuestions(ObservableList<Question> questions) {
+        dataService.setQuestions(questions);
+    }
 }

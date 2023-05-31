@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -78,7 +79,7 @@ public class QuestionsViewController implements Initializable {
     }
 
     public void onMergeJsonClick(ActionEvent event) {
-        jsonHandler.mergeJsonFiles(sceneManager.addFileChooserDialog(event));
+        jsonHandler.mergeJsonFiles(sceneManager.addFileChooserDialogMultiple(event));
     }
 
     public void onSaveQuestionAsJsonClick(ActionEvent event)  {
@@ -90,11 +91,27 @@ public class QuestionsViewController implements Initializable {
     }
 
     public void onLoadQuestionFromJsonClick(ActionEvent event) {
+        // get the file that should be loaded
+        File file = sceneManager.addFileChooserDialogSingle(event);
+        // update the listview with the new list --> add questionViewService.addQustions
+
+        try {
+            ObservableList<Question> questions = jsonHandler.readJsonFromFile(file);
+            questionsViewService.addQuestions(questions);
+            createViewList();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        createViewList();
+
+    }
+
+    private void createViewList() {
         lstw_QuestionList.setItems((ObservableList<Question>) questionsViewService.getQuestions());
         lstw_QuestionList.setCellFactory(param -> new ListCell<>() {
             @Override
@@ -107,7 +124,6 @@ public class QuestionsViewController implements Initializable {
                 }
             }
         });
-
     }
 
 
