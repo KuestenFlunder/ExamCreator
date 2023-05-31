@@ -12,10 +12,7 @@ import org.apache.pdfbox.pdmodel.interactive.action.PDActionJavaScript;
 import org.apache.pdfbox.pdmodel.interactive.action.PDFormFieldAdditionalActions;
 import org.apache.pdfbox.pdmodel.interactive.annotation.PDAnnotation;
 import org.apache.pdfbox.pdmodel.interactive.annotation.PDAnnotationWidget;
-import org.apache.pdfbox.pdmodel.interactive.form.PDAcroForm;
-import org.apache.pdfbox.pdmodel.interactive.form.PDCheckBox;
-import org.apache.pdfbox.pdmodel.interactive.form.PDField;
-import org.apache.pdfbox.pdmodel.interactive.form.PDPushButton;
+import org.apache.pdfbox.pdmodel.interactive.form.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -58,7 +55,11 @@ public class PDFHandler {
             PDDocument titelPage = PDDocument.load(new File("src/main/resources/com/team_kuestenflunder/exam_desktop/templates/page_titelLayout.pdf"));
             PDAcroForm acroFormTitelPage = titelPage.getDocumentCatalog().getAcroForm();
             setValueToField(acroFormTitelPage, "nameField", name);
+                PDTextField requiredNameField = (PDTextField) acroFormTitelPage.getField("nameField");
+                requiredNameField.setRequired(true);
             setValueToField(acroFormTitelPage, "surnameField", surname);
+                PDTextField requiredSurnameField = (PDTextField) acroFormTitelPage.getField("surnameField");
+                requiredSurnameField.setRequired(true);
             setValueToField(acroFormTitelPage, "dateOfTestField", dateOfTest);
             setValueToField(acroFormTitelPage, "numberOfQuestionsField", String.valueOf(numberOfQuestions));
             setValueToField(acroFormTitelPage, "testDutarionField", String.valueOf(testDuration));
