@@ -25,7 +25,7 @@ public class QuestionsViewController implements Initializable {
     private final JsonHandler jsonHandler = new JsonHandler();
 
     @FXML
-    Button newQuestion_btn, bt_updateQuestion, bt_deleteQuestion, bt_createExam, bt_mergeJson, bt_saveQuestionsAsJson, bt_loadQuestionsFromJson;
+    Button newQuestion_btn, bt_updateQuestion, bt_deleteQuestion, bt_createExam, bt_mergeJson, bt_saveQuestionsAsJson, bt_loadQuestionsFromJson, bt_deleteJson;
 
     @FXML
     ListView<Question> lstw_QuestionList;
@@ -84,19 +84,18 @@ public class QuestionsViewController implements Initializable {
                 sceneManager.addFileSaveDialog(event));
     }
 
-    public void onSaveQuestionAsJsonClick(ActionEvent event)  {
-      try {
-        jsonHandler.writeJsonToFile( questionsViewService.getQuestions(),sceneManager.addFileSaveDialog(event));
-      }catch (IOException e){
-          e.printStackTrace();
-      }
+    public void onSaveQuestionAsJsonClick(ActionEvent event) {
+        try {
+            jsonHandler.writeJsonToFile(questionsViewService.getQuestions(), sceneManager.addFileSaveDialog(event));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void onLoadQuestionFromJsonClick(ActionEvent event) {
         // get the file that should be loaded
         File file = sceneManager.addFileChooserDialogSingle(event);
         // update the listview with the new list --> add questionViewService.addQustions
-
         try {
             ObservableList<Question> questions = jsonHandler.readJsonFromFile(file);
             questionsViewService.addQuestions(questions);
@@ -105,6 +104,19 @@ public class QuestionsViewController implements Initializable {
             throw new RuntimeException(e);
         }
 
+    }
+
+    public void onDeleteJsonClick(ActionEvent event) {
+        try {
+            File fileToDelete = sceneManager.addFileChooserDialogSingle(event);
+            Alert alert = alertMessage(Alert.AlertType.WARNING, toString(), "Sind sie Sicher, dass sie diese Datei " + fileToDelete.getName() + " löschen wollen?");
+            if (alert.getResult() == ButtonType.OK) {
+                java.nio.file.Files.delete(fileToDelete.toPath());
+            }
+            System.out.println("Die Datei " + fileToDelete + " wurde erfolgreich gelöscht.");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override

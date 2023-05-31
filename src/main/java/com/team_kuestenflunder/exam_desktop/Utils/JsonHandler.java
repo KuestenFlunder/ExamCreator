@@ -18,8 +18,6 @@ import java.util.List;
 
 public class JsonHandler {
 
-    //TODO Refactor writeJson methods to one
-
     public void writeJsonToFile(List<Question> questionList,File file) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
         objectMapper.registerModule(new JavaTimeModule());
@@ -27,7 +25,6 @@ public class JsonHandler {
         if (file == null) {
             file = new File("src/main/Output/innerJsonDatastore.json");
         }
-
         objectMapper.writeValue(new File(file.toURI()), questionList);
     }
 
@@ -63,8 +60,9 @@ public class JsonHandler {
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
         ArrayNode mergedJsonNode = objectMapper.createArrayNode();
         try {
+            //Todo Refactor with stream API
             for (File file : selectedFiles) {
-                JsonNode jsonNode = objectMapper.readValue(new File(String.valueOf(file)), JsonNode.class);
+                JsonNode jsonNode = objectMapper.readValue(new File(file.toURI()), JsonNode.class);
                 if (jsonNode.isArray()) {
                     mergedJsonNode.addAll((ArrayNode) jsonNode);
                 } else {
