@@ -78,6 +78,16 @@ public class SceneManager {
         stage.setTitle("Fragen Liste");
         stage.show();
     }
+    public void switchSceneToExamValidationView(ActionEvent event) throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("examEvaluationView.fxml"));
+        fxmlLoader.setControllerFactory(injector::getInstance);
+        root = fxmlLoader.load();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setTitle("Prüfungsauswertung");
+        stage.show();
+    }
     /**
      * Adds a modal popup for PDF creation.
      *
@@ -102,12 +112,12 @@ public class SceneManager {
      * @param event the action event that triggered the file chooser.
      * @return a list of the selected files.
      */
-    public List <java.io.File> addFileChooserDialogMultiple(ActionEvent event){
+    public List <java.io.File> addFileChooserDialogMultiple(ActionEvent event,String filterDescription, String FilterExtensions){
         Stage stage = new Stage();
         stage.initOwner( ((Node) event.getSource()).getScene().getWindow());
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Json wählen");
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("JSON", "*.json"));
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter(filterDescription, FilterExtensions));
         return fileChooser.showOpenMultipleDialog(stage);
     }
     /**

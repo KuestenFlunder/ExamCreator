@@ -3,12 +3,12 @@ package com.team_kuestenflunder.exam_desktop.services;
 
 import com.team_kuestenflunder.exam_desktop.repository.QuestionRepositoryImpl;
 
-public class ExamValidationViewService {
+public class ExamEvaluationViewService {
 
     QuestionRepositoryImpl questionRepository;
 
 //TODO Add Injection
-    public ExamValidationViewService(QuestionRepositoryImpl questionRepository) {
+    public ExamEvaluationViewService() {
         this.questionRepository = new QuestionRepositoryImpl();
     }
 }

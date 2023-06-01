@@ -26,8 +26,9 @@ public class QuestionsViewController implements Initializable {
     private final SceneManager sceneManager = SceneManager.getInstance();
     private final JsonHandler jsonHandler = new JsonHandler();
 
+
     @FXML
-    Button newQuestion_btn, bt_updateQuestion, bt_deleteQuestion, bt_createExam, bt_mergeJson, bt_saveQuestionsAsJson, bt_loadQuestionsFromJson, bt_deleteJson;
+    Button newQuestion_btn, bt_updateQuestion, bt_deleteQuestion, bt_createExam, bt_mergeJson, bt_saveQuestionsAsJson, bt_loadQuestionsFromJson, bt_deleteJson,bt_examEvaluation;
 
     @FXML
     TableView<Question> tableView;
@@ -82,7 +83,7 @@ public class QuestionsViewController implements Initializable {
 
     public void onMergeJsonClick(ActionEvent event) {
         jsonHandler.mergeJsonFiles(
-                sceneManager.addFileChooserDialogMultiple(event),
+                sceneManager.addFileChooserDialogMultiple(event,"JSON","*.json"),
                 sceneManager.addFileSaveDialog(event));
     }
 
@@ -116,6 +117,14 @@ public class QuestionsViewController implements Initializable {
                 java.nio.file.Files.delete(fileToDelete.toPath());
             }
             System.out.println("Die Datei " + fileToDelete + " wurde erfolgreich gelöscht.");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void onExamEvaluationClick(ActionEvent event){
+        try {
+            sceneManager.switchSceneToExamValidationView(event);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
