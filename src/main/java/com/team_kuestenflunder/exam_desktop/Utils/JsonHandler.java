@@ -13,12 +13,15 @@ import javafx.collections.ObservableList;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 
 public class JsonHandler {
 
-    public void writeJsonToFile(List<Question> questionList,File file) throws IOException {
+    public void writeJsonToFile(List<Question> questionList, File file) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
         objectMapper.registerModule(new JavaTimeModule());
 
@@ -42,6 +45,7 @@ public class JsonHandler {
             return FXCollections.observableArrayList();
         }
     }
+
     public ObservableList<Question> readJsonFromFile(File file) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.registerModule(new JavaTimeModule());
@@ -55,6 +59,7 @@ public class JsonHandler {
             return FXCollections.observableArrayList();
         }
     }
+
     public void mergeJsonFiles(List<java.io.File> selectedFiles, File outputFile) {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
@@ -69,8 +74,12 @@ public class JsonHandler {
                     mergedJsonNode.add(jsonNode);
                 }
             }
+            Set<JsonNode> valuesOfNodesSet = new LinkedHashSet<>();
+            for (JsonNode jsonNode : mergedJsonNode) {
+                valuesOfNodesSet.add(jsonNode);
+                }
 
-            objectMapper.writeValue(new File(outputFile.toURI()), mergedJsonNode);
+            objectMapper.writeValue(new File(outputFile.toURI()), valuesOfNodesSet);
         } catch (IOException e) {
             e.printStackTrace();
         }
