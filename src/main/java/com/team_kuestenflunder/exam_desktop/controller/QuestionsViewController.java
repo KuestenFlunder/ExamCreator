@@ -101,7 +101,7 @@ public class QuestionsViewController implements Initializable {
         try {
             ObservableList<Question> questions = jsonHandler.readJsonFromFile(file);
             questionsViewService.addQuestions(questions);
-            createViewList();
+            createViewTable();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -123,12 +123,8 @@ public class QuestionsViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        createViewList();
+       createViewTable();
 
-    }
-
-    private void createViewList() {
-        createViewTable();
     }
 
     private void createViewTable() {
