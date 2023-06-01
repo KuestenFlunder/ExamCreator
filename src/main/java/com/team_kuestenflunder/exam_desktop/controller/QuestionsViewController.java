@@ -5,11 +5,13 @@ import com.team_kuestenflunder.exam_desktop.SceneManager;
 import com.team_kuestenflunder.exam_desktop.Utils.JsonHandler;
 import com.team_kuestenflunder.exam_desktop.entity.Question;
 import com.team_kuestenflunder.exam_desktop.services.QuestionsViewServiceImpl;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.File;
 import java.io.IOException;
@@ -28,7 +30,7 @@ public class QuestionsViewController implements Initializable {
     Button newQuestion_btn, bt_updateQuestion, bt_deleteQuestion, bt_createExam, bt_mergeJson, bt_saveQuestionsAsJson, bt_loadQuestionsFromJson, bt_deleteJson;
 
     @FXML
-    ListView<Question> lstw_QuestionList;
+    TableView<Question> tableView;
 
     @Inject
     public QuestionsViewController(QuestionsViewServiceImpl questionsViewService) {
@@ -46,7 +48,7 @@ public class QuestionsViewController implements Initializable {
 
     public void onUpdateButtonClick(ActionEvent event) {
         try {
-            sceneManager.switchSceneToQuestionForm(event, lstw_QuestionList.getSelectionModel().getSelectedItem());
+            sceneManager.switchSceneToQuestionForm(event, tableView.getSelectionModel().getSelectedItem());
         } catch (Exception e) {
             alertMessage(Alert.AlertType.INFORMATION, "Keine Frage gewählt", "Bitte wählen sie eine Frage die sie bearbeiten wollen.");
 
@@ -55,7 +57,7 @@ public class QuestionsViewController implements Initializable {
 
     public void onDeleteButtonClick() {
 
-        Question selectedQuestion = lstw_QuestionList.getSelectionModel().getSelectedItem();
+        Question selectedQuestion = tableView.getSelectionModel().getSelectedItem();
         try {
             if (selectedQuestion != null) {
                 Alert alert = alertMessage(Alert.AlertType.WARNING, "Frage löschen", "MÖCHTEN SIE DIESE FRAGE UNWIEDERRUFLICH LÖSCHEN ?");
@@ -126,20 +128,29 @@ public class QuestionsViewController implements Initializable {
     }
 
     private void createViewList() {
-        lstw_QuestionList.setItems((ObservableList<Question>) questionsViewService.getQuestions());
-        lstw_QuestionList.setCellFactory(param -> new ListCell<>() {
-            @Override
-            protected void updateItem(Question question, boolean empty) {
-                super.updateItem(question, empty);
-                if (empty || question == null) {
-                    setText(null);
-                } else {
-                    setText(question.getId() + " - " + question.getTopic() + " - " + question.getQuestionTitle() + "- richtige Antworten: " + question.getAnswers().getCorrectAnswers());
-                }
-            }
-        });
+        createViewTable();
     }
 
+    private void createViewTable() {
+        // Assuming Question class has id, topic, questionTitle, and answers fields
+        TableColumn<Question, String> idColumn = new TableColumn<>("UUID");
+        idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+
+        TableColumn<Question, String> topicColumn = new TableColumn<>("Thema");
+        topicColumn.setCellValueFactory(new PropertyValueFactory<>("topic"));
+
+        TableColumn<Question, String> titleColumn = new TableColumn<>("Titel");
+        titleColumn.setCellValueFactory(new PropertyValueFactory<>("questionTitle"));
+
+        TableColumn<Question, Integer> correctAnswersColumn = new TableColumn<>("richtige Antworten");
+        correctAnswersColumn.setCellValueFactory(cellData ->
+                new SimpleIntegerProperty(cellData.getValue().getAnswers().getCorrectAnswers()).asObject());
+
+        tableView.setItems((ObservableList<Question>) questionsViewService.getQuestions());
+
+        //Unchecked generics array creation for varargs parameter (can be ignored and is caused by working with varargs and generics together)
+        tableView.getColumns().addAll(topicColumn, titleColumn, correctAnswersColumn, idColumn);
+    }
 
 }
 

@@ -2,25 +2,25 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.effect.Blend?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="250.0" minWidth="940.0" prefHeight="650.0" prefWidth="940.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team_kuestenflunder.exam_desktop.controller.QuestionsViewController">
+<AnchorPane minHeight="250.0" minWidth="940.0" prefHeight="781.0" prefWidth="1264.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team_kuestenflunder.exam_desktop.controller.QuestionsViewController">
    <children>
-      <VBox prefHeight="200.0" prefWidth="100.0">
+      <VBox prefHeight="649.0" prefWidth="1264.0">
          <children>
-            <SplitPane dividerPositions="0.7702265372168284" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="930.0">
+            <SplitPane dividerPositions="0.8118066561014263" minHeight="-Infinity" minWidth="-Infinity" prefHeight="781.0" prefWidth="1264.0">
               <items>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="618.0" prefWidth="602.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="757.0" prefWidth="940.0">
                      <children>
-                        <ListView fx:id="lstw_QuestionList" layoutX="14.0" prefHeight="497.0" prefWidth="402.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="-14.0" AnchorPane.topAnchor="0.0" />
+                        <TableView fx:id="tableView" prefHeight="781.0" prefWidth="1021.0" />
                      </children>
                   </AnchorPane>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="616.0" prefWidth="435.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="713.0" prefWidth="389.0">
                      <children>
                         <VBox alignment="TOP_CENTER" prefHeight="468.0" prefWidth="136.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="20.0">
                            <children>
