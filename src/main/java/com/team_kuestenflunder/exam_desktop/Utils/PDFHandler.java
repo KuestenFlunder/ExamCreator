@@ -4,20 +4,22 @@ import com.google.inject.Inject;
 import com.team_kuestenflunder.exam_desktop.SceneManager;
 import com.team_kuestenflunder.exam_desktop.entity.Question;
 import com.team_kuestenflunder.exam_desktop.services.PdfCreationPopUpService;
-import javafx.event.ActionEvent;
-import javafx.scene.input.SwipeEvent;
 import org.apache.pdfbox.multipdf.PDFMergerUtility;
 import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.interactive.action.PDActionJavaScript;
-import org.apache.pdfbox.pdmodel.interactive.action.PDAnnotationAdditionalActions;
-import org.apache.pdfbox.pdmodel.interactive.action.PDFormFieldAdditionalActions;
+import org.apache.pdfbox.pdmodel.interactive.annotation.PDAnnotation;
+import org.apache.pdfbox.pdmodel.interactive.annotation.PDAnnotationLine;
 import org.apache.pdfbox.pdmodel.interactive.annotation.PDAnnotationWidget;
 import org.apache.pdfbox.pdmodel.interactive.form.*;
+import org.controlsfx.control.tableview2.filter.filtereditor.SouthFilter;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
@@ -29,8 +31,6 @@ public class PDFHandler {
     PdfCreationPopUpService popUpService;
 
     SceneManager sceneManager = SceneManager.getInstance();
-    private String name, surname;
-    private int qsCounter = 0;
 
 
     public PDFHandler(PdfCreationPopUpService popUpService) {
@@ -38,11 +38,18 @@ public class PDFHandler {
     }
 
 
-    public void createExamPDF(int numberOfQuestions, int testDuration/*,File fileToSaveExamJson*/) {
+    private static class Student {
+        String studentName;
+        String percentageRatioFromTest;
+        String testResult;
+    }
+
+
+    public void createExamPDF(String testTitel, int numberOfQuestions, int testDuration/*,File fileToSaveExamJson*/) {
         Set<Question> examQuestions = popUpService.getRandomExamQuestions(numberOfQuestions);
+        int qsCounter = 0;
 
-
-// ---- Date and Time of Test
+// ---- Date and Time of Test //TODO entscheiden ob notwendig ist
         LocalDateTime dateNow = LocalDateTime.now();
         DateTimeFormatter formatterDate = DateTimeFormatter.ofPattern("dd MMMM yyyy", Locale.GERMAN);
         String dateOfTest = dateNow.format(formatterDate);
@@ -55,18 +62,19 @@ public class PDFHandler {
         PDFMergerUtility pdfTest = new PDFMergerUtility();
         try {
             // Page 1
-            PDDocument titelPage = PDDocument.load(new File("src/main/resources/com/team_kuestenflunder/exam_desktop/templates/page_titelLayout.pdf"));
+            PDDocument titelPage = PDDocument.load(new File("src/main/resources/com/team_kuestenflunder/exam_desktop/templates/TitelPageLayout.pdf"));
             PDAcroForm acroFormTitelPage = titelPage.getDocumentCatalog().getAcroForm();
-            setValueToField(acroFormTitelPage, "nameField", name);
+
             PDTextField requiredNameField = (PDTextField) acroFormTitelPage.getField("nameField");
-            requiredNameField.setRequired(true);
-            setValueToField(acroFormTitelPage, "surnameField", surname);
+                        requiredNameField.setRequired(true);
             PDTextField requiredSurnameField = (PDTextField) acroFormTitelPage.getField("surnameField");
-            requiredSurnameField.setRequired(true);
+                        requiredSurnameField.setRequired(true);
+
+            setValueToField(acroFormTitelPage, "courseNameField", "Java Entwickler Oracle Certified Professional SE");
+            setValueToField(acroFormTitelPage, "testTitelField", testTitel);
             setValueToField(acroFormTitelPage, "dateOfTestField", dateOfTest);
             setValueToField(acroFormTitelPage, "numberOfQuestionsField", String.valueOf(numberOfQuestions));
             setValueToField(acroFormTitelPage, "testDutarionField", String.valueOf(testDuration));//TODO correct Typo
-            setValueToField(acroFormTitelPage, "timeOfTestStartField", startTime);
             titelPage.save("src/main/Output/TitelPage.pdf");
             titelPage.close();
             pdfTest.addSource("src/main/Output/TitelPage.pdf");
@@ -126,6 +134,7 @@ public class PDFHandler {
             PDAnnotationWidget evaluateButtonWidget = evaluateButton.getWidgets().get(0);
             evaluateButtonWidget.setAction(button_JavaScript);
 //?????????
+
             lastPage.save("src/main/Output/LastPage.pdf");
             lastPage.close();
             pdfTest.addSource("src/main/Output/LastPage.pdf");
@@ -157,10 +166,97 @@ public class PDFHandler {
     }
 
 
-    public void pdfEvaluation(List<PDDocument> exams){
-        //Find and compare questions from PDF with Questions from corresponding List.
-        // Alternative: use the hidden correct Answer filed to evaluate --> seems to be more easy, field already exists
+// ES FUNKTIONIERT NICHT
+    public static List<Student> evaluationOf_SeveralTests (List<File> files){
+        List<Student> studentList = new ArrayList<>(files.size());
+        Student student = new Student();
+        try {
+            for (File pdfFile : files) {
+                DecimalFormat decimalFormat = new DecimalFormat ("#0.00");
+                student.studentName = getStudentNameFromFile(pdfFile);
+                student.percentageRatioFromTest = decimalFormat.format(evaluationOf_PDFTest(pdfFile));
+                student.testResult = Double.parseDouble(student.percentageRatioFromTest) >= 65 ? "Bestanden" : "Nicht bestanden";
+                studentList.add(student);
+            }
+        }catch (IOException ioE){
+            ioE.printStackTrace();
+        }
+        System.out.println(studentList);
+        return studentList;
     }
+
+
+    private static Double evaluationOf_PDFTest(File pdfFile) throws IOException {
+        PDDocument pdfDocument = PDDocument.load(pdfFile);
+        int counterOfTrueAnswers = 0;
+        int questionsAmount = pdfDocument.getNumberOfPages() - 2;
+            for (int i = 1; i <= questionsAmount; i++){
+//                if (evaluationOf_QuestionPage(pdfDocument, pdfDocument.getPage(i))) {
+                    counterOfTrueAnswers++;
+                }
+        double ratioOfCorrectAnswers = 100 * counterOfTrueAnswers / questionsAmount;
+        return null; //ratioOfCorrectAnswers;
+    }
+
+// da alle interaktive Felder im Dockument zu gleicher AcroForm gehören, über Seiten-Nummer kann nicht an die Felder greifen
+    private static boolean evaluationOf_QuestionPage(PDDocument document, PDPage page) throws IOException{
+        int counter = 0;
+        PDAcroForm acroForm = document.getDocumentCatalog().getAcroForm();
+        if (acroForm != null){
+            for (int i = 0; i < 6; i++){
+                PDCheckBox StudentResponse = (PDCheckBox) acroForm.getField("AnswerBox_" + i);
+                PDCheckBox AnswerKey = (PDCheckBox) acroForm.getField("CorrectAnswerBox_" + i);
+                String value = StudentResponse.getValue();
+                String keyValue = AnswerKey.getValue();
+                if (value.equals(keyValue))  counter++;
+            }
+        }
+        return counter == 6 ? true : false;
+    }
+
+
+    private static String getStudentNameFromFile(File pdfFile) throws IOException, RuntimeException{
+        PDDocument document = PDDocument.load(pdfFile);
+        PDAcroForm acroFormTitelPage = document.getDocumentCatalog().getAcroForm();
+        PDTextField nameField = (PDTextField)acroFormTitelPage.getField("nameField");
+        String name = nameField.getValue();
+        PDTextField surnameField = (PDTextField)acroFormTitelPage.getField("surnameField");
+        String surname = surnameField.getValue();
+        return name +" "+ surname;
+    }
+
+
+
+//---------------------------- zum testen --------------------------------
+    public static void main(String[] args) {
+        try {
+            // Prüfung der einzelnen Seite
+//            PDDocument doc = PDDocument.load(new File ("src/main/Output/Test.pdf"));
+//            PDPage page = doc.getPages().get(2);
+//            System.out.println(page);
+
+            // Prüfung vom ganzen Test
+//            String studentName = getStudentNameFromFile(new File("src/main/Output/Test.pdf"));
+//            double ratio = evaluationOf_PDFTest(new File("src/main/Output/Test.pdf"));
+//            String result = ratio >= 65 ? "Bestanden" : "Nicht bestanden";
+//            System.out.println(studentName + " : " + result);
+
+            PDDocument document = PDDocument.load(new File("src/main/Output/Test.pdf"));
+            PDPage page = document.getDocumentCatalog().getPages().get(1);
+            int anzahlAnnotationen = page.getAnnotations().size();
+            int counter = 0;
+            for (int i = 0; i < anzahlAnnotationen; i++){
+                counter++;
+                System.out.println(page.getAnnotations().get(i));
+            }
+            System.out.println("counter = " + counter);
+
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
 }
 
