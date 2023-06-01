@@ -1,6 +1,7 @@
 package com.team_kuestenflunder.exam_desktop.moduls;
 
 import com.google.inject.AbstractModule;
+import com.team_kuestenflunder.exam_desktop.controller.ExamValidationViewController;
 import com.team_kuestenflunder.exam_desktop.controller.PdfCreationPopUpController;
 import com.team_kuestenflunder.exam_desktop.controller.QuestionFormController;
 import com.team_kuestenflunder.exam_desktop.controller.QuestionsViewController;
@@ -29,6 +30,9 @@ public class DIConfigModule extends AbstractModule {
         // bind Pdf Pop Up dependency's
         bind(PdfCreationPopUpController.class);
         bind(PdfCreationPopUpService.class);
+
+        bind(ExamValidationViewController.class);
+        bind(ExamValidationViewController.class);
 
         //bind(DataService.class).in(Singleton.class);
 

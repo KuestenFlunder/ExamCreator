@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane minHeight="241.0" minWidth="471.0" prefHeight="241.0" prefWidth="471.0" xmlns="http://javafx.com/javafx/19"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.team_kuestenflunder.exam_desktop.controller.ExamValidationViewController">
+
+</AnchorPane>
