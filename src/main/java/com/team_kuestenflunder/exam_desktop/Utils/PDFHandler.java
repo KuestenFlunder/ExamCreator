@@ -4,13 +4,9 @@ import com.google.inject.Inject;
 import com.team_kuestenflunder.exam_desktop.SceneManager;
 import com.team_kuestenflunder.exam_desktop.entity.Question;
 import com.team_kuestenflunder.exam_desktop.services.PdfCreationPopUpService;
-import javafx.event.ActionEvent;
-import javafx.scene.input.SwipeEvent;
 import org.apache.pdfbox.multipdf.PDFMergerUtility;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.interactive.action.PDActionJavaScript;
-import org.apache.pdfbox.pdmodel.interactive.action.PDAnnotationAdditionalActions;
-import org.apache.pdfbox.pdmodel.interactive.action.PDFormFieldAdditionalActions;
 import org.apache.pdfbox.pdmodel.interactive.annotation.PDAnnotationWidget;
 import org.apache.pdfbox.pdmodel.interactive.form.*;
 
@@ -117,9 +113,9 @@ public class PDFHandler {
 //????????? TODO Funktion in JavaScript
             PDPushButton evaluateButton = (PDPushButton) acroFormLastPage.getField("evaluateTheTest_Button");
             PDActionJavaScript button_JavaScript = new PDActionJavaScript();
-            String absoluteFilePath = "/Users/jan-hendrykpassler/IdeaProjects/exam_desktop/src/main/Output/Test.pdf";
+            String absoluteFilePath = "Mein übergebener Testtitel";
 
-            String javascriptCode = "app.launchURL('mailto:kuestenflunder@gmail.com?subject=');";
+            String javascriptCode = "app.launchURL('mailto:kuestenflunder@gmail.com?subject=MySubject');";
 
             button_JavaScript.setAction(javascriptCode);
 
@@ -157,9 +153,10 @@ public class PDFHandler {
     }
 
 
-    public void pdfEvaluation(List<PDDocument> exams){
+    public void pdfEvaluation(List<PDDocument> exams) {
         //Find and compare questions from PDF with Questions from corresponding List.
         // Alternative: use the hidden correct Answer filed to evaluate --> seems to be more easy, field already exists
+
     }
 
 }
