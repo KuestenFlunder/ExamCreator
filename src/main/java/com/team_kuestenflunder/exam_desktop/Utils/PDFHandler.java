@@ -4,6 +4,7 @@ import com.google.inject.Inject;
 import com.team_kuestenflunder.exam_desktop.SceneManager;
 import com.team_kuestenflunder.exam_desktop.entity.Question;
 import com.team_kuestenflunder.exam_desktop.services.PdfCreationPopUpService;
+import org.apache.pdfbox.cos.*;
 import org.apache.pdfbox.multipdf.PDFMergerUtility;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
@@ -19,10 +20,8 @@ import java.io.IOException;
 import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 
 public class PDFHandler {
@@ -194,7 +193,7 @@ public class PDFHandler {
 //                if (evaluationOf_QuestionPage(pdfDocument, pdfDocument.getPage(i))) {
                     counterOfTrueAnswers++;
                 }
-        double ratioOfCorrectAnswers = 100 * counterOfTrueAnswers / questionsAmount;
+        double ratioOfCorrectAnswers = (double) (100 * counterOfTrueAnswers) / questionsAmount;
         return null; //ratioOfCorrectAnswers;
     }
 
@@ -204,10 +203,11 @@ public class PDFHandler {
         PDAcroForm acroForm = document.getDocumentCatalog().getAcroForm();
         if (acroForm != null){
             for (int i = 0; i < 6; i++){
-                PDCheckBox StudentResponse = (PDCheckBox) acroForm.getField("AnswerBox_" + i);
-                PDCheckBox AnswerKey = (PDCheckBox) acroForm.getField("CorrectAnswerBox_" + i);
-                String value = StudentResponse.getValue();
-                String keyValue = AnswerKey.getValue();
+                PDCheckBox studentResponse = (PDCheckBox) acroForm.getField("AnswerBox_" + i);
+                System.out.println(i + "studentResponse = " + studentResponse );
+                PDCheckBox answerKey = (PDCheckBox) acroForm.getField("CorrectAnswerBox_" + i);
+                String value = studentResponse.getValue();
+                String keyValue = answerKey.getValue();
                 if (value.equals(keyValue))  counter++;
             }
         }
@@ -229,35 +229,32 @@ public class PDFHandler {
 
 //---------------------------- zum testen --------------------------------
     public static void main(String[] args) {
+
         try {
-            // Prüfung der einzelnen Seite
-//            PDDocument doc = PDDocument.load(new File ("src/main/Output/Test.pdf"));
-//            PDPage page = doc.getPages().get(2);
-//            System.out.println(page);
-
-            // Prüfung vom ganzen Test
-//            String studentName = getStudentNameFromFile(new File("src/main/Output/Test.pdf"));
-//            double ratio = evaluationOf_PDFTest(new File("src/main/Output/Test.pdf"));
-//            String result = ratio >= 65 ? "Bestanden" : "Nicht bestanden";
-//            System.out.println(studentName + " : " + result);
-
-            PDDocument document = PDDocument.load(new File("src/main/Output/Test.pdf"));
-            PDPage page = document.getDocumentCatalog().getPages().get(1);
-            int anzahlAnnotationen = page.getAnnotations().size();
-            int counter = 0;
-            for (int i = 0; i < anzahlAnnotationen; i++){
-                counter++;
-                System.out.println(page.getAnnotations().get(i));
-            }
-            System.out.println("counter = " + counter);
-
-
+            processPDF();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("Error occurred: " + e.getMessage());
+            e.printStackTrace();
         }
     }
+    public static void processPDF() throws IOException {
+        PDDocument document = PDDocument.load(new File("src/main/Output/Test.pdf"));
+        PDAcroForm acroForm = document.getDocumentCatalog().getAcroForm();
+        List<PDField> fields = acroForm.getFields();
 
 
-}
+        for (PDField field : fields) {
+           //System.out.println("field = " + field);
+            //Title all +32 fields
+            if (field.getFullyQualifiedName().equals("dummyFieldName160")) {
+                String value = field.getValueAsString();
+                System.out.println("Value of QuestionTextField: " + value);
+            }
+        }
+
+        document.close();
+    }
+
+    }
 
 
