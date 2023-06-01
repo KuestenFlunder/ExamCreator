@@ -61,28 +61,36 @@ public class JsonHandler {
     }
 
     public void mergeJsonFiles(List<java.io.File> selectedFiles, File outputFile) {
+        if(selectedFiles == null) return;
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
         ArrayNode mergedJsonNode = objectMapper.createArrayNode();
         try {
-            //Todo Refactor with stream API
-            for (File file : selectedFiles) {
-                JsonNode jsonNode = objectMapper.readValue(new File(file.toURI()), JsonNode.class);
-                if (jsonNode.isArray()) {
-                    mergedJsonNode.addAll((ArrayNode) jsonNode);
-                } else {
-                    mergedJsonNode.add(jsonNode);
-                }
-            }
-            Set<JsonNode> valuesOfNodesSet = new LinkedHashSet<>();
-            for (JsonNode jsonNode : mergedJsonNode) {
-                valuesOfNodesSet.add(jsonNode);
-                }
-
-            objectMapper.writeValue(new File(outputFile.toURI()), valuesOfNodesSet);
+            //TODO refactor to Stream
+            addAllJsonNodes(selectedFiles, objectMapper, mergedJsonNode);
+            objectMapper.writeValue(new File(outputFile.toURI()), omitNodeDuplication(mergedJsonNode));
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void addAllJsonNodes(List<File> selectedFiles, ObjectMapper objectMapper, ArrayNode mergedJsonNode) throws IOException {
+        for (File file : selectedFiles) {
+            JsonNode jsonNode = objectMapper.readValue(new File(file.toURI()), JsonNode.class);
+            if (jsonNode.isArray()) {
+                mergedJsonNode.addAll((ArrayNode) jsonNode);
+            } else {
+                mergedJsonNode.add(jsonNode);
+            }
+        }
+    }
+
+    private Set<JsonNode> omitNodeDuplication(ArrayNode mergedJsonNode) {
+        Set<JsonNode> valuesOfNodesSet = new LinkedHashSet<>();
+        for (JsonNode jsonNode : mergedJsonNode) {
+            valuesOfNodesSet.add(jsonNode);
+            }
+        return valuesOfNodesSet;
     }
 
 }

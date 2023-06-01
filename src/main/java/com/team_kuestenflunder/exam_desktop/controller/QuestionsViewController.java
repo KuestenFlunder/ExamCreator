@@ -26,8 +26,9 @@ public class QuestionsViewController implements Initializable {
     private final SceneManager sceneManager = SceneManager.getInstance();
     private final JsonHandler jsonHandler = new JsonHandler();
 
+
     @FXML
-    Button newQuestion_btn, bt_updateQuestion, bt_deleteQuestion, bt_createExam, bt_mergeJson, bt_saveQuestionsAsJson, bt_loadQuestionsFromJson, bt_deleteJson;
+    Button newQuestion_btn, bt_updateQuestion, bt_deleteQuestion, bt_createExam, bt_mergeJson, bt_saveQuestionsAsJson, bt_loadQuestionsFromJson, bt_deleteJson,bt_examEvaluation;
 
     @FXML
     TableView<Question> tableView;
@@ -82,7 +83,7 @@ public class QuestionsViewController implements Initializable {
 
     public void onMergeJsonClick(ActionEvent event) {
         jsonHandler.mergeJsonFiles(
-                sceneManager.addFileChooserDialogMultiple(event),
+                sceneManager.addFileChooserDialogMultiple(event,"JSON","*.json"),
                 sceneManager.addFileSaveDialog(event));
     }
 
@@ -121,14 +122,35 @@ public class QuestionsViewController implements Initializable {
         }
     }
 
+    public void onExamEvaluationClick(ActionEvent event){
+        try {
+            sceneManager.switchSceneToExamValidationView(event);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
        createViewTable();
-
     }
 
+    /**
+     * This method creates a new table view with four columns: UUID, Thema, Titel, and richtige Antworten.
+     * It first creates each column and sets its cell value factory.
+     * Then, it sets the table view's items using the list of questions from the question view service.
+     * After that, it clears any existing columns in the table view.
+     * Finally, it adds the new columns to the table view.
+     * <p>
+     * UUID column: contains the UUID of the question.
+     * Thema column: contains the topic of the question.
+     * Titel column: contains the title of the question.
+     * richtige Antworten column: contains the number of correct answers of the question.
+     * <p>
+     * Note: this method does not check if the questions' properties corresponding to the columns exist.
+     */
     private void createViewTable() {
-        // Assuming Question class has id, topic, questionTitle, and answers fields
+
         TableColumn<Question, String> idColumn = new TableColumn<>("UUID");
         idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
 
@@ -140,14 +162,22 @@ public class QuestionsViewController implements Initializable {
 
         TableColumn<Question, Integer> correctAnswersColumn = new TableColumn<>("richtige Antworten");
         correctAnswersColumn.setCellValueFactory(cellData ->
-                new SimpleIntegerProperty(cellData.getValue().getAnswers().getCorrectAnswers()).asObject());
+                new SimpleIntegerProperty(cellData
+                        .getValue()
+                        .getAnswers()
+                        .getCorrectAnswers())
+                        .asObject());
 
         tableView.setItems((ObservableList<Question>) questionsViewService.getQuestions());
 
-        //Unchecked generics array creation for varargs parameter (can be ignored and is caused by working with varargs and generics together)
-        tableView.getColumns().addAll(topicColumn, titleColumn, correctAnswersColumn, idColumn);
+        // Clear the existing columns
+        tableView.getColumns().clear();
+
+        // Add the columns
+        tableView.getColumns().addAll(idColumn, topicColumn, titleColumn, correctAnswersColumn);
     }
 
 }
+
 
 

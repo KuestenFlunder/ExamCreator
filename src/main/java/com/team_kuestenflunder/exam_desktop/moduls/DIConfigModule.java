@@ -30,6 +30,7 @@ public class DIConfigModule extends AbstractModule {
         bind(PdfCreationPopUpController.class);
         bind(PdfCreationPopUpService.class);
 
+
         //bind(DataService.class).in(Singleton.class);
 
     }
