@@ -1,4 +1,5 @@
 src/main/Output
+src/main/Data
 
 target/
 !.mvn/wrapper/maven-wrapper.jar

@@ -1,8 +1,6 @@
 package com.team_kuestenflunder.exam_desktop.controller;
 
 import com.google.inject.Inject;
-import com.team_kuestenflunder.exam_desktop.SceneManager;
-import com.team_kuestenflunder.exam_desktop.Utils.PDFHandler;
 import com.team_kuestenflunder.exam_desktop.services.PdfCreationPopUpService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -34,12 +32,10 @@ public class PdfCreationPopUpController {
     }
 
     public void onCreateTestClick(ActionEvent event) {
-        int requestedNumberOfQuestions = Integer.parseInt(tf_numberOfQuestions.getText());
-        int testDuration = Integer.parseInt(tf_testDuration.getText());
-        PDFHandler pdfHandler = new PDFHandler(pdfCreationPopUpService);
-        pdfHandler.createExamPDF(requestedNumberOfQuestions, testDuration);
+        pdfCreationPopUpService.createExamPDF(tf_numberOfQuestions, tf_testDuration);
         exitStage(event);
     }
+
 
     public void onCancelClick(ActionEvent event) {
         exitStage(event);

@@ -2,11 +2,11 @@ package com.team_kuestenflunder.exam_desktop.services;
 
 import com.google.inject.Inject;
 import com.team_kuestenflunder.exam_desktop.Utils.AlertMessage;
+import com.team_kuestenflunder.exam_desktop.Utils.PDFHandler;
 import com.team_kuestenflunder.exam_desktop.entity.Question;
 import com.team_kuestenflunder.exam_desktop.repository.QuestionRepositoryImpl;
-import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 
 import java.util.HashSet;
 import java.util.Random;
@@ -22,7 +22,6 @@ public class PdfCreationPopUpService {
 
 
     public Set<Question> getRandomExamQuestions(int requestedNumberOfQuestions) {
-
 //requested number must be lower than getQuestions.size
         Set<Question> examQuestions = new HashSet<>();
         Random random = new Random();
@@ -33,13 +32,21 @@ public class PdfCreationPopUpService {
                     "Leider sind nicht genügend Fragen im Fragen-pool. Bitte stellen sie sicher, dass sie den richtigen Fragen-pool verwenden,\n oder reduzieren Sie die Anzahl der Fragen im Test.");
             return null;
         } else {
-            while (examQuestions.size() < requestedNumberOfQuestions){
+            while (examQuestions.size() < requestedNumberOfQuestions) {
                 int index = random.nextInt(questionRepository.getQuestions().size());
                 examQuestions.add(questionRepository.getQuestions().get(index));
             }
             return examQuestions;
         }
-
     }
+
+    public void createExamPDF(TextField tf_numberOfQuestions, TextField tf_testDuration) {
+        int requestedNumberOfQuestions = Integer.parseInt(tf_numberOfQuestions.getText());
+        int testDuration = Integer.parseInt(tf_testDuration.getText());
+        //TODO should be refactored and pass in the random Questions to createPDF as parameter.
+        PDFHandler pdfHandler = new PDFHandler(new PdfCreationPopUpService(new QuestionRepositoryImpl()));
+        pdfHandler.createExamPDF(requestedNumberOfQuestions, testDuration);
+    }
+
 
 }

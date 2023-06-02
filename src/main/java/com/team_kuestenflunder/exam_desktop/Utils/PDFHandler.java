@@ -24,7 +24,6 @@ public class PDFHandler {
     @Inject
     PdfCreationPopUpService popUpService;
 
-    SceneManager sceneManager = SceneManager.getInstance();
     private String name, surname;
     private int qsCounter = 0;
 
@@ -35,6 +34,7 @@ public class PDFHandler {
 
 
     public void createExamPDF(int numberOfQuestions, int testDuration/*,File fileToSaveExamJson*/) {
+        //? could be moved to the service and pass in the Set as Parameter
         Set<Question> examQuestions = popUpService.getRandomExamQuestions(numberOfQuestions);
 
 
