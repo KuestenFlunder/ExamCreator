@@ -21,7 +21,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-//TODO Refactor as singleton Pattern
 
 /**
  * A SceneManager utility class for managing JavaFX scenes and stages, file choosing dialog and more.
@@ -152,12 +151,12 @@ public class SceneManager {
      * @return the selected file.
      */
 
-    public File addFileSaveDialog(Event event) {
+    public File addFileSaveDialog(Event event, String filterDescription, String filterExtension) {
         Stage stage = new Stage();
         stage.initOwner(((MenuItem) event.getTarget()).getParentPopup().getOwnerWindow());
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Json wählen");
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("JSON", "*.json"));
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter(filterDescription, filterExtension));
         return fileChooser.showSaveDialog(stage);
     }
 
