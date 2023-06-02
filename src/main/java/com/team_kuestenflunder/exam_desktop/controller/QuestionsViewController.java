@@ -26,19 +26,18 @@ public class QuestionsViewController implements Initializable {
 
 
     @FXML
-    Button newQuestion_btn, bt_updateQuestion, bt_deleteQuestion, bt_createExam, bt_mergeJson, bt_saveQuestionsAsJson, bt_loadQuestionsFromJson, bt_deleteJson, bt_examEvaluation;
+    Button newQuestion_btn, bt_updateQuestion, bt_deleteQuestion, bt_createExam, bt_examEvaluation;
 
     @FXML
     TableView<Question> tableView;
 
     @FXML
-    MenuItem mi_newQuestionList;
+    MenuItem mi_newQuestionList, mi_loadQuestionFromJson, mi_saveQuestionsAsJson,mi_mergeQuestions,mi_createExam,mi_examEvaluation;
 
     @Inject
     public QuestionsViewController(QuestionsViewServiceImpl questionsViewService) {
         this.questionsViewService = questionsViewService;
     }
-
 
     public void onNewQuestionClick(ActionEvent event) {
         try {
@@ -77,6 +76,7 @@ public class QuestionsViewController implements Initializable {
     public void onCreateExamPdfClick(ActionEvent event) {
         try {
             sceneManager.addPdfCreationPopUp(event);
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -85,12 +85,12 @@ public class QuestionsViewController implements Initializable {
     public void onMergeJsonClick(ActionEvent event) {
         jsonHandler.mergeJsonFiles(
                 sceneManager.addFileChooserDialogMultiple(event, "JSON", "*.json"),
-                sceneManager.addFileSaveDialog(event));
+                sceneManager.addFileSaveDialog(event,"JSON","*.json"));
     }
 
     public void onSaveQuestionAsJsonClick(ActionEvent event) {
         try {
-            jsonHandler.writeJsonToInnerStorage(questionsViewService.getQuestions(), sceneManager.addFileSaveDialog(event));
+            jsonHandler.writeJsonToInnerStorage(questionsViewService.getQuestions(), sceneManager.addFileSaveDialog(event,"JSON","*.json"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -113,7 +113,10 @@ public class QuestionsViewController implements Initializable {
     public void onDeleteJsonClick(ActionEvent event) {
         try {
             File fileToDelete = sceneManager.addFileChooserDialogSingle(event);
-            Alert alert = alertMessage(Alert.AlertType.WARNING, toString(), "Sind sie Sicher, dass sie diese Datei " + fileToDelete.getName() + " löschen wollen?");
+            Alert alert = alertMessage(
+                     Alert.AlertType.WARNING
+                    ,toString()
+                    ,"Sind sie Sicher, dass sie diese Datei " + fileToDelete.getName() + " löschen wollen?");
             if (alert.getResult() == ButtonType.OK) {
                 java.nio.file.Files.delete(fileToDelete.toPath());
             }
@@ -135,7 +138,7 @@ public class QuestionsViewController implements Initializable {
 
         File file = sceneManager.addNewFileSaveDialog(event);
         if (file != null) {
-            System.out.println("New file will be created: " + file.getAbsolutePath());
+            System.out.println("Neue Datei erzeugt: " + file.getAbsolutePath());
         } else {
             System.out.println("File creation was cancelled or failed.");
         }

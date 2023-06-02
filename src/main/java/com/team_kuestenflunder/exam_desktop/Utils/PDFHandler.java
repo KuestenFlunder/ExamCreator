@@ -33,7 +33,7 @@ public class PDFHandler {
     }
 
 
-    public void createExamPDF(int numberOfQuestions, int testDuration/*,File fileToSaveExamJson*/) {
+    public void createExamPDF(int numberOfQuestions, int testDuration/*,File fileToSaveExam*/) {
         //? could be moved to the service and pass in the Set as Parameter
         Set<Question> examQuestions = popUpService.getRandomExamQuestions(numberOfQuestions);
 

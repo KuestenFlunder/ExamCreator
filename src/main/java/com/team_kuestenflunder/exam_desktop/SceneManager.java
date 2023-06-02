@@ -21,7 +21,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-//TODO Refactor as singleton Pattern
 
 /**
  * A SceneManager utility class for managing JavaFX scenes and stages, file choosing dialog and more.
@@ -84,11 +83,12 @@ public class SceneManager {
         stage.show();
     }
 
-    public void switchSceneToExamValidationView(ActionEvent event) throws IOException {
+    public void switchSceneToExamValidationView(Event event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("examEvaluationView.fxml"));
         fxmlLoader.setControllerFactory(injector::getInstance);
         root = fxmlLoader.load();
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Stage stage = new Stage();
+        stage.initOwner(((MenuItem) event.getTarget()).getParentPopup().getOwnerWindow());
         scene = new Scene(root);
         stage.setScene(scene);
         stage.setTitle("Prüfungsauswertung");
@@ -101,13 +101,13 @@ public class SceneManager {
      * @param event the action event that triggered the popup.
      * @throws IOException if there's an error loading the FXML file.
      */
-    public void addPdfCreationPopUp(ActionEvent event) throws IOException {
+    public void addPdfCreationPopUp(Event event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("pdfCreationPopUp.fxml"));
         fxmlLoader.setControllerFactory(injector::getInstance);
         root = fxmlLoader.load();
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
-        stage.initOwner(((Node) event.getSource()).getScene().getWindow());
+        stage.initOwner(((MenuItem) event.getTarget()).getParentPopup().getOwnerWindow());
         scene = new Scene(root);
         stage.setScene(scene);
         stage.showAndWait();
@@ -120,9 +120,9 @@ public class SceneManager {
      * @param event the action event that triggered the file chooser.
      * @return a list of the selected files.
      */
-    public List<java.io.File> addFileChooserDialogMultiple(ActionEvent event, String filterDescription, String FilterExtensions) {
+    public List<java.io.File> addFileChooserDialogMultiple(Event event, String filterDescription, String FilterExtensions) {
         Stage stage = new Stage();
-        stage.initOwner(((Node) event.getSource()).getScene().getWindow());
+        stage.initOwner(((MenuItem) event.getTarget()).getParentPopup().getOwnerWindow());
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Json wählen");
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter(filterDescription, FilterExtensions));
@@ -135,9 +135,9 @@ public class SceneManager {
      * @param event the action event that triggered the file chooser.
      * @return the selected file.
      */
-    public File addFileChooserDialogSingle(ActionEvent event) {
+    public File addFileChooserDialogSingle(Event event) {
         Stage stage = new Stage();
-        stage.initOwner(((Node) event.getSource()).getScene().getWindow());
+        stage.initOwner(((MenuItem) event.getTarget()).getParentPopup().getOwnerWindow());
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Json wählen");
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("JSON", "*.json"));
@@ -147,23 +147,16 @@ public class SceneManager {
     /**
      * Opens a file save dialog for choosing where to save a JSON file.
      *
-     * @param event the action event that triggered the file save dialog.
+     * @param event the event that triggered the file save dialog.
      * @return the selected file.
      */
-//    public File addFileSaveDialog(ActionEvent event){
-//        Stage stage = new Stage();
-//        stage.initOwner( ((Node) event.getSource()).getScene().getWindow());
-//        FileChooser fileChooser = new FileChooser();
-//        fileChooser.setTitle("Json wählen");
-//        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("JSON", "*.json"));
-//        return fileChooser.showSaveDialog(stage);
-//    }
-    public File addFileSaveDialog(Event event) {
+
+    public File addFileSaveDialog(Event event, String filterDescription, String filterExtension) {
         Stage stage = new Stage();
         stage.initOwner(((MenuItem) event.getTarget()).getParentPopup().getOwnerWindow());
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Json wählen");
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("JSON", "*.json"));
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter(filterDescription, filterExtension));
         return fileChooser.showSaveDialog(stage);
     }
 

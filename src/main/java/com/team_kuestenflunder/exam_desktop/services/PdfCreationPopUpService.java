@@ -44,6 +44,7 @@ public class PdfCreationPopUpService {
         int requestedNumberOfQuestions = Integer.parseInt(tf_numberOfQuestions.getText());
         int testDuration = Integer.parseInt(tf_testDuration.getText());
         //TODO should be refactored and pass in the random Questions to createPDF as parameter.
+        //TODO Add a filepath to choose the right place to save the Exam to.
         PDFHandler pdfHandler = new PDFHandler(new PdfCreationPopUpService(new QuestionRepositoryImpl()));
         pdfHandler.createExamPDF(requestedNumberOfQuestions, testDuration);
     }
