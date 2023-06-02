@@ -32,13 +32,12 @@ public class QuestionsViewController implements Initializable {
     TableView<Question> tableView;
 
     @FXML
-    MenuItem mi_newQuestionList, mi_loadQuestionFromJson, mi_saveQuestionsAsJson,mi_mergeQuestions;
+    MenuItem mi_newQuestionList, mi_loadQuestionFromJson, mi_saveQuestionsAsJson,mi_mergeQuestions,mi_createExam,mi_examEvaluation;
 
     @Inject
     public QuestionsViewController(QuestionsViewServiceImpl questionsViewService) {
         this.questionsViewService = questionsViewService;
     }
-
 
     public void onNewQuestionClick(ActionEvent event) {
         try {
@@ -77,6 +76,7 @@ public class QuestionsViewController implements Initializable {
     public void onCreateExamPdfClick(ActionEvent event) {
         try {
             sceneManager.addPdfCreationPopUp(event);
+            sceneManager.addFileSaveDialog(event);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -113,7 +113,10 @@ public class QuestionsViewController implements Initializable {
     public void onDeleteJsonClick(ActionEvent event) {
         try {
             File fileToDelete = sceneManager.addFileChooserDialogSingle(event);
-            Alert alert = alertMessage(Alert.AlertType.WARNING, toString(), "Sind sie Sicher, dass sie diese Datei " + fileToDelete.getName() + " löschen wollen?");
+            Alert alert = alertMessage(
+                     Alert.AlertType.WARNING
+                    ,toString()
+                    ,"Sind sie Sicher, dass sie diese Datei " + fileToDelete.getName() + " löschen wollen?");
             if (alert.getResult() == ButtonType.OK) {
                 java.nio.file.Files.delete(fileToDelete.toPath());
             }

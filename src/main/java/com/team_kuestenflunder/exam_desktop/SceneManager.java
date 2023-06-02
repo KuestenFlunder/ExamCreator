@@ -84,11 +84,12 @@ public class SceneManager {
         stage.show();
     }
 
-    public void switchSceneToExamValidationView(ActionEvent event) throws IOException {
+    public void switchSceneToExamValidationView(Event event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("examEvaluationView.fxml"));
         fxmlLoader.setControllerFactory(injector::getInstance);
         root = fxmlLoader.load();
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Stage stage = new Stage();
+        stage.initOwner(((MenuItem) event.getTarget()).getParentPopup().getOwnerWindow());
         scene = new Scene(root);
         stage.setScene(scene);
         stage.setTitle("Prüfungsauswertung");
@@ -101,13 +102,13 @@ public class SceneManager {
      * @param event the action event that triggered the popup.
      * @throws IOException if there's an error loading the FXML file.
      */
-    public void addPdfCreationPopUp(ActionEvent event) throws IOException {
+    public void addPdfCreationPopUp(Event event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("pdfCreationPopUp.fxml"));
         fxmlLoader.setControllerFactory(injector::getInstance);
         root = fxmlLoader.load();
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
-        stage.initOwner(((Node) event.getSource()).getScene().getWindow());
+        stage.initOwner(((MenuItem) event.getTarget()).getParentPopup().getOwnerWindow());
         scene = new Scene(root);
         stage.setScene(scene);
         stage.showAndWait();
