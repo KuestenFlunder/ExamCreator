@@ -5,9 +5,11 @@ import com.team_kuestenflunder.exam_desktop.SceneManager;
 import com.team_kuestenflunder.exam_desktop.entity.Question;
 import com.team_kuestenflunder.exam_desktop.services.PdfCreationPopUpService;
 import org.apache.pdfbox.cos.*;
+import org.apache.pdfbox.multipdf.PDFCloneUtility;
 import org.apache.pdfbox.multipdf.PDFMergerUtility;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.common.PDStream;
 import org.apache.pdfbox.pdmodel.interactive.action.PDActionJavaScript;
 import org.apache.pdfbox.pdmodel.interactive.annotation.PDAnnotation;
 import org.apache.pdfbox.pdmodel.interactive.annotation.PDAnnotationLine;
@@ -83,6 +85,7 @@ public class PDFHandler {
                 PDDocument questionPage = PDDocument.load(new File("src/main/resources/com/team_kuestenflunder/exam_desktop/templates/QuestionLayout.pdf"));
                 PDAcroForm acroQuestionPage = questionPage.getDocumentCatalog().getAcroForm();
                 qsCounter++;
+
                 setValueToField(acroQuestionPage, "QuestionID_Field", question.getId());
                 setValueToField(acroQuestionPage, "questionNumberField", String.valueOf(qsCounter));
                 setValueToField(acroQuestionPage, "numberOfQuestionsField", String.valueOf(numberOfQuestions));
@@ -94,6 +97,7 @@ public class PDFHandler {
                     String answerFieldName = "AnswerTextField_" + i;
                     setValueToField(acroQuestionPage, answerFieldName, String.valueOf(question.getAnswers().getAnswerList().get(i).getAnswerText()));
                     String answerCodeFieldName = "AnswerCodeField_" + i;
+
                     setValueToField(acroQuestionPage, answerCodeFieldName, String.valueOf(question.getAnswers().getAnswerList().get(i).getAnswerDescription())); //TODO 'Description' durch 'AnswerCode' ersetzen
                     String checkboxFieldName = "CorrectAnswerBox_" + i;
                     //hidden checkbox to keep the correct answers
@@ -102,8 +106,14 @@ public class PDFHandler {
                         checkbox.setValue(checkbox.getOnValue());
                     }
                     // hide the checkbox content
-                    PDAnnotationWidget widget = checkbox.getWidgets().get(0);
-                    widget.setHidden(true);
+//                    PDAnnotationWidget widget = checkbox.getWidgets().get(0);
+//                    widget.setHidden(true);
+                    PDCheckBox answerBox = (PDCheckBox) acroQuestionPage.getField(("AnswerBox_" + i));
+                    System.out.println(answerBox.getValue());
+                    String answerBox_NewMappingName = "AnswerBox_" + qsCounter + "" +i;
+//                    answerBox.setPartialName(answerBox_NewMappingName);
+                    answerBox.setMappingName(answerBox_NewMappingName);
+                    acroQuestionPage.refreshAppearances();
                 }
                 String pathName = "src/main/Output/qsPage" + qsCounter + ".pdf";
                 questionPage.save(pathName);
@@ -166,7 +176,7 @@ public class PDFHandler {
 
 
 // ES FUNKTIONIERT NICHT
-    public static List<Student> evaluationOf_SeveralTests (List<File> files){
+    public List<Student> evaluationOf_SeveralTests (List<File> files){
         List<Student> studentList = new ArrayList<>(files.size());
         Student student = new Student();
         try {
@@ -185,7 +195,7 @@ public class PDFHandler {
     }
 
 
-    private static Double evaluationOf_PDFTest(File pdfFile) throws IOException {
+    private Double evaluationOf_PDFTest(File pdfFile) throws IOException {
         PDDocument pdfDocument = PDDocument.load(pdfFile);
         int counterOfTrueAnswers = 0;
         int questionsAmount = pdfDocument.getNumberOfPages() - 2;
@@ -198,8 +208,9 @@ public class PDFHandler {
     }
 
 // da alle interaktive Felder im Dockument zu gleicher AcroForm gehören, über Seiten-Nummer kann nicht an die Felder greifen
-    private static boolean evaluationOf_QuestionPage(PDDocument document, PDPage page) throws IOException{
+    private static boolean evaluationOf_QuestionPage(File onPageQuestion) throws IOException{
         int counter = 0;
+        PDDocument document = PDDocument.load(onPageQuestion);
         PDAcroForm acroForm = document.getDocumentCatalog().getAcroForm();
         if (acroForm != null){
             for (int i = 0; i < 6; i++){
@@ -215,13 +226,34 @@ public class PDFHandler {
     }
 
 
-    private static String getStudentNameFromFile(File pdfFile) throws IOException, RuntimeException{
+    private static PDDocument pageCopy (File pdfFile, int pageIndex) throws IOException {
+        PDDocument document = PDDocument.load(pdfFile);
+        PDPage pageToCopy = document.getPage(pageIndex);
+
+        PDDocument onPageDocument = new PDDocument();
+        PDPage targetPage = new PDPage(pageToCopy.getMediaBox());
+
+        PDFCloneUtility cloneUtility = new PDFCloneUtility(document);
+        cloneUtility.cloneMerge(pageToCopy, targetPage);
+        onPageDocument.addPage(targetPage);
+
+        String filePath = "src/main/Output/CopyOfPage_" + pageIndex + ".pdf";
+        onPageDocument.save(new File(filePath));
+        onPageDocument.close();
+        document.close();
+
+        return onPageDocument;
+    }
+
+
+    private String getStudentNameFromFile(File pdfFile) throws IOException, RuntimeException{
         PDDocument document = PDDocument.load(pdfFile);
         PDAcroForm acroFormTitelPage = document.getDocumentCatalog().getAcroForm();
         PDTextField nameField = (PDTextField)acroFormTitelPage.getField("nameField");
         String name = nameField.getValue();
         PDTextField surnameField = (PDTextField)acroFormTitelPage.getField("surnameField");
         String surname = surnameField.getValue();
+        document.close();
         return name +" "+ surname;
     }
 
@@ -229,29 +261,46 @@ public class PDFHandler {
 
 //---------------------------- zum testen --------------------------------
     public static void main(String[] args) {
-
         try {
-            processPDF();
+            int pageIndex = 3;
+            String filePfad = "src/main/Output/CopyOfPage_"+pageIndex+".pdf";
+
+            pageCopy(new File("src/main/Output/Test.pdf"), pageIndex);
+            boolean testResult = evaluationOf_QuestionPage(new File(filePfad));
+            System.out.println("bestanden : " + testResult);
+
+            processPDF(new File("src/main/Output/Test.pdf"));
+
         } catch (IOException e) {
             System.out.println("Error occurred: " + e.getMessage());
             e.printStackTrace();
         }
     }
-    public static void processPDF() throws IOException {
-        PDDocument document = PDDocument.load(new File("src/main/Output/Test.pdf"));
+//---------------------------- zum testen -------------------------------
+
+
+    public static void processPDF(File pdfFile) throws IOException {
+        PDDocument document = PDDocument.load(pdfFile);
         PDAcroForm acroForm = document.getDocumentCatalog().getAcroForm();
         List<PDField> fields = acroForm.getFields();
 
-
         for (PDField field : fields) {
-           //System.out.println("field = " + field);
-            //Title all +32 fields
-            if (field.getFullyQualifiedName().equals("dummyFieldName160")) {
-                String value = field.getValueAsString();
-                System.out.println("Value of QuestionTextField: " + value);
+            if (field instanceof PDCheckBox) {
+//                if (field.getFullyQualifiedName().contains("AnswerBox_")) {
+//                    System.out.println("field = " + field);
+//                }
+                System.out.println(field.getMappingName());
             }
         }
-
+        System.out.println("------------- 2. liste ---------------------");
+//            Title all +32 fields
+//        for (PDField field : fields) {
+////            if (field.getFullyQualifiedName().equals("dummyFieldName2")) {
+//            String value = field.getValueAsString();
+//            System.out.print(field.getFullyQualifiedName() + " " + field.getClass());
+//            System.out.println(" / Value: " + value);
+////            }
+//        }
         document.close();
     }
 
