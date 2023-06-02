@@ -39,13 +39,6 @@ public class PDFHandler {
     }
 
 
-    private static class Student {
-        String studentName;
-        String percentageRatioFromTest;
-        String testResult;
-    }
-
-
     public void createExamPDF(String testTitel, int numberOfQuestions, int testDuration/*,File fileToSaveExamJson*/) {
         Set<Question> examQuestions = popUpService.getRandomExamQuestions(numberOfQuestions);
         int qsCounter = 0;
@@ -55,22 +48,16 @@ public class PDFHandler {
         DateTimeFormatter formatterDate = DateTimeFormatter.ofPattern("dd MMMM yyyy", Locale.GERMAN);
         String dateOfTest = dateNow.format(formatterDate);
 
-        LocalDateTime testStartTime = LocalDateTime.now();
-        DateTimeFormatter formatterTime = DateTimeFormatter.ofPattern("HH : mm");
-        String startTime = testStartTime.format(formatterTime);
-
 // ---- Test to PDF
         PDFMergerUtility pdfTest = new PDFMergerUtility();
         try {
             // Page 1
             PDDocument titelPage = PDDocument.load(new File("src/main/resources/com/team_kuestenflunder/exam_desktop/templates/TitelPageLayout.pdf"));
             PDAcroForm acroFormTitelPage = titelPage.getDocumentCatalog().getAcroForm();
-
             PDTextField requiredNameField = (PDTextField) acroFormTitelPage.getField("nameField");
                         requiredNameField.setRequired(true);
             PDTextField requiredSurnameField = (PDTextField) acroFormTitelPage.getField("surnameField");
                         requiredSurnameField.setRequired(true);
-
             setValueToField(acroFormTitelPage, "courseNameField", "Java Entwickler Oracle Certified Professional SE");
             setValueToField(acroFormTitelPage, "testTitelField", testTitel);
             setValueToField(acroFormTitelPage, "dateOfTestField", dateOfTest);
@@ -80,12 +67,11 @@ public class PDFHandler {
             titelPage.close();
             pdfTest.addSource("src/main/Output/TitelPage.pdf");
 
-            // page from 2 to (numberOfQuestions + 1)
+            // page from 2 to (++numberOfQuestions)
             for (Question question : examQuestions) {
                 PDDocument questionPage = PDDocument.load(new File("src/main/resources/com/team_kuestenflunder/exam_desktop/templates/QuestionLayout.pdf"));
                 PDAcroForm acroQuestionPage = questionPage.getDocumentCatalog().getAcroForm();
                 qsCounter++;
-
                 setValueToField(acroQuestionPage, "QuestionID_Field", question.getId());
                 setValueToField(acroQuestionPage, "questionNumberField", String.valueOf(qsCounter));
                 setValueToField(acroQuestionPage, "numberOfQuestionsField", String.valueOf(numberOfQuestions));
@@ -94,24 +80,27 @@ public class PDFHandler {
                 setValueToField(acroQuestionPage, "correctAnswersField", String.valueOf(question.getAnswers().getCorrectAnswers()));
                 // Answer-Fields füllen
                 for (int i = 0; i < question.getAnswers().getAnswerList().size(); i++) {
-                    String answerFieldName = "AnswerTextField_" + i;
-                    setValueToField(acroQuestionPage, answerFieldName, String.valueOf(question.getAnswers().getAnswerList().get(i).getAnswerText()));
-                    String answerCodeFieldName = "AnswerCodeField_" + i;
-
-                    setValueToField(acroQuestionPage, answerCodeFieldName, String.valueOf(question.getAnswers().getAnswerList().get(i).getAnswerDescription())); //TODO 'Description' durch 'AnswerCode' ersetzen
-                    String checkboxFieldName = "CorrectAnswerBox_" + i;
-                    //hidden checkbox to keep the correct answers
-                    PDCheckBox checkbox = (PDCheckBox) acroQuestionPage.getField(checkboxFieldName);
+                    setValueToField(acroQuestionPage, ("AnswerTextField_" + i), String.valueOf(question.getAnswers().getAnswerList().get(i).getAnswerText()));
+                    setValueToField(acroQuestionPage, ("AnswerCodeField_" + i), String.valueOf(question.getAnswers().getAnswerList().get(i).getAnswerDescription())); //TODO 'Description' durch 'AnswerCode' ersetzen
+                    //hidden correctAnswerBox to keep the correct answers
+                    PDCheckBox correctAnswerBox = (PDCheckBox) acroQuestionPage.getField("CorrectAnswerBox_" + i);
                     if (question.getAnswers().getAnswerList().get(i).isCorrectAnswer()) {
-                        checkbox.setValue(checkbox.getOnValue());
+                        correctAnswerBox.setValue(correctAnswerBox.getOnValue());
                     }
-                    // hide the checkbox content
-//                    PDAnnotationWidget widget = checkbox.getWidgets().get(0);
+                    // hide the correctAnswerBox content
+//                    PDAnnotationWidget widget = correctAnswerBox.getWidgets().get(0);
 //                    widget.setHidden(true);
+
+                    //mappingNames for QuestionID
+                    PDTextField questionID = (PDTextField) acroQuestionPage.getField("QuestionID_Field");
+                    String questionID_MappingName = "QuestionID_Field_" + qsCounter + "" + i;
+                    questionID.setMappingName(questionID_MappingName);
+                    //mappingNames for correctAnswerBoxes
+                    String correctAnswerBox_MappingName = "correctAnswerBox_" + qsCounter + "" +i;
+                    correctAnswerBox.setMappingName(correctAnswerBox_MappingName);
+                    //mappingNames for AnswerBoxes
                     PDCheckBox answerBox = (PDCheckBox) acroQuestionPage.getField(("AnswerBox_" + i));
-                    System.out.println(answerBox.getValue());
                     String answerBox_NewMappingName = "AnswerBox_" + qsCounter + "" +i;
-//                    answerBox.setPartialName(answerBox_NewMappingName);
                     answerBox.setMappingName(answerBox_NewMappingName);
                     acroQuestionPage.refreshAppearances();
                 }
@@ -120,7 +109,6 @@ public class PDFHandler {
                 questionPage.close();
                 pdfTest.addSource(pathName);
             }
-
             // last page
             PDDocument lastPage = PDDocument.load(
                     new File("src/main/resources/com/team_kuestenflunder/exam_desktop/templates/LastPageLayout.pdf"));
@@ -135,15 +123,11 @@ public class PDFHandler {
             PDPushButton evaluateButton = (PDPushButton) acroFormLastPage.getField("evaluateTheTest_Button");
             PDActionJavaScript button_JavaScript = new PDActionJavaScript();
             String absoluteFilePath = "/Users/jan-hendrykpassler/IdeaProjects/exam_desktop/src/main/Output/Test.pdf";
-
             String javascriptCode = "app.launchURL('mailto:kuestenflunder@gmail.com?subject=');";
-
             button_JavaScript.setAction(javascriptCode);
-
             PDAnnotationWidget evaluateButtonWidget = evaluateButton.getWidgets().get(0);
             evaluateButtonWidget.setAction(button_JavaScript);
 //?????????
-
             lastPage.save("src/main/Output/LastPage.pdf");
             lastPage.close();
             pdfTest.addSource("src/main/Output/LastPage.pdf");
@@ -176,23 +160,23 @@ public class PDFHandler {
 
 
 // ES FUNKTIONIERT NICHT
-    public List<Student> evaluationOf_SeveralTests (List<File> files){
-        List<Student> studentList = new ArrayList<>(files.size());
-        Student student = new Student();
-        try {
-            for (File pdfFile : files) {
-                DecimalFormat decimalFormat = new DecimalFormat ("#0.00");
-                student.studentName = getStudentNameFromFile(pdfFile);
-                student.percentageRatioFromTest = decimalFormat.format(evaluationOf_PDFTest(pdfFile));
-                student.testResult = Double.parseDouble(student.percentageRatioFromTest) >= 65 ? "Bestanden" : "Nicht bestanden";
-                studentList.add(student);
-            }
-        }catch (IOException ioE){
-            ioE.printStackTrace();
-        }
-        System.out.println(studentList);
-        return studentList;
-    }
+//    public List<Student> evaluationOf_SeveralTests (List<File> files){
+//        List<Student> studentList = new ArrayList<>(files.size());
+//        Student student = new Student();
+//        try {
+//            for (File pdfFile : files) {
+//                DecimalFormat decimalFormat = new DecimalFormat ("#0.00");
+////                student.studentName = getStudentNameFromFile(pdfFile);
+//                student.percentageRatioFromTest = decimalFormat.format(evaluationOf_PDFTest(pdfFile));
+//                student.testResult = Double.parseDouble(student.percentageRatioFromTest) >= 65 ? "Bestanden" : "Nicht bestanden";
+//                studentList.add(student);
+//            }
+//        }catch (IOException ioE){
+//            ioE.printStackTrace();
+//        }
+//        System.out.println(studentList);
+//        return studentList;
+//    }
 
 
     private Double evaluationOf_PDFTest(File pdfFile) throws IOException {
@@ -246,7 +230,7 @@ public class PDFHandler {
     }
 
 
-    private String getStudentNameFromFile(File pdfFile) throws IOException, RuntimeException{
+    public String getStudentNameFromFile(File pdfFile) throws IOException, RuntimeException{
         PDDocument document = PDDocument.load(pdfFile);
         PDAcroForm acroFormTitelPage = document.getDocumentCatalog().getAcroForm();
         PDTextField nameField = (PDTextField)acroFormTitelPage.getField("nameField");
@@ -262,12 +246,12 @@ public class PDFHandler {
 //---------------------------- zum testen --------------------------------
     public static void main(String[] args) {
         try {
-            int pageIndex = 3;
-            String filePfad = "src/main/Output/CopyOfPage_"+pageIndex+".pdf";
-
-            pageCopy(new File("src/main/Output/Test.pdf"), pageIndex);
-            boolean testResult = evaluationOf_QuestionPage(new File(filePfad));
-            System.out.println("bestanden : " + testResult);
+//            int pageIndex = 3;
+//            String filePfad = "src/main/Output/CopyOfPage_"+pageIndex+".pdf";
+//
+//            pageCopy(new File("src/main/Output/Test.pdf"), pageIndex);
+//            boolean testResult = evaluationOf_QuestionPage(new File(filePfad));
+//            System.out.println("bestanden : " + testResult);
 
             processPDF(new File("src/main/Output/Test.pdf"));
 
@@ -284,23 +268,23 @@ public class PDFHandler {
         PDAcroForm acroForm = document.getDocumentCatalog().getAcroForm();
         List<PDField> fields = acroForm.getFields();
 
+        Map <String, String> mapResult = new TreeMap<>();
         for (PDField field : fields) {
             if (field instanceof PDCheckBox) {
-//                if (field.getFullyQualifiedName().contains("AnswerBox_")) {
-//                    System.out.println("field = " + field);
-//                }
-                System.out.println(field.getMappingName());
+                mapResult.put(field.getMappingName(), field.getValueAsString());
+//                System.out.println(field.getMappingName());
+//                System.out.println(field.getValueAsString());
             }
         }
-        System.out.println("------------- 2. liste ---------------------");
-//            Title all +32 fields
-//        for (PDField field : fields) {
-////            if (field.getFullyQualifiedName().equals("dummyFieldName2")) {
-//            String value = field.getValueAsString();
-//            System.out.print(field.getFullyQualifiedName() + " " + field.getClass());
-//            System.out.println(" / Value: " + value);
-////            }
-//        }
+//        mapResult.forEach((k,v) -> System.out.println(k + " " + v));
+//        mapResult.entrySet().stream().forEach( System.out::println);
+        for (int i = 1; i <= Math.sqrt(mapResult.size()); i++ ){
+            for (int j = 0; j < 6; j++) {
+                System.out.println(i+""+j +": "+ mapResult.get("correctAnswerBox_"+i+""+j) );
+                System.out.println(i+""+j +": "+ mapResult.get("AnswerBox_"+i+""+j));
+            }
+        }
+        System.out.println("mapResult.size() = " + mapResult.size());
         document.close();
     }
 
