@@ -28,7 +28,7 @@ public class QuestionsViewController implements Initializable {
 
 
     @FXML
-    Button newQuestion_btn, bt_updateQuestion, bt_deleteQuestion, bt_createExam, bt_mergeJson, bt_saveQuestionsAsJson, bt_loadQuestionsFromJson, bt_deleteJson,bt_examEvaluation;
+    Button newQuestion_btn, bt_updateQuestion, bt_deleteQuestion, bt_createExam, bt_mergeJson, bt_saveQuestionsAsJson, bt_loadQuestionsFromJson, bt_deleteJson, bt_examEvaluation;
 
     @FXML
     TableView<Question> tableView;
@@ -83,13 +83,13 @@ public class QuestionsViewController implements Initializable {
 
     public void onMergeJsonClick(ActionEvent event) {
         jsonHandler.mergeJsonFiles(
-                sceneManager.addFileChooserDialogMultiple(event,"JSON","*.json"),
+                sceneManager.addFileChooserDialogMultiple(event, "JSON", "*.json"),
                 sceneManager.addFileSaveDialog(event));
     }
 
     public void onSaveQuestionAsJsonClick(ActionEvent event) {
         try {
-            jsonHandler.writeJsonToFile(questionsViewService.getQuestions(), sceneManager.addFileSaveDialog(event));
+            jsonHandler.writeJsonToInnerStorage(questionsViewService.getQuestions(), sceneManager.addFileSaveDialog(event));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -122,7 +122,7 @@ public class QuestionsViewController implements Initializable {
         }
     }
 
-    public void onExamEvaluationClick(ActionEvent event){
+    public void onExamEvaluationClick(ActionEvent event) {
         try {
             sceneManager.switchSceneToExamValidationView(event);
         } catch (IOException e) {
@@ -132,7 +132,8 @@ public class QuestionsViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-       createViewTable();
+        questionsViewService.loadInnerStorage();
+        createViewTable();
     }
 
     /**

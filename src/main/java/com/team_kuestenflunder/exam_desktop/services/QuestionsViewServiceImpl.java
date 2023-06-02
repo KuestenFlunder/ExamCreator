@@ -2,10 +2,12 @@ package com.team_kuestenflunder.exam_desktop.services;
 
 import com.google.inject.Inject;
 import com.team_kuestenflunder.exam_desktop.Constants;
+import com.team_kuestenflunder.exam_desktop.Utils.JsonHandler;
 import com.team_kuestenflunder.exam_desktop.entity.Question;
 import com.team_kuestenflunder.exam_desktop.repository.QuestionRepositoryImpl;
 import javafx.collections.ObservableList;
 
+import java.io.IOException;
 import java.util.List;
 
 public class QuestionsViewServiceImpl implements Service {
@@ -47,6 +49,14 @@ public class QuestionsViewServiceImpl implements Service {
     public void deleteQuestion(Question question) {
         int index = getQuestionIndexByID(question.getId());
         questionRepository.deleteQuestion(index);
+    }
+
+    public void loadInnerStorage(){
+        try {
+            questionRepository.addQuestions(JsonHandler.readJsonFromInnerStorage());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 

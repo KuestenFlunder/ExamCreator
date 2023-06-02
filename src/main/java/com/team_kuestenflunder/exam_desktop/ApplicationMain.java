@@ -22,9 +22,8 @@ public class ApplicationMain extends Application {
     }
     @Override
     public void start(Stage stage) throws Exception {
-        dataService.initDataService();
+
         Scene scene = sceneManager.getQuestionView();
-        //set a Stage Title
         stage.setTitle("Fragen Liste");
         stage.setScene(scene);
         stage.show();
@@ -32,7 +31,7 @@ public class ApplicationMain extends Application {
 
     public void stop() throws Exception {
         csvHandler.writeCSV(dataService.getQuestions());
-        jsonHandler.writeJsonToFile(dataService.getQuestions(),null);
+        jsonHandler.writeJsonToInnerStorage(dataService.getQuestions(),null);
     }
 
 
