@@ -21,10 +21,10 @@
                 <Menu mnemonicParsing="false" text="Fragenliste">
                   <items>
                     <MenuItem fx:id="mi_newQuestionList" mnemonicParsing="false" onAction="#onNewQuestionListClick" text="Neue Fragenliste" />
-                        <MenuItem mnemonicParsing="false" text="Fragenliste laden" />
-                        <MenuItem mnemonicParsing="false" text="Fragenliste speichern" />
-                        <MenuItem mnemonicParsing="false" text="Fragenlisten zusammenfühern" />
-                        <MenuItem mnemonicParsing="false" text="Fragenliste löschen" />
+                        <MenuItem fx:id="mi_loadQuestionFromJson" mnemonicParsing="false" onAction="#onLoadQuestionFromJsonClick" text="Fragenliste laden" />
+                        <MenuItem fx:id="mi_saveQuestionsAsJson" mnemonicParsing="false" onAction="#onSaveQuestionAsJsonClick" text="Fragenliste speichern" />
+                        <MenuItem fx:id="mi_mergeQuestions" mnemonicParsing="false" onAction="#onMergeJsonClick" text="Fragenlisten zusammenfühern" />
+                        <MenuItem fx:id="mi_deleteJson" mnemonicParsing="false" onAction="#onDeleteJsonClick" text="Fragenliste löschen" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Prüfung">
@@ -91,35 +91,6 @@
                                  <VBox.margin>
                                     <Insets bottom="60.0" />
                                  </VBox.margin>
-                              </Button>
-                              <Button fx:id="bt_mergeJson" mnemonicParsing="false" onAction="#onMergeJsonClick" prefHeight="30.0" prefWidth="150.0" text="Json zusammenführen">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                                 <VBox.margin>
-                                    <Insets bottom="20.0" />
-                                 </VBox.margin>
-                              </Button>
-                              <Button fx:id="bt_saveQuestionsAsJson" mnemonicParsing="false" onAction="#onSaveQuestionAsJsonClick" prefHeight="30.0" prefWidth="150.0" text="Fragenliste speichern">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                                 <VBox.margin>
-                                    <Insets bottom="20.0" />
-                                 </VBox.margin>
-                              </Button>
-                              <Button fx:id="bt_loadQuestionsFromJson" mnemonicParsing="false" onAction="#onLoadQuestionFromJsonClick" prefHeight="30.0" prefWidth="150.0" text="Fragenliste laden">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                                 <VBox.margin>
-                                    <Insets bottom="20.0" />
-                                 </VBox.margin>
-                              </Button>
-                              <Button fx:id="bt_deleteJson" mnemonicParsing="false" onAction="#onDeleteJsonClick" prefHeight="30.0" prefWidth="150.0" text="Json löschen">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
                               </Button>
                            </children>
                            <opaqueInsets>

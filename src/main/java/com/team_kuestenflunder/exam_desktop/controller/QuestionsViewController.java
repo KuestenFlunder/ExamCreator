@@ -26,13 +26,13 @@ public class QuestionsViewController implements Initializable {
 
 
     @FXML
-    Button newQuestion_btn, bt_updateQuestion, bt_deleteQuestion, bt_createExam, bt_mergeJson, bt_saveQuestionsAsJson, bt_loadQuestionsFromJson, bt_deleteJson, bt_examEvaluation;
+    Button newQuestion_btn, bt_updateQuestion, bt_deleteQuestion, bt_createExam, bt_examEvaluation;
 
     @FXML
     TableView<Question> tableView;
 
     @FXML
-    MenuItem mi_newQuestionList;
+    MenuItem mi_newQuestionList, mi_loadQuestionFromJson, mi_saveQuestionsAsJson,mi_mergeQuestions;
 
     @Inject
     public QuestionsViewController(QuestionsViewServiceImpl questionsViewService) {
@@ -135,7 +135,7 @@ public class QuestionsViewController implements Initializable {
 
         File file = sceneManager.addNewFileSaveDialog(event);
         if (file != null) {
-            System.out.println("New file will be created: " + file.getAbsolutePath());
+            System.out.println("Neue Datei erzeugt: " + file.getAbsolutePath());
         } else {
             System.out.println("File creation was cancelled or failed.");
         }

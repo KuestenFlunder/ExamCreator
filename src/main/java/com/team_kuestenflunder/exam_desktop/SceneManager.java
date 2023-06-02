@@ -120,9 +120,9 @@ public class SceneManager {
      * @param event the action event that triggered the file chooser.
      * @return a list of the selected files.
      */
-    public List<java.io.File> addFileChooserDialogMultiple(ActionEvent event, String filterDescription, String FilterExtensions) {
+    public List<java.io.File> addFileChooserDialogMultiple(Event event, String filterDescription, String FilterExtensions) {
         Stage stage = new Stage();
-        stage.initOwner(((Node) event.getSource()).getScene().getWindow());
+        stage.initOwner(((MenuItem) event.getTarget()).getParentPopup().getOwnerWindow());
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Json wählen");
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter(filterDescription, FilterExtensions));
@@ -135,9 +135,9 @@ public class SceneManager {
      * @param event the action event that triggered the file chooser.
      * @return the selected file.
      */
-    public File addFileChooserDialogSingle(ActionEvent event) {
+    public File addFileChooserDialogSingle(Event event) {
         Stage stage = new Stage();
-        stage.initOwner(((Node) event.getSource()).getScene().getWindow());
+        stage.initOwner(((MenuItem) event.getTarget()).getParentPopup().getOwnerWindow());
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Json wählen");
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("JSON", "*.json"));
@@ -147,17 +147,10 @@ public class SceneManager {
     /**
      * Opens a file save dialog for choosing where to save a JSON file.
      *
-     * @param event the action event that triggered the file save dialog.
+     * @param event the event that triggered the file save dialog.
      * @return the selected file.
      */
-//    public File addFileSaveDialog(ActionEvent event){
-//        Stage stage = new Stage();
-//        stage.initOwner( ((Node) event.getSource()).getScene().getWindow());
-//        FileChooser fileChooser = new FileChooser();
-//        fileChooser.setTitle("Json wählen");
-//        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("JSON", "*.json"));
-//        return fileChooser.showSaveDialog(stage);
-//    }
+
     public File addFileSaveDialog(Event event) {
         Stage stage = new Stage();
         stage.initOwner(((MenuItem) event.getTarget()).getParentPopup().getOwnerWindow());
