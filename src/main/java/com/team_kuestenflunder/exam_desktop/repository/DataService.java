@@ -10,12 +10,10 @@ import java.io.IOException;
 
 public class DataService {
     private static DataService instance;
-    private final JsonHandler jsonHandler;
+
     private ObservableList<Question> questions = FXCollections.observableArrayList();
 
-    private DataService() {
-        this.jsonHandler = new JsonHandler();
-    }
+
 
     public static DataService getInstance() {
         if (instance == null) {
@@ -32,12 +30,5 @@ public class DataService {
         this.questions = questions;
     }
 
-    // TODO Extract strict dependency in refactoring
-    public void initDataService() {
-        try {
-            questions = jsonHandler.readJson();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+
 }

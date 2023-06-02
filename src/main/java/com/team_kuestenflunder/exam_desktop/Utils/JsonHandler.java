@@ -13,7 +13,6 @@ import javafx.collections.ObservableList;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -21,21 +20,21 @@ import java.util.Set;
 
 public class JsonHandler {
 
-    public void writeJsonToFile(List<Question> questionList, File file) throws IOException {
+    public void writeJsonToInnerStorage(List<Question> questionList, File file) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
         objectMapper.registerModule(new JavaTimeModule());
 
         if (file == null) {
-            file = new File("src/main/Output/innerJsonDatastore.json");
+            file = new File("src/main/Data/innerJsonDatastore.json");
         }
         objectMapper.writeValue(new File(file.toURI()), questionList);
     }
 
-    public ObservableList<Question> readJson() throws IOException {
+    public static  ObservableList<Question> readJsonFromInnerStorage() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.registerModule(new JavaTimeModule());
         try {
-            File jsonFile = new File("src/main/Output/innerJsonDatastore.json");
+            File jsonFile = new File("src/main/Data/innerJsonDatastore.json");
             List<Question> questionList = objectMapper.readValue(jsonFile, new TypeReference<>() {
             });
             System.out.println("Json created successfully");
