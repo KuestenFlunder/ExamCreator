@@ -99,7 +99,6 @@ public class QuestionFormController implements Initializable {
     }
 
     public void onCancelClick(ActionEvent event){
-
         try {
             sceneManager.switchSceneToQuestionView(event);
         } catch (IOException e) {

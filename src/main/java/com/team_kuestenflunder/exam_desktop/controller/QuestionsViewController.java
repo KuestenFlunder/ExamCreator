@@ -5,13 +5,14 @@ import com.team_kuestenflunder.exam_desktop.SceneManager;
 import com.team_kuestenflunder.exam_desktop.Utils.JsonHandler;
 import com.team_kuestenflunder.exam_desktop.entity.Question;
 import com.team_kuestenflunder.exam_desktop.services.QuestionsViewServiceImpl;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.TableView;
 
 import java.io.File;
 import java.io.IOException;
@@ -102,7 +103,7 @@ public class QuestionsViewController implements Initializable {
         try {
             ObservableList<Question> questions = jsonHandler.readJsonFromFile(file);
             questionsViewService.addQuestions(questions);
-            createViewTable();
+            questionsViewService.createViewTable(tableView);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -116,7 +117,7 @@ public class QuestionsViewController implements Initializable {
             if (alert.getResult() == ButtonType.OK) {
                 java.nio.file.Files.delete(fileToDelete.toPath());
             }
-            System.out.println("Die Datei " + fileToDelete + " wurde erfolgreich gelöscht.");
+            System.out.println("Die Datei " + fileToDelete.getName() + " wurde erfolgreich gelöscht.");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -133,51 +134,8 @@ public class QuestionsViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         questionsViewService.loadInnerStorage();
-        createViewTable();
+        questionsViewService.createViewTable(tableView);
     }
-
-    /**
-     * This method creates a new table view with four columns: UUID, Thema, Titel, and richtige Antworten.
-     * It first creates each column and sets its cell value factory.
-     * Then, it sets the table view's items using the list of questions from the question view service.
-     * After that, it clears any existing columns in the table view.
-     * Finally, it adds the new columns to the table view.
-     * <p>
-     * UUID column: contains the UUID of the question.
-     * Thema column: contains the topic of the question.
-     * Titel column: contains the title of the question.
-     * richtige Antworten column: contains the number of correct answers of the question.
-     * <p>
-     * Note: this method does not check if the questions' properties corresponding to the columns exist.
-     */
-    private void createViewTable() {
-
-        TableColumn<Question, String> idColumn = new TableColumn<>("UUID");
-        idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
-
-        TableColumn<Question, String> topicColumn = new TableColumn<>("Thema");
-        topicColumn.setCellValueFactory(new PropertyValueFactory<>("topic"));
-
-        TableColumn<Question, String> titleColumn = new TableColumn<>("Titel");
-        titleColumn.setCellValueFactory(new PropertyValueFactory<>("questionTitle"));
-
-        TableColumn<Question, Integer> correctAnswersColumn = new TableColumn<>("richtige Antworten");
-        correctAnswersColumn.setCellValueFactory(cellData ->
-                new SimpleIntegerProperty(cellData
-                        .getValue()
-                        .getAnswers()
-                        .getCorrectAnswers())
-                        .asObject());
-
-        tableView.setItems((ObservableList<Question>) questionsViewService.getQuestions());
-
-        // Clear the existing columns
-        tableView.getColumns().clear();
-
-        // Add the columns
-        tableView.getColumns().addAll(idColumn, topicColumn, titleColumn, correctAnswersColumn);
-    }
-
 }
 
 
