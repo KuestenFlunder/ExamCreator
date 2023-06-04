@@ -26,7 +26,7 @@ public class QuestionsViewController implements Initializable {
 
 
     @FXML
-    Button newQuestion_btn, bt_updateQuestion, bt_deleteQuestion, bt_createExam, bt_examEvaluation;
+    Button newQuestion_btn, bt_updateQuestion, bt_deleteQuestion;
 
     @FXML
     TableView<Question> tableView;
