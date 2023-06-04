@@ -27,8 +27,9 @@ public class PDFHandler {
     }
 
 
-// ---- METHODS FOR CREATING A SINGLE PDF-FILE ----                                       // Set<Question> examQuestions
-    public void createPersonalExamTest (String testTitel,  Set<Question> examQuestions, int testDuration, String name, String surname) {
+
+// ---- METHODS FOR CREATING A SINGLE PDF-FILE ----
+    public static void createPersonalExamTest (String testTitel, Set<Question> examQuestions, int testDuration, String name, String surname) {
         PDFMergerUtility pdfTest = new PDFMergerUtility();
         try {
             // TitelPage
@@ -53,9 +54,7 @@ public class PDFHandler {
         System.out.println("Der namentliche PDF-Test wurde erstellt");
     }
 
-    public  void createExamPDF(String testTitel, Set<Question> examQuestions, int testDuration) {    // TODO statt numberOfQuestion ein Set<Question> zu setzten
-        //Set<Question> examQuestions = popUpService.getRandomExamQuestions(numberOfQuestions); // TODO
-
+    public static void createExamPDF(String testTitel, Set<Question> examQuestions, int testDuration) {
         PDFMergerUtility pdfTest = new PDFMergerUtility();
         try {
             // TitelPage
@@ -80,7 +79,7 @@ public class PDFHandler {
         System.out.println("PDF-Dokument wurde erstellt");
     }
 
-    private  String createTitelPage(String testTitel, Set<Question> examQuestions, int testDuration, String name, String surname) throws IOException {
+    private static String createTitelPage(String testTitel, Set<Question> examQuestions, int testDuration, String name, String surname) throws IOException {
         // DataTime
         LocalDate date = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy", Locale.GERMAN);
@@ -103,7 +102,7 @@ public class PDFHandler {
         return filePath;
     }
 
-    private String createQuestionPage(int numberOfQuestions, Question question, int counter) throws IOException {
+    private static String createQuestionPage(int numberOfQuestions, Question question, int counter) throws IOException {
         PDDocument questionPage = PDDocument.load(new File("src/main/resources/com/team_kuestenflunder/exam_desktop/templates/QuestionLayout.pdf"));
         PDAcroForm acroQuestionPage = questionPage.getDocumentCatalog().getAcroForm();
         // set TextFields
@@ -124,7 +123,7 @@ public class PDFHandler {
             //hidden correctAnswerBox to keep the correct answers
             PDCheckBox correctAnswerBox = (PDCheckBox) acroQuestionPage.getField("CorrectAnswerBox_" + i);
             PDAnnotationWidget widget = correctAnswerBox.getWidgets().get(0);
-//            widget.setHidden(true);    //hide correctAnswers
+            widget.setHidden(true);    //hide correctAnswers
             if (question.getAnswers().getAnswerList().get(i).isCorrectAnswer()) {
                 correctAnswerBox.setValue(correctAnswerBox.getOnValue());
             }
@@ -144,14 +143,14 @@ public class PDFHandler {
         return pathName;
     }
 
-    private String createLastPage (int numberOfQuestions) throws IOException {
+    private static String createLastPage (int numberOfQuestions) throws IOException {
         PDDocument lastPage = PDDocument.load(new File("src/main/resources/com/team_kuestenflunder/exam_desktop/templates/LastPageLayout.pdf"));
         PDAcroForm acroFormLastPage = lastPage.getDocumentCatalog().getAcroForm();
         setValueToField(acroFormLastPage, "ResultTextField", "BESTANDEN");
         setValueToField(acroFormLastPage, "numberOfQuestionsField", String.valueOf(numberOfQuestions));
         setValueToField(acroFormLastPage, "correctAnswersAmountField", "?");
 
-//????????? TODO Funktion in JavaScript
+//?????????  TODO Funktion in JavaScript
         PDPushButton evaluateButton = (PDPushButton) acroFormLastPage.getField("evaluateTheTest_Button");
         PDActionJavaScript button_JavaScript = new PDActionJavaScript();
         String absoluteFilePath = "/Users/jan-hendrykpassler/IdeaProjects/exam_desktop/src/main/Output/Test.pdf";
@@ -167,7 +166,7 @@ public class PDFHandler {
         return filePath;
     }
 
-    private void cleanOutputDirectory (Set<Question> examQuestions){
+    private static void cleanOutputDirectory (Set<Question> examQuestions){
         File titelPageFile = new File("src/main/Output/TitlePage.pdf");
         titelPageFile.delete();
         File lastPageFile = new File("src/main/Output/LastPage.pdf");
@@ -178,15 +177,15 @@ public class PDFHandler {
         }
     }
 
-    private void setValueToField(PDAcroForm pdAcroForm, String fieldName, String value) throws IOException {
+    private static void setValueToField(PDAcroForm pdAcroForm, String fieldName, String value) throws IOException {
         PDField field = pdAcroForm.getField(fieldName);
         field.setValue(value);
     }
 
 
 
-// ------ METHODS FOR EVALUATING A PDF-FILE -----------
-    public ExamValues getValuesFromTest(File pdfFile) {
+// ------ METHODS GET VALUES FROM PDF-FILE -----------
+    public static ExamValues getValuesFromTest(File pdfFile) {
         ExamValues examValues = new ExamValues();
         try {
             examValues.setStudentName(getStudentNameFromFile(pdfFile));
@@ -203,7 +202,7 @@ public class PDFHandler {
         return examValues;
     }
 
-    private String getStudentNameFromFile(File pdfFile) throws IOException{
+    private static String getStudentNameFromFile(File pdfFile) throws IOException{
         PDDocument document = PDDocument.load(pdfFile);
         PDAcroForm acroFormTitelPage = document.getDocumentCatalog().getAcroForm();
         PDTextField nameField = (PDTextField)acroFormTitelPage.getField("nameField");
@@ -212,7 +211,7 @@ public class PDFHandler {
         return name;
     }
 
-    private String getStudentSurnameFromFile(File pdfFile) throws IOException{
+    private static String getStudentSurnameFromFile(File pdfFile) throws IOException{
         PDDocument document = PDDocument.load(pdfFile);
         PDAcroForm acroFormTitelPage = document.getDocumentCatalog().getAcroForm();
         PDTextField surnameField = (PDTextField)acroFormTitelPage.getField("surnameField");
@@ -221,7 +220,7 @@ public class PDFHandler {
         return surname;
     }
 
-    private String getDate_FromFile(File pdfFile) throws IOException{
+    private static String getDate_FromFile(File pdfFile) throws IOException{
         PDDocument document = PDDocument.load(pdfFile);
         PDAcroForm acroFormTitelPage = document.getDocumentCatalog().getAcroForm();
         PDTextField textField = (PDTextField)acroFormTitelPage.getField("dateOfTestField");
@@ -230,7 +229,7 @@ public class PDFHandler {
         return date;
     }
 
-    private int getNumberOfQuestions_FromFile(File pdfFile) throws IOException{
+    private static int getNumberOfQuestions_FromFile(File pdfFile) throws IOException{
         PDDocument document = PDDocument.load(pdfFile);
         PDAcroForm acroFormTitelPage = document.getDocumentCatalog().getAcroForm();
         PDTextField textField = (PDTextField)acroFormTitelPage.getField("numberOfQuestionsField");
@@ -239,7 +238,7 @@ public class PDFHandler {
         return numberOfQuestions;
     }
 
-    private Map<String, String> getMap_UUIDsFromFile (File pdfFile) throws IOException {
+    private static Map<String, String> getMap_UUIDsFromFile (File pdfFile) throws IOException {
         PDDocument document = PDDocument.load(pdfFile);
         PDAcroForm acroForm = document.getDocumentCatalog().getAcroForm();
         List<PDField> fields = acroForm.getFields();
@@ -253,7 +252,7 @@ public class PDFHandler {
         return  map_UUID;
     }
 
-    private Map<String, String> getMap_AnswerBoxesFromFile(File pdfFile) throws IOException{
+    private static Map<String, String> getMap_AnswerBoxesFromFile(File pdfFile) throws IOException{
         PDDocument document = PDDocument.load(pdfFile);
         PDAcroForm acroForm = document.getDocumentCatalog().getAcroForm();
         List<PDField> fields = acroForm.getFields();
@@ -266,7 +265,7 @@ public class PDFHandler {
         return answerBoxMap;
     }
 
-    private Map<String, String> getMap_CorrectAnswerBoxesFromFile (File pdfFile) throws IOException{
+    private static Map<String, String> getMap_CorrectAnswerBoxesFromFile (File pdfFile) throws IOException{
         PDDocument document = PDDocument.load(pdfFile);
         PDAcroForm acroForm = document.getDocumentCatalog().getAcroForm();
         List<PDField> fields = acroForm.getFields();
