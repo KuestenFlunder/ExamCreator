@@ -27,6 +27,7 @@ public class PDFHandler {
     }
 
 
+
 // ---- METHODS FOR CREATING A SINGLE PDF-FILE ----
     public static void createPersonalExamTest (String testTitel, Set<Question> examQuestions, int testDuration, String name, String surname) {
         PDFMergerUtility pdfTest = new PDFMergerUtility();
