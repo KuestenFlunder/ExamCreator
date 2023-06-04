@@ -3,7 +3,7 @@ package com.team_kuestenflunder.exam_desktop.entity;
 import java.util.Map;
 
 
-public class ExamResult {
+public class ExamValues {
 
     private String studentName;
     private String studentSurname;
@@ -15,7 +15,7 @@ public class ExamResult {
 //    private Map<String, String> topics_Map; // nicht möglich. PDF-Dokument beinhaltet keine Topic-TextFields
 
 
-    public ExamResult(){
+    public ExamValues(){
     }
 
 

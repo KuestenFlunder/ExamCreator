@@ -1,7 +1,7 @@
 package com.team_kuestenflunder.exam_desktop.Utils;
 
 import com.google.inject.Inject;
-import com.team_kuestenflunder.exam_desktop.entity.ExamResult;
+import com.team_kuestenflunder.exam_desktop.entity.ExamValues;
 import com.team_kuestenflunder.exam_desktop.entity.Question;
 import com.team_kuestenflunder.exam_desktop.services.PdfCreationPopUpService;
 import org.apache.pdfbox.multipdf.PDFMergerUtility;
@@ -54,8 +54,8 @@ public class PDFHandler {
         System.out.println("Der namentliche PDF-Test wurde erstellt");
     }
 
-    public void createExamPDF(String testTitel, int numberOfQuestions, int testDuration) {    // TODO statt numberOfQuestion ein Set<Question> zu setzten
-        Set<Question> examQuestions = popUpService.getRandomExamQuestions(numberOfQuestions); // TODO
+    public  void createExamPDF(String testTitel, Set<Question> examQuestions, int testDuration) {    // TODO statt numberOfQuestion ein Set<Question> zu setzten
+        //Set<Question> examQuestions = popUpService.getRandomExamQuestions(numberOfQuestions); // TODO
 
         PDFMergerUtility pdfTest = new PDFMergerUtility();
         try {
@@ -81,7 +81,7 @@ public class PDFHandler {
         System.out.println("PDF-Dokument wurde erstellt");
     }
 
-    private String createTitelPage(String testTitel, Set<Question> examQuestions, int testDuration, String name, String surname) throws IOException {
+    private  String createTitelPage(String testTitel, Set<Question> examQuestions, int testDuration, String name, String surname) throws IOException {
         // DataTime
         LocalDate date = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy", Locale.GERMAN);
@@ -187,21 +187,21 @@ public class PDFHandler {
 
 
 // ------ METHODS FOR EVALUATING A PDF-FILE -----------
-    public ExamResult getValuesFromTest(File pdfFile) {
-        ExamResult examResult = new ExamResult();
+    public ExamValues getValuesFromTest(File pdfFile) {
+        ExamValues examValues = new ExamValues();
         try {
-            examResult.setStudentName(getStudentNameFromFile(pdfFile));
-            examResult.setStudentSurname(getStudentSurnameFromFile(pdfFile));
-            examResult.setDateOfTest(getDate_FromFile(pdfFile));
-            examResult.setNumberOfQuestions(getNumberOfQuestions_FromFile(pdfFile));
-            examResult.setUUID_Map(getMap_UUIDsFromFile(pdfFile));
-            examResult.setAnswer_Map(getMap_AnswerBoxesFromFile(pdfFile));
-            examResult.setCorrectAnswer_Map(getMap_CorrectAnswerBoxesFromFile(pdfFile));
-            examResult.toString();
+            examValues.setStudentName(getStudentNameFromFile(pdfFile));
+            examValues.setStudentSurname(getStudentSurnameFromFile(pdfFile));
+            examValues.setDateOfTest(getDate_FromFile(pdfFile));
+            examValues.setNumberOfQuestions(getNumberOfQuestions_FromFile(pdfFile));
+            examValues.setUUID_Map(getMap_UUIDsFromFile(pdfFile));
+            examValues.setAnswer_Map(getMap_AnswerBoxesFromFile(pdfFile));
+            examValues.setCorrectAnswer_Map(getMap_CorrectAnswerBoxesFromFile(pdfFile));
+            examValues.toString();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return examResult;
+        return examValues;
     }
 
     private String getStudentNameFromFile(File pdfFile) throws IOException{
