@@ -29,7 +29,7 @@ public class PdfCreationPopUpService {
             AlertMessage.alertMessage(
                     Alert.AlertType.ERROR,
                     "Nicht genügend Fragen vorhanden",
-                    "Leider sind nicht genügend Fragen im Fragen-pool. Bitte stellen sie sicher, dass sie den richtigen Fragen-pool verwenden,\n oder reduzieren Sie die Anzahl der Fragen im Test.");
+                    "Leider sind nicht genügend Fragen im Fragen-pool. Bitte stellen sie sicher, dass Sie den richtigen Fragen-pool verwenden,\n oder reduzieren Sie die Anzahl der Fragen im Test.");
             return null;
         } else {
             while (examQuestions.size() < requestedNumberOfQuestions) {
@@ -46,8 +46,8 @@ public class PdfCreationPopUpService {
         String testTitel = tf_testTitle.getText();
         //TODO should be refactored and pass in the random Questions to createPDF as parameter.
         //TODO Add a filepath to choose the right place to save the Exam to.
-        PDFHandler pdfHandler = new PDFHandler(new PdfCreationPopUpService(new QuestionRepositoryImpl()));
-        pdfHandler.createExamPDF(testTitel,examQuestions, testDuration);
+
+        PDFHandler.createExamPDF(testTitel,examQuestions, testDuration);
     }
 
 
