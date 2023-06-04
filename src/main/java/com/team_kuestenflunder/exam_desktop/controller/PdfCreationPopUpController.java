@@ -34,7 +34,11 @@ public class PdfCreationPopUpController {
     }
 
     public void onCreateTestClick(ActionEvent event) {
-        pdfCreationPopUpService.createExamPDF(tf_numberOfQuestions, tf_testDuration);
+        int requestedNumberOfQuestions = Integer.parseInt(tf_numberOfQuestions.getText());
+        int testDuration = Integer.parseInt(tf_testDuration.getText());
+        String testTitel = tf_testTitle.getText();
+        PDFHandler pdfHandler = new PDFHandler(pdfCreationPopUpService);
+        pdfHandler.createExamPDF(testTitel, requestedNumberOfQuestions, testDuration);
         exitStage(event);
     }
 
