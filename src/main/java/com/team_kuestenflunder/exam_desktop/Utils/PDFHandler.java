@@ -28,8 +28,7 @@ public class PDFHandler {
 
 
 // ---- METHODS FOR CREATING A SINGLE PDF-FILE ----                                       // Set<Question> examQuestions
-    public void createPersonalExamTest (String testTitel, int numberOfQuestions, int testDuration, String name, String surname) {
-        Set<Question> examQuestions = popUpService.getRandomExamQuestions(numberOfQuestions);
+    public void createPersonalExamTest (String testTitel,  Set<Question> examQuestions, int testDuration, String name, String surname) {
         PDFMergerUtility pdfTest = new PDFMergerUtility();
         try {
             // TitelPage
