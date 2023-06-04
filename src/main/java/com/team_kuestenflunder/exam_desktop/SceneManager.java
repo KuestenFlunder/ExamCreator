@@ -135,12 +135,12 @@ public class SceneManager {
      * @param event the action event that triggered the file chooser.
      * @return the selected file.
      */
-    public File addFileChooserDialogSingle(Event event, String filterDescription, String FilterExtensions) {
+    public File addFileChooserDialogSingle(Event event) {
         Stage stage = new Stage();
         stage.initOwner(((MenuItem) event.getTarget()).getParentPopup().getOwnerWindow());
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Json wählen");
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter(filterDescription, FilterExtensions));
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("JSON", "*.json"));
         return fileChooser.showOpenDialog(stage);
     }
 

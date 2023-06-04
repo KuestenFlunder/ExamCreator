@@ -1,40 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane minHeight="250.0" minWidth="940.0" prefHeight="781.0" prefWidth="1264.0" style="-fx-background-color: DDDDD;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team_kuestenflunder.exam_desktop.controller.ExamEvaluationViewController">
-    <children>
-        <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-            <children>
-                <MenuBar>
-                    <menus>
-                        <Menu mnemonicParsing="false" text="Prüfungsauswertung">
-                            <items>
-                                <MenuItem fx:id="mi_evaluateExams" mnemonicParsing="false" onAction="#onEvaluateMultiExamsClick" text="Prüfungsstapel" />
-                                <MenuItem fx:id="mi_evaluateExam" mnemonicParsing="false" onAction="#onEvaluateExamsClick" text="Einzelprüfung" />
-                            </items>
-                        </Menu>
-                    </menus>
-                </MenuBar>
-                <TableView prefHeight="677.0" prefWidth="1264.0">
-                    <columns>
-                        <TableColumn prefWidth="75.0" text="C1" />
-                        <TableColumn prefWidth="75.0" text="C2" />
-                    </columns>
-                </TableView>
-                <Button fx:id="bt_backToQuestionView" mnemonicParsing="false" onAction="#onBackToQuestionViewClick" prefHeight="40.0" prefWidth="169.0" text="Zurück zur Fragenübersicht" />
-            </children>
-         <padding>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </padding>
-        </VBox>
-    </children>
+
+<AnchorPane minHeight="250.0" minWidth="940.0" prefHeight="781.0" prefWidth="1264.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team_kuestenflunder.exam_desktop.controller.ExamEvaluationViewController">
+   <children>
+      <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ToolBar prefHeight="12.0" prefWidth="1264.0" style="-fx-background-color: ffffff;">
+               <items>
+                  <Button fx:id="bt_backToQuestionView" mnemonicParsing="false" onAction="#onBackToQuestionViewClick" text="Zurück zur Fragenübersicht" />
+                  <Button fx:id="bt_evaluateExams" mnemonicParsing="false" onAction="#onEvaluateExamsClick" text="Examen auswerten" />
+               </items>
+            </ToolBar>
+         </children>
+      </VBox>
+   </children>
 </AnchorPane>

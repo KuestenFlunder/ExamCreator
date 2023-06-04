@@ -98,7 +98,7 @@ public class QuestionsViewController implements Initializable {
 
     public void onLoadQuestionFromJsonClick(ActionEvent event) {
         // get the file that should be loaded
-        File file = sceneManager.addFileChooserDialogSingle(event,"JSON","*.json");
+        File file = sceneManager.addFileChooserDialogSingle(event);
         // update the listview with the new list --> add questionViewService.addQustions
         try {
             ObservableList<Question> questions = jsonHandler.readJsonFromFile(file);
@@ -112,7 +112,7 @@ public class QuestionsViewController implements Initializable {
 
     public void onDeleteJsonClick(ActionEvent event) {
         try {
-            File fileToDelete = sceneManager.addFileChooserDialogSingle(event,"JSON","*.json");
+            File fileToDelete = sceneManager.addFileChooserDialogSingle(event);
             Alert alert = alertMessage(
                      Alert.AlertType.WARNING
                     ,toString()
