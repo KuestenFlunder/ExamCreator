@@ -20,7 +20,6 @@ public class ExamEvaluationViewService {
         this.questionRepository = new QuestionRepositoryImpl();
     }
 
-
     public ExamResult evaluateExam(ExamValues examValues) {
         int counter = 0;
         List<String> resultList = new ArrayList<>();

@@ -51,4 +51,17 @@ public class ExamResult {
     public List<String> getResultList() {
         return resultList;
     }
+
+    @Override
+    public String toString() {
+        return "ExamResult{" +
+                "studentName='" + studentName + '\'' +
+                ", studentSurname='" + studentSurname + '\'' +
+                ", dateOfExam='" + dateOfExam + '\'' +
+                ", numberOfQuestions=" + numberOfQuestions +
+                ", percent='" + percent + '\'' +
+                ", examResult='" + examResult + '\'' +
+                ", resultList=" + resultList +
+                '}';
+    }
 }

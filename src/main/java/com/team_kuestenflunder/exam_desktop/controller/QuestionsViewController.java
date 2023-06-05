@@ -144,10 +144,8 @@ public class QuestionsViewController implements Initializable {
         }
     }
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         questionsViewService.createViewTable(tableView);
     }
 }

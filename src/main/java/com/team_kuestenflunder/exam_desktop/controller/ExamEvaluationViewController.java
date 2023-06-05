@@ -51,7 +51,7 @@ public class ExamEvaluationViewController {
         File singleExam =  sceneManager.addFileChooserDialogSingle(event,"PDF","*.pdf");
 
         ExamValues examValues = PDFHandler.getValuesFromTest(singleExam);
-        examEvaluationViewService.evaluateExam(examValues);
+        System.out.println(examEvaluationViewService.evaluateExam(examValues));
     }
 
 }
