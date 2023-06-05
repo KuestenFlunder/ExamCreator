@@ -228,6 +228,7 @@ public class PDFHandler {
                 map_UUID.put(field.getMappingName(), field.getValueAsString());
             }
         }
+        document.close();
         return map_UUID;
     }
 
@@ -241,6 +242,7 @@ public class PDFHandler {
                 answerBoxMap.put(field.getMappingName(), field.getValueAsString());
             }
         }
+        document.close();
         return answerBoxMap;
     }
 
@@ -254,6 +256,7 @@ public class PDFHandler {
                 correctAnswerBoxMap.put(field.getMappingName(), field.getValueAsString());
             }
         }
+        document.close();
         return correctAnswerBoxMap;
     }
 

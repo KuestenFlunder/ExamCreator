@@ -114,7 +114,6 @@ public class ExamEvaluationViewService {
             }
         });
 
-
         tableView.setItems(examResults);
 
         // Clear the existing columns
