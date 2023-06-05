@@ -37,7 +37,6 @@ public class QuestionRepositoryImpl implements QuestionRepository {
     @Override
     public void deleteQuestion(int index) {
         dataService.getQuestions().remove(index);
-
     }
 
     public void addQuestions(ObservableList<Question> questions) {
