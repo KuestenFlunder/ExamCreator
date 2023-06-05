@@ -16,7 +16,6 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
-
 public class PDFHandler {
     @Inject
     PdfCreationPopUpService popUpService;
@@ -25,8 +24,6 @@ public class PDFHandler {
     public PDFHandler(PdfCreationPopUpService popUpService) {
         this.popUpService = popUpService;
     }
-
-
 
 // ---- METHODS FOR CREATING A SINGLE PDF-FILE ----
     public static void createPersonalExamTest (String testTitel, Set<Question> examQuestions, int testDuration, String name, String surname) {
