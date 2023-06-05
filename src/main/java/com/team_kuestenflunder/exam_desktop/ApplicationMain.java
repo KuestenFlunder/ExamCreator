@@ -32,8 +32,7 @@ public class ApplicationMain extends Application {
     }
 
     public void stop() throws Exception {
-        //TODO solve the Bug and uncomment issue #54
-        //csvHandler.writeCSV(dataService.getQuestions());
+
         jsonHandler.writeJsonToInnerStorage(dataService.getQuestions(),null);
     }
 
