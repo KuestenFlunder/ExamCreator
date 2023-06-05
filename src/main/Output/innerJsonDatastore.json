@@ -1,18 +1,18 @@
 [ {
   "id" : "a2a95ea6-50ac-422e-923e-2bc359b4558a",
   "creationDate" : [ 2023, 5, 28, 20, 31, 36, 311708400 ],
-  "questionTitle" : "",
+  "questionTitle" : "Test",
   "topic" : "Inheritance",
   "questionText" : "What would be the result of attempting to compile and run the following code?",
   "questionCode" : "// Filename: TestClass.java\npublic class TestClass{\n   public static void main(String args[]){\n      B c = new C();\n      System.out.println(c.max(10, 20));\n   }\n}\nclass A{\n   int max(int x, int y)  { if (x>y) return x; else return y; }\n}\nclass B extends A{\n  int max(int x, int y)  {  return 2 * super.max(x, y) ; }\n}\nclass C extends B{\n  int max(int x, int y)  {  return super.max( 2*x, 2*y); }\n}",
   "answers" : {
     "answerList" : [ {
       "answerText" : "The code will fail to compile.\n",
-      "correctAnswer" : false,
+      "correctAnswer" : true,
       "answerDescription" : ""
     }, {
       "answerText" : "Runtime error.\n",
-      "correctAnswer" : false,
+      "correctAnswer" : true,
       "answerDescription" : ""
     }, {
       "answerText" : "The code will compile without errors and will print 80 when run",
@@ -20,18 +20,18 @@
       "answerDescription" : ""
     }, {
       "answerText" : "The code will compile without errors and will print 40 when run.",
-      "correctAnswer" : false,
+      "correctAnswer" : true,
       "answerDescription" : ""
     }, {
       "answerText" : "The code will compile without errors and will print 20 when run.\n",
-      "correctAnswer" : false,
+      "correctAnswer" : true,
       "answerDescription" : ""
     }, {
       "answerText" : "",
-      "correctAnswer" : false,
+      "correctAnswer" : true,
       "answerDescription" : ""
     } ],
-    "correctAnswers" : 1
+    "correctAnswers" : 6
   }
 }, {
   "id" : "3fd636b5-5e06-4ae1-a519-921aa16d269e",
@@ -497,11 +497,11 @@
   "questionCode" : "",
   "answers" : {
     "answerList" : [ {
-      "answerText" : "exceptional conditions external to an application that a well written \napplication should anticipate and from which it can recover.",
+      "answerText" : "exceptional conditions external to an application that a well written application should anticipate and from which it can recover.",
       "correctAnswer" : true,
       "answerDescription" : ""
     }, {
-      "answerText" : "exceptional conditions external to the program  that a well written \nprogram cannot anticipate but should recover from.\n",
+      "answerText" : "exceptional conditions external to the program  that a well written program cannot anticipate but should recover from.\n",
       "correctAnswer" : false,
       "answerDescription" : ""
     }, {
@@ -509,7 +509,7 @@
       "correctAnswer" : false,
       "answerDescription" : ""
     }, {
-      "answerText" : "exceptional situations internal to an application that the application \ncan anticipate but cannot recover from.\n",
+      "answerText" : "exceptional situations internal to an application that the application can anticipate but cannot recover from.\n",
       "correctAnswer" : false,
       "answerDescription" : ""
     }, {
@@ -662,5 +662,75 @@
       "answerDescription" : ""
     } ],
     "correctAnswers" : 2
+  }
+}, {
+  "id" : "d3665f26-ed5d-4773-af0c-0cc7d95ff73c",
+  "creationDate" : [ 2023, 5, 28, 21, 5, 36, 653146800 ],
+  "questionTitle" : "Working with Java API - String, StringBuilder",
+  "topic" : "Java_API",
+  "questionText" : "What will be the output of the following program (excluding the quotes)?",
+  "questionCode" : "\npublic class SubstringTest{\n   public static void main(String args[]){\n      String String = \"string isa string\";\n      System.out.println(String.substring(3, 6));\n   }\n}",
+  "answers" : {
+    "answerList" : [ {
+      "answerText" : "It will not compile.\n",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "\"ing is\"\n",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "\"ing isa\"\n",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "\"ing \" (There is a space after g)\n",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "None of the above.\n",
+      "correctAnswer" : true,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    } ],
+    "correctAnswers" : 1
+  }
+}, {
+  "id" : "477ff068-a84f-4078-8847-279ccae1aff6",
+  "creationDate" : [ 2023, 5, 28, 21, 0, 52, 14501700 ],
+  "questionTitle" : "",
+  "topic" : "Handling_Exceptions",
+  "questionText" : "Checked exceptions are meant for...",
+  "questionCode" : "",
+  "answers" : {
+    "answerList" : [ {
+      "answerText" : "exceptional conditions external to an application that a well written \napplication should anticipate and from which it can recover.",
+      "correctAnswer" : true,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "exceptional conditions external to the program  that a well written \nprogram cannot anticipate but should recover from.\n",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "exceptional conditions from which recovery is difficult or impossible.\n",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "exceptional situations internal to an application that the application \ncan anticipate but cannot recover from.\n",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    } ],
+    "correctAnswers" : 1
   }
 } ]

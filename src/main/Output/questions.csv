@@ -1,4 +1,4 @@
-a2a95ea6-50ac-422e-923e-2bc359b4558a,2023-05-28T20:31:36.3117084,,Inheritance,What would be the result of attempting to compile and run the following code?,// Filename: TestClass.java
+a2a95ea6-50ac-422e-923e-2bc359b4558a,2023-05-28T20:31:36.3117084,Test,Inheritance,What would be the result of attempting to compile and run the following code?,// Filename: TestClass.java
 public class TestClass{
    public static void main(String args[]){
       B c = new C();
@@ -13,10 +13,10 @@ class B extends A{
 }
 class C extends B{
   int max(int x, int y)  {  return super.max( 2*x, 2*y); }
-},Answers{correctAnswers: 1answers=[Answer{answerText='The code will fail to compile.
-', correctAnswer=false, answerDescription=''}, Answer{answerText='Runtime error.
-', correctAnswer=false, answerDescription=''}, Answer{answerText='The code will compile without errors and will print 80 when run', correctAnswer=true, answerDescription=''}, Answer{answerText='The code will compile without errors and will print 40 when run.', correctAnswer=false, answerDescription=''}, Answer{answerText='The code will compile without errors and will print 20 when run.
-', correctAnswer=false, answerDescription=''}, Answer{answerText='', correctAnswer=false, answerDescription=''}]}
+},Answers{correctAnswers: 6answers=[Answer{answerText='The code will fail to compile.
+', correctAnswer=true, answerDescription=''}, Answer{answerText='Runtime error.
+', correctAnswer=true, answerDescription=''}, Answer{answerText='The code will compile without errors and will print 80 when run', correctAnswer=true, answerDescription=''}, Answer{answerText='The code will compile without errors and will print 40 when run.', correctAnswer=true, answerDescription=''}, Answer{answerText='The code will compile without errors and will print 20 when run.
+', correctAnswer=true, answerDescription=''}, Answer{answerText='', correctAnswer=true, answerDescription=''}]}
 3fd636b5-5e06-4ae1-a519-921aa16d269e,2023-05-28T20:35:16.6897232,Working with Methods - Overloading,Methods_and_Encapsulation,Consider the following class... 
 What will be printed?,public class ParamTest {
   
@@ -171,12 +171,9 @@ public class TestClass {
 970956bc-755a-4e44-b056-5f6043668ec1,2023-05-28T20:59:55.7904551,Working with Methods,Methods_and_Encapsulation,Which of the following code fragments are valid method declarations?,,Answers{correctAnswers: 1answers=[Answer{answerText='', correctAnswer=false, answerDescription='void method1{ }
 '}, Answer{answerText='', correctAnswer=true, answerDescription='void method2( ) { }
 '}, Answer{answerText='', correctAnswer=false, answerDescription='void method3(void){ }'}, Answer{answerText='', correctAnswer=false, answerDescription='method4{ }'}, Answer{answerText='', correctAnswer=false, answerDescription='method5(void){ }'}, Answer{answerText='', correctAnswer=false, answerDescription=''}]}
-477ff068-a84f-4078-8847-279ccae1aff6,2023-05-28T21:00:52.0145017,,Handling_Exceptions,Checked exceptions are meant for...,,Answers{correctAnswers: 1answers=[Answer{answerText='exceptional conditions external to an application that a well written 
-application should anticipate and from which it can recover.', correctAnswer=true, answerDescription=''}, Answer{answerText='exceptional conditions external to the program  that a well written 
-program cannot anticipate but should recover from.
+477ff068-a84f-4078-8847-279ccae1aff6,2023-05-28T21:00:52.0145017,,Handling_Exceptions,Checked exceptions are meant for...,,Answers{correctAnswers: 1answers=[Answer{answerText='exceptional conditions external to an application that a well written application should anticipate and from which it can recover.', correctAnswer=true, answerDescription=''}, Answer{answerText='exceptional conditions external to the program  that a well written program cannot anticipate but should recover from.
 ', correctAnswer=false, answerDescription=''}, Answer{answerText='exceptional conditions from which recovery is difficult or impossible.
-', correctAnswer=false, answerDescription=''}, Answer{answerText='exceptional situations internal to an application that the application 
-can anticipate but cannot recover from.
+', correctAnswer=false, answerDescription=''}, Answer{answerText='exceptional situations internal to an application that the application can anticipate but cannot recover from.
 ', correctAnswer=false, answerDescription=''}, Answer{answerText='', correctAnswer=false, answerDescription=''}, Answer{answerText='', correctAnswer=false, answerDescription=''}]}
 e69812ff-4bfa-4140-bd91-e8f8928272f4,2023-05-28T21:01:49.7333823,Using Operators and Decision Constructs,Operators_and_Decision_Constructs,What will the following program print when run?,public class Operators{
 
@@ -240,3 +237,22 @@ Which of the following options would be a valid implementation of tester() metho
 ', correctAnswer=true, answerDescription=''}, Answer{answerText='Declarations (2) and (3) cannot occur in the same class definition.
 ', correctAnswer=false, answerDescription=''}, Answer{answerText='Declarations (1) and (2) cannot occur in the same class definition.
 ', correctAnswer=true, answerDescription=''}, Answer{answerText='', correctAnswer=false, answerDescription=''}]}
+d3665f26-ed5d-4773-af0c-0cc7d95ff73c,2023-05-28T21:05:36.6531468,Working with Java API - String, StringBuilder,Java_API,What will be the output of the following program (excluding the quotes)?,
+public class SubstringTest{
+   public static void main(String args[]){
+      String String = "string isa string";
+      System.out.println(String.substring(3, 6));
+   }
+},Answers{correctAnswers: 1answers=[Answer{answerText='It will not compile.
+', correctAnswer=false, answerDescription=''}, Answer{answerText='"ing is"
+', correctAnswer=false, answerDescription=''}, Answer{answerText='"ing isa"
+', correctAnswer=false, answerDescription=''}, Answer{answerText='"ing " (There is a space after g)
+', correctAnswer=false, answerDescription=''}, Answer{answerText='None of the above.
+', correctAnswer=true, answerDescription=''}, Answer{answerText='', correctAnswer=false, answerDescription=''}]}
+477ff068-a84f-4078-8847-279ccae1aff6,2023-05-28T21:00:52.0145017,,Handling_Exceptions,Checked exceptions are meant for...,,Answers{correctAnswers: 1answers=[Answer{answerText='exceptional conditions external to an application that a well written 
+application should anticipate and from which it can recover.', correctAnswer=true, answerDescription=''}, Answer{answerText='exceptional conditions external to the program  that a well written 
+program cannot anticipate but should recover from.
+', correctAnswer=false, answerDescription=''}, Answer{answerText='exceptional conditions from which recovery is difficult or impossible.
+', correctAnswer=false, answerDescription=''}, Answer{answerText='exceptional situations internal to an application that the application 
+can anticipate but cannot recover from.
+', correctAnswer=false, answerDescription=''}, Answer{answerText='', correctAnswer=false, answerDescription=''}, Answer{answerText='', correctAnswer=false, answerDescription=''}]}
