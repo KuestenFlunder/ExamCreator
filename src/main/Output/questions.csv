@@ -1,0 +1,242 @@
+a2a95ea6-50ac-422e-923e-2bc359b4558a,2023-05-28T20:31:36.3117084,,Inheritance,What would be the result of attempting to compile and run the following code?,// Filename: TestClass.java
+public class TestClass{
+   public static void main(String args[]){
+      B c = new C();
+      System.out.println(c.max(10, 20));
+   }
+}
+class A{
+   int max(int x, int y)  { if (x>y) return x; else return y; }
+}
+class B extends A{
+  int max(int x, int y)  {  return 2 * super.max(x, y) ; }
+}
+class C extends B{
+  int max(int x, int y)  {  return super.max( 2*x, 2*y); }
+},Answers{correctAnswers: 1answers=[Answer{answerText='The code will fail to compile.
+', correctAnswer=false, answerDescription=''}, Answer{answerText='Runtime error.
+', correctAnswer=false, answerDescription=''}, Answer{answerText='The code will compile without errors and will print 80 when run', correctAnswer=true, answerDescription=''}, Answer{answerText='The code will compile without errors and will print 40 when run.', correctAnswer=false, answerDescription=''}, Answer{answerText='The code will compile without errors and will print 20 when run.
+', correctAnswer=false, answerDescription=''}, Answer{answerText='', correctAnswer=false, answerDescription=''}]}
+3fd636b5-5e06-4ae1-a519-921aa16d269e,2023-05-28T20:35:16.6897232,Working with Methods - Overloading,Methods_and_Encapsulation,Consider the following class... 
+What will be printed?,public class ParamTest {
+  
+  public static void printSum(double a, double b){
+      System.out.println("In double "+(a+b));
+  }
+  public static void printSum(float a, float b){
+      System.out.println("In float "+(a+b));
+  }
+  
+  public static void main(String[] args) {
+      printSum(1.0, 2.0);
+  }
+},Answers{correctAnswers: 1answers=[Answer{answerText='In float 3', correctAnswer=false, answerDescription=''}, Answer{answerText='In float 3.0
+', correctAnswer=false, answerDescription=''}, Answer{answerText='In double 3.0
+', correctAnswer=true, answerDescription=''}, Answer{answerText='In double 3
+', correctAnswer=false, answerDescription=''}, Answer{answerText='It will not compile.
+', correctAnswer=false, answerDescription=''}, Answer{answerText='', correctAnswer=false, answerDescription=''}]}
+b814c978-3bbd-47fb-b8c6-4cbe549235ee,2023-05-28T20:37:58.0924296,Constructors,Java_Basics,Which of the following classes have a default constructor?,class A{  }
+class B {  B(){ } }
+class C{  C(String s){ } },Answers{correctAnswers: 1answers=[Answer{answerText='A
+', correctAnswer=true, answerDescription=''}, Answer{answerText='A and B', correctAnswer=false, answerDescription=''}, Answer{answerText='B', correctAnswer=false, answerDescription=''}, Answer{answerText='C', correctAnswer=false, answerDescription=''}, Answer{answerText='B and C', correctAnswer=false, answerDescription=''}, Answer{answerText='', correctAnswer=false, answerDescription=''}]}
+39a51ad5-6b75-4cfb-9327-f9e5ceb950ca,2023-05-28T20:38:58.0522785,,Handling_Exceptions,Following is a supposedly robust method to parse an input for a float :
+Which of the following statements about the above method is/are true?,public float parseFloat(String s){
+   float f = 0.0f;
+   try{
+      f = Float.valueOf(s).floatValue();
+      return f ;
+   }
+   catch(NumberFormatException nfe){
+      System.out.println("Invalid input " + s);
+      f = Float.NaN ;
+      return f;
+   }
+   finally { System.out.println("finally");  }
+   return f ;
+},Answers{correctAnswers: 1answers=[Answer{answerText='If input is "0.1" then it will return 0.1 and print finally.
+', correctAnswer=false, answerDescription=''}, Answer{answerText='If input is "0x.1" then it will return Float.NaN and print Invalid input 0x.1 and finally.', correctAnswer=false, answerDescription=''}, Answer{answerText='If input is "1" then it will return 1.0 and print finally.
+', correctAnswer=false, answerDescription=''}, Answer{answerText='If input is "0x1" then it will return 0.0 and print Invalid input 0x1 and finally.
+', correctAnswer=false, answerDescription=''}, Answer{answerText='The code will not compile.
+', correctAnswer=true, answerDescription=''}, Answer{answerText='', correctAnswer=false, answerDescription=''}]}
+97b8a426-13e8-4d4a-9f60-4ea4228b9808,2023-05-28T20:44:32.0421292,Working with Methods - Overloading,Methods_and_Encapsulation,Consider the following class...
+What will be printed?,public class ParamTest {
+  public static void printSum(int a, int b){
+      System.out.println("In int "+(a+b));
+  }
+  
+  public static void printSum(Integer a, Integer b){
+      System.out.println("In Integer "+(a+b));
+  }
+  
+  public static void printSum(double a, double b){
+      System.out.println("In double "+(a+b));
+  }
+  
+  public static void main(String[] args) {
+      printSum(1, 2);
+  }
+},Answers{correctAnswers: 1answers=[Answer{answerText='In int 3
+', correctAnswer=true, answerDescription=''}, Answer{answerText='In Integer 3
+', correctAnswer=false, answerDescription=''}, Answer{answerText='In double 3.0
+', correctAnswer=false, answerDescription=''}, Answer{answerText='In double 3
+', correctAnswer=false, answerDescription=''}, Answer{answerText='It will not compile.
+', correctAnswer=false, answerDescription=''}, Answer{answerText='', correctAnswer=false, answerDescription=''}]}
+378bd215-77af-4669-b7ca-5c4f8d02c63a,2023-05-28T20:48:23.9491359,Working with Java API - Time and Date,Java_API,Given:
+Assuming that the current date on the system is 5th Feb, 2015, which of the following will be a part of the output?,        LocalDate d1 = LocalDate.parse("2015-02-05", DateTimeFormatter.ISO_DATE);
+        LocalDate d2 = LocalDate.of(2015, 2, 5);
+        LocalDate d3 = LocalDate.now();
+        System.out.println(d1);
+        System.out.println(d2);
+        System.out.println(d3);,Answers{correctAnswers: 1answers=[Answer{answerText='5th Feb, 2015
+', correctAnswer=false, answerDescription=''}, Answer{answerText='2015-02-05T00:00:00
+', correctAnswer=false, answerDescription=''}, Answer{answerText='02/05/2015
+', correctAnswer=false, answerDescription=''}, Answer{answerText='05/02/2015
+', correctAnswer=false, answerDescription=''}, Answer{answerText='java.time.format.DateTimeParseException', correctAnswer=false, answerDescription=''}, Answer{answerText='None of the above.', correctAnswer=true, answerDescription=''}]}
+a58bea6f-ee29-4fe4-bdd2-4c793c9a037f,2023-05-28T20:50:08.4175801,,Creating_and_Using_Arrays,What will the following program print?,class Test{
+   public static void main(String[] args){
+      int i = 4;
+      int ia[][][] = new int[i][i = 3][i];
+      System.out.println( ia.length + ", " + ia[0].length+", "+ ia[0][0].length);
+   }
+},Answers{correctAnswers: 1answers=[Answer{answerText='It will not compile.', correctAnswer=false, answerDescription=''}, Answer{answerText='3, 4, 3', correctAnswer=false, answerDescription=''}, Answer{answerText='3, 3, 3', correctAnswer=false, answerDescription=''}, Answer{answerText='4, 3, 4
+', correctAnswer=false, answerDescription=''}, Answer{answerText='4, 3, 3', correctAnswer=true, answerDescription=''}, Answer{answerText='', correctAnswer=false, answerDescription=''}]}
+cfbcd9b6-dc3f-4aa7-a9a1-9ffb4eeed374,2023-05-28T20:51:30.3286653,Working with Java API - ArrayLis,Java_API,What will the following code snippet print?,
+        List s1 = new ArrayList( );
+        try{
+            while(true){
+                s1.add("sdfa");
+            }
+        }catch(RuntimeException e){
+            e.printStackTrace();
+        }
+        System.out.println(s1.size());,Answers{correctAnswers: 1answers=[Answer{answerText='It will not compile.
+', correctAnswer=false, answerDescription=''}, Answer{answerText='It will print a RuntimeException stack trace from the catch clause.
+', correctAnswer=false, answerDescription=''}, Answer{answerText='It will throw an error at runtime that will not be caught by the catch block.', correctAnswer=true, answerDescription=''}, Answer{answerText='It will print a stack trace from the catch clause and a number depending on the memory available in the system.', correctAnswer=false, answerDescription=''}, Answer{answerText='It will only print a number depending on the memory available in the system.
+', correctAnswer=false, answerDescription=''}, Answer{answerText='', correctAnswer=false, answerDescription=''}]}
+c1f689f5-62e0-438a-b825-003692d0f0cb,2023-05-28T20:54:01.6451874,,Handling_Exceptions,Java's Exception mechanism helps in which of the following ways?,,Answers{correctAnswers: 2answers=[Answer{answerText='It allows creation of new exceptions that are custom to a particular application domain.
+', correctAnswer=true, answerDescription=''}, Answer{answerText='It improves code because error handling code is clearly separated from the main program logic.', correctAnswer=true, answerDescription=''}, Answer{answerText='It enhances the security of the application by reporting errors in the logs.', correctAnswer=false, answerDescription=''}, Answer{answerText='It improves the code because the exception is handled right at the place where it occured.
+', correctAnswer=false, answerDescription=''}, Answer{answerText='It provides a vast set of standard exceptions that covers all possible exceptions.', correctAnswer=false, answerDescription=''}, Answer{answerText='', correctAnswer=false, answerDescription=''}]}
+84c394dc-8b60-4770-9d4b-7ea6c9451f08,2023-05-28T20:55:13.4745825,Working with Java API - String, StringBuilder,Java_API,You want to find out whether two strings are equal or not,  in terms of the actual characters within the strings. What is the best way to do this?,,Answers{correctAnswers: 1answers=[Answer{answerText='use String's equals method.', correctAnswer=true, answerDescription=''}, Answer{answerText='use String's equalsIgnoreCase method.', correctAnswer=false, answerDescription=''}, Answer{answerText='Use == operator.	', correctAnswer=false, answerDescription=''}, Answer{answerText='Use String's match method.
+', correctAnswer=false, answerDescription=''}, Answer{answerText='', correctAnswer=false, answerDescription=''}, Answer{answerText='', correctAnswer=false, answerDescription=''}]}
+8ac647e1-94b9-44e5-aac8-8aaeb5331a20,2023-05-28T20:56:05.5568567,,Java_API,What will the following code print when compiled and run?,public class TestClass {
+  public static void main(String[] args) {
+
+    String s = "blooper";
+    StringBuilder sb = new StringBuilder(s);
+    s.append("whopper");
+    sb.append("shopper");
+    
+    System.out.println(s);
+    System.out.println(sb);
+  }
+},Answers{correctAnswers: 1answers=[Answer{answerText='', correctAnswer=false, answerDescription='blooper and bloopershopper
+'}, Answer{answerText='', correctAnswer=false, answerDescription='blooperwhopper and bloopershopper
+'}, Answer{answerText='', correctAnswer=false, answerDescription='blooper and blooperwhoppershopper'}, Answer{answerText='It will not compile.
+', correctAnswer=true, answerDescription=''}, Answer{answerText='', correctAnswer=false, answerDescription=''}, Answer{answerText='', correctAnswer=false, answerDescription=''}]}
+09caa496-0d44-4115-b555-b0276cffe332,2023-05-28T20:56:58.4388715,,No_Topic,Consider the following code snippet:
+INT1 and INT2 can be any two integers.    Which of the following will produce the same result?,
+    for(int i=INT1; i<INT2; i++){
+        System.out.println(i);
+    },Answers{correctAnswers: 1answers=[Answer{answerText='', correctAnswer=false, answerDescription='for(int i=INT1; i<INT2; System.out.println(++i));
+'}, Answer{answerText='', correctAnswer=false, answerDescription='for(int i=INT1; i++<INT2; System.out.println(i));
+'}, Answer{answerText='', correctAnswer=false, answerDescription='int i=INT1; while(i++<INT2) { System.out.println(i); }'}, Answer{answerText='', correctAnswer=false, answerDescription='int i=INT1; do { System.out.println(i); }while(i++<INT2);
+None of these.
+'}, Answer{answerText='None of these.
+', correctAnswer=true, answerDescription=''}, Answer{answerText='', correctAnswer=false, answerDescription=''}]}
+e1ea0d68-a663-4d40-b61c-f0ebf54f42dd,2023-05-28T20:58:08.6917392,,Inheritance,Consider the following program: 
+Which of the given options can be inserted at //1 and //2?,class Game {
+  public void play() throws Exception   {
+    System.out.println("Playing...");
+  }
+}
+
+class Soccer extends Game {
+   public void play(String ball)    {
+      System.out.println("Playing Soccer with "+ball);      
+   }
+}
+
+public class TestClass {
+   public static void main(String[] args) throws Exception  {
+       Game g = new Soccer();
+       // 1
+       Soccer s = (Soccer) g;
+       // 2
+   }
+},Answers{correctAnswers: 2answers=[Answer{answerText='It will not compile as it is.
+', correctAnswer=false, answerDescription=''}, Answer{answerText='It will throw an Exception at runtime if it is run as it is.
+', correctAnswer=false, answerDescription=''}, Answer{answerText='g.play(); at //1 and s.play("cosco"); at //2
+', correctAnswer=true, answerDescription=''}, Answer{answerText='g.play(); at //1 and s.play(); at //2', correctAnswer=true, answerDescription=''}, Answer{answerText='g.play("cosco"); at //1 and s.play("cosco"); at //2
+', correctAnswer=false, answerDescription=''}, Answer{answerText='', correctAnswer=false, answerDescription=''}]}
+970956bc-755a-4e44-b056-5f6043668ec1,2023-05-28T20:59:55.7904551,Working with Methods,Methods_and_Encapsulation,Which of the following code fragments are valid method declarations?,,Answers{correctAnswers: 1answers=[Answer{answerText='', correctAnswer=false, answerDescription='void method1{ }
+'}, Answer{answerText='', correctAnswer=true, answerDescription='void method2( ) { }
+'}, Answer{answerText='', correctAnswer=false, answerDescription='void method3(void){ }'}, Answer{answerText='', correctAnswer=false, answerDescription='method4{ }'}, Answer{answerText='', correctAnswer=false, answerDescription='method5(void){ }'}, Answer{answerText='', correctAnswer=false, answerDescription=''}]}
+477ff068-a84f-4078-8847-279ccae1aff6,2023-05-28T21:00:52.0145017,,Handling_Exceptions,Checked exceptions are meant for...,,Answers{correctAnswers: 1answers=[Answer{answerText='exceptional conditions external to an application that a well written 
+application should anticipate and from which it can recover.', correctAnswer=true, answerDescription=''}, Answer{answerText='exceptional conditions external to the program  that a well written 
+program cannot anticipate but should recover from.
+', correctAnswer=false, answerDescription=''}, Answer{answerText='exceptional conditions from which recovery is difficult or impossible.
+', correctAnswer=false, answerDescription=''}, Answer{answerText='exceptional situations internal to an application that the application 
+can anticipate but cannot recover from.
+', correctAnswer=false, answerDescription=''}, Answer{answerText='', correctAnswer=false, answerDescription=''}, Answer{answerText='', correctAnswer=false, answerDescription=''}]}
+e69812ff-4bfa-4140-bd91-e8f8928272f4,2023-05-28T21:01:49.7333823,Using Operators and Decision Constructs,Operators_and_Decision_Constructs,What will the following program print when run?,public class Operators{
+
+    public static int operators(){
+        int x1 = -4;
+        int x2 = x1--;
+        int x3 = ++x2;
+        if(x2 > x3){
+            --x3;
+        }else{
+            x1++;
+        }
+        return x1 + x2 + x3;
+    }
+    public static void main(String[] args) {
+        System.out.println(operators());
+    }
+},Answers{correctAnswers: 1answers=[Answer{answerText='-9', correctAnswer=false, answerDescription=''}, Answer{answerText='-10', correctAnswer=true, answerDescription=''}, Answer{answerText='-11', correctAnswer=false, answerDescription=''}, Answer{answerText='-12', correctAnswer=false, answerDescription=''}, Answer{answerText='', correctAnswer=false, answerDescription=''}, Answer{answerText='', correctAnswer=false, answerDescription=''}]}
+164aeb7c-9e13-4080-8acb-7569b1e99907,2023-05-28T21:02:45.7971144,Working with Java Data Types,Java_Data_Types,What can be inserted in the above code so that it can compile without any error?,
+import java.util.*;
+public class TestClass {
+    public static void main(String[] args) throws Exception {
+        ArrayList<Double> al = new ArrayList<>();
+
+        //INSERT CODE HERE
+     }
+},Answers{correctAnswers: 2answers=[Answer{answerText='', correctAnswer=false, answerDescription='al.add(111);
+'}, Answer{answerText='', correctAnswer=true, answerDescription='System.out.println(al.indexOf(1.0));
+'}, Answer{answerText='', correctAnswer=true, answerDescription='System.out.println(al.contains("string"));'}, Answer{answerText='', correctAnswer=false, answerDescription='Double d = al.get(al.length);
+'}, Answer{answerText='', correctAnswer=false, answerDescription=''}, Answer{answerText='', correctAnswer=false, answerDescription=''}]}
+e3fbc9c7-bf76-4053-81c8-106884b8eb50,2023-05-28T21:03:52.1268799,,Operators_and_Decision_Constructs,Consider the following code:
+Which of the following options would be a valid implementation of tester() method?,public class TestClass {
+  
+    //define tester method here
+    
+    public static void main(String[] args) throws Exception {
+        TestClass tc = new TestClass();
+        while(tc.tester()){
+            System.out.println("running...");
+        }
+    }
+},Answers{correctAnswers: 2answers=[Answer{answerText='', correctAnswer=true, answerDescription='public boolean tester(){
+        return false;
+    }'}, Answer{answerText='', correctAnswer=true, answerDescription='public Boolean tester(){
+        return false;
+    }'}, Answer{answerText='', correctAnswer=false, answerDescription='public tester(){
+        return false;
+    }
+'}, Answer{answerText='', correctAnswer=false, answerDescription='public int tester(){
+        return 0;
+    }'}, Answer{answerText='', correctAnswer=false, answerDescription='public String tester(){
+        return "false";
+    }'}, Answer{answerText='', correctAnswer=false, answerDescription=''}]}
+0a79a87b-4b86-4e87-a0fe-e760db092248,2023-05-28T21:04:44.2129651,,Java_Basics,Given the following set of member declarations, which of the following is true?,
+ int a;    //  (1)
+ static int a;    //  (2)
+ int f( )   { return a; }    //  (3)
+ static int f( ) { return a; }    //  (4),Answers{correctAnswers: 2answers=[Answer{answerText='Declarations (1) and (3) cannot occur in the same class definition.
+', correctAnswer=false, answerDescription=''}, Answer{answerText='Declarations (2) and (4) cannot occur in the same class definition.
+', correctAnswer=false, answerDescription=''}, Answer{answerText='Declarations (1) and (4) cannot occur in the same class definition.
+', correctAnswer=true, answerDescription=''}, Answer{answerText='Declarations (2) and (3) cannot occur in the same class definition.
+', correctAnswer=false, answerDescription=''}, Answer{answerText='Declarations (1) and (2) cannot occur in the same class definition.
+', correctAnswer=true, answerDescription=''}, Answer{answerText='', correctAnswer=false, answerDescription=''}]}
