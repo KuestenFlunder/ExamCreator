@@ -1,6 +1,7 @@
 package com.team_kuestenflunder.exam_desktop.controller;
 
 import com.google.inject.Inject;
+import com.team_kuestenflunder.exam_desktop.SceneManager;
 import com.team_kuestenflunder.exam_desktop.Utils.PDFHandler;
 import com.team_kuestenflunder.exam_desktop.services.PdfCreationPopUpService;
 import javafx.event.ActionEvent;
@@ -14,7 +15,7 @@ import java.io.File;
 
 public class PdfCreationPopUpController {
     PdfCreationPopUpService pdfCreationPopUpService;
-
+    private final SceneManager sceneManager = SceneManager.getInstance();
 
     @FXML
     Button bt_createExam, bt_cancel;
@@ -35,7 +36,8 @@ public class PdfCreationPopUpController {
     }
 
     public void onCreateTestClick(ActionEvent event) {
-        pdfCreationPopUpService.createExamPDF(tf_testTitle,tf_numberOfQuestions,tf_testDuration);
+        File outputFile = sceneManager.addFileSaveDialogFromButton(event, "PDF-Dateien (*.pdf)", "*.pdf");
+        pdfCreationPopUpService.createExamPDF(tf_testTitle,tf_numberOfQuestions,tf_testDuration, outputFile);
         exitStage(event);
     }
 

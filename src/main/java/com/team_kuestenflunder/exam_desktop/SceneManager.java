@@ -111,7 +111,6 @@ public class SceneManager {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.showAndWait();
-
     }
 
     /**
@@ -155,10 +154,21 @@ public class SceneManager {
         Stage stage = new Stage();
         stage.initOwner(((MenuItem) event.getTarget()).getParentPopup().getOwnerWindow());
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Json wählen");
+        fileChooser.setTitle("Datei speichern");
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter(filterDescription, filterExtension));
         return fileChooser.showSaveDialog(stage);
     }
+
+    public File addFileSaveDialogFromButton (ActionEvent event, String filterDescription, String filterExtension) {
+        Stage stage = new Stage();
+        stage.initOwner(((Node) event.getSource()).getScene().getWindow());
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Datei speichern");
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter(filterDescription, filterExtension));
+        return fileChooser.showSaveDialog(stage);
+    }
+
+
 
     public File addNewFileSaveDialog(Event event) {
         Stage stage = new Stage();
@@ -189,7 +199,6 @@ public class SceneManager {
         }
         return file;
     }
-
 
     /**
      * Initializes the first view of the application, which is the question view.

@@ -1,6 +1,7 @@
 package com.team_kuestenflunder.exam_desktop.services;
 
 import com.google.inject.Inject;
+import com.team_kuestenflunder.exam_desktop.SceneManager;
 import com.team_kuestenflunder.exam_desktop.Utils.AlertMessage;
 import com.team_kuestenflunder.exam_desktop.Utils.PDFHandler;
 import com.team_kuestenflunder.exam_desktop.entity.Question;
@@ -8,12 +9,15 @@ import com.team_kuestenflunder.exam_desktop.repository.QuestionRepositoryImpl;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 
 public class PdfCreationPopUpService {
     QuestionRepositoryImpl questionRepository;
+    private final SceneManager sceneManager = SceneManager.getInstance();
 
     @Inject
     public PdfCreationPopUpService(QuestionRepositoryImpl questionRepository) {
@@ -40,14 +44,18 @@ public class PdfCreationPopUpService {
         }
     }
 
-    public void createExamPDF(TextField tf_testTitle, TextField tf_numberOfQuestions, TextField tf_testDuration) {
+    public void createExamPDF(TextField tf_testTitle, TextField tf_numberOfQuestions, TextField tf_testDuration, File outputFile ) {
         Set<Question> examQuestions = getRandomExamQuestions(Integer.parseInt(tf_numberOfQuestions.getText()));
         int testDuration = Integer.parseInt(tf_testDuration.getText());
         String testTitel = tf_testTitle.getText();
         //TODO should be refactored and pass in the random Questions to createPDF as parameter.
         //TODO Add a filepath to choose the right place to save the Exam to.
+        try {
+            PDFHandler.createExamPDF(testTitel,examQuestions, testDuration, outputFile);
 
-        PDFHandler.createExamPDF(testTitel,examQuestions, testDuration);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 
