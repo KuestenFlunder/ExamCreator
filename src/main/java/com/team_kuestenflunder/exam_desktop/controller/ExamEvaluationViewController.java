@@ -50,9 +50,13 @@ public class ExamEvaluationViewController {
         List<File> examFiles = sceneManager.addFileChooserDialogMultiple(event, "PDF", "*.pdf");
 
         for (File file : examFiles) {
-            examResults.add(
-                    examEvaluationViewService.evaluateExam(
-                            PDFHandler.getValuesFromTest(file)));
+            try {
+                examResults.add(
+                        examEvaluationViewService.evaluateExam(
+                                PDFHandler.getValuesFromTest(file)));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
         examEvaluationViewService.createViewTable(tv_examResults,examResults);
 
@@ -60,9 +64,13 @@ public class ExamEvaluationViewController {
 
     public void onEvaluateExamsClick(ActionEvent event) {
         File singleExam = sceneManager.addFileChooserDialogSingle(event, "PDF", "*.pdf");
-        examResults.add(
-                examEvaluationViewService.evaluateExam(
-                        PDFHandler.getValuesFromTest(singleExam)));
+        try {
+            examResults.add(
+                    examEvaluationViewService.evaluateExam(
+                            PDFHandler.getValuesFromTest(singleExam)));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         examEvaluationViewService.createViewTable(tv_examResults, examResults);
     }
 

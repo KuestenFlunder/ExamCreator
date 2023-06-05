@@ -26,11 +26,10 @@ public class PDFHandler {
     }
 
 // ---- METHODS FOR CREATING A SINGLE PDF-FILE ----
-    public static void createPersonalExamTest (String testTitel, Set<Question> examQuestions, int testDuration, String name, String surname) {
+    public static void createPersonalExamTest (String titleText, Set<Question> examQuestions, int testDuration, String name, String surname) throws IOException {
         PDFMergerUtility pdfTest = new PDFMergerUtility();
-        try {
             // TitelPage
-            String path_ToTitelPage = createTitelPage(testTitel, examQuestions, testDuration, name, surname);
+            String path_ToTitelPage = createTitelPage(titleText, examQuestions, testDuration, name, surname);
             pdfTest.addSource(path_ToTitelPage);
             // n * QuestionPages
             int counter = 0;
@@ -45,38 +44,32 @@ public class PDFHandler {
             pdfTest.mergeDocuments(null);
             // Output-Ordner bereinigen
             cleanOutputDirectory(examQuestions);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
         System.out.println("Der namentliche PDF-Test wurde erstellt");
     }
 
-    public static void createExamPDF(String testTitel, Set<Question> examQuestions, int testDuration) {
-        PDFMergerUtility pdfTest = new PDFMergerUtility();
-        try {
+    public static void createExamPDF(String titleText, Set<Question> examQuestions, int testDuration, File outputFile) throws  IOException {
+        PDFMergerUtility pdfExam = new PDFMergerUtility();
             // TitelPage
-            String path_ToTitelPage = createTitelPage(testTitel, examQuestions, testDuration, null, null);
-            pdfTest.addSource(path_ToTitelPage);
+            String path_ToTitelPage = createTitelPage(titleText, examQuestions, testDuration, null, null);
+            pdfExam.addSource(path_ToTitelPage);
             // n * QuestionPages
             int counter = 0;
             for (Question question : examQuestions) {
                 counter++;
                 String path_ToQuestionPage = createQuestionPage(examQuestions.size(), question, counter);
-                pdfTest.addSource(path_ToQuestionPage);
+                pdfExam.addSource(path_ToQuestionPage);
             }
             // PDF zusammengefügt
-            String path_toTestFile = "src/main/Output/Test.pdf";
-            pdfTest.setDestinationFileName(path_toTestFile);
-            pdfTest.mergeDocuments(null);
+            pdfExam.setDestinationFileName(outputFile.getAbsolutePath());
+            pdfExam.mergeDocuments(null);
             // Output-Ordner bereinigen
             cleanOutputDirectory(examQuestions);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
         System.out.println("PDF-Dokument wurde erstellt");
     }
 
-    private static String createTitelPage(String testTitel, Set<Question> examQuestions, int testDuration, String name, String surname) throws IOException {
+    private static String createTitelPage(String titleText, Set<Question> examQuestions, int testDuration, String name, String surname) throws IOException {
         // DataTime
         LocalDate date = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy", Locale.GERMAN);
@@ -87,7 +80,7 @@ public class PDFHandler {
         setValueToField(acroFormTitelPage, "nameField", name);
         setValueToField(acroFormTitelPage, "surnameField", surname);
         setValueToField(acroFormTitelPage, "courseNameField", "Java Entwickler Oracle Certified Professional SE");
-        setValueToField(acroFormTitelPage, "testTitelField", testTitel);
+        setValueToField(acroFormTitelPage, "testTitelField", titleText);
         setValueToField(acroFormTitelPage, "dateOfTestField", dateOfTestCteation);
         setValueToField(acroFormTitelPage, "numberOfQuestionsField", String.valueOf(examQuestions.size()));
         setValueToField(acroFormTitelPage, "testDutarionField", String.valueOf(testDuration));
@@ -182,9 +175,8 @@ public class PDFHandler {
 
 
 // ------ METHODS GET VALUES FROM PDF-FILE -----------
-    public static ExamValues getValuesFromTest(File pdfFile) {
+    public static ExamValues getValuesFromTest(File pdfFile) throws IOException{
         ExamValues examValues = new ExamValues();
-        try {
             examValues.setStudentName(getStudentNameFromFile(pdfFile));
             examValues.setStudentSurname(getStudentSurnameFromFile(pdfFile));
             examValues.setDateOfTest(getDate_FromFile(pdfFile));
@@ -193,9 +185,7 @@ public class PDFHandler {
             examValues.setAnswer_Map(getMap_AnswerBoxesFromFile(pdfFile));
             examValues.setCorrectAnswer_Map(getMap_CorrectAnswerBoxesFromFile(pdfFile));
             examValues.toString();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
         return examValues;
     }
 
