@@ -1,0 +1,736 @@
+[ {
+  "id" : "a2a95ea6-50ac-422e-923e-2bc359b4558a",
+  "creationDate" : [ 2023, 5, 28, 20, 31, 36, 311708400 ],
+  "questionTitle" : "",
+  "topic" : "Inheritance",
+  "questionText" : "What would be the result of attempting to compile and run the following code?",
+  "questionCode" : "// Filename: TestClass.java\npublic class TestClass{\n   public static void main(String args[]){\n      B c = new C();\n      System.out.println(c.max(10, 20));\n   }\n}\nclass A{\n   int max(int x, int y)  { if (x>y) return x; else return y; }\n}\nclass B extends A{\n  int max(int x, int y)  {  return 2 * super.max(x, y) ; }\n}\nclass C extends B{\n  int max(int x, int y)  {  return super.max( 2*x, 2*y); }\n}",
+  "answers" : {
+    "answerList" : [ {
+      "answerText" : "The code will fail to compile.\n",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "Runtime error.\n",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "The code will compile without errors and will print 80 when run",
+      "correctAnswer" : true,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "The code will compile without errors and will print 40 when run.",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "The code will compile without errors and will print 20 when run.\n",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    } ],
+    "correctAnswers" : 1
+  }
+}, {
+  "id" : "3fd636b5-5e06-4ae1-a519-921aa16d269e",
+  "creationDate" : [ 2023, 5, 28, 20, 35, 16, 689723200 ],
+  "questionTitle" : "Working with Methods - Overloading",
+  "topic" : "Methods_and_Encapsulation",
+  "questionText" : "Consider the following class... \nWhat will be printed?",
+  "questionCode" : "public class ParamTest {\n  \n  public static void printSum(double a, double b){\n      System.out.println(\"In double \"+(a+b));\n  }\n  public static void printSum(float a, float b){\n      System.out.println(\"In float \"+(a+b));\n  }\n  \n  public static void main(String[] args) {\n      printSum(1.0, 2.0);\n  }\n}",
+  "answers" : {
+    "answerList" : [ {
+      "answerText" : "In float 3",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "In float 3.0\n",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "In double 3.0\n",
+      "correctAnswer" : true,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "In double 3\n",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "It will not compile.\n",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    } ],
+    "correctAnswers" : 1
+  }
+}, {
+  "id" : "b814c978-3bbd-47fb-b8c6-4cbe549235ee",
+  "creationDate" : [ 2023, 5, 28, 20, 37, 58, 92429600 ],
+  "questionTitle" : "Constructors",
+  "topic" : "Java_Basics",
+  "questionText" : "Which of the following classes have a default constructor?",
+  "questionCode" : "class A{  }\nclass B {  B(){ } }\nclass C{  C(String s){ } }",
+  "answers" : {
+    "answerList" : [ {
+      "answerText" : "A\n",
+      "correctAnswer" : true,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "A and B",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "B",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "C",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "B and C",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    } ],
+    "correctAnswers" : 1
+  }
+}, {
+  "id" : "39a51ad5-6b75-4cfb-9327-f9e5ceb950ca",
+  "creationDate" : [ 2023, 5, 28, 20, 38, 58, 52278500 ],
+  "questionTitle" : "",
+  "topic" : "Handling_Exceptions",
+  "questionText" : "Following is a supposedly robust method to parse an input for a float :\nWhich of the following statements about the above method is/are true?",
+  "questionCode" : "public float parseFloat(String s){\n   float f = 0.0f;\n   try{\n      f = Float.valueOf(s).floatValue();\n      return f ;\n   }\n   catch(NumberFormatException nfe){\n      System.out.println(\"Invalid input \" + s);\n      f = Float.NaN ;\n      return f;\n   }\n   finally { System.out.println(\"finally\");  }\n   return f ;\n}",
+  "answers" : {
+    "answerList" : [ {
+      "answerText" : "If input is \"0.1\" then it will return 0.1 and print finally.\n",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "If input is \"0x.1\" then it will return Float.NaN and print Invalid input 0x.1 and finally.",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "If input is \"1\" then it will return 1.0 and print finally.\n",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "If input is \"0x1\" then it will return 0.0 and print Invalid input 0x1 and finally.\n",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "The code will not compile.\n",
+      "correctAnswer" : true,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    } ],
+    "correctAnswers" : 1
+  }
+}, {
+  "id" : "97b8a426-13e8-4d4a-9f60-4ea4228b9808",
+  "creationDate" : [ 2023, 5, 28, 20, 44, 32, 42129200 ],
+  "questionTitle" : "Working with Methods - Overloading",
+  "topic" : "Methods_and_Encapsulation",
+  "questionText" : "Consider the following class...\nWhat will be printed?",
+  "questionCode" : "public class ParamTest {\n  public static void printSum(int a, int b){\n      System.out.println(\"In int \"+(a+b));\n  }\n  \n  public static void printSum(Integer a, Integer b){\n      System.out.println(\"In Integer \"+(a+b));\n  }\n  \n  public static void printSum(double a, double b){\n      System.out.println(\"In double \"+(a+b));\n  }\n  \n  public static void main(String[] args) {\n      printSum(1, 2);\n  }\n}",
+  "answers" : {
+    "answerList" : [ {
+      "answerText" : "In int 3\n",
+      "correctAnswer" : true,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "In Integer 3\n",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "In double 3.0\n",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "In double 3\n",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "It will not compile.\n",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    } ],
+    "correctAnswers" : 1
+  }
+}, {
+  "id" : "378bd215-77af-4669-b7ca-5c4f8d02c63a",
+  "creationDate" : [ 2023, 5, 28, 20, 48, 23, 949135900 ],
+  "questionTitle" : "Working with Java API - Time and Date",
+  "topic" : "Java_API",
+  "questionText" : "Given:\nAssuming that the current date on the system is 5th Feb, 2015, which of the following will be a part of the output?",
+  "questionCode" : "        LocalDate d1 = LocalDate.parse(\"2015-02-05\", DateTimeFormatter.ISO_DATE);\n        LocalDate d2 = LocalDate.of(2015, 2, 5);\n        LocalDate d3 = LocalDate.now();\n        System.out.println(d1);\n        System.out.println(d2);\n        System.out.println(d3);",
+  "answers" : {
+    "answerList" : [ {
+      "answerText" : "5th Feb, 2015\n",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "2015-02-05T00:00:00\n",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "02/05/2015\n",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "05/02/2015\n",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "java.time.format.DateTimeParseException",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "None of the above.",
+      "correctAnswer" : true,
+      "answerDescription" : ""
+    } ],
+    "correctAnswers" : 1
+  }
+}, {
+  "id" : "a58bea6f-ee29-4fe4-bdd2-4c793c9a037f",
+  "creationDate" : [ 2023, 5, 28, 20, 50, 8, 417580100 ],
+  "questionTitle" : "",
+  "topic" : "Creating_and_Using_Arrays",
+  "questionText" : "What will the following program print?",
+  "questionCode" : "class Test{\n   public static void main(String[] args){\n      int i = 4;\n      int ia[][][] = new int[i][i = 3][i];\n      System.out.println( ia.length + \", \" + ia[0].length+\", \"+ ia[0][0].length);\n   }\n}",
+  "answers" : {
+    "answerList" : [ {
+      "answerText" : "It will not compile.",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "3, 4, 3",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "3, 3, 3",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "4, 3, 4\n",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "4, 3, 3",
+      "correctAnswer" : true,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    } ],
+    "correctAnswers" : 1
+  }
+}, {
+  "id" : "cfbcd9b6-dc3f-4aa7-a9a1-9ffb4eeed374",
+  "creationDate" : [ 2023, 5, 28, 20, 51, 30, 328665300 ],
+  "questionTitle" : "Working with Java API - ArrayLis",
+  "topic" : "Java_API",
+  "questionText" : "What will the following code snippet print?",
+  "questionCode" : "\n        List s1 = new ArrayList( );\n        try{\n            while(true){\n                s1.add(\"sdfa\");\n            }\n        }catch(RuntimeException e){\n            e.printStackTrace();\n        }\n        System.out.println(s1.size());",
+  "answers" : {
+    "answerList" : [ {
+      "answerText" : "It will not compile.\n",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "It will print a RuntimeException stack trace from the catch clause.\n",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "It will throw an error at runtime that will not be caught by the catch block.",
+      "correctAnswer" : true,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "It will print a stack trace from the catch clause and a number depending on the memory available in the system.",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "It will only print a number depending on the memory available in the system.\n",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    } ],
+    "correctAnswers" : 1
+  }
+}, {
+  "id" : "c1f689f5-62e0-438a-b825-003692d0f0cb",
+  "creationDate" : [ 2023, 5, 28, 20, 54, 1, 645187400 ],
+  "questionTitle" : "",
+  "topic" : "Handling_Exceptions",
+  "questionText" : "Java's Exception mechanism helps in which of the following ways?",
+  "questionCode" : "",
+  "answers" : {
+    "answerList" : [ {
+      "answerText" : "It allows creation of new exceptions that are custom to a particular application domain.\n",
+      "correctAnswer" : true,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "It improves code because error handling code is clearly separated from the main program logic.",
+      "correctAnswer" : true,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "It enhances the security of the application by reporting errors in the logs.",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "It improves the code because the exception is handled right at the place where it occured.\n",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "It provides a vast set of standard exceptions that covers all possible exceptions.",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    } ],
+    "correctAnswers" : 2
+  }
+}, {
+  "id" : "84c394dc-8b60-4770-9d4b-7ea6c9451f08",
+  "creationDate" : [ 2023, 5, 28, 20, 55, 13, 474582500 ],
+  "questionTitle" : "Working with Java API - String, StringBuilder",
+  "topic" : "Java_API",
+  "questionText" : "You want to find out whether two strings are equal or not,  in terms of the actual characters within the strings. What is the best way to do this?",
+  "questionCode" : "",
+  "answers" : {
+    "answerList" : [ {
+      "answerText" : "use String's equals method.",
+      "correctAnswer" : true,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "use String's equalsIgnoreCase method.",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "Use == operator.\t",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "Use String's match method.\n",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    } ],
+    "correctAnswers" : 1
+  }
+}, {
+  "id" : "8ac647e1-94b9-44e5-aac8-8aaeb5331a20",
+  "creationDate" : [ 2023, 5, 28, 20, 56, 5, 556856700 ],
+  "questionTitle" : "",
+  "topic" : "Java_API",
+  "questionText" : "What will the following code print when compiled and run?",
+  "questionCode" : "public class TestClass {\n  public static void main(String[] args) {\n\n    String s = \"blooper\";\n    StringBuilder sb = new StringBuilder(s);\n    s.append(\"whopper\");\n    sb.append(\"shopper\");\n    \n    System.out.println(s);\n    System.out.println(sb);\n  }\n}",
+  "answers" : {
+    "answerList" : [ {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : "blooper and bloopershopper\n"
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : "blooperwhopper and bloopershopper\n"
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : "blooper and blooperwhoppershopper"
+    }, {
+      "answerText" : "It will not compile.\n",
+      "correctAnswer" : true,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    } ],
+    "correctAnswers" : 1
+  }
+}, {
+  "id" : "09caa496-0d44-4115-b555-b0276cffe332",
+  "creationDate" : [ 2023, 5, 28, 20, 56, 58, 438871500 ],
+  "questionTitle" : "",
+  "topic" : "No_Topic",
+  "questionText" : "Consider the following code snippet:\nINT1 and INT2 can be any two integers.    Which of the following will produce the same result?",
+  "questionCode" : "\n    for(int i=INT1; i<INT2; i++){\n        System.out.println(i);\n    }",
+  "answers" : {
+    "answerList" : [ {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : "for(int i=INT1; i<INT2; System.out.println(++i));\n"
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : "for(int i=INT1; i++<INT2; System.out.println(i));\n"
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : "int i=INT1; while(i++<INT2) { System.out.println(i); }"
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : "int i=INT1; do { System.out.println(i); }while(i++<INT2);\nNone of these.\n"
+    }, {
+      "answerText" : "None of these.\n",
+      "correctAnswer" : true,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    } ],
+    "correctAnswers" : 1
+  }
+}, {
+  "id" : "e1ea0d68-a663-4d40-b61c-f0ebf54f42dd",
+  "creationDate" : [ 2023, 5, 28, 20, 58, 8, 691739200 ],
+  "questionTitle" : "",
+  "topic" : "Inheritance",
+  "questionText" : "Consider the following program: \nWhich of the given options can be inserted at //1 and //2?",
+  "questionCode" : "class Game {\n  public void play() throws Exception   {\n    System.out.println(\"Playing...\");\n  }\n}\n\nclass Soccer extends Game {\n   public void play(String ball)    {\n      System.out.println(\"Playing Soccer with \"+ball);      \n   }\n}\n\npublic class TestClass {\n   public static void main(String[] args) throws Exception  {\n       Game g = new Soccer();\n       // 1\n       Soccer s = (Soccer) g;\n       // 2\n   }\n}",
+  "answers" : {
+    "answerList" : [ {
+      "answerText" : "It will not compile as it is.\n",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "It will throw an Exception at runtime if it is run as it is.\n",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "g.play(); at //1 and s.play(\"cosco\"); at //2\n",
+      "correctAnswer" : true,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "g.play(); at //1 and s.play(); at //2",
+      "correctAnswer" : true,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "g.play(\"cosco\"); at //1 and s.play(\"cosco\"); at //2\n",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    } ],
+    "correctAnswers" : 2
+  }
+}, {
+  "id" : "970956bc-755a-4e44-b056-5f6043668ec1",
+  "creationDate" : [ 2023, 5, 28, 20, 59, 55, 790455100 ],
+  "questionTitle" : "Working with Methods",
+  "topic" : "Methods_and_Encapsulation",
+  "questionText" : "Which of the following code fragments are valid method declarations?",
+  "questionCode" : "",
+  "answers" : {
+    "answerList" : [ {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : "void method1{ }\n"
+    }, {
+      "answerText" : "",
+      "correctAnswer" : true,
+      "answerDescription" : "void method2( ) { }\n"
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : "void method3(void){ }"
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : "method4{ }"
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : "method5(void){ }"
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    } ],
+    "correctAnswers" : 1
+  }
+}, {
+  "id" : "477ff068-a84f-4078-8847-279ccae1aff6",
+  "creationDate" : [ 2023, 5, 28, 21, 0, 52, 14501700 ],
+  "questionTitle" : "",
+  "topic" : "Handling_Exceptions",
+  "questionText" : "Checked exceptions are meant for...",
+  "questionCode" : "",
+  "answers" : {
+    "answerList" : [ {
+      "answerText" : "exceptional conditions external to an application that a well written application should anticipate and from which it can recover.",
+      "correctAnswer" : true,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "exceptional conditions external to the program  that a well written program cannot anticipate but should recover from.\n",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "exceptional conditions from which recovery is difficult or impossible.\n",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "exceptional situations internal to an application that the application can anticipate but cannot recover from.\n",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    } ],
+    "correctAnswers" : 1
+  }
+}, {
+  "id" : "e69812ff-4bfa-4140-bd91-e8f8928272f4",
+  "creationDate" : [ 2023, 5, 28, 21, 1, 49, 733382300 ],
+  "questionTitle" : "Using Operators and Decision Constructs",
+  "topic" : "Operators_and_Decision_Constructs",
+  "questionText" : "What will the following program print when run?",
+  "questionCode" : "public class Operators{\n\n    public static int operators(){\n        int x1 = -4;\n        int x2 = x1--;\n        int x3 = ++x2;\n        if(x2 > x3){\n            --x3;\n        }else{\n            x1++;\n        }\n        return x1 + x2 + x3;\n    }\n    public static void main(String[] args) {\n        System.out.println(operators());\n    }\n}",
+  "answers" : {
+    "answerList" : [ {
+      "answerText" : "-9",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "-10",
+      "correctAnswer" : true,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "-11",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "-12",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    } ],
+    "correctAnswers" : 1
+  }
+}, {
+  "id" : "164aeb7c-9e13-4080-8acb-7569b1e99907",
+  "creationDate" : [ 2023, 5, 28, 21, 2, 45, 797114400 ],
+  "questionTitle" : "Working with Java Data Types",
+  "topic" : "Java_Data_Types",
+  "questionText" : "What can be inserted in the above code so that it can compile without any error?",
+  "questionCode" : "\nimport java.util.*;\npublic class TestClass {\n    public static void main(String[] args) throws Exception {\n        ArrayList<Double> al = new ArrayList<>();\n\n        //INSERT CODE HERE\n     }\n}",
+  "answers" : {
+    "answerList" : [ {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : "al.add(111);\n"
+    }, {
+      "answerText" : "",
+      "correctAnswer" : true,
+      "answerDescription" : "System.out.println(al.indexOf(1.0));\n"
+    }, {
+      "answerText" : "",
+      "correctAnswer" : true,
+      "answerDescription" : "System.out.println(al.contains(\"string\"));"
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : "Double d = al.get(al.length);\n"
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    } ],
+    "correctAnswers" : 2
+  }
+}, {
+  "id" : "e3fbc9c7-bf76-4053-81c8-106884b8eb50",
+  "creationDate" : [ 2023, 5, 28, 21, 3, 52, 126879900 ],
+  "questionTitle" : "",
+  "topic" : "Operators_and_Decision_Constructs",
+  "questionText" : "Consider the following code:\nWhich of the following options would be a valid implementation of tester() method?",
+  "questionCode" : "public class TestClass {\n  \n    //define tester method here\n    \n    public static void main(String[] args) throws Exception {\n        TestClass tc = new TestClass();\n        while(tc.tester()){\n            System.out.println(\"running...\");\n        }\n    }\n}",
+  "answers" : {
+    "answerList" : [ {
+      "answerText" : "",
+      "correctAnswer" : true,
+      "answerDescription" : "public boolean tester(){\n        return false;\n    }"
+    }, {
+      "answerText" : "",
+      "correctAnswer" : true,
+      "answerDescription" : "public Boolean tester(){\n        return false;\n    }"
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : "public tester(){\n        return false;\n    }\n"
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : "public int tester(){\n        return 0;\n    }"
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : "public String tester(){\n        return \"false\";\n    }"
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    } ],
+    "correctAnswers" : 2
+  }
+}, {
+  "id" : "0a79a87b-4b86-4e87-a0fe-e760db092248",
+  "creationDate" : [ 2023, 5, 28, 21, 4, 44, 212965100 ],
+  "questionTitle" : "",
+  "topic" : "Java_Basics",
+  "questionText" : "Given the following set of member declarations, which of the following is true?",
+  "questionCode" : "\n int a;    //  (1)\n static int a;    //  (2)\n int f( )   { return a; }    //  (3)\n static int f( ) { return a; }    //  (4)",
+  "answers" : {
+    "answerList" : [ {
+      "answerText" : "Declarations (1) and (3) cannot occur in the same class definition.\n",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "Declarations (2) and (4) cannot occur in the same class definition.\n",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "Declarations (1) and (4) cannot occur in the same class definition.\n",
+      "correctAnswer" : true,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "Declarations (2) and (3) cannot occur in the same class definition.\n",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "Declarations (1) and (2) cannot occur in the same class definition.\n",
+      "correctAnswer" : true,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    } ],
+    "correctAnswers" : 2
+  }
+}, {
+  "id" : "d3665f26-ed5d-4773-af0c-0cc7d95ff73c",
+  "creationDate" : [ 2023, 5, 28, 21, 5, 36, 653146800 ],
+  "questionTitle" : "Working with Java API - String, StringBuilder",
+  "topic" : "Java_API",
+  "questionText" : "What will be the output of the following program (excluding the quotes)?",
+  "questionCode" : "\npublic class SubstringTest{\n   public static void main(String args[]){\n      String String = \"string isa string\";\n      System.out.println(String.substring(3, 6));\n   }\n}",
+  "answers" : {
+    "answerList" : [ {
+      "answerText" : "It will not compile.\n",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "\"ing is\"\n",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "\"ing isa\"\n",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "\"ing \" (There is a space after g)\n",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "None of the above.\n",
+      "correctAnswer" : true,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    } ],
+    "correctAnswers" : 1
+  }
+}, {
+  "id" : "38d39287-18fb-40a8-be82-235f51b8a286",
+  "creationDate" : [ 2023, 6, 5, 13, 54, 47, 176820000 ],
+  "questionTitle" : "Test",
+  "topic" : "Java_Basics",
+  "questionText" : "",
+  "questionCode" : "",
+  "answers" : {
+    "answerList" : [ {
+      "answerText" : "",
+      "correctAnswer" : true,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    }, {
+      "answerText" : "",
+      "correctAnswer" : false,
+      "answerDescription" : ""
+    } ],
+    "correctAnswers" : 1
+  }
+} ]
