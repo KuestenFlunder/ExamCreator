@@ -7,6 +7,7 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
 <AnchorPane minHeight="250.0" minWidth="940.0" prefHeight="781.0" prefWidth="1264.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team_kuestenflunder.exam_desktop.controller.ExamEvaluationViewController">
@@ -24,7 +25,20 @@
                     </menus>
                 </MenuBar>
                 <TableView fx:id="tv_examResults" prefHeight="702.0" prefWidth="1254.0" />
-                <Button fx:id="bt_backToQuestionView" mnemonicParsing="false" onAction="#onBackToQuestionViewClick" prefHeight="40.0" prefWidth="169.0" text="Zurück zur Fragenübersicht" />
+            <HBox alignment="CENTER" prefHeight="60.0" prefWidth="1254.0">
+               <children>
+                      <Button fx:id="bt_backToQuestionView" alignment="CENTER" mnemonicParsing="false" onAction="#onBackToQuestionViewClick" prefHeight="40.0" prefWidth="200.0" text="Zurück zur Fragenübersicht">
+                     <HBox.margin>
+                        <Insets right="100.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="bt_exportResultsAsPdf" alignment="CENTER" mnemonicParsing="false" onAction="#onExportResultsAsPdfClick" prefHeight="40.0" prefWidth="200.0" text="Ergebnisse als CSV Exportieren">
+                     <HBox.margin>
+                        <Insets left="100.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
             </children>
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

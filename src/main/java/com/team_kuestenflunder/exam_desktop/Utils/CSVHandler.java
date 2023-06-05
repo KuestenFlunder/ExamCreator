@@ -1,5 +1,6 @@
 package com.team_kuestenflunder.exam_desktop.Utils;
 
+import com.team_kuestenflunder.exam_desktop.entity.ExamResult;
 import com.team_kuestenflunder.exam_desktop.entity.Question;
 
 import java.io.File;
@@ -18,53 +19,51 @@ public class CSVHandler {
         return file.length() == 0;
     }
 
-    public void writeCSV(List<Question> questions) {
+    public static void writeCSV(List<ExamResult> examResults, File saveCsvTo) {
 
-        String csvFile = "src/main/Output/questions.csv";
-        boolean isFileEmpty = isFileEmpty(csvFile);
+        boolean isFileEmpty = !saveCsvTo.exists() || saveCsvTo.length() == 0;
 
-        try (FileWriter writer = new FileWriter(csvFile)) {
-            // Write header
-            for (Question question : questions) {
-                if (isFileEmpty) {
-                    writer.append("ID");
-                    writer.append(CSV_SEPARATOR);
-                    writer.append("Creation Date");
-                    writer.append(CSV_SEPARATOR);
-                    writer.append("Question Title");
-                    writer.append(CSV_SEPARATOR);
-                    writer.append("Topic");
-                    writer.append(CSV_SEPARATOR);
-                    writer.append("Question Text");
-                    writer.append(CSV_SEPARATOR);
-                    writer.append("Code");
-                    writer.append(CSV_SEPARATOR);
-                    writer.append("Answers");//TODO ! Answerfelder aufschlüsseln
-                    writer.append("\n");
-                }
-                // Write data
-                DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME;
+        try (FileWriter writer = new FileWriter(saveCsvTo,true)) {
 
-                writer.append(question.getId());
+            // Write header if file is empty
+            if (isFileEmpty) {
+                writer.append("Name");
                 writer.append(CSV_SEPARATOR);
-                writer.append(formatter.format(question.getCreationDate()));
+                writer.append("Surname");
                 writer.append(CSV_SEPARATOR);
-                writer.append(question.getQuestionTitle());
+                writer.append("Date of exam");
                 writer.append(CSV_SEPARATOR);
-                writer.append(String.valueOf(question.getTopic()));
+                writer.append("Number of questions");
                 writer.append(CSV_SEPARATOR);
-                writer.append(question.getQuestionText());
+                writer.append("Percent");
                 writer.append(CSV_SEPARATOR);
-                writer.append(question.getQuestionCode());
-                writer.append(CSV_SEPARATOR);
-                writer.append(question.getAnswers().toString());
+                writer.append("Exam result");
+                // removed CSV_SEPARATOR here
                 writer.append("\n");
-
-
             }
+
+            // Write data for all exam results
+            for (ExamResult result : examResults) {
+                writer.append(result.getStudentName());
+                writer.append(CSV_SEPARATOR);
+                writer.append(result.getStudentSurname());
+                writer.append(CSV_SEPARATOR);
+                writer.append(result.getDateOfExam());
+                writer.append(CSV_SEPARATOR);
+                writer.append(String.valueOf(result.getNumberOfQuestions()));
+                writer.append(CSV_SEPARATOR);
+                writer.append(result.getPercent());
+                writer.append(CSV_SEPARATOR);
+                writer.append(result.getExamResult());
+                // removed CSV_SEPARATOR here
+                writer.append("\n");
+            }
+
             System.out.println("CSV file has been created successfully.");
         } catch (IOException e) {
             System.out.println("Error while writing CSV file: " + e.getMessage());
         }
     }
+
+
 }

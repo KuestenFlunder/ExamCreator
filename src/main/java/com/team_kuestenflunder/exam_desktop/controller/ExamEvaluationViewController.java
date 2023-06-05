@@ -2,6 +2,7 @@ package com.team_kuestenflunder.exam_desktop.controller;
 
 
 import com.team_kuestenflunder.exam_desktop.SceneManager;
+import com.team_kuestenflunder.exam_desktop.Utils.CSVHandler;
 import com.team_kuestenflunder.exam_desktop.Utils.PDFHandler;
 import com.team_kuestenflunder.exam_desktop.entity.ExamResult;
 import com.team_kuestenflunder.exam_desktop.services.ExamEvaluationViewService;
@@ -27,7 +28,7 @@ public class ExamEvaluationViewController {
 
     ObservableList<ExamResult> examResults = FXCollections.observableArrayList();
     @FXML
-    Button bt_backToQuestionView;
+    Button bt_backToQuestionView, bt_exportResultsAsPdf;
     @FXML
     MenuItem mi_evaluateExams, mi_evaluateExam;
     @FXML
@@ -72,6 +73,13 @@ public class ExamEvaluationViewController {
             throw new RuntimeException(e);
         }
         examEvaluationViewService.createViewTable(tv_examResults, examResults);
+    }
+
+
+    public  void onExportResultsAsPdfClick(ActionEvent event ){
+        File saveCsvTo = sceneManager.addFileSaveDialogFromButton(event,"Csv","*.csv");
+        CSVHandler.writeCSV(examResults,saveCsvTo);
+
     }
 
 }
