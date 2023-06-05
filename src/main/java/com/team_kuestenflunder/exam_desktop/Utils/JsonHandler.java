@@ -28,6 +28,7 @@ public class JsonHandler {
             file = new File("src/main/Data/innerJsonDatastore.json");
         }
         objectMapper.writeValue(new File(file.toURI()), questionList);
+        System.out.println("inner Json written successfully");
     }
 
     public static  ObservableList<Question> readJsonFromInnerStorage() throws IOException {
@@ -37,7 +38,7 @@ public class JsonHandler {
             File jsonFile = new File("src/main/Data/innerJsonDatastore.json");
             List<Question> questionList = objectMapper.readValue(jsonFile, new TypeReference<>() {
             });
-            System.out.println("Json created successfully");
+            System.out.println("innerJson created successfully");
             return FXCollections.observableArrayList(questionList);
         } catch (FileNotFoundException e) {
             System.out.println("Json nicht gefunden. Es wird ein entsprechender Pfad beim Beenden der Applikation erstellt");

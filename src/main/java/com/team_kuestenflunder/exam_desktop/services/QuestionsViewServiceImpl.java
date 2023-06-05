@@ -38,6 +38,7 @@ public class QuestionsViewServiceImpl implements Service {
 
     public void addQuestions(ObservableList<Question> questions) {
         questionRepository.addQuestions(questions);
+
     }
 
     public int getQuestionIndexByID(String id) {
