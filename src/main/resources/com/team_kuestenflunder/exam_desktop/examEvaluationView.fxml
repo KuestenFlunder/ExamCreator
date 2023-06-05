@@ -5,12 +5,11 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane minHeight="250.0" minWidth="940.0" prefHeight="781.0" prefWidth="1264.0" style="-fx-background-color: DDDDD;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team_kuestenflunder.exam_desktop.controller.ExamEvaluationViewController">
+<AnchorPane minHeight="250.0" minWidth="940.0" prefHeight="781.0" prefWidth="1264.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team_kuestenflunder.exam_desktop.controller.ExamEvaluationViewController">
     <children>
         <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -24,12 +23,7 @@
                         </Menu>
                     </menus>
                 </MenuBar>
-                <TableView prefHeight="677.0" prefWidth="1264.0">
-                    <columns>
-                        <TableColumn prefWidth="75.0" text="C1" />
-                        <TableColumn prefWidth="75.0" text="C2" />
-                    </columns>
-                </TableView>
+                <TableView fx:id="tv_examResults" prefHeight="702.0" prefWidth="1254.0" />
                 <Button fx:id="bt_backToQuestionView" mnemonicParsing="false" onAction="#onBackToQuestionViewClick" prefHeight="40.0" prefWidth="169.0" text="Zurück zur Fragenübersicht" />
             </children>
          <padding>
