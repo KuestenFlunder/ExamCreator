@@ -123,7 +123,7 @@ public class PDFHandler {
             //hidden correctAnswerBox to keep the correct answers
             PDCheckBox correctAnswerBox = (PDCheckBox) acroQuestionPage.getField("CorrectAnswerBox_" + i);
             PDAnnotationWidget widget = correctAnswerBox.getWidgets().get(0);
-            widget.setHidden(true);    //hide correctAnswers
+//            widget.setHidden(true);    //hide correctAnswers
             if (question.getAnswers().getAnswerList().get(i).isCorrectAnswer()) {
                 correctAnswerBox.setValue(correctAnswerBox.getOnValue());
             }
