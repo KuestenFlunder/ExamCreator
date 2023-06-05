@@ -3,7 +3,6 @@ package com.team_kuestenflunder.exam_desktop.controller;
 
 import com.team_kuestenflunder.exam_desktop.SceneManager;
 import com.team_kuestenflunder.exam_desktop.Utils.PDFHandler;
-import com.team_kuestenflunder.exam_desktop.Utils.TestEvaluator;
 import com.team_kuestenflunder.exam_desktop.entity.ExamValues;
 import com.team_kuestenflunder.exam_desktop.services.ExamEvaluationViewService;
 import javafx.event.ActionEvent;
@@ -21,7 +20,7 @@ public class ExamEvaluationViewController {
     SceneManager sceneManager = SceneManager.getInstance();
 
     //TODO Dependency injection for both
-    TestEvaluator testEvaluator = new TestEvaluator();
+
     PDFHandler pdfHandler = new PDFHandler();
 
     //TODO dependency Injection
@@ -51,8 +50,8 @@ public class ExamEvaluationViewController {
     public void onEvaluateExamsClick(ActionEvent event){
         File singleExam =  sceneManager.addFileChooserDialogSingle(event,"PDF","*.pdf");
 
-        ExamValues examValues = pdfHandler.getValuesFromTest(singleExam);
-        testEvaluator.evaluateExam(examValues);
+        ExamValues examValues = PDFHandler.getValuesFromTest(singleExam);
+        examEvaluationViewService.evaluateExam(examValues);
     }
 
 }
