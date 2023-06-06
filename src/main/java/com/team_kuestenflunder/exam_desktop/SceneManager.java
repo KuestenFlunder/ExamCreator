@@ -81,6 +81,18 @@ public class SceneManager {
         stage.setTitle("Prüfungsauswertung");
         stage.show();
     }
+    public void switchSceneToStudentsView(Event event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("studentAdministrationView.fxml"));
+        fxmlLoader.setControllerFactory(injector::getInstance);
+        root = fxmlLoader.load();
+        stage =(Stage) ((MenuItem) event.getTarget())
+                .getParentPopup()
+                .getOwnerWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setTitle("Studenten Verwaltung");
+        stage.show();
+    }
 
     /**
      * Switches the current scene to the question view scene.

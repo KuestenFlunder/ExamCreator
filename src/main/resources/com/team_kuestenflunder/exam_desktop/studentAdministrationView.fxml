@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<AnchorPane minHeight="250.0" minWidth="940.0" prefHeight="609.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/19"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.team_kuestenflunder.exam_desktop.controller.StudentsViewController">
+
+<children>
+        <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+              AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <TableView fx:id="tv_students" prefHeight="536.0" prefWidth="940.0"/>
+                <HBox alignment="CENTER" prefHeight="60.0" prefWidth="1254.0">
+                    <children>
+                        <Button fx:id="bt_backToQuestionView" alignment="CENTER" mnemonicParsing="false"
+                                onAction="#onBackToQuestionViewClick" prefHeight="40.0" prefWidth="200.0"
+                                text="Zurück zur Fragenübersicht">
+                            <HBox.margin>
+                                <Insets right="100.0"/>
+                            </HBox.margin>
+                        </Button>
+                        <Button fx:id="bt_addStudent" alignment="CENTER" mnemonicParsing="false"
+                                onAction="#onAddStudentClick" prefHeight="40.0" prefWidth="200.0"
+                                text="Studenten hinzufügen"/>
+                        <Button fx:id="bt_editStudent" alignment="CENTER" mnemonicParsing="false"
+                                onAction="#onEditStudentClick" prefHeight="40.0" prefWidth="200.0"
+                                text="Studenten Bearbeiten"/>
+                        <Button fx:id="bt_deleteStudent" alignment="CENTER" mnemonicParsing="false"
+                                onAction="#onDeleteStudentClick" prefHeight="40.0" prefWidth="200.0"
+                                text="Studenten löschen"/>
+                        <Button fx:id="bt_createIndividualPdfExams" alignment="CENTER" mnemonicParsing="false"
+                                onAction="#onCreateIndividualPdfExams" prefHeight="40.0" prefWidth="200.0"
+                                text="PDF Prüfungen erstellen">
+                            <HBox.margin>
+                                <Insets left="100.0"/>
+                            </HBox.margin>
+                        </Button>
+                    </children>
+                </HBox>
+            </children>
+            <padding>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+            </padding>
+        </VBox>
+    </children>
+</AnchorPane>
