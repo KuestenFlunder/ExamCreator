@@ -16,8 +16,8 @@ import java.util.Random;
 import java.util.Set;
 
 public class PdfCreationPopUpService {
-    QuestionRepositoryImpl questionRepository;
     private final SceneManager sceneManager = SceneManager.getInstance();
+    QuestionRepositoryImpl questionRepository;
 
     @Inject
     public PdfCreationPopUpService(QuestionRepositoryImpl questionRepository) {
@@ -44,19 +44,20 @@ public class PdfCreationPopUpService {
         }
     }
 
-    public void createExamPDF(TextField tf_testTitle, TextField tf_numberOfQuestions, TextField tf_testDuration, File outputFile ) {
+    public void createExamPDF(TextField tf_testTitle, TextField tf_numberOfQuestions, TextField tf_testDuration, File outputFile) {
         Set<Question> examQuestions = getRandomExamQuestions(Integer.parseInt(tf_numberOfQuestions.getText()));
         int testDuration = Integer.parseInt(tf_testDuration.getText());
         String testTitel = tf_testTitle.getText();
-        //TODO should be refactored and pass in the random Questions to createPDF as parameter.
-        //TODO Add a filepath to choose the right place to save the Exam to.
+
         try {
-            PDFHandler.createExamPDF(testTitel,examQuestions, testDuration, outputFile);
+
+                PDFHandler.createExamPDF(testTitel, examQuestions, testDuration, outputFile);
 
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
+
 
 
 }

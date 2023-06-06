@@ -30,6 +30,7 @@
                 <Menu mnemonicParsing="false" text="Prüfung">
                   <items>
                     <MenuItem fx:id="mi_createExam" mnemonicParsing="false" onAction="#onCreateExamPdfClick" text="Prüfung als PDF erstellen" />
+                        <MenuItem fx:id="mi_CreateIndividualExam" mnemonicParsing="false" onAction="#onCreateIndividualExamClick" text="Individuelle Prüfungen erstellen" />
                         <MenuItem fx:id="mi_examEvaluation" mnemonicParsing="false" onAction="#onExamEvaluationClick" text="Prüfungen auswerten" />
                   </items>
                 </Menu>
