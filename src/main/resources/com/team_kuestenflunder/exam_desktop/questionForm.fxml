@@ -21,101 +21,145 @@
             <Label fx:id="l_creationDate" prefHeight="100.0" prefWidth="180.0" text="erstellt am" />
          </HBox>
       </VBox>
-      <HBox prefHeight="52.0" prefWidth="1292.0">
+      <HBox prefHeight="100.0" prefWidth="1292.0">
          <TextArea fx:id="ta_questionText" prefHeight="116.0" prefWidth="926.0" promptText="Fragenstellung" />
-         <ChoiceBox fx:id="cb_topic" prefHeight="42.0" prefWidth="408.0" />
+         <ChoiceBox fx:id="cb_topic" prefHeight="40.0" prefWidth="393.0" />
       </HBox>
-      <TextArea fx:id="ta_questionCode" prefHeight="398.0" prefWidth="1292.0" promptText="Code" />
-      <HBox prefHeight="81.0" prefWidth="1292.0">
-         <CheckBox fx:id="chb_correctAnswer_0" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="99.0">
-            <padding>
-               <Insets left="25.0" right="25.0" />
-            </padding>
-            <opaqueInsets>
-               <Insets />
-            </opaqueInsets>
-         </CheckBox>
-         <TextArea fx:id="ta_answerText_0" prefHeight="100.0" prefWidth="1872.0" promptText="Antwort" />
-         <TextArea fx:id="ta_answerDescription_0" prefHeight="100.0" prefWidth="1204.0" promptText="Erklärung" />
-      </HBox>
-      <HBox prefHeight="81.0" prefWidth="1292.0">
-         <CheckBox fx:id="chb_correctAnswer_1" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="99.0">
-            <padding>
-               <Insets left="25.0" right="25.0" />
-            </padding>
-            <opaqueInsets>
-               <Insets />
-            </opaqueInsets>
-         </CheckBox>
-         <TextArea fx:id="ta_answerText_1" prefHeight="100.0" prefWidth="1872.0" promptText="Antwort" />
-         <TextArea fx:id="ta_answerDescription_1" prefHeight="100.0" prefWidth="1204.0" promptText="Erklärung" />
-      </HBox>
-      <HBox prefHeight="81.0" prefWidth="1292.0">
-         <CheckBox fx:id="chb_correctAnswer_2" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="99.0">
-            <padding>
-               <Insets left="25.0" right="25.0" />
-            </padding>
-            <opaqueInsets>
-               <Insets />
-            </opaqueInsets>
-         </CheckBox>
-         <TextArea fx:id="ta_answerText_2" prefHeight="100.0" prefWidth="1872.0" promptText="Antwort" />
-         <TextArea fx:id="ta_answerDescription_2" prefHeight="100.0" prefWidth="1204.0" promptText="Erklärung" />
-      </HBox>
-      <HBox prefHeight="81.0" prefWidth="1292.0">
-         <CheckBox fx:id="chb_correctAnswer_3" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="99.0">
-            <padding>
-               <Insets left="25.0" right="25.0" />
-            </padding>
-            <opaqueInsets>
-               <Insets />
-            </opaqueInsets>
-         </CheckBox>
-         <TextArea fx:id="ta_answerText_3" prefHeight="100.0" prefWidth="1872.0" promptText="Antwort" />
-         <TextArea fx:id="ta_answerDescription_3" prefHeight="100.0" prefWidth="1204.0" promptText="Erklärung" />
-      </HBox>
-      <HBox prefHeight="81.0" prefWidth="1292.0">
-         <CheckBox fx:id="chb_correctAnswer_4" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="99.0">
-            <padding>
-               <Insets left="25.0" right="25.0" />
-            </padding>
-            <opaqueInsets>
-               <Insets />
-            </opaqueInsets>
-         </CheckBox>
-         <TextArea fx:id="ta_answerText_4" prefHeight="100.0" prefWidth="1872.0" promptText="Antwort" />
-         <TextArea fx:id="ta_answerDescription_4" prefHeight="100.0" prefWidth="1204.0" promptText="Erklärung" />
-      </HBox>
-      <HBox prefHeight="81.0" prefWidth="1292.0">
-         <CheckBox fx:id="chb_correctAnswer_5" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="99.0">
-            <padding>
-               <Insets left="25.0" right="25.0" />
-            </padding>
-            <opaqueInsets>
-               <Insets />
-            </opaqueInsets>
-         </CheckBox>
-         <TextArea fx:id="ta_answerText_5" prefHeight="100.0" prefWidth="1872.0" promptText="Antwort" />
-         <TextArea fx:id="ta_answerDescription_5" prefHeight="100.0" prefWidth="1204.0" promptText="Erklärung" />
-      </HBox>
-      <HBox prefHeight="47.0" prefWidth="1292.0">
+      <HBox prefHeight="30.0">
          <children>
-            <Button fx:id="bt_submit" mnemonicParsing="false" onAction="#onFormSaveClick" prefHeight="25.0" prefWidth="1293.0" text="Speichern" textFill="#e30b81">
+            <Button fx:id="bt_preview" mnemonicParsing="false" onAction="#onCancelClick" prefHeight="20.0" prefWidth="950.0" text="Vorschau" textFill="#0b72e3">
                <padding>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                  <Insets bottom="7.0" left="10.0" right="10.0" top="7.0" />
                </padding>
                <font>
-                  <Font name="BigBlue TerminalPlus Nerd Font Complete" size="24.0" />
+                  <Font name="System Bold" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="bt_cancel" mnemonicParsing="false" onAction="#onCancelClick" prefHeight="46.0" prefWidth="559.0" text="Abbrechen" textFill="#e30b0b">
+            <Button fx:id="bt_submit" mnemonicParsing="false" onAction="#onFormSaveClick" prefHeight="20.0" prefWidth="1100.0" text="Speichern" textFill="#0b72e3">
                <padding>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                  <Insets bottom="7.0" left="10.0" right="10.0" top="7.0" />
                </padding>
                <font>
-                  <Font name="BigBlue TerminalPlus Nerd Font Complete" size="20.0" />
+                  <Font name="System Bold" size="15.0" />
                </font>
             </Button>
+            <Button fx:id="bt_cancel" mnemonicParsing="false" onAction="#onCancelClick" prefHeight="20.0" prefWidth="950.0" text="Abbrechen" textFill="#0b72e3">
+               <padding>
+                  <Insets bottom="7.0" left="10.0" right="10.0" top="7.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+      <HBox prefHeight="780.0" prefWidth="1500.0">
+         <children>
+            <TextArea fx:id="ta_questionCode" prefHeight="1800.0" prefWidth="1500.0" promptText="Code">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </TextArea>
+            <VBox prefHeight="1800.0" prefWidth="1650.0" style="-fx-background-color: 4682B4;">
+               <children>
+                  <HBox prefHeight="300.0" prefWidth="650.0">
+                     <CheckBox fx:id="chb_correctAnswer_0" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="150.0" prefWidth="50.0">
+                        <padding>
+                           <Insets bottom="50.0" left="25.0" right="25.0" />
+                        </padding>
+                        <opaqueInsets>
+                           <Insets />
+                        </opaqueInsets>
+                     </CheckBox>
+                     <VBox prefHeight="350.0" prefWidth="650.0">
+                        <children>
+                           <TextArea fx:id="ta_answerText_0" accessibleRole="TEXT_FIELD" prefHeight="50.0" prefWidth="650.0" promptText="Text der Antwort" />
+                           <TextArea fx:id="ta_answerCode_0" prefHeight="100.0" prefWidth="1204.0" promptText="Java-Code der Antwort" />
+                        </children>
+                     </VBox>
+                  </HBox>
+                  <HBox prefHeight="300.0" prefWidth="650.0">
+                     <CheckBox fx:id="chb_correctAnswer_1" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="250.0" prefWidth="50.0">
+                        <padding>
+                           <Insets bottom="50.0" left="25.0" right="25.0" />
+                        </padding>
+                        <opaqueInsets>
+                           <Insets />
+                        </opaqueInsets>
+                     </CheckBox>
+                     <VBox prefHeight="350.0" prefWidth="650.0" style="-fx-background-color: E0FFFF;">
+                        <children>
+                           <TextArea fx:id="ta_answerText_1" accessibleRole="TEXT_FIELD" prefHeight="40.0" prefWidth="1200.0" promptText="Text der Antwort" />
+                           <TextArea fx:id="ta_answerCode_1" prefHeight="100.0" prefWidth="1204.0" promptText="Java-Code der Antwort" />
+                        </children>
+                     </VBox>
+                  </HBox>
+                  <HBox prefHeight="300.0" prefWidth="650.0">
+                     <CheckBox fx:id="chb_correctAnswer_2" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="50.0">
+                        <padding>
+                           <Insets bottom="50.0" left="25.0" right="25.0" />
+                        </padding>
+                        <opaqueInsets>
+                           <Insets />
+                        </opaqueInsets>
+                     </CheckBox>
+                     <VBox prefHeight="350.0" prefWidth="650.0">
+                        <children>
+                           <TextArea fx:id="ta_answerText_2" accessibleRole="TEXT_FIELD" prefHeight="40.0" prefWidth="1200.0" promptText="Text der Antwort" />
+                           <TextArea fx:id="ta_answerCode_2" prefHeight="100.0" prefWidth="1204.0" promptText="Java-Code der Antwort" />
+                        </children>
+                     </VBox>
+                  </HBox>
+                  <HBox prefHeight="300.0" prefWidth="650.0">
+                     <CheckBox fx:id="chb_correctAnswer_3" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="50.0">
+                        <padding>
+                           <Insets bottom="50.0" left="25.0" right="25.0" />
+                        </padding>
+                        <opaqueInsets>
+                           <Insets />
+                        </opaqueInsets>
+                     </CheckBox>
+                     <VBox prefHeight="200.0" prefWidth="650.0">
+                        <children>
+                           <TextArea fx:id="ta_answerText_3" accessibleRole="TEXT_FIELD" prefHeight="40.0" prefWidth="1200.0" promptText="Text der Antwort" />
+                           <TextArea fx:id="ta_answerCode_3" prefHeight="100.0" prefWidth="1204.0" promptText="Java-Code der Antwort" />
+                        </children>
+                     </VBox>
+                  </HBox>
+                  <HBox prefHeight="300.0" prefWidth="650.0">
+                     <CheckBox fx:id="chb_correctAnswer_4" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="50.0">
+                        <padding>
+                           <Insets bottom="50.0" left="25.0" right="25.0" />
+                        </padding>
+                        <opaqueInsets>
+                           <Insets />
+                        </opaqueInsets>
+                     </CheckBox>
+                     <VBox prefHeight="350.0" prefWidth="650.0">
+                        <children>
+                           <TextArea fx:id="ta_answerText_4" accessibleRole="TEXT_FIELD" prefHeight="40.0" prefWidth="1200.0" promptText="Text der Antwort" />
+                           <TextArea fx:id="ta_answerCode_4" prefHeight="100.0" prefWidth="1204.0" promptText="Java-Code der Antwort" />
+                        </children>
+                     </VBox>
+                  </HBox>
+                  <HBox prefHeight="301.0" prefWidth="650.0">
+                     <CheckBox fx:id="chb_correctAnswer_5" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="50.0">
+                        <padding>
+                           <Insets bottom="50.0" left="25.0" right="25.0" />
+                        </padding>
+                        <opaqueInsets>
+                           <Insets />
+                        </opaqueInsets>
+                     </CheckBox>
+                     <VBox prefHeight="350.0" prefWidth="650.0">
+                        <children>
+                           <TextArea fx:id="ta_answerText_5" accessibleRole="TEXT_FIELD" prefHeight="40.0" prefWidth="1200.0" promptText="Text der Antwort" />
+                           <TextArea fx:id="ta_answerCode_5" prefHeight="100.0" prefWidth="1204.0" promptText="Java-Code der Antwort" />
+                        </children>
+                     </VBox>
+                  </HBox>
+               </children>
+            </VBox>
          </children>
       </HBox>
    </VBox>

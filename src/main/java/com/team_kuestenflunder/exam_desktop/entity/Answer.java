@@ -3,15 +3,15 @@ package com.team_kuestenflunder.exam_desktop.entity;
 public class Answer {
     private String answerText;
     private boolean correctAnswer;
-    private String answerDescription;
+    private String answerCode;
 
     public Answer() {
     }
 
-    public Answer(String answerText, boolean correctAnswer, String answerDescription) {
+    public Answer(String answerText, boolean correctAnswer, String answerCode) {
         this.answerText = answerText;
         this.correctAnswer = correctAnswer;
-        this.answerDescription = answerDescription;
+        this.answerCode = answerCode;
     }
 
     public String getAnswerText() {
@@ -30,12 +30,12 @@ public class Answer {
         this.correctAnswer = correctAnswer;
     }
 
-    public String getAnswerDescription() {
-        return answerDescription;
+    public String getAnswerCode() {
+        return answerCode;
     }
 
-    public void setAnswerDescription(String answerDescription) {
-        this.answerDescription = answerDescription;
+    public void setAnswerCode(String answerCode) {
+        this.answerCode = answerCode;
     }
 
     @Override
@@ -43,7 +43,7 @@ public class Answer {
         return "Answer{" +
                 "answerText='" + answerText + '\'' +
                 ", correctAnswer=" + correctAnswer +
-                ", answerDescription='" + answerDescription + '\'' +
+                ", answerDescription='" + answerCode + '\'' +
                 '}';
     }
 }

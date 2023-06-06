@@ -54,10 +54,7 @@ public class SceneManager {
      * @throws IOException if there's an error loading the FXML file.
      */
     public void switchSceneToQuestionForm(ActionEvent event, Question question) throws IOException {
-        stage = (Stage) ((Node) event
-                .getSource())
-                .getScene()
-                .getWindow();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("questionForm.fxml"));
         fxmlLoader.setControllerFactory(injector::getInstance);
         root = fxmlLoader.load();
@@ -66,19 +63,6 @@ public class SceneManager {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.setTitle("Fragen Editor");
-        stage.show();
-    }
-
-    public void switchSceneToExamValidationView(Event event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("examEvaluationView.fxml"));
-        fxmlLoader.setControllerFactory(injector::getInstance);
-        root = fxmlLoader.load();
-        stage =(Stage) ((MenuItem) event.getTarget())
-                .getParentPopup()
-                .getOwnerWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setTitle("Prüfungsauswertung");
         stage.show();
     }
 
@@ -96,6 +80,19 @@ public class SceneManager {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.setTitle("Fragen Liste");
+        stage.show();
+    }
+
+    public void switchSceneToExamValidationView(Event event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("examEvaluationView.fxml"));
+        fxmlLoader.setControllerFactory(injector::getInstance);
+        root = fxmlLoader.load();
+        stage =(Stage) ((MenuItem) event.getTarget())
+                .getParentPopup()
+                .getOwnerWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setTitle("Prüfungsauswertung");
         stage.show();
     }
 
