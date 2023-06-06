@@ -93,7 +93,7 @@ public class PDFHandler {
         return filePath;
     }
 
-    private static String createQuestionPage(int numberOfQuestions, Question question, int counter) throws IOException {
+    public static String createQuestionPage(int numberOfQuestions, Question question, int counter) throws IOException {
         PDDocument questionPage = PDDocument.load(new File("src/main/resources/com/team_kuestenflunder/exam_desktop/templates/QuestionLayout.pdf"));
         PDAcroForm acroQuestionPage = questionPage.getDocumentCatalog().getAcroForm();
         // set TextFields
@@ -127,7 +127,7 @@ public class PDFHandler {
             answerBox.setMappingName(answerBox_NewMappingName);
             acroQuestionPage.refreshAppearances();
         }
-        String pathName = "src/main/Output/qsPage" + counter + ".pdf";
+        String pathName = "src/main/Output/temporaryPage" + counter + ".pdf";
         questionPage.save(pathName);
         questionPage.close();
 
@@ -148,13 +148,13 @@ public class PDFHandler {
         return filePath;
     }
 
-    private static void cleanOutputDirectory(Set<Question> examQuestions) {
+    public static void cleanOutputDirectory(Set<Question> examQuestions) {
         File titelPageFile = new File("src/main/Output/TitlePage.pdf");
         titelPageFile.delete();
         File lastPageFile = new File("src/main/Output/LastPage.pdf");
         lastPageFile.delete();
         for (int i = 1; i <= examQuestions.size(); i++) {
-            File questionFile = new File("src/main/Output/qsPage" + i + ".pdf");
+            File questionFile = new File("src/main/Output/temporaryPage" + i + ".pdf");
             questionFile.delete();
         }
     }

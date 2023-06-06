@@ -169,8 +169,6 @@ public class SceneManager {
         return fileChooser.showSaveDialog(stage);
     }
 
-
-
     public File addNewFileSaveDialog(Event event) {
         Stage stage = new Stage();
         stage.initOwner(((MenuItem) event.getTarget()).getParentPopup().getOwnerWindow());

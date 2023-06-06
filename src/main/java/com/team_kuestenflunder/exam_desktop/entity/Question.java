@@ -38,13 +38,12 @@ public class Question {
         return id;
     }
 
-    public LocalDateTime getCreationDate() {
-        return creationDate;
-    }
-
-
     public void setId(String id) {
         this.id = id;
+    }
+
+    public LocalDateTime getCreationDate() {
+        return creationDate;
     }
 
     public void setCreationDate(LocalDateTime creationDate) {
@@ -85,6 +84,7 @@ public class Question {
 
     public Topics getTopic() {
         return topic;
+
     }
 
     public void setTopic(Topics topic) {
