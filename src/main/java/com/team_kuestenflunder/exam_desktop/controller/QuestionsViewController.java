@@ -82,6 +82,14 @@ public class QuestionsViewController implements Initializable {
         }
     }
 
+    public void onCreateIndividualExamClick(ActionEvent event){
+        try {
+            sceneManager.switchSceneToStudentsView(event);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public void onMergeJsonClick(ActionEvent event) {
         jsonHandler.mergeJsonFiles(
                 sceneManager.addFileChooserDialogMultiple(event, "JSON", "*.json"),
