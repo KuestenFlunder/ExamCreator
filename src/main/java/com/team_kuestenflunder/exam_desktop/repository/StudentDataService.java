@@ -8,7 +8,7 @@ public class StudentDataService {
 
     private static StudentDataService instance;
 
-    private ObservableList<Student> questions = FXCollections.observableArrayList();
+    private ObservableList<Student> students = FXCollections.observableArrayList();
 
 
 
@@ -20,11 +20,11 @@ public class StudentDataService {
     }
 
     public ObservableList<Student> getStudents() {
-        return questions;
+        return students;
     }
 
     public void setStudents(ObservableList<Student> questions) {
-        this.questions = questions;
+        this.students = questions;
     }
 
 

@@ -17,7 +17,7 @@ public class StudentRepository {
         return studentDataService.getStudents().get(index);
     }
 
-    public List<Student> getStudents() {
+    public ObservableList<Student> getStudents() {
         return studentDataService.getStudents();
     }
 

@@ -6,13 +6,16 @@ import com.team_kuestenflunder.exam_desktop.repository.StudentRepository;
 import com.team_kuestenflunder.exam_desktop.services.StudentViewService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class StudentsViewController {
+public class StudentsViewController implements Initializable {
 
     //TODO add dependency injection
     StudentViewService studentViewService = new StudentViewService(new StudentRepository());
@@ -52,6 +55,10 @@ public class StudentsViewController {
                         tf_studentSurname.getText(),
                         tf_studentMailAddress.getText()
                 ));
+        studentViewService.createViewTable(tv_students,studentViewService.getStudents());
+        tf_studentName.clear();
+        tf_studentSurname.clear();
+        tf_studentMailAddress.clear();
     }
 
     public void onEditStudentClick() {
@@ -61,5 +68,16 @@ public class StudentsViewController {
     }
 
     public void onCreateIndividualPdfExams() {
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        tv_students.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                tf_studentName.setText(newSelection.getName());
+                tf_studentSurname.setText(newSelection.getSurname());
+                tf_studentMailAddress.setText(newSelection.getMailingAddress());
+            }
+        });
     }
 }
