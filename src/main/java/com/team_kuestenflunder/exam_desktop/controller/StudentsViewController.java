@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 
 import java.io.IOException;
 
@@ -27,6 +28,12 @@ public class StudentsViewController {
             bt_createIndividualPdfExams;
 
     @FXML
+    TextField
+            tf_studentName,
+            tf_studentSurname,
+            tf_studentMailAddress;
+
+    @FXML
     TableView<Student> tv_students;
 
     public void onBackToQuestionViewClick(ActionEvent event) {
@@ -39,6 +46,12 @@ public class StudentsViewController {
     }
 
     public void onAddStudentClick() {
+        studentViewService.addStudent(
+                new Student(
+                        tf_studentName.getText(),
+                        tf_studentSurname.getText(),
+                        tf_studentMailAddress.getText()
+                ));
     }
 
     public void onEditStudentClick() {
