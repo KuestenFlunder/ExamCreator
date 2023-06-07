@@ -3,6 +3,7 @@ package com.team_kuestenflunder.exam_desktop.controller;
 
 import com.google.inject.Inject;
 import com.team_kuestenflunder.exam_desktop.SceneManager;
+import com.team_kuestenflunder.exam_desktop.Utils.PDFHandler;
 import com.team_kuestenflunder.exam_desktop.entity.Answer;
 import com.team_kuestenflunder.exam_desktop.entity.Question;
 import com.team_kuestenflunder.exam_desktop.entity.Topics;
@@ -13,12 +14,15 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.util.StringConverter;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
+//import java.awt.Desktop;  //TODO
+
 
 public class QuestionFormController implements Initializable {
     private final QuestionFormServiceImpl questionFormService;
@@ -50,7 +54,6 @@ public class QuestionFormController implements Initializable {
     }
 
     private void fillChoiceBox(ChoiceBox<Topics> choiceBox) {
-
         for (Topics topic : Topics.values()) {
             choiceBox.getItems().add(topic);
         }
@@ -106,10 +109,39 @@ public class QuestionFormController implements Initializable {
         }
     }
 
-    public void onPrewievClick (ActionEvent event ){
+    public void onPreviewClick(ActionEvent event){
+        try {
+            Question onQuestion = new Question();
+            onQuestion.setId(l_uuid.getText());
+            onQuestion.setQuestionTitle(tf_questionTitle.getText());
+            onQuestion.setQuestionText(ta_questionText.getText());
+            onQuestion.setTopic(cb_topic.getValue());
+            onQuestion.setQuestionText(ta_questionText.getText());
+            onQuestion.setQuestionCode(ta_questionCode.getText());
+            int counter = 0;
+            List<Answer> answerList = new ArrayList<>();
+            for (int i = 0; i < 6; i++) {
+                String answerTextValue = answerTexts.get(i).getText();
+                String answerCodeValue = answerCodes.get(i).getText();
+                boolean answerCorrectValue = answerCheckboxes.get(i).isSelected();
+                if (answerCorrectValue) counter++;
+                Answer answer = new Answer();
+                answer.setAnswerText(answerTextValue);
+                answer.setCorrectAnswer(answerCorrectValue);
+                answer.setAnswerCode(answerCodeValue);
+                answerList.add(answer);
+            }
+            onQuestion.getAnswers().setAnswerList(answerList);
+            onQuestion.getAnswers().setCorrectAnswers(counter);
 
+            String temporaryFilePath = PDFHandler.createQuestionPage(0, onQuestion, 0);
+            File temporaryPDFFile = new File(temporaryFilePath);
+            openTemporaryPDFFileForWindows(temporaryPDFFile);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-
 
     //Called by the Scene Manager to Pass Data to the Model
     public void setQuestionData(Question question) {
@@ -137,7 +169,6 @@ public class QuestionFormController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         answerTexts = Arrays.asList(ta_answerText_0, ta_answerText_1, ta_answerText_2, ta_answerText_3, ta_answerText_4, ta_answerText_5);
         answerCheckboxes = Arrays.asList(chb_correctAnswer_0, chb_correctAnswer_1, chb_correctAnswer_2, chb_correctAnswer_3, chb_correctAnswer_4, chb_correctAnswer_5);
         answerCodes = Arrays.asList(ta_answerCode_0, ta_answerCode_1, ta_answerCode_2, ta_answerCode_3, ta_answerCode_4, ta_answerCode_5);
@@ -183,5 +214,42 @@ public class QuestionFormController implements Initializable {
             }
         });
     }
+
+
+    private void openTemporaryPDFFileForWindows(File file) throws IOException {
+        try {
+            if ((new File("C:\\Users\\pc arbeit\\IdeaProjects\\exam_desktop\\src\\main\\Output\\temporaryPage0.pdf")).exists()) {
+                System.out.println("File ist vorhanden");
+                Process process = Runtime.getRuntime().exec("rundll32 url.dll, FileProtocolHandler C:\\Users\\pc arbeit\\IdeaProjects\\exam_desktop\\src\\main\\Output\\temporaryPage0.pdf");
+                process.waitFor();
+            } else {
+                System.out.println("File existirt nicht");
+            }
+        } catch (Exception Ex){
+            Ex.printStackTrace();
+        }
+    }
+
+    //TODO  AWT dependensy einfügen, so  das die PDF-Datei Cross Platform erzeugt werden kann
+//    private void openTemporaryPDFFile (File file) {
+//        try {
+//            File pdfFiel = new File("C:\\Users\\pc arbeit\\IdeaProjects\\exam_desktop\\src\\main\\Output\\temporaryPage0.pdf");
+//            if (pdfFiel.exists()){
+//                if (Decktop.isDesktopSupported()){
+//                    Desktop.getDesktop().open(pdfFiel);
+//                } else {
+//                    System.out.println("Awt Desktop is not supported");
+//                }
+//            } else {
+//                System.out.println("File is not exist");
+//            }
+//        } catch (Exception e){
+//            e.printStackTrace();
+//        }
+//
+//    }
+
+
+
 }
 

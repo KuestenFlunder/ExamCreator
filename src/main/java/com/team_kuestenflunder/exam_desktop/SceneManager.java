@@ -206,6 +206,8 @@ public class SceneManager {
         return fileChooser.showSaveDialog(stage);
     }
 
+
+
     public File chooseDirectory(ActionEvent event) {
         Stage stage = new Stage();
         stage.initOwner(((Node) event.getSource()).getScene().getWindow());
@@ -214,6 +216,7 @@ public class SceneManager {
 
         return directoryChooser.showDialog(stage);
     }
+
 
     public File addNewFileSaveDialog(Event event) {
         Stage stage = new Stage();
