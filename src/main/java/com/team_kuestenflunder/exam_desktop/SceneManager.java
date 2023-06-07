@@ -114,18 +114,6 @@ public class SceneManager {
         stage.show();
     }
 
-    public void switchSceneToExamValidationView(Event event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("examEvaluationView.fxml"));
-        fxmlLoader.setControllerFactory(injector::getInstance);
-        root = fxmlLoader.load();
-        stage =(Stage) ((MenuItem) event.getTarget())
-                .getParentPopup()
-                .getOwnerWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setTitle("Prüfungsauswertung");
-        stage.show();
-    }
 
     /**
      * Adds a modal popup for PDF creation.
