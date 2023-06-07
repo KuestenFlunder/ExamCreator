@@ -18,7 +18,7 @@ import java.util.ResourceBundle;
 public class StudentsViewController implements Initializable {
 
     //TODO add dependency injection
-    StudentViewService studentViewService = new StudentViewService(new StudentRepository());
+    StudentViewService studentViewService = new StudentViewService();
     SceneManager sceneManager = SceneManager.getInstance();
 
     Student actualStudent;
