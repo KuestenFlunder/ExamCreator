@@ -98,7 +98,7 @@ public class QuestionsViewController implements Initializable {
 
     public void onSaveQuestionAsJsonClick(ActionEvent event) {
         try {
-            jsonHandler.writeJsonToInnerStorage(questionsViewService.getQuestions(), sceneManager.addFileSaveDialog(event,"JSON","*.json"));
+            jsonHandler.writeQuestionJsonToInnerStorage(questionsViewService.getQuestions(), sceneManager.addFileSaveDialog(event,"JSON","*.json"));
         } catch (IOException e) {
             e.printStackTrace();
         }
