@@ -3,6 +3,7 @@ package com.team_kuestenflunder.exam_desktop;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.team_kuestenflunder.exam_desktop.controller.PdfCreationPopUpController;
+import com.team_kuestenflunder.exam_desktop.controller.PdfPreviewController;
 import com.team_kuestenflunder.exam_desktop.controller.QuestionFormController;
 import com.team_kuestenflunder.exam_desktop.entity.Question;
 import com.team_kuestenflunder.exam_desktop.moduls.DIConfigModule;
@@ -31,10 +32,11 @@ import java.util.List;
  */
 public class SceneManager {
     private static SceneManager instance;
+    private Parent root;
     Injector injector = Guice.createInjector(new DIConfigModule());
     private Scene scene;
     private Stage stage;
-    private Parent root;
+
 
     private SceneManager() {
     }
@@ -113,26 +115,18 @@ public class SceneManager {
         stage.setTitle("Fragen Liste");
         stage.show();
     }
-    public void switchSceneToPdfPreview(ActionEvent event) throws IOException {
-        // Add the ImageView to a StackPane
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("questionsView.fxml"));
+    public void switchSceneToPdfPreview(ActionEvent event, File pdfFile, Question tempraryQuestion) throws IOException {
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("pdfPreview.fxml"));
         fxmlLoader.setControllerFactory(injector::getInstance);
         root = fxmlLoader.load();
-
-        // Create a new Scene
-        Scene scene = new Scene(root, 1200, 800);
-
-        // Get the Stage from the source of the event
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-        // Set the Scene on the Stage
+        PdfPreviewController pdfPreviewController = fxmlLoader.getController();
+        pdfPreviewController.setPdfFile(pdfFile,tempraryQuestion);
+        scene = new Scene(root);
         stage.setScene(scene);
-
-        // Set the title of the Stage
-        stage.setTitle("PDF vorschau");
-
-        // Show the Stage
+        stage.setTitle("Pdf Vorschau");
         stage.show();
+
     }
 
     /**

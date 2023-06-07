@@ -4,9 +4,10 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="522.0" prefWidth="803.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team_kuestenflunder.exam_desktop.controller.QuestionFormController">
+<AnchorPane fx:id="anchorPane" prefHeight="522.0" prefWidth="803.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team_kuestenflunder.exam_desktop.controller.PdfPreviewController">
    <children>
-      <ImageView fx:id="iv_pdfPreview" fitHeight="522.0" fitWidth="803.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="bt_backToQuestionForm" layoutX="692.0" layoutY="21.0" mnemonicParsing="false" onAction="#onBackToQuestionFormClick" text="Zurück zur Bearbeitung" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="21.0" />
+      <ImageView fx:id="iv_pdfPreview" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+
+      <Button fx:id="bt_backToQuestionFrom" mnemonicParsing="false" onAction="#onBackToQuestionFormClick" prefHeight="30.0" prefWidth="100.0" text="Zurück" AnchorPane.leftAnchor="10.0"  AnchorPane.topAnchor="10.0" />
    </children>
 </AnchorPane>
