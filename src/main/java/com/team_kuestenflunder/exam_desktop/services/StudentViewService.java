@@ -1,15 +1,12 @@
 package com.team_kuestenflunder.exam_desktop.services;
 
 import com.team_kuestenflunder.exam_desktop.Constants;
-import com.team_kuestenflunder.exam_desktop.entity.Question;
 import com.team_kuestenflunder.exam_desktop.entity.Student;
 import com.team_kuestenflunder.exam_desktop.repository.StudentRepository;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-
-import java.util.List;
 
 public class StudentViewService {
     private final StudentRepository studentRepository;
@@ -25,6 +22,11 @@ public class StudentViewService {
         } else {
             studentRepository.updateStudent(index, student);
         }
+    }
+
+    public void deleteStudent(Student student) {
+        int index = getStudentIndexByID(student.getUuid());
+        studentRepository.deleteStudent(index);
     }
 
     public Student getStudent(String id) {
@@ -66,6 +68,6 @@ public class StudentViewService {
         tableView.getColumns().clear();
 
         // Add the columns
-        tableView.getColumns().addAll(idColumn,nameColumn, surnameColumn, mailAddressColumn);
+        tableView.getColumns().addAll(idColumn, nameColumn, surnameColumn, mailAddressColumn);
     }
 }

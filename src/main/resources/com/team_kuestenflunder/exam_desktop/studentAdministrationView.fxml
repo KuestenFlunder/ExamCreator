@@ -25,9 +25,8 @@
                                 <Insets right="100.0" />
                             </HBox.margin>
                         </Button>
-                        <Button fx:id="bt_addStudent" alignment="CENTER" mnemonicParsing="false" onAction="#onAddStudentClick" prefHeight="40.0" prefWidth="200.0" text="Studenten hinzufügen" />
-                        <Button fx:id="bt_editStudent" alignment="CENTER" mnemonicParsing="false" onAction="#onEditStudentClick" prefHeight="40.0" prefWidth="200.0" text="Studenten Bearbeiten" />
-                        <Button fx:id="bt_deleteStudent" alignment="CENTER" mnemonicParsing="false" onAction="#onDeleteStudentClick" prefHeight="40.0" prefWidth="200.0" text="Studenten löschen" />
+                        <Button fx:id="bt_addStudent" alignment="CENTER" mnemonicParsing="false" onAction="#onAddStudentClick" prefHeight="40.0" prefWidth="200.0" text="Speichern" />
+                        <Button fx:id="bt_deleteStudent" alignment="CENTER" mnemonicParsing="false" onAction="#onDeleteStudentClick" prefHeight="40.0" prefWidth="200.0" text="Löschen" />
                         <Button fx:id="bt_createIndividualPdfExams" alignment="CENTER" mnemonicParsing="false" onAction="#onCreateIndividualPdfExams" prefHeight="40.0" prefWidth="200.0" text="PDF Prüfungen erstellen">
                             <HBox.margin>
                                 <Insets left="100.0" />
