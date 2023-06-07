@@ -9,26 +9,11 @@ import com.team_kuestenflunder.exam_desktop.entity.Question;
 import com.team_kuestenflunder.exam_desktop.entity.Topics;
 import com.team_kuestenflunder.exam_desktop.services.QuestionFormServiceImpl;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
 import javafx.util.StringConverter;
-import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.rendering.ImageType;
-import org.apache.pdfbox.rendering.PDFRenderer;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -42,6 +27,7 @@ import java.util.ResourceBundle;
 public class QuestionFormController implements Initializable {
     private final QuestionFormServiceImpl questionFormService;
     private final SceneManager sceneManager = SceneManager.getInstance();
+
     @FXML
     Label l_uuid, l_creationDate;
     @FXML
@@ -54,19 +40,19 @@ public class QuestionFormController implements Initializable {
     Button
             bt_submit,
             bt_cancel,
-            bt_preview,
-            bt_backToQuestionForm;
+            bt_preview;
+
     @FXML
     ChoiceBox<Topics> cb_topic;
     @FXML
     CheckBox chb_correctAnswer_0, chb_correctAnswer_1, chb_correctAnswer_2, chb_correctAnswer_3, chb_correctAnswer_4, chb_correctAnswer_5;
 
-    @FXML
-    ImageView iv_pdfPreview;
+
     private List<TextArea> answerTexts;
     private List<TextArea> answerCodes;
     private List<CheckBox> answerCheckboxes;
     private Question question;
+    private Question temporaryQuestion;
 
 
     @Inject
@@ -132,41 +118,47 @@ public class QuestionFormController implements Initializable {
 
     public void onPreviewClick(ActionEvent event) {
         try {
-            Question onQuestion = new Question();
-            onQuestion.setId(l_uuid.getText());
-            onQuestion.setQuestionTitle(tf_questionTitle.getText());
-            onQuestion.setQuestionText(ta_questionText.getText());
-            onQuestion.setTopic(cb_topic.getValue());
-            onQuestion.setQuestionText(ta_questionText.getText());
-            onQuestion.setQuestionCode(ta_questionCode.getText());
-            int counter = 0;
-            List<Answer> answerList = new ArrayList<>();
-            for (int i = 0; i < 6; i++) {
-                String answerTextValue = answerTexts.get(i).getText();
-                String answerCodeValue = answerCodes.get(i).getText();
-                boolean answerCorrectValue = answerCheckboxes.get(i).isSelected();
-                if (answerCorrectValue) counter++;
-                Answer answer = new Answer();
-                answer.setAnswerText(answerTextValue);
-                answer.setCorrectAnswer(answerCorrectValue);
-                answer.setAnswerCode(answerCodeValue);
-                answerList.add(answer);
-            }
-            onQuestion.getAnswers().setAnswerList(answerList);
-            onQuestion.getAnswers().setCorrectAnswers(counter);
+            temporaryQuestion = createTemporaryQuestion();
 
-            String temporaryFilePath = PDFHandler.createQuestionPage(0, onQuestion, 0);
-            File temporaryPDFFile = new File(temporaryFilePath);
-            openTemporaryPDFFile(temporaryPDFFile, event);
+            File temporaryPDFFile = new File(PDFHandler.createQuestionPage(0, temporaryQuestion, 0));
+            sceneManager.switchSceneToPdfPreview(event, temporaryPDFFile, temporaryQuestion);
 
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    private Question createTemporaryQuestion() {
+        Question temporaryQuestion = new Question();
+        temporaryQuestion.setId(l_uuid.getText());
+        temporaryQuestion.setQuestionTitle(tf_questionTitle.getText());
+        temporaryQuestion.setQuestionText(ta_questionText.getText());
+        temporaryQuestion.setTopic(cb_topic.getValue());
+        temporaryQuestion.setQuestionText(ta_questionText.getText());
+        temporaryQuestion.setQuestionCode(ta_questionCode.getText());
+        int counter = 0;
+        List<Answer> answerList = new ArrayList<>();
+        for (int i = 0; i < 6; i++) {
+            String answerTextValue = answerTexts.get(i).getText();
+            String answerCodeValue = answerCodes.get(i).getText();
+            boolean answerCorrectValue = answerCheckboxes.get(i).isSelected();
+            if (answerCorrectValue) counter++;
+            Answer answer = new Answer();
+            answer.setAnswerText(answerTextValue);
+            answer.setCorrectAnswer(answerCorrectValue);
+            answer.setAnswerCode(answerCodeValue);
+            answerList.add(answer);
+        }
+        temporaryQuestion.getAnswers().setAnswerList(answerList);
+        temporaryQuestion.getAnswers().setCorrectAnswers(counter);
+        return temporaryQuestion;
+    }
+
     //Called by the Scene Manager to Pass Data to the Model
     public void setQuestionData(Question question) {
         this.question = question;
+        System.out.println("question form pdfCont = " + question);
+        System.out.println("questionFormService.getQuestions().contains(question) = " + questionFormService.getQuestions().contains(question));
         if (questionFormService.getQuestions().contains(question)) {
             l_uuid.setText(question.getId());
             l_creationDate.setText(question.getCreationDate().toString());
@@ -237,77 +229,5 @@ public class QuestionFormController implements Initializable {
     }
 
 
-    private void openTemporaryPDFFileForWindows(File file) throws IOException {
-        try {
-            if ((new File("C:\\Users\\pc arbeit\\IdeaProjects\\exam_desktop\\src\\main\\Output\\temporaryPage0.pdf")).exists()) {
-                System.out.println("File ist vorhanden");
-                Process process = Runtime.getRuntime().exec("rundll32 url.dll, FileProtocolHandler C:\\Users\\pc arbeit\\IdeaProjects\\exam_desktop\\src\\main\\Output\\temporaryPage0.pdf");
-                process.waitFor();
-            } else {
-                System.out.println("File existirt nicht");
-            }
-        } catch (Exception Ex) {
-            Ex.printStackTrace();
-        }
-    }
-
-    //TODO  AWT dependensy einfügen, so  das die PDF-Datei Cross Platform erzeugt werden kann
-//    private void openTemporaryPDFFile (File file) {
-//        try {
-//            File pdfFiel = new File("C:\\Users\\pc arbeit\\IdeaProjects\\exam_desktop\\src\\main\\Output\\temporaryPage0.pdf");
-//            if (pdfFiel.exists()){
-//                if (Decktop.isDesktopSupported()){
-//                    Desktop.getDesktop().open(pdfFiel);
-//                } else {
-//                    System.out.println("Awt Desktop is not supported");
-//                }
-//            } else {
-//                System.out.println("File is not exist");
-//            }
-//        } catch (Exception e){
-//            e.printStackTrace();
-//        }
-//
-//    }
-public void onBackToQuestionFormClick(ActionEvent event){
-    try {
-        sceneManager.switchSceneToQuestionForm(event,question);
-    } catch (IOException e) {
-        throw new RuntimeException(e);
-    }
-}
-    private void openTemporaryPDFFile(File file, ActionEvent event) throws IOException {
-        try {
-            PDDocument document = PDDocument.load(file);
-            PDFRenderer pdfRenderer = new PDFRenderer(document);
-
-            // Render the first page to an image
-            BufferedImage bim = pdfRenderer.renderImageWithDPI(0, 300, ImageType.RGB);
-
-
-            // Convert the BufferedImage to a byte array
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            ImageIO.write(bim, "png", baos);
-
-            // Create a JavaFX Image from the byte array
-            Image fxImage = new Image(new ByteArrayInputStream(baos.toByteArray()));
-
-            // Create an ImageView to display the JavaFX Image
-            iv_pdfPreview = new ImageView(fxImage);
-            iv_pdfPreview.setFitWidth(1200);
-            iv_pdfPreview.setFitHeight(800);
-
-            // Enable preserving image ratio (optional)
-            iv_pdfPreview.setPreserveRatio(true);
-
-            // Add the ImageView to a StackPane
-          sceneManager.switchSceneToPdfPreview(event);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
-    }
 }
 

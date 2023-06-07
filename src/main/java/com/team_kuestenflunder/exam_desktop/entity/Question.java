@@ -97,12 +97,12 @@ public class Question {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Question question = (Question) o;
-        return Objects.equals(id, question.id) && Objects.equals(creationDate, question.creationDate);
+        return Objects.equals(id, question.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, creationDate);
+        return Objects.hash(id);
     }
 
     @Override
