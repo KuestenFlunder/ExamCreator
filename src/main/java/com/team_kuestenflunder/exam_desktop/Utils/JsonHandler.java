@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.team_kuestenflunder.exam_desktop.entity.Question;
+import com.team_kuestenflunder.exam_desktop.entity.Student;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -20,12 +21,22 @@ import java.util.Set;
 
 public class JsonHandler {
 
-    public void writeJsonToInnerStorage(List<Question> questionList, File file) throws IOException {
+    public void writeQuestionJsonToInnerStorage(List<Question> questionList, File file) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
         objectMapper.registerModule(new JavaTimeModule());
 
         if (file == null) {
             file = new File("src/main/Data/innerJsonDatastore.json");
+        }
+        objectMapper.writeValue(new File(file.toURI()), questionList);
+        System.out.println("inner Json written successfully");
+    }
+    public void writeStudentsJsonToInnerStorage(List<Student> questionList, File file) throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
+        objectMapper.registerModule(new JavaTimeModule());
+
+        if (file == null) {
+            file = new File("src/main/Data/studentInnerJsonDatastore.json");
         }
         objectMapper.writeValue(new File(file.toURI()), questionList);
         System.out.println("inner Json written successfully");
@@ -45,7 +56,20 @@ public class JsonHandler {
             return FXCollections.observableArrayList();
         }
     }
-
+    public static ObservableList<Student> readStudentJsonFromInnerStorage() throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.registerModule(new JavaTimeModule());
+        try {
+            File jsonFile = new File("src/main/Data/studentInnerJsonDatastore.json");
+            List<Student> studentList = objectMapper.readValue(jsonFile, new TypeReference<>() {
+            });
+            System.out.println("innerJson created successfully");
+            return FXCollections.observableArrayList(studentList);
+        } catch (FileNotFoundException e) {
+            System.out.println("Json nicht gefunden. Es wird ein entsprechender Pfad beim Beenden der Applikation erstellt");
+            return FXCollections.observableArrayList();
+        }
+    }
     public ObservableList<Question> readJsonFromFile(File file) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.registerModule(new JavaTimeModule());

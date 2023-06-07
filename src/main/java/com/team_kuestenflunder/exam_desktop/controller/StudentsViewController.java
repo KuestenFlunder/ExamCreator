@@ -28,7 +28,7 @@ public class StudentsViewController implements Initializable {
     Button
             bt_backToQuestionView,
             bt_addStudent,
-            bt_editStudent,
+
             bt_deleteStudent,
             bt_createIndividualPdfExams;
 
@@ -45,7 +45,7 @@ public class StudentsViewController implements Initializable {
         try {
             sceneManager.switchSceneToQuestionView(event);
         } catch (IOException e) {
-            System.out.println(e.getCause());
+
             throw new RuntimeException(e);
         }
     }
@@ -57,7 +57,7 @@ public class StudentsViewController implements Initializable {
             updateExistingQuestion();
         }
         studentViewService.addStudent(actualStudent);
-        studentViewService.createViewTable(tv_students, studentViewService.getStudents());
+        studentViewService.createViewTable(tv_students);
         clearAll();
     }
 
@@ -86,9 +86,11 @@ public class StudentsViewController implements Initializable {
         if(actualStudent != null){
             studentViewService.deleteStudent(actualStudent);
         }
+        clearAll();
     }
 
     public void onCreateIndividualPdfExams() {
+
     }
 
     @Override
@@ -101,5 +103,7 @@ public class StudentsViewController implements Initializable {
                 tf_studentMailAddress.setText(newSelection.getMailingAddress());
             }
         });
+
+        studentViewService.createViewTable(tv_students);
     }
 }
