@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane minHeight="250.0" minWidth="940.0" prefHeight="609.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.team_kuestenflunder.exam_desktop.controller.StudentsViewController">
+
+<children>
+        <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <TableView fx:id="tv_students" prefHeight="536.0" prefWidth="940.0" />
+                <HBox alignment="CENTER" prefHeight="60.0" prefWidth="1254.0">
+                    <children>
+                        <Button fx:id="bt_backToQuestionView" alignment="CENTER" mnemonicParsing="false" onAction="#onBackToQuestionViewClick" prefHeight="40.0" prefWidth="200.0" text="Zurück zur Fragenübersicht">
+                            <HBox.margin>
+                                <Insets right="100.0" />
+                            </HBox.margin>
+                        </Button>
+                        <Button fx:id="bt_addStudent" alignment="CENTER" mnemonicParsing="false" onAction="#onAddStudentClick" prefHeight="40.0" prefWidth="200.0" text="Speichern" />
+                        <Button fx:id="bt_deleteStudent" alignment="CENTER" mnemonicParsing="false" onAction="#onDeleteStudentClick" prefHeight="40.0" prefWidth="200.0" text="Löschen" />
+                        <Button fx:id="bt_createIndividualPdfExams" alignment="CENTER" mnemonicParsing="false" onAction="#onCreateIndividualPdfExams" prefHeight="40.0" prefWidth="200.0" text="PDF Prüfungen erstellen">
+                            <HBox.margin>
+                                <Insets left="100.0" />
+                            </HBox.margin>
+                        </Button>
+                    </children>
+                </HBox>
+            </children>
+            <padding>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </padding>
+        </VBox>
+      <GridPane prefHeight="127.0" prefWidth="379.0" style="-fx-background-color: white; -fx-border-color: grey; -fx-border-width: 3px; -fx-background-radius: 30; -fx-border-radius: 30;" AnchorPane.bottomAnchor="80.0" AnchorPane.rightAnchor="30.0">
+        <columnConstraints>
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="183.0" minWidth="10.0" prefWidth="107.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="266.0" minWidth="10.0" prefWidth="266.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Vorname" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nachname" wrappingWidth="64.61083984375" GridPane.rowIndex="1" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="E-Mail" GridPane.rowIndex="2" />
+            <TextField fx:id="tf_studentName" GridPane.columnIndex="1">
+               <GridPane.margin>
+                  <Insets left="10.0" right="20.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="tf_studentSurname" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="10.0" right="20.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="tf_studentMailAddress" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="10.0" right="20.0" />
+               </GridPane.margin>
+            </TextField>
+         </children>
+      </GridPane>
+    </children>
+</AnchorPane>

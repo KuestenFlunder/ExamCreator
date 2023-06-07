@@ -82,6 +82,14 @@ public class QuestionsViewController implements Initializable {
         }
     }
 
+    public void onCreateIndividualExamClick(ActionEvent event){
+        try {
+            sceneManager.switchSceneToStudentsView(event);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public void onMergeJsonClick(ActionEvent event) {
         jsonHandler.mergeJsonFiles(
                 sceneManager.addFileChooserDialogMultiple(event, "JSON", "*.json"),
@@ -90,7 +98,7 @@ public class QuestionsViewController implements Initializable {
 
     public void onSaveQuestionAsJsonClick(ActionEvent event) {
         try {
-            jsonHandler.writeJsonToInnerStorage(questionsViewService.getQuestions(), sceneManager.addFileSaveDialog(event,"JSON","*.json"));
+            jsonHandler.writeQuestionJsonToInnerStorage(questionsViewService.getQuestions(), sceneManager.addFileSaveDialog(event,"JSON","*.json"));
         } catch (IOException e) {
             e.printStackTrace();
         }

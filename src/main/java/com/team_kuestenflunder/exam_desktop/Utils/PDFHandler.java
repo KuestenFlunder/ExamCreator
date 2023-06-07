@@ -27,7 +27,7 @@ public class PDFHandler {
     }
 
     // ---- METHODS FOR CREATING A SINGLE PDF-FILE ----
-    public static void createPersonalExamTest(String titleText, Set<Question> examQuestions, int testDuration, String name, String surname) throws IOException {
+    public static void createPersonalExamTest(String titleText, Set<Question> examQuestions, int testDuration, String name, String surname, File directory) throws IOException {
         PDFMergerUtility pdfTest = new PDFMergerUtility();
         // TitelPage
         String path_ToTitelPage = createTitelPage(titleText, examQuestions, testDuration, name, surname);
@@ -40,7 +40,7 @@ public class PDFHandler {
             pdfTest.addSource(path_ToQuestionPage);
         }
         // PDF zusammengefügt
-        String path_toTestFile = "src/main/Output/TestFor_" + name + "_" + surname + ".pdf";
+        String path_toTestFile = directory.toString()+ "/" + name + "_" + surname + ".pdf";
         pdfTest.setDestinationFileName(path_toTestFile);
         pdfTest.mergeDocuments(null);
         // Output-Ordner bereinigen
