@@ -5,6 +5,7 @@ import com.team_kuestenflunder.exam_desktop.SceneManager;
 import com.team_kuestenflunder.exam_desktop.Utils.AlertMessage;
 import com.team_kuestenflunder.exam_desktop.Utils.PDFHandler;
 import com.team_kuestenflunder.exam_desktop.entity.Question;
+import com.team_kuestenflunder.exam_desktop.entity.Student;
 import com.team_kuestenflunder.exam_desktop.repository.QuestionRepositoryImpl;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
@@ -18,6 +19,7 @@ import java.util.Set;
 public class PdfCreationPopUpService {
     private final SceneManager sceneManager = SceneManager.getInstance();
     QuestionRepositoryImpl questionRepository;
+
 
     @Inject
     public PdfCreationPopUpService(QuestionRepositoryImpl questionRepository) {
@@ -44,20 +46,33 @@ public class PdfCreationPopUpService {
         }
     }
 
-    public void createExamPDF(TextField tf_testTitle, TextField tf_numberOfQuestions, TextField tf_testDuration, File outputFile) {
+    public void createExamPDF(TextField tf_testTitle, TextField tf_numberOfQuestions, TextField tf_testDuration, File outputFile) throws IOException {
         Set<Question> examQuestions = getRandomExamQuestions(Integer.parseInt(tf_numberOfQuestions.getText()));
         int testDuration = Integer.parseInt(tf_testDuration.getText());
         String testTitel = tf_testTitle.getText();
+        PDFHandler.createExamPDF(testTitel, examQuestions, testDuration, outputFile);
 
-        try {
 
-                PDFHandler.createExamPDF(testTitel, examQuestions, testDuration, outputFile);
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
     }
 
 
+    public void createIndividualPdfExams(TextField tf_testTitle, TextField tf_numberOfQuestions, TextField tf_testDuration, File directory) throws IOException {
+        System.out.println(directory);
+        int testDuration = Integer.parseInt(tf_testDuration.getText());
+        String testTitel = tf_testTitle.getText();
+        StudentViewService studentViewService = new StudentViewService();
+        for (Student student : studentViewService.getStudents()) {
+            Set<Question> examQuestions = getRandomExamQuestions(Integer.parseInt(tf_numberOfQuestions.getText()));
 
+            PDFHandler.createPersonalExamTest(
+                    testTitel,
+                    examQuestions,
+                    testDuration,
+                    student.getName(),
+                    student.getSurname(),
+                    directory);
+        }
+
+
+    }
 }

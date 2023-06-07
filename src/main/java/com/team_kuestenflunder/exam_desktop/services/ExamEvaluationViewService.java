@@ -123,4 +123,6 @@ public class ExamEvaluationViewService {
         tableView.getColumns().addAll(nameColumn, surnameColumn, dateColumn, numberOfQuestionsColumn, percentColumn, examResultColumn);
     }
 
+
+
 }
