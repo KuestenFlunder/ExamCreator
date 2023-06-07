@@ -2,6 +2,7 @@ package com.team_kuestenflunder.exam_desktop;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import com.team_kuestenflunder.exam_desktop.controller.PdfCreationPopUpController;
 import com.team_kuestenflunder.exam_desktop.controller.QuestionFormController;
 import com.team_kuestenflunder.exam_desktop.entity.Question;
 import com.team_kuestenflunder.exam_desktop.moduls.DIConfigModule;
@@ -11,7 +12,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -66,6 +69,34 @@ public class SceneManager {
         stage.show();
     }
 
+
+    public void switchSceneToExamValidationView(Event event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("examEvaluationView.fxml"));
+        fxmlLoader.setControllerFactory(injector::getInstance);
+        root = fxmlLoader.load();
+        stage = (Stage) ((MenuItem) event.getTarget())
+                .getParentPopup()
+                .getOwnerWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setTitle("Prüfungsauswertung");
+        stage.show();
+    }
+
+    public void switchSceneToStudentsView(Event event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("studentAdministrationView.fxml"));
+        fxmlLoader.setControllerFactory(injector::getInstance);
+        root = fxmlLoader.load();
+        stage = (Stage) ((MenuItem) event.getTarget())
+                .getParentPopup()
+                .getOwnerWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setTitle("Studenten Verwaltung");
+        stage.show();
+    }
+
+
     /**
      * Switches the current scene to the question view scene.
      *
@@ -83,18 +114,6 @@ public class SceneManager {
         stage.show();
     }
 
-    public void switchSceneToExamValidationView(Event event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("examEvaluationView.fxml"));
-        fxmlLoader.setControllerFactory(injector::getInstance);
-        root = fxmlLoader.load();
-        stage =(Stage) ((MenuItem) event.getTarget())
-                .getParentPopup()
-                .getOwnerWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setTitle("Prüfungsauswertung");
-        stage.show();
-    }
 
     /**
      * Adds a modal popup for PDF creation.
@@ -103,12 +122,28 @@ public class SceneManager {
      * @throws IOException if there's an error loading the FXML file.
      */
     public void addPdfCreationPopUp(Event event) throws IOException {
+        System.out.println((event.getSource() instanceof Button));
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("pdfCreationPopUp.fxml"));
         fxmlLoader.setControllerFactory(injector::getInstance);
         root = fxmlLoader.load();
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
-        stage.initOwner(((MenuItem) event.getTarget()).getParentPopup().getOwnerWindow());
+
+        PdfCreationPopUpController pdfCreationPopUpController = fxmlLoader.getController();
+        if (event.getSource() instanceof Button) {
+            pdfCreationPopUpController.setCallerID(((Button) (event.getSource())).getId());
+        }
+        if (event.getSource() instanceof MenuItem) {
+            pdfCreationPopUpController.setCallerID(((MenuItem) (event.getSource())).getId());
+        }
+
+        if (event.getSource().getClass().toString().equals("class javafx.scene.control.MenuItem")) {
+            stage.initOwner(((MenuItem) event.getTarget()).getParentPopup().getOwnerWindow());
+        }
+
+        if (event.getSource().getClass().toString().equals("class javafx.scene.control.Button")) {
+            stage.initOwner(((Node) event.getSource()).getScene().getWindow());
+        }
         scene = new Scene(root);
         stage.setScene(scene);
         stage.showAndWait();
@@ -157,17 +192,31 @@ public class SceneManager {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Datei speichern");
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter(filterDescription, filterExtension));
+
         return fileChooser.showSaveDialog(stage);
     }
 
-    public File addFileSaveDialogFromButton (ActionEvent event, String filterDescription, String filterExtension) {
+    public File addFileSaveDialogFromButton(ActionEvent event, String filterDescription, String filterExtension) {
         Stage stage = new Stage();
         stage.initOwner(((Node) event.getSource()).getScene().getWindow());
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Datei speichern");
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter(filterDescription, filterExtension));
+
         return fileChooser.showSaveDialog(stage);
     }
+
+
+
+    public File chooseDirectory(ActionEvent event) {
+        Stage stage = new Stage();
+        stage.initOwner(((Node) event.getSource()).getScene().getWindow());
+        DirectoryChooser directoryChooser = new DirectoryChooser();
+        directoryChooser.setTitle("Verzeichnis auswählen");
+
+        return directoryChooser.showDialog(stage);
+    }
+
 
     public File addNewFileSaveDialog(Event event) {
         Stage stage = new Stage();
