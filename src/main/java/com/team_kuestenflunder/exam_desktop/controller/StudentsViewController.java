@@ -1,6 +1,7 @@
 package com.team_kuestenflunder.exam_desktop.controller;
 
 import com.team_kuestenflunder.exam_desktop.SceneManager;
+import com.team_kuestenflunder.exam_desktop.Utils.PDFHandler;
 import com.team_kuestenflunder.exam_desktop.entity.Student;
 import com.team_kuestenflunder.exam_desktop.repository.StudentRepository;
 import com.team_kuestenflunder.exam_desktop.services.StudentViewService;
@@ -18,10 +19,10 @@ import java.util.ResourceBundle;
 public class StudentsViewController implements Initializable {
 
     //TODO add dependency injection
-    StudentViewService studentViewService = new StudentViewService();
-    SceneManager sceneManager = SceneManager.getInstance();
+    private final StudentViewService studentViewService = new StudentViewService();
+    private final SceneManager sceneManager = SceneManager.getInstance();
 
-    Student actualStudent;
+    private Student actualStudent;
 
 
     @FXML
@@ -89,8 +90,12 @@ public class StudentsViewController implements Initializable {
         clearAll();
     }
 
-    public void onCreateIndividualPdfExams() {
-
+    public void onCreateIndividualPdfExams(ActionEvent event) {
+        try {
+            studentViewService.createIndividualExams(event);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
@@ -103,7 +108,6 @@ public class StudentsViewController implements Initializable {
                 tf_studentMailAddress.setText(newSelection.getMailingAddress());
             }
         });
-
         studentViewService.createViewTable(tv_students);
     }
 }
