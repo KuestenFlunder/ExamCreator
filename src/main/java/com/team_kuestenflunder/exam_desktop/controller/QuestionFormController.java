@@ -9,11 +9,26 @@ import com.team_kuestenflunder.exam_desktop.entity.Question;
 import com.team_kuestenflunder.exam_desktop.entity.Topics;
 import com.team_kuestenflunder.exam_desktop.services.QuestionFormServiceImpl;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 import javafx.util.StringConverter;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.rendering.ImageType;
+import org.apache.pdfbox.rendering.PDFRenderer;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -33,15 +48,21 @@ public class QuestionFormController implements Initializable {
     TextField tf_questionTitle;
     @FXML
     TextArea ta_questionText, ta_questionCode,
-             ta_answerText_0, ta_answerText_1, ta_answerText_2, ta_answerText_3, ta_answerText_4, ta_answerText_5,
-             ta_answerCode_0, ta_answerCode_1, ta_answerCode_2, ta_answerCode_3, ta_answerCode_4, ta_answerCode_5;
+            ta_answerText_0, ta_answerText_1, ta_answerText_2, ta_answerText_3, ta_answerText_4, ta_answerText_5,
+            ta_answerCode_0, ta_answerCode_1, ta_answerCode_2, ta_answerCode_3, ta_answerCode_4, ta_answerCode_5;
     @FXML
-    Button bt_submit, bt_cancel, bt_preview;
+    Button
+            bt_submit,
+            bt_cancel,
+            bt_preview,
+            bt_backToQuestionForm;
     @FXML
     ChoiceBox<Topics> cb_topic;
     @FXML
     CheckBox chb_correctAnswer_0, chb_correctAnswer_1, chb_correctAnswer_2, chb_correctAnswer_3, chb_correctAnswer_4, chb_correctAnswer_5;
 
+    @FXML
+    ImageView iv_pdfPreview;
     private List<TextArea> answerTexts;
     private List<TextArea> answerCodes;
     private List<CheckBox> answerCheckboxes;
@@ -101,7 +122,7 @@ public class QuestionFormController implements Initializable {
         }
     }
 
-    public void onCancelClick(ActionEvent event){
+    public void onCancelClick(ActionEvent event) {
         try {
             sceneManager.switchSceneToQuestionView(event);
         } catch (IOException e) {
@@ -109,7 +130,7 @@ public class QuestionFormController implements Initializable {
         }
     }
 
-    public void onPreviewClick(ActionEvent event){
+    public void onPreviewClick(ActionEvent event) {
         try {
             Question onQuestion = new Question();
             onQuestion.setId(l_uuid.getText());
@@ -136,7 +157,7 @@ public class QuestionFormController implements Initializable {
 
             String temporaryFilePath = PDFHandler.createQuestionPage(0, onQuestion, 0);
             File temporaryPDFFile = new File(temporaryFilePath);
-            openTemporaryPDFFileForWindows(temporaryPDFFile);
+            openTemporaryPDFFile(temporaryPDFFile, event);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -225,7 +246,7 @@ public class QuestionFormController implements Initializable {
             } else {
                 System.out.println("File existirt nicht");
             }
-        } catch (Exception Ex){
+        } catch (Exception Ex) {
             Ex.printStackTrace();
         }
     }
@@ -248,8 +269,45 @@ public class QuestionFormController implements Initializable {
 //        }
 //
 //    }
+public void onBackToQuestionFormClick(ActionEvent event){
+    try {
+        sceneManager.switchSceneToQuestionForm(event,question);
+    } catch (IOException e) {
+        throw new RuntimeException(e);
+    }
+}
+    private void openTemporaryPDFFile(File file, ActionEvent event) throws IOException {
+        try {
+            PDDocument document = PDDocument.load(file);
+            PDFRenderer pdfRenderer = new PDFRenderer(document);
+
+            // Render the first page to an image
+            BufferedImage bim = pdfRenderer.renderImageWithDPI(0, 300, ImageType.RGB);
 
 
+            // Convert the BufferedImage to a byte array
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            ImageIO.write(bim, "png", baos);
 
+            // Create a JavaFX Image from the byte array
+            Image fxImage = new Image(new ByteArrayInputStream(baos.toByteArray()));
+
+            // Create an ImageView to display the JavaFX Image
+            iv_pdfPreview = new ImageView(fxImage);
+            iv_pdfPreview.setFitWidth(1200);
+            iv_pdfPreview.setFitHeight(800);
+
+            // Enable preserving image ratio (optional)
+            iv_pdfPreview.setPreserveRatio(true);
+
+            // Add the ImageView to a StackPane
+          sceneManager.switchSceneToPdfPreview(event);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+    }
 }
 

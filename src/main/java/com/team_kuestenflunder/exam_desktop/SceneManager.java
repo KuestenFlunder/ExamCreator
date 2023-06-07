@@ -113,7 +113,27 @@ public class SceneManager {
         stage.setTitle("Fragen Liste");
         stage.show();
     }
+    public void switchSceneToPdfPreview(ActionEvent event) throws IOException {
+        // Add the ImageView to a StackPane
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("questionsView.fxml"));
+        fxmlLoader.setControllerFactory(injector::getInstance);
+        root = fxmlLoader.load();
 
+        // Create a new Scene
+        Scene scene = new Scene(root, 1200, 800);
+
+        // Get the Stage from the source of the event
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        // Set the Scene on the Stage
+        stage.setScene(scene);
+
+        // Set the title of the Stage
+        stage.setTitle("PDF vorschau");
+
+        // Show the Stage
+        stage.show();
+    }
 
     /**
      * Adds a modal popup for PDF creation.
@@ -205,7 +225,6 @@ public class SceneManager {
 
         return fileChooser.showSaveDialog(stage);
     }
-
 
 
     public File chooseDirectory(ActionEvent event) {

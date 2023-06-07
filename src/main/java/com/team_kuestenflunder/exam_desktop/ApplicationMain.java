@@ -13,6 +13,7 @@ import com.team_kuestenflunder.exam_desktop.services.QuestionsViewServiceImpl;
 import com.team_kuestenflunder.exam_desktop.services.StudentViewService;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class ApplicationMain extends Application {
