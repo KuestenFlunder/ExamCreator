@@ -21,6 +21,8 @@ public class StudentsViewController implements Initializable {
     StudentViewService studentViewService = new StudentViewService(new StudentRepository());
     SceneManager sceneManager = SceneManager.getInstance();
 
+    Student actualStudent;
+
 
     @FXML
     Button
@@ -49,22 +51,41 @@ public class StudentsViewController implements Initializable {
     }
 
     public void onAddStudentClick() {
-        studentViewService.addStudent(
-                new Student(
-                        tf_studentName.getText(),
-                        tf_studentSurname.getText(),
-                        tf_studentMailAddress.getText()
-                ));
-        studentViewService.createViewTable(tv_students,studentViewService.getStudents());
+        if (actualStudent == null) {
+            createNewStudent();
+        } else {
+            updateExistingQuestion();
+        }
+        studentViewService.addStudent(actualStudent);
+        studentViewService.createViewTable(tv_students, studentViewService.getStudents());
+        clearAll();
+    }
+
+    private void createNewStudent() {
+        actualStudent = new Student(
+                tf_studentName.getText(),
+                tf_studentSurname.getText(),
+                tf_studentMailAddress.getText());
+    }
+
+    private void updateExistingQuestion() {
+        actualStudent.setName(tf_studentName.getText());
+        actualStudent.setSurname(tf_studentSurname.getText());
+        actualStudent.setMailingAddress(tf_studentMailAddress.getText());
+    }
+
+    private void clearAll() {
         tf_studentName.clear();
         tf_studentSurname.clear();
         tf_studentMailAddress.clear();
-    }
-
-    public void onEditStudentClick() {
+        actualStudent = null;
+        tv_students.getSelectionModel().clearSelection();
     }
 
     public void onDeleteStudentClick() {
+        if(actualStudent != null){
+            studentViewService.deleteStudent(actualStudent);
+        }
     }
 
     public void onCreateIndividualPdfExams() {
@@ -74,6 +95,7 @@ public class StudentsViewController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         tv_students.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
+                actualStudent = newSelection;
                 tf_studentName.setText(newSelection.getName());
                 tf_studentSurname.setText(newSelection.getSurname());
                 tf_studentMailAddress.setText(newSelection.getMailingAddress());
