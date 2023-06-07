@@ -41,7 +41,7 @@ public class PDFHandler {
             pdfTest.addSource(path_ToQuestionPage);
         }
         // PDF zusammengefügt
-        String path_toTestFile = directory.toString() + name + "_" + surname + ".pdf";
+        String path_toTestFile = directory.toString()+ "/" + name + "_" + surname + ".pdf";
         pdfTest.setDestinationFileName(path_toTestFile);
         pdfTest.mergeDocuments(null);
         // Output-Ordner bereinigen

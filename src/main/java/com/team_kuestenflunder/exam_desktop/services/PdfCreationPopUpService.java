@@ -57,6 +57,7 @@ public class PdfCreationPopUpService {
 
 
     public void createIndividualPdfExams(TextField tf_testTitle, TextField tf_numberOfQuestions, TextField tf_testDuration, File directory) throws IOException {
+        System.out.println(directory);
         int testDuration = Integer.parseInt(tf_testDuration.getText());
         String testTitel = tf_testTitle.getText();
         StudentViewService studentViewService = new StudentViewService();
