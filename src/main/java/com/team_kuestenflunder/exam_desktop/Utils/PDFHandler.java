@@ -6,7 +6,6 @@ import com.team_kuestenflunder.exam_desktop.entity.Question;
 import com.team_kuestenflunder.exam_desktop.services.PdfCreationPopUpService;
 import org.apache.pdfbox.multipdf.PDFMergerUtility;
 import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.pdmodel.interactive.action.PDActionJavaScript;
 import org.apache.pdfbox.pdmodel.interactive.annotation.PDAnnotationWidget;
 import org.apache.pdfbox.pdmodel.interactive.form.*;
 
@@ -111,11 +110,11 @@ public class PDFHandler {
         // set AnswerFields
         for (int i = 0; i < question.getAnswers().getAnswerList().size(); i++) {
             setValueToField(acroQuestionPage, ("AnswerTextField_" + i), String.valueOf(question.getAnswers().getAnswerList().get(i).getAnswerText()));
-            setValueToField(acroQuestionPage, ("AnswerCodeField_" + i), String.valueOf(question.getAnswers().getAnswerList().get(i).getAnswerDescription())); //TODO 'Description' durch 'AnswerCode' ersetzen
+            setValueToField(acroQuestionPage, ("AnswerCodeField_" + i), String.valueOf(question.getAnswers().getAnswerList().get(i).getAnswerCode()));
             //hidden correctAnswerBox to keep the correct answers
             PDCheckBox correctAnswerBox = (PDCheckBox) acroQuestionPage.getField("CorrectAnswerBox_" + i);
             PDAnnotationWidget widget = correctAnswerBox.getWidgets().get(0);
-//            widget.setHidden(true);    //hide correctAnswers
+            widget.setHidden(true);    //hide correctAnswers
             if (question.getAnswers().getAnswerList().get(i).isCorrectAnswer()) {
                 correctAnswerBox.setValue(correctAnswerBox.getOnValue());
             }

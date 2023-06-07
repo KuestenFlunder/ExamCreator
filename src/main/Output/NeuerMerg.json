@@ -9,27 +9,27 @@
     "answerList" : [ {
       "answerText" : "The code will fail to compile.\n",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "Runtime error.\n",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "The code will compile without errors and will print 80 when run",
       "correctAnswer" : true,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "The code will compile without errors and will print 40 when run.",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "The code will compile without errors and will print 20 when run.\n",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     } ],
     "correctAnswers" : 1
   }
@@ -44,27 +44,27 @@
     "answerList" : [ {
       "answerText" : "In float 3",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "In float 3.0\n",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "In double 3.0\n",
       "correctAnswer" : true,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "In double 3\n",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "It will not compile.\n",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     } ],
     "correctAnswers" : 1
   }
@@ -79,27 +79,27 @@
     "answerList" : [ {
       "answerText" : "A\n",
       "correctAnswer" : true,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "A and B",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "B",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "C",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "B and C",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     } ],
     "correctAnswers" : 1
   }
@@ -114,27 +114,27 @@
     "answerList" : [ {
       "answerText" : "If input is \"0.1\" then it will return 0.1 and print finally.\n",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "If input is \"0x.1\" then it will return Float.NaN and print Invalid input 0x.1 and finally.",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "If input is \"1\" then it will return 1.0 and print finally.\n",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "If input is \"0x1\" then it will return 0.0 and print Invalid input 0x1 and finally.\n",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "The code will not compile.\n",
       "correctAnswer" : true,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     } ],
     "correctAnswers" : 1
   }
@@ -149,27 +149,27 @@
     "answerList" : [ {
       "answerText" : "In int 3\n",
       "correctAnswer" : true,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "In Integer 3\n",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "In double 3.0\n",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "In double 3\n",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "It will not compile.\n",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     } ],
     "correctAnswers" : 1
   }
@@ -184,27 +184,27 @@
     "answerList" : [ {
       "answerText" : "5th Feb, 2015\n",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "2015-02-05T00:00:00\n",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "02/05/2015\n",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "05/02/2015\n",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "java.time.format.DateTimeParseException",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "None of the above.",
       "correctAnswer" : true,
-      "answerDescription" : ""
+      "answerCode": ""
     } ],
     "correctAnswers" : 1
   }
@@ -219,27 +219,27 @@
     "answerList" : [ {
       "answerText" : "It will not compile.",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "3, 4, 3",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "3, 3, 3",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "4, 3, 4\n",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "4, 3, 3",
       "correctAnswer" : true,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     } ],
     "correctAnswers" : 1
   }
@@ -254,27 +254,27 @@
     "answerList" : [ {
       "answerText" : "It will not compile.\n",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "It will print a RuntimeException stack trace from the catch clause.\n",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "It will throw an error at runtime that will not be caught by the catch block.",
       "correctAnswer" : true,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "It will print a stack trace from the catch clause and a number depending on the memory available in the system.",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "It will only print a number depending on the memory available in the system.\n",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     } ],
     "correctAnswers" : 1
   }
@@ -289,27 +289,27 @@
     "answerList" : [ {
       "answerText" : "It allows creation of new exceptions that are custom to a particular application domain.\n",
       "correctAnswer" : true,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "It improves code because error handling code is clearly separated from the main program logic.",
       "correctAnswer" : true,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "It enhances the security of the application by reporting errors in the logs.",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "It improves the code because the exception is handled right at the place where it occured.\n",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "It provides a vast set of standard exceptions that covers all possible exceptions.",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     } ],
     "correctAnswers" : 2
   }
@@ -324,27 +324,27 @@
     "answerList" : [ {
       "answerText" : "use String's equals method.",
       "correctAnswer" : true,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "use String's equalsIgnoreCase method.",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "Use == operator.\t",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "Use String's match method.\n",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     } ],
     "correctAnswers" : 1
   }
@@ -359,27 +359,27 @@
     "answerList" : [ {
       "answerText" : "",
       "correctAnswer" : false,
-      "answerDescription" : "blooper and bloopershopper\n"
+      "answerCode": "blooper and bloopershopper\n"
     }, {
       "answerText" : "",
       "correctAnswer" : false,
-      "answerDescription" : "blooperwhopper and bloopershopper\n"
+      "answerCode": "blooperwhopper and bloopershopper\n"
     }, {
       "answerText" : "",
       "correctAnswer" : false,
-      "answerDescription" : "blooper and blooperwhoppershopper"
+      "answerCode": "blooper and blooperwhoppershopper"
     }, {
       "answerText" : "It will not compile.\n",
       "correctAnswer" : true,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     } ],
     "correctAnswers" : 1
   }
@@ -394,27 +394,27 @@
     "answerList" : [ {
       "answerText" : "",
       "correctAnswer" : false,
-      "answerDescription" : "for(int i=INT1; i<INT2; System.out.println(++i));\n"
+      "answerCode": "for(int i=INT1; i<INT2; System.out.println(++i));\n"
     }, {
       "answerText" : "",
       "correctAnswer" : false,
-      "answerDescription" : "for(int i=INT1; i++<INT2; System.out.println(i));\n"
+      "answerCode": "for(int i=INT1; i++<INT2; System.out.println(i));\n"
     }, {
       "answerText" : "",
       "correctAnswer" : false,
-      "answerDescription" : "int i=INT1; while(i++<INT2) { System.out.println(i); }"
+      "answerCode": "int i=INT1; while(i++<INT2) { System.out.println(i); }"
     }, {
       "answerText" : "",
       "correctAnswer" : false,
-      "answerDescription" : "int i=INT1; do { System.out.println(i); }while(i++<INT2);\nNone of these.\n"
+      "answerCode": "int i=INT1; do { System.out.println(i); }while(i++<INT2);\nNone of these.\n"
     }, {
       "answerText" : "None of these.\n",
       "correctAnswer" : true,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     } ],
     "correctAnswers" : 1
   }
@@ -429,27 +429,27 @@
     "answerList" : [ {
       "answerText" : "It will not compile as it is.\n",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "It will throw an Exception at runtime if it is run as it is.\n",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "g.play(); at //1 and s.play(\"cosco\"); at //2\n",
       "correctAnswer" : true,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "g.play(); at //1 and s.play(); at //2",
       "correctAnswer" : true,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "g.play(\"cosco\"); at //1 and s.play(\"cosco\"); at //2\n",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     } ],
     "correctAnswers" : 2
   }
@@ -464,27 +464,27 @@
     "answerList" : [ {
       "answerText" : "",
       "correctAnswer" : false,
-      "answerDescription" : "void method1{ }\n"
+      "answerCode": "void method1{ }\n"
     }, {
       "answerText" : "",
       "correctAnswer" : true,
-      "answerDescription" : "void method2( ) { }\n"
+      "answerCode": "void method2( ) { }\n"
     }, {
       "answerText" : "",
       "correctAnswer" : false,
-      "answerDescription" : "void method3(void){ }"
+      "answerCode": "void method3(void){ }"
     }, {
       "answerText" : "",
       "correctAnswer" : false,
-      "answerDescription" : "method4{ }"
+      "answerCode": "method4{ }"
     }, {
       "answerText" : "",
       "correctAnswer" : false,
-      "answerDescription" : "method5(void){ }"
+      "answerCode": "method5(void){ }"
     }, {
       "answerText" : "",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     } ],
     "correctAnswers" : 1
   }
@@ -499,27 +499,27 @@
     "answerList" : [ {
       "answerText" : "exceptional conditions external to an application that a well written application should anticipate and from which it can recover.",
       "correctAnswer" : true,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "exceptional conditions external to the program  that a well written program cannot anticipate but should recover from.\n",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "exceptional conditions from which recovery is difficult or impossible.\n",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "exceptional situations internal to an application that the application can anticipate but cannot recover from.\n",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     } ],
     "correctAnswers" : 1
   }
@@ -534,27 +534,27 @@
     "answerList" : [ {
       "answerText" : "-9",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "-10",
       "correctAnswer" : true,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "-11",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "-12",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     } ],
     "correctAnswers" : 1
   }
@@ -569,27 +569,27 @@
     "answerList" : [ {
       "answerText" : "",
       "correctAnswer" : false,
-      "answerDescription" : "al.add(111);\n"
+      "answerCode": "al.add(111);\n"
     }, {
       "answerText" : "",
       "correctAnswer" : true,
-      "answerDescription" : "System.out.println(al.indexOf(1.0));\n"
+      "answerCode": "System.out.println(al.indexOf(1.0));\n"
     }, {
       "answerText" : "",
       "correctAnswer" : true,
-      "answerDescription" : "System.out.println(al.contains(\"string\"));"
+      "answerCode": "System.out.println(al.contains(\"string\"));"
     }, {
       "answerText" : "",
       "correctAnswer" : false,
-      "answerDescription" : "Double d = al.get(al.length);\n"
+      "answerCode": "Double d = al.get(al.length);\n"
     }, {
       "answerText" : "",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     } ],
     "correctAnswers" : 2
   }
@@ -604,27 +604,27 @@
     "answerList" : [ {
       "answerText" : "",
       "correctAnswer" : true,
-      "answerDescription" : "public boolean tester(){\n        return false;\n    }"
+      "answerCode": "public boolean tester(){\n        return false;\n    }"
     }, {
       "answerText" : "",
       "correctAnswer" : true,
-      "answerDescription" : "public Boolean tester(){\n        return false;\n    }"
+      "answerCode": "public Boolean tester(){\n        return false;\n    }"
     }, {
       "answerText" : "",
       "correctAnswer" : false,
-      "answerDescription" : "public tester(){\n        return false;\n    }\n"
+      "answerCode": "public tester(){\n        return false;\n    }\n"
     }, {
       "answerText" : "",
       "correctAnswer" : false,
-      "answerDescription" : "public int tester(){\n        return 0;\n    }"
+      "answerCode": "public int tester(){\n        return 0;\n    }"
     }, {
       "answerText" : "",
       "correctAnswer" : false,
-      "answerDescription" : "public String tester(){\n        return \"false\";\n    }"
+      "answerCode": "public String tester(){\n        return \"false\";\n    }"
     }, {
       "answerText" : "",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     } ],
     "correctAnswers" : 2
   }
@@ -639,27 +639,27 @@
     "answerList" : [ {
       "answerText" : "Declarations (1) and (3) cannot occur in the same class definition.\n",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "Declarations (2) and (4) cannot occur in the same class definition.\n",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "Declarations (1) and (4) cannot occur in the same class definition.\n",
       "correctAnswer" : true,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "Declarations (2) and (3) cannot occur in the same class definition.\n",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "Declarations (1) and (2) cannot occur in the same class definition.\n",
       "correctAnswer" : true,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     } ],
     "correctAnswers" : 2
   }
@@ -674,27 +674,27 @@
     "answerList" : [ {
       "answerText" : "It will not compile.\n",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "\"ing is\"\n",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "\"ing isa\"\n",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "\"ing \" (There is a space after g)\n",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "None of the above.\n",
       "correctAnswer" : true,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     } ],
     "correctAnswers" : 1
   }
@@ -709,27 +709,27 @@
     "answerList" : [ {
       "answerText" : "The code will fail to compile.\n",
       "correctAnswer" : true,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "Runtime error.\n",
       "correctAnswer" : true,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "The code will compile without errors and will print 80 when run",
       "correctAnswer" : true,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "The code will compile without errors and will print 40 when run.",
       "correctAnswer" : true,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "The code will compile without errors and will print 20 when run.\n",
       "correctAnswer" : true,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "",
       "correctAnswer" : true,
-      "answerDescription" : ""
+      "answerCode": ""
     } ],
     "correctAnswers" : 6
   }
@@ -744,27 +744,27 @@
     "answerList" : [ {
       "answerText" : "exceptional conditions external to an application that a well written \napplication should anticipate and from which it can recover.",
       "correctAnswer" : true,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "exceptional conditions external to the program  that a well written \nprogram cannot anticipate but should recover from.\n",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "exceptional conditions from which recovery is difficult or impossible.\n",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "exceptional situations internal to an application that the application \ncan anticipate but cannot recover from.\n",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     }, {
       "answerText" : "",
       "correctAnswer" : false,
-      "answerDescription" : ""
+      "answerCode": ""
     } ],
     "correctAnswers" : 1
   }
