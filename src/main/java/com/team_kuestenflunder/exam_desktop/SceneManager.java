@@ -32,10 +32,10 @@ import java.util.List;
  */
 public class SceneManager {
     private static SceneManager instance;
-    Injector injector = Guice.createInjector(new DIConfigModule());
-    private Parent root;
-    private Scene scene;
-    private Stage stage;
+    private static Injector injector = Guice.createInjector(new DIConfigModule());
+    private static Parent root;
+    private static Scene scene;
+    private static Stage stage;
 
 
     private SceneManager() {
@@ -58,7 +58,7 @@ public class SceneManager {
      * @param question the question to populate the form with.
      * @throws IOException if there's an error loading the FXML file.
      */
-    public void switchSceneToQuestionForm(ActionEvent event, Question question) throws IOException {
+    public static void switchSceneToQuestionForm(ActionEvent event, Question question) throws IOException {
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("questionForm.fxml"));
         fxmlLoader.setControllerFactory(injector::getInstance);
@@ -67,7 +67,6 @@ public class SceneManager {
         if (((Button) event.getSource()).getId().equals("bt_fromPreviewBackToQuestionFrom")) {
             questionFormController.setQuestionFromPreview(question);
         }
-        ;
         if (((Button) event.getSource()).getId().equals("bt_updateQuestion")) {
             questionFormController.setQuestionData(question);
         }
@@ -78,7 +77,7 @@ public class SceneManager {
     }
 
 
-    public void switchSceneToExamValidationView(Event event) throws IOException {
+    public static void switchSceneToExamValidationView(Event event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("examEvaluationView.fxml"));
         fxmlLoader.setControllerFactory(injector::getInstance);
         root = fxmlLoader.load();
@@ -91,7 +90,7 @@ public class SceneManager {
         stage.show();
     }
 
-    public void switchSceneToStudentsView(Event event) throws IOException {
+    public static void switchSceneToStudentsView(Event event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("studentAdministrationView.fxml"));
         fxmlLoader.setControllerFactory(injector::getInstance);
         root = fxmlLoader.load();
@@ -111,7 +110,7 @@ public class SceneManager {
      * @param event the action event that triggered the scene switch.
      * @throws IOException if there's an error loading the FXML file.
      */
-    public void switchSceneToQuestionView(ActionEvent event) throws IOException {
+    public static void switchSceneToQuestionView(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("questionsView.fxml"));
         fxmlLoader.setControllerFactory(injector::getInstance);
         root = fxmlLoader.load();
@@ -122,7 +121,7 @@ public class SceneManager {
         stage.show();
     }
 
-    public void switchSceneToPdfPreview(ActionEvent event, File pdfFile, Question tempraryQuestion) throws IOException {
+    public static void switchSceneToPdfPreview(ActionEvent event, File pdfFile, Question tempraryQuestion) throws IOException {
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("pdfPreview.fxml"));
         fxmlLoader.setControllerFactory(injector::getInstance);
@@ -142,7 +141,7 @@ public class SceneManager {
      * @param event the action event that triggered the popup.
      * @throws IOException if there's an error loading the FXML file.
      */
-    public void addPdfCreationPopUp(Event event) throws IOException {
+    public static void addPdfCreationPopUp(Event event) throws IOException {
         System.out.println((event.getSource() instanceof Button));
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("pdfCreationPopUp.fxml"));
         fxmlLoader.setControllerFactory(injector::getInstance);
@@ -176,7 +175,7 @@ public class SceneManager {
      * @param event the action event that triggered the file chooser.
      * @return a list of the selected files.
      */
-    public List<java.io.File> addFileChooserDialogMultiple(Event event, String filterDescription, String FilterExtensions) {
+    public static List<java.io.File> addFileChooserDialogMultiple(Event event, String filterDescription, String FilterExtensions) {
         Stage stage = new Stage();
         stage.initOwner(((MenuItem) event.getTarget()).getParentPopup().getOwnerWindow());
         FileChooser fileChooser = new FileChooser();
@@ -191,7 +190,7 @@ public class SceneManager {
      * @param event the action event that triggered the file chooser.
      * @return the selected file.
      */
-    public File addFileChooserDialogSingle(Event event, String filterDescription, String FilterExtensions) {
+    public static File addFileChooserDialogSingle(Event event, String filterDescription, String FilterExtensions) {
         Stage stage = new Stage();
         stage.initOwner(((MenuItem) event.getTarget()).getParentPopup().getOwnerWindow());
         FileChooser fileChooser = new FileChooser();
@@ -207,7 +206,7 @@ public class SceneManager {
      * @return the selected file.
      */
 
-    public File addFileSaveDialog(Event event, String filterDescription, String filterExtension) {
+    public static File addFileSaveDialog(Event event, String filterDescription, String filterExtension) {
         Stage stage = new Stage();
         stage.initOwner(((MenuItem) event.getTarget()).getParentPopup().getOwnerWindow());
         FileChooser fileChooser = new FileChooser();
@@ -217,7 +216,7 @@ public class SceneManager {
         return fileChooser.showSaveDialog(stage);
     }
 
-    public File addFileSaveDialogFromButton(ActionEvent event, String filterDescription, String filterExtension) {
+    public static File addFileSaveDialogFromButton(ActionEvent event, String filterDescription, String filterExtension) {
         Stage stage = new Stage();
         stage.initOwner(((Node) event.getSource()).getScene().getWindow());
         FileChooser fileChooser = new FileChooser();
@@ -228,7 +227,7 @@ public class SceneManager {
     }
 
 
-    public File chooseDirectory(ActionEvent event) {
+    public static File chooseDirectory(ActionEvent event) {
         Stage stage = new Stage();
         stage.initOwner(((Node) event.getSource()).getScene().getWindow());
         DirectoryChooser directoryChooser = new DirectoryChooser();
@@ -238,7 +237,7 @@ public class SceneManager {
     }
 
 
-    public File addNewFileSaveDialog(Event event) {
+    public static File addNewFileSaveDialog(Event event) {
         Stage stage = new Stage();
         stage.initOwner(((MenuItem) event.getTarget()).getParentPopup().getOwnerWindow());
 
@@ -274,7 +273,7 @@ public class SceneManager {
      * @return a new scene containing the question view.
      * @throws IOException if there's an error loading the FXML file.
      */
-    public Scene getQuestionView() throws IOException {
+    public static Scene getQuestionView() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("questionsView.fxml"));
         fxmlLoader.setControllerFactory(injector::getInstance);
         Parent formParent = fxmlLoader.load();
