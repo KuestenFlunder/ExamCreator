@@ -14,10 +14,9 @@ import java.io.File;
 import java.io.IOException;
 
 public class PdfCreationPopUpController {
-    private final SceneManager sceneManager = SceneManager.getInstance();
-    PdfCreationPopUpService pdfCreationPopUpService;
+    private final PdfCreationPopUpService pdfCreationPopUpService;
 
-    String callerID;
+    private String callerID;
 
     @FXML
     Button
@@ -47,7 +46,7 @@ public class PdfCreationPopUpController {
 
     public void onCreateTestClick(ActionEvent event) {
         if(callerID.equals("mi_createExam")){
-        File outputFile = sceneManager.addFileSaveDialogFromButton(event, "PDF-Dateien (*.pdf)", "*.pdf");
+        File outputFile = SceneManager.addFileSaveDialogFromButton(event, "PDF-Dateien (*.pdf)", "*.pdf");
             try {
                 pdfCreationPopUpService.createExamPDF(
                         tf_testTitle,
@@ -59,7 +58,7 @@ public class PdfCreationPopUpController {
             }
             exitStage(event);}
         if(callerID.equals("bt_createIndividualPdfExams")){
-            File directory = sceneManager.chooseDirectory(event);
+            File directory = SceneManager.chooseDirectory(event);
             try {
                 pdfCreationPopUpService.createIndividualPdfExams(tf_testTitle,tf_numberOfQuestions,tf_testDuration,directory);
             } catch (IOException e) {

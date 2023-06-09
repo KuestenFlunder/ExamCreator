@@ -21,11 +21,6 @@ import java.util.List;
 public class ExamEvaluationViewController {
 
     ExamEvaluationViewService examEvaluationViewService;
-    SceneManager sceneManager = SceneManager.getInstance();
-
-    //TODO Dependency injection for both
-
-
     ObservableList<ExamResult> examResults = FXCollections.observableArrayList();
     @FXML
     Button bt_backToQuestionView, bt_exportResultsAsPdf;
@@ -33,6 +28,7 @@ public class ExamEvaluationViewController {
     MenuItem mi_evaluateExams, mi_evaluateExam;
     @FXML
     TableView<ExamResult> tv_examResults;
+
     //TODO dependency Injection
     public ExamEvaluationViewController() {
         this.examEvaluationViewService = new ExamEvaluationViewService();
@@ -40,7 +36,7 @@ public class ExamEvaluationViewController {
 
     public void onBackToQuestionViewClick(ActionEvent event) {
         try {
-            sceneManager.switchSceneToQuestionView(event);
+            SceneManager.switchSceneToQuestionView(event);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -48,27 +44,23 @@ public class ExamEvaluationViewController {
 
     public void onEvaluateMultiExamsClick(ActionEvent event) {
 
-        List<File> examFiles = sceneManager.addFileChooserDialogMultiple(event, "PDF", "*.pdf");
+        List<File> examFiles = SceneManager.addFileChooserDialogMultiple(event, "PDF", "*.pdf");
 
         for (File file : examFiles) {
             try {
-                examResults.add(
-                        examEvaluationViewService.evaluateExam(
-                                PDFHandler.getValuesFromTest(file)));
+                examResults.add(examEvaluationViewService.evaluateExam(PDFHandler.getValuesFromTest(file)));
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }
-        examEvaluationViewService.createViewTable(tv_examResults,examResults);
+        examEvaluationViewService.createViewTable(tv_examResults, examResults);
 
     }
 
     public void onEvaluateExamsClick(ActionEvent event) {
-        File singleExam = sceneManager.addFileChooserDialogSingle(event, "PDF", "*.pdf");
+        File singleExam = SceneManager.addFileChooserDialogSingle(event, "PDF", "*.pdf");
         try {
-            examResults.add(
-                    examEvaluationViewService.evaluateExam(
-                            PDFHandler.getValuesFromTest(singleExam)));
+            examResults.add(examEvaluationViewService.evaluateExam(PDFHandler.getValuesFromTest(singleExam)));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -76,9 +68,9 @@ public class ExamEvaluationViewController {
     }
 
 
-    public  void onExportResultsAsPdfClick(ActionEvent event ){
-        File saveCsvTo = sceneManager.addFileSaveDialogFromButton(event,"Csv","*.csv");
-        CSVHandler.writeCSV(examResults,saveCsvTo);
+    public void onExportResultsAsPdfClick(ActionEvent event) {
+        File saveCsvTo = SceneManager.addFileSaveDialogFromButton(event, "Csv", "*.csv");
+        CSVHandler.writeCSV(examResults, saveCsvTo);
 
     }
 

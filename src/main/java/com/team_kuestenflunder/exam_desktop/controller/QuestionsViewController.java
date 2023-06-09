@@ -21,7 +21,6 @@ import static com.team_kuestenflunder.exam_desktop.Utils.AlertMessage.alertMessa
 public class QuestionsViewController implements Initializable {
 
     private final QuestionsViewServiceImpl questionsViewService;
-    private final SceneManager sceneManager = SceneManager.getInstance();
     private final JsonHandler jsonHandler = new JsonHandler();
 
 
@@ -41,7 +40,7 @@ public class QuestionsViewController implements Initializable {
 
     public void onNewQuestionClick(ActionEvent event) {
         try {
-            sceneManager.switchSceneToQuestionForm(event, new Question());
+            SceneManager.switchSceneToQuestionForm(event, new Question());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -49,7 +48,7 @@ public class QuestionsViewController implements Initializable {
 
     public void onUpdateButtonClick(ActionEvent event) {
         try {
-            sceneManager.switchSceneToQuestionForm(event, tableView.getSelectionModel().getSelectedItem());
+            SceneManager.switchSceneToQuestionForm(event, tableView.getSelectionModel().getSelectedItem());
         } catch (Exception e) {
             alertMessage(Alert.AlertType.INFORMATION, "Keine Frage gewählt", "Bitte wählen sie eine Frage die sie bearbeiten wollen.");
 
@@ -75,7 +74,7 @@ public class QuestionsViewController implements Initializable {
 
     public void onCreateExamPdfClick(ActionEvent event) {
         try {
-            sceneManager.addPdfCreationPopUp(event);
+            SceneManager.addPdfCreationPopUp(event);
 
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -84,7 +83,7 @@ public class QuestionsViewController implements Initializable {
 
     public void onCreateIndividualExamClick(ActionEvent event){
         try {
-            sceneManager.switchSceneToStudentsView(event);
+            SceneManager.switchSceneToStudentsView(event);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -92,13 +91,13 @@ public class QuestionsViewController implements Initializable {
 
     public void onMergeJsonClick(ActionEvent event) {
         jsonHandler.mergeJsonFiles(
-                sceneManager.addFileChooserDialogMultiple(event, "JSON", "*.json"),
-                sceneManager.addFileSaveDialog(event,"JSON","*.json"));
+                SceneManager.addFileChooserDialogMultiple(event, "JSON", "*.json"),
+                SceneManager.addFileSaveDialog(event,"JSON","*.json"));
     }
 
     public void onSaveQuestionAsJsonClick(ActionEvent event) {
         try {
-            jsonHandler.writeQuestionJsonToInnerStorage(questionsViewService.getQuestions(), sceneManager.addFileSaveDialog(event,"JSON","*.json"));
+            jsonHandler.writeQuestionJsonToInnerStorage(questionsViewService.getQuestions(), SceneManager.addFileSaveDialog(event,"JSON","*.json"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -106,7 +105,7 @@ public class QuestionsViewController implements Initializable {
 
     public void onLoadQuestionFromJsonClick(ActionEvent event) {
         // get the file that should be loaded
-        File file = sceneManager.addFileChooserDialogSingle(event,"JSON","*.json");
+        File file = SceneManager.addFileChooserDialogSingle(event,"JSON","*.json");
         // update the listview with the new list --> add questionViewService.addQustions
         try {
             ObservableList<Question> questions = jsonHandler.readJsonFromFile(file);
@@ -120,7 +119,7 @@ public class QuestionsViewController implements Initializable {
 
     public void onDeleteJsonClick(ActionEvent event) {
         try {
-            File fileToDelete = sceneManager.addFileChooserDialogSingle(event,"JSON","*.json");
+            File fileToDelete = SceneManager.addFileChooserDialogSingle(event,"JSON","*.json");
             Alert alert = alertMessage(
                      Alert.AlertType.WARNING
                     ,toString()
@@ -136,7 +135,7 @@ public class QuestionsViewController implements Initializable {
 
     public void onExamEvaluationClick(ActionEvent event) {
         try {
-            sceneManager.switchSceneToExamValidationView(event);
+            SceneManager.switchSceneToExamValidationView(event);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -144,7 +143,7 @@ public class QuestionsViewController implements Initializable {
 
     public void onNewQuestionListClick(ActionEvent event) {
 
-        File file = sceneManager.addNewFileSaveDialog(event);
+        File file = SceneManager.addNewFileSaveDialog(event);
         if (file != null) {
             System.out.println("Neue Datei erzeugt: " + file.getAbsolutePath());
         } else {
