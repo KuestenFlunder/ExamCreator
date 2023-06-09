@@ -157,27 +157,35 @@ public class QuestionFormController implements Initializable {
     //Called by the Scene Manager to Pass Data to the Model
     public void setQuestionData(Question question) {
         this.question = question;
-        System.out.println("question form pdfCont = " + question);
-        System.out.println("questionFormService.getQuestions().contains(question) = " + questionFormService.getQuestions().contains(question));
-        if (questionFormService.getQuestions().contains(question)) {
-            l_uuid.setText(question.getId());
-            l_creationDate.setText(question.getCreationDate().toString());
-            cb_topic.setValue(question.getTopic());
-            tf_questionTitle.setText(question.getQuestionTitle());
-            ta_questionText.setText(question.getQuestionText());
-            ta_questionCode.setText(question.getQuestionCode());
 
-            for (int i = 0; i < 6; i++) {
-                answerTexts.get(i).setText(question.getAnswers().getAnswerList().get(i).getAnswerText());
-                answerCheckboxes.get(i).setSelected(question.getAnswers().getAnswerList().get(i).isCorrectAnswer());
-                answerCodes.get(i).setText(question.getAnswers().getAnswerList().get(i).getAnswerCode());
-            }
+        if (questionFormService.getQuestions().contains(question)) {
+            addDataToQuestionFrom(question);
         } else {
             l_uuid.setText(question.getId());
             l_creationDate.setText(question.getCreationDate().toString());
         }
 
 
+    }
+
+    public void setQuestionFromPreview(Question question) {
+        this.question = question;
+        addDataToQuestionFrom(question);
+    }
+
+    private void addDataToQuestionFrom(Question question) {
+        l_uuid.setText(question.getId());
+        l_creationDate.setText(question.getCreationDate().toString());
+        cb_topic.setValue(question.getTopic());
+        tf_questionTitle.setText(question.getQuestionTitle());
+        ta_questionText.setText(question.getQuestionText());
+        ta_questionCode.setText(question.getQuestionCode());
+
+        for (int i = 0; i < 6; i++) {
+            answerTexts.get(i).setText(question.getAnswers().getAnswerList().get(i).getAnswerText());
+            answerCheckboxes.get(i).setSelected(question.getAnswers().getAnswerList().get(i).isCorrectAnswer());
+            answerCodes.get(i).setText(question.getAnswers().getAnswerList().get(i).getAnswerCode());
+}
     }
 
     @Override

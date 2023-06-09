@@ -29,7 +29,7 @@ public class PdfPreviewController implements Initializable {
     @FXML
     ImageView iv_pdfPreview;
     @FXML
-    Button bt_backToQuestionFrom;
+    Button bt_fromPreviewBackToQuestionFrom;
     @FXML
     AnchorPane anchorPane;
     //! do not remove its used in SceneManagerClass

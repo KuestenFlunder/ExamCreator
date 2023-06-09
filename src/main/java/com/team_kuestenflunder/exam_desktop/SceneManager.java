@@ -32,8 +32,8 @@ import java.util.List;
  */
 public class SceneManager {
     private static SceneManager instance;
-    private Parent root;
     Injector injector = Guice.createInjector(new DIConfigModule());
+    private Parent root;
     private Scene scene;
     private Stage stage;
 
@@ -64,7 +64,13 @@ public class SceneManager {
         fxmlLoader.setControllerFactory(injector::getInstance);
         root = fxmlLoader.load();
         QuestionFormController questionFormController = fxmlLoader.getController();
-        questionFormController.setQuestionData(question);
+        if (((Button) event.getSource()).getId().equals("bt_fromPreviewBackToQuestionFrom")) {
+            questionFormController.setQuestionFromPreview(question);
+        }
+        ;
+        if (((Button) event.getSource()).getId().equals("bt_updateQuestion")) {
+            questionFormController.setQuestionData(question);
+        }
         scene = new Scene(root);
         stage.setScene(scene);
         stage.setTitle("Fragen Editor");
@@ -115,13 +121,14 @@ public class SceneManager {
         stage.setTitle("Fragen Liste");
         stage.show();
     }
+
     public void switchSceneToPdfPreview(ActionEvent event, File pdfFile, Question tempraryQuestion) throws IOException {
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("pdfPreview.fxml"));
         fxmlLoader.setControllerFactory(injector::getInstance);
         root = fxmlLoader.load();
         PdfPreviewController pdfPreviewController = fxmlLoader.getController();
-        pdfPreviewController.setPdfFile(pdfFile,tempraryQuestion);
+        pdfPreviewController.setPdfFile(pdfFile, tempraryQuestion);
         scene = new Scene(root);
         stage.setScene(scene);
         stage.setTitle("Pdf Vorschau");
