@@ -24,7 +24,6 @@ import java.util.ResourceBundle;
 
 
 public class PdfPreviewController implements Initializable {
-    SceneManager sceneManager = SceneManager.getInstance();
 
     @FXML
     ImageView iv_pdfPreview;
@@ -63,7 +62,7 @@ public class PdfPreviewController implements Initializable {
 
     public void onBackToQuestionFormClick(ActionEvent event) {
         try {
-            sceneManager.switchSceneToQuestionForm(event, tempraryQuestion);
+            SceneManager.switchSceneToQuestionForm(event, tempraryQuestion);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

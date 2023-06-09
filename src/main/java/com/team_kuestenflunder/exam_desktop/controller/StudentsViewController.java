@@ -20,7 +20,6 @@ public class StudentsViewController implements Initializable {
 
     //TODO add dependency injection
     private final StudentViewService studentViewService = new StudentViewService();
-    private final SceneManager sceneManager = SceneManager.getInstance();
 
     private Student actualStudent;
 
@@ -44,7 +43,7 @@ public class StudentsViewController implements Initializable {
 
     public void onBackToQuestionViewClick(ActionEvent event) {
         try {
-            sceneManager.switchSceneToQuestionView(event);
+            SceneManager.switchSceneToQuestionView(event);
         } catch (IOException e) {
 
             throw new RuntimeException(e);

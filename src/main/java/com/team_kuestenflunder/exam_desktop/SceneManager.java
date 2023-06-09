@@ -60,7 +60,7 @@ public class SceneManager {
      */
     public static void switchSceneToQuestionForm(ActionEvent event, Question question) throws IOException {
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("questionForm.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(SceneManager.class.getResource("questionForm.fxml"));
         fxmlLoader.setControllerFactory(injector::getInstance);
         root = fxmlLoader.load();
         QuestionFormController questionFormController = fxmlLoader.getController();
@@ -78,7 +78,7 @@ public class SceneManager {
 
 
     public static void switchSceneToExamValidationView(Event event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("examEvaluationView.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(SceneManager.class.getResource("examEvaluationView.fxml"));
         fxmlLoader.setControllerFactory(injector::getInstance);
         root = fxmlLoader.load();
         stage = (Stage) ((MenuItem) event.getTarget())
@@ -91,7 +91,7 @@ public class SceneManager {
     }
 
     public static void switchSceneToStudentsView(Event event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("studentAdministrationView.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(SceneManager.class.getResource("studentAdministrationView.fxml"));
         fxmlLoader.setControllerFactory(injector::getInstance);
         root = fxmlLoader.load();
         stage = (Stage) ((MenuItem) event.getTarget())
@@ -111,7 +111,7 @@ public class SceneManager {
      * @throws IOException if there's an error loading the FXML file.
      */
     public static void switchSceneToQuestionView(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("questionsView.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(SceneManager.class.getResource("questionsView.fxml"));
         fxmlLoader.setControllerFactory(injector::getInstance);
         root = fxmlLoader.load();
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -123,7 +123,7 @@ public class SceneManager {
 
     public static void switchSceneToPdfPreview(ActionEvent event, File pdfFile, Question tempraryQuestion) throws IOException {
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("pdfPreview.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(SceneManager.class.getResource("pdfPreview.fxml"));
         fxmlLoader.setControllerFactory(injector::getInstance);
         root = fxmlLoader.load();
         PdfPreviewController pdfPreviewController = fxmlLoader.getController();
@@ -143,7 +143,7 @@ public class SceneManager {
      */
     public static void addPdfCreationPopUp(Event event) throws IOException {
         System.out.println((event.getSource() instanceof Button));
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("pdfCreationPopUp.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(SceneManager.class.getResource("pdfCreationPopUp.fxml"));
         fxmlLoader.setControllerFactory(injector::getInstance);
         root = fxmlLoader.load();
         Stage stage = new Stage();
@@ -274,7 +274,7 @@ public class SceneManager {
      * @throws IOException if there's an error loading the FXML file.
      */
     public static Scene getQuestionView() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("questionsView.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(SceneManager.class.getResource("questionsView.fxml"));
         fxmlLoader.setControllerFactory(injector::getInstance);
         Parent formParent = fxmlLoader.load();
         //Create a new sceen from the root node of the fxml

@@ -26,7 +26,6 @@ import java.util.ResourceBundle;
 
 public class QuestionFormController implements Initializable {
     private final QuestionFormServiceImpl questionFormService;
-    private final SceneManager sceneManager = SceneManager.getInstance();
 
     @FXML
     Label l_uuid, l_creationDate;
@@ -101,7 +100,7 @@ public class QuestionFormController implements Initializable {
                 question.getAnswers().addAnswer(answer);
             }
             questionFormService.addQuestion(question);
-            sceneManager.switchSceneToQuestionView(event);
+            SceneManager.switchSceneToQuestionView(event);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -110,7 +109,7 @@ public class QuestionFormController implements Initializable {
 
     public void onCancelClick(ActionEvent event) {
         try {
-            sceneManager.switchSceneToQuestionView(event);
+            SceneManager.switchSceneToQuestionView(event);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -121,7 +120,7 @@ public class QuestionFormController implements Initializable {
             temporaryQuestion = createTemporaryQuestion();
 
             File temporaryPDFFile = new File(PDFHandler.createQuestionPage(0, temporaryQuestion, 0));
-            sceneManager.switchSceneToPdfPreview(event, temporaryPDFFile, temporaryQuestion);
+            SceneManager.switchSceneToPdfPreview(event, temporaryPDFFile, temporaryQuestion);
 
         } catch (IOException e) {
             e.printStackTrace();
