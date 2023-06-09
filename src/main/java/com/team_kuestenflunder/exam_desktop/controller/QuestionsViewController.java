@@ -25,13 +25,21 @@ public class QuestionsViewController implements Initializable {
 
 
     @FXML
-    Button newQuestion_btn, bt_updateQuestion, bt_deleteQuestion;
+    Button bt_newQuestion, bt_updateQuestion, bt_deleteQuestion;
 
     @FXML
     TableView<Question> tableView;
 
     @FXML
-    MenuItem mi_newQuestionList, mi_loadQuestionFromJson, mi_saveQuestionsAsJson,mi_mergeQuestions,mi_createExam,mi_examEvaluation;
+    MenuItem
+            mi_newQuestionList,
+            mi_loadQuestionFromJson,
+            mi_saveQuestionsAsJson,
+            mi_mergeQuestions,
+            mi_createExam,
+            mi_examEvaluation,
+            mi_CreateIndividualExam,
+            mi_deleteJson;
 
     @Inject
     public QuestionsViewController(QuestionsViewServiceImpl questionsViewService) {

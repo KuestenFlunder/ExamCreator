@@ -67,9 +67,10 @@ public class SceneManager {
         if (((Button) event.getSource()).getId().equals("bt_fromPreviewBackToQuestionFrom")) {
             questionFormController.setQuestionFromPreview(question);
         }
-        if (((Button) event.getSource()).getId().equals("bt_updateQuestion")) {
+        if (((Button) event.getSource()).getId().equals("bt_updateQuestion") | ((Button) event.getSource()).getId().equals("bt_newQuestion")) {
             questionFormController.setQuestionData(question);
         }
+
         scene = new Scene(root);
         stage.setScene(scene);
         stage.setTitle("Fragen Editor");
